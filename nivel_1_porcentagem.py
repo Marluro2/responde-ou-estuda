@@ -55,7 +55,7 @@ TEMPO_POR_QUESTAO = 60
 MODULO_PESQUISA = "Porcentagem"
 
 # ROLAGEM DAS TELAS: espaço livre, em pixels, no fim de cada tela do módulo.
-ESPACO_FINAL_ROLAGEM = 48
+ESPACO_FINAL_ROLAGEM = 12
 
 # VELOCIDADES DA NARRAÇÃO: o primeiro número é o valor usado internamente
 # pela voz. O segundo texto é o que aparece no menu da interface.
@@ -261,6 +261,8 @@ class JogoPorcentagem:
         self.trilha_nome = self.estado.trilha
         self.som_ativo = False
         self.ultimo_resultado: dict[str, Any] | None = None
+        # Página do estudo: 0 = conceito e exemplos; 1 = resolução.
+        self.pagina_estudo = 0
         self.tempo_restante = TEMPO_POR_QUESTAO
         self._token_cronometro = 0
         self._questao_cronometro: str | None = None
@@ -672,6 +674,9 @@ class JogoPorcentagem:
     # ------------------------------------------------------------------
 
     def _placar(self) -> ft.Control:
+        if ADMIN_ATIVO:
+            # Modo administrador: saldos de teste ficam ocultos (economiza espaço).
+            return ft.Container()
         tema = self.tema
         cartoes = []
         for indice, jogador in enumerate(self.jogadores):
@@ -1338,8 +1343,8 @@ class JogoPorcentagem:
                     size=60,
                 ),
             ),
-            height=270,
-            # ALTURA DO CARTÃO DA IMAGEM: altere 270 para aumentar ou
+            height=240,
+            # ALTURA DO CARTÃO DA IMAGEM: altere 240 para aumentar ou
             # diminuir a altura da questão. Um valor menor sobe os botões
             # "Responder" e "Estudar" na tela.
             padding=8,
@@ -1538,6 +1543,7 @@ class JogoPorcentagem:
     def _escolher_estudar(self, _evento: ft.ControlEvent) -> None:
         if self._rodada_finalizada:
             return
+        self.pagina_estudo = 0
         self._rodada_finalizada = True
         self.estado.registrar_resultado(
             str(self.jogador_atual["id"]),
@@ -1766,58 +1772,198 @@ class JogoPorcentagem:
             col={"xs": 12, "lg": 5},
         )
 
+    def _exemplos_estudo(self) -> list[ft.Control]:
+        """Título e cartões de exemplos extras (página 1 do estudo)."""
+        tema = self.tema
+        estudo = self.questao_atual["estudo"]
+        return [
+                    ft.Text(
+                        "EXEMPLOS EXTRAS DE PORCENTAGEM",
+                        color=tema["destaque"],
+                        size=15,
+                        weight=ft.FontWeight.BOLD,
+                        text_align=ft.TextAlign.CENTER,
+                    ),
+                    self._cartao_exemplo_estudo(
+                        "EXEMPLO RELACIONADO",
+                        estudo["exemplo"],
+                    ),
+                    self._cartao_exemplo_estudo(
+                        "COMPRAS NO SUPERMERCADO",
+                        (
+                            r"Um produto de R\$ 80,00 com 25% de desconto "
+                            r"fica por R\$ 60,00, pois $80\cdot0{,}75=60$."
+                        ),
+                    ),
+                    self._cartao_exemplo_estudo(
+                        "REAJUSTE NO ORÇAMENTO",
+                        (
+                            r"Uma despesa de R\$ 150,00 com aumento de 12% "
+                            r"passa para R\$ 168,00, pois $150\cdot1{,}12=168$."
+                        ),
+                    ),
+        ]
+
+    def _passos_estudo(self) -> list[ft.Control]:
+        """Os cinco passos da resolução (página 2 do estudo)."""
+        questao = self.questao_atual
+        estudo = questao["estudo"]
+        resposta_correta = questao["alternativas"][questao["correta"]]
+        return [
+                    self._passo_resolucao(
+                        1,
+                        "IDENTIFIQUE O OBJETIVO",
+                        questao["enunciado"],
+                    ),
+                    self._passo_resolucao(
+                        2,
+                        "ESCOLHA A ESTRATÉGIA",
+                        estudo["texto"],
+                    ),
+                    self._passo_resolucao(
+                        3,
+                        "ORGANIZE A FÓRMULA",
+                        estudo["formula"],
+                    ),
+                    self._passo_resolucao(
+                        4,
+                        "SUBSTITUA E CALCULE",
+                        questao["explicacao"],
+                    ),
+                    self._passo_resolucao(
+                        5,
+                        "CONFIRA O RESULTADO",
+                        f"A alternativa correta é {resposta_correta}.",
+                    ),
+        ]
+
+    def _alterar_pagina_estudo(self, pagina: int) -> None:
+        """Troca entre as duas páginas do estudo (conceito / resolução)."""
+        self._parar_narracao()
+        self._ultima_questao_narrada = None
+        self.pagina_estudo = max(0, min(1, int(pagina)))
+        self._renderizar()
+
     def _tela_estudo(self) -> ft.Control:
+        # ESTUDO EM DUAS PÁGINAS (como no PRICE), para caber na tela sem rolar:
+        # página 1 = conceito, fórmula e exemplos; página 2 = resolução passo a
+        # passo e o botão CONCLUIR ESTUDO E PASSAR A VEZ.
         tema = self.tema
         estudo = self.questao_atual["estudo"]
         fonte = self.questao_atual["fonte"]
-        painel_conceito = ft.Container(
-            content=ft.Column(
+        pagina = getattr(self, "pagina_estudo", 0)
+
+        cabecalho = ft.ResponsiveRow(
+            controls=[
+                ft.Row(
+                    controls=[
+                        ft.Icon(ft.Icons.AUTO_STORIES, color=tema["destaque"], size=30),
+                        ft.Column(
+                            controls=[
+                                ft.Text(
+                                    "MOMENTO DE ESTUDO",
+                                    color=tema["destaque"],
+                                    size=20,
+                                    weight=ft.FontWeight.BOLD,
+                                ),
+                                ft.Text(
+                                    f"PÁGINA {pagina + 1} DE 2 · "
+                                    + ("CONCEITO E EXEMPLOS" if pagina == 0 else "RESOLUÇÃO PASSO A PASSO"),
+                                    color=tema["primaria"],
+                                    size=12,
+                                    weight=ft.FontWeight.BOLD,
+                                ),
+                            ],
+                            spacing=1,
+                        ),
+                    ],
+                    spacing=10,
+                    col={"xs": 12, "md": 7},
+                ),
+                ft.Container(content=self._controles_narracao(), col={"xs": 12, "md": 5}),
+            ],
+            columns=12,
+            spacing=12,
+            run_spacing=8,
+            vertical_alignment=ft.CrossAxisAlignment.CENTER,
+        )
+
+        if pagina == 0:
+            corpo: ft.Control = ft.ResponsiveRow(
                 controls=[
-                    ft.Icon(
-                        ft.Icons.AUTO_STORIES,
-                        color=tema["destaque"],
-                        size=58,
-                    ),
-                    ft.Text(
-                        "MOMENTO DE ESTUDO",
-                        color=tema["destaque"],
-                        size=28,
-                        weight=ft.FontWeight.BOLD,
-                        text_align=ft.TextAlign.CENTER,
-                    ),
-                    ft.Text(
-                        estudo["titulo"],
-                        color=tema["primaria"],
-                        size=22,
-                        weight=ft.FontWeight.BOLD,
-                        text_align=ft.TextAlign.CENTER,
-                    ),
-                    markdown_matematico(
-                        estudo["texto"],
-                        cor=tema["texto"],
-                        tamanho=17,
-                    ),
                     ft.Container(
-                        content=markdown_matematico(
-                            estudo["formula"],
-                            cor=tema["fundo_1"],
-                            tamanho=18,
-                            peso=ft.FontWeight.BOLD,
-                            alinhamento=ft.MainAxisAlignment.CENTER,
-                            escala_latex=1.18,
+                        content=ft.Column(
+                            controls=[
+                                ft.Text(
+                                    estudo["titulo"],
+                                    color=tema["primaria"],
+                                    size=20,
+                                    weight=ft.FontWeight.BOLD,
+                                    text_align=ft.TextAlign.CENTER,
+                                ),
+                                markdown_matematico(
+                                    estudo["texto"],
+                                    cor=tema["texto"],
+                                    tamanho=16,
+                                ),
+                                ft.Container(
+                                    content=markdown_matematico(
+                                        estudo["formula"],
+                                        cor=tema["fundo_1"],
+                                        tamanho=18,
+                                        peso=ft.FontWeight.BOLD,
+                                        alinhamento=ft.MainAxisAlignment.CENTER,
+                                        escala_latex=1.15,
+                                    ),
+                                    padding=12,
+                                    bgcolor=tema["destaque"],
+                                    border_radius=_raio(14),
+                                ),
+                                ft.Text(
+                                    f"Preço de referência consultado em {fonte['loja']} em {fonte['consulta']}.",
+                                    color=tema["suave"],
+                                    size=11,
+                                    text_align=ft.TextAlign.CENTER,
+                                ),
+                            ],
+                            spacing=12,
+                            horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
                         ),
                         padding=16,
-                        bgcolor=tema["destaque"],
-                        border_radius=_raio(14),
+                        bgcolor=tema["cartao_2"],
+                        border=_borda(tema["primaria"], 1.5),
+                        border_radius=_raio(16),
+                        col={"xs": 12, "lg": 7},
                     ),
-                    ft.Text(
-                        (
-                            f"Preço de referência consultado em "
-                            f"{fonte['loja']} em {fonte['consulta']}."
+                    ft.Container(
+                        content=ft.Column(
+                            controls=self._exemplos_estudo(),
+                            spacing=10,
+                            horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
                         ),
-                        color=tema["suave"],
-                        size=11,
-                        text_align=ft.TextAlign.CENTER,
+                        padding=14,
+                        bgcolor=tema["cartao_2"],
+                        border=_borda(tema["destaque"], 1.5),
+                        border_radius=_raio(16),
+                        col={"xs": 12, "lg": 5},
+                    ),
+                ],
+                columns=12,
+                spacing=12,
+                run_spacing=12,
+                vertical_alignment=ft.CrossAxisAlignment.START,
+            )
+        else:
+            corpo = ft.Column(
+                controls=[
+                    ft.ResponsiveRow(
+                        controls=[
+                            ft.Container(content=passo, col={"xs": 12, "lg": 6})
+                            for passo in self._passos_estudo()
+                        ],
+                        columns=12,
+                        spacing=14,
+                        run_spacing=10,
                     ),
                     ft.Container(
                         content=ft.Text(
@@ -1831,46 +1977,78 @@ class JogoPorcentagem:
                             weight=ft.FontWeight.BOLD,
                             text_align=ft.TextAlign.CENTER,
                         ),
-                        padding=14,
+                        padding=10,
                         bgcolor=tema["cartao_2"],
                         border=_borda(tema["positivo"]),
-                        border_radius=_raio(13),
-                    ),
-                    ft.Button(
-                        content="CONCLUIR ESTUDO E PASSAR A VEZ",
-                        icon=ft.Icons.SWAP_HORIZ,
-                        color=tema["fundo_1"],
-                        bgcolor=tema["destaque"],
-                        height=52,
-                        on_click=self._proxima_rodada,
+                        border_radius=_raio(12),
                     ),
                 ],
-                spacing=16,
-                horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-            ),
-            padding=ft.Padding.all(26),
-            bgcolor=tema["cartao"],
-            border=_borda(tema["primaria"], 2),
-            border_radius=_raio(22),
-            shadow=_sombra("#55000000", 22, 7),
-            col={"xs": 12, "lg": 7},
+                spacing=12,
+                horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
+            )
+
+        navegacao = ft.ResponsiveRow(
+            controls=[
+                ft.OutlinedButton(
+                    content="VOLTAR",
+                    icon=ft.Icons.ARROW_BACK,
+                    style=ft.ButtonStyle(
+                        color=tema["texto"],
+                        side=_lado(tema["primaria"], 1.5),
+                    ),
+                    disabled=pagina == 0,
+                    height=44,
+                    on_click=lambda _evento: self._alterar_pagina_estudo(0),
+                    col={"xs": 12, "sm": 6},
+                ),
+                ft.Button(
+                    content=("AVANÇAR" if pagina == 0 else "CONCLUIR ESTUDO E PASSAR A VEZ"),
+                    icon=(ft.Icons.ARROW_FORWARD if pagina == 0 else ft.Icons.SWAP_HORIZ),
+                    color=tema["fundo_1"],
+                    bgcolor=tema["destaque"],
+                    height=44,
+                    on_click=(
+                        (lambda _evento: self._alterar_pagina_estudo(1))
+                        if pagina == 0
+                        else self._proxima_rodada
+                    ),
+                    col={"xs": 12, "sm": 6},
+                ),
+            ],
+            columns=12,
+            spacing=12,
+            run_spacing=10,
         )
+
         return ft.Column(
             controls=[
                 self._placar(),
                 self._progresso(),
-                ft.ResponsiveRow(
-                    controls=[
-                        painel_conceito,
-                        self._painel_estudo_detalhado(),
-                    ],
-                    columns=12,
-                    spacing=14,
-                    run_spacing=14,
-                    vertical_alignment=ft.CrossAxisAlignment.START,
+                ft.Container(
+                    content=ft.Column(
+                        controls=[
+                            cabecalho,
+                            ft.ProgressBar(
+                                value=(pagina + 1) / 2,
+                                color=tema["destaque"],
+                                bgcolor=tema["fundo_1"],
+                                bar_height=6,
+                                border_radius=3,
+                            ),
+                            corpo,
+                            navegacao,
+                        ],
+                        spacing=10,
+                        horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
+                    ),
+                    padding=14,
+                    bgcolor=tema["cartao"],
+                    border=_borda(tema["primaria"], 2),
+                    border_radius=_raio(20),
+                    shadow=_sombra("#55000000", 22, 7),
                 ),
             ],
-            spacing=14,
+            spacing=10,
         )
 
     def _tela_feedback(self) -> ft.Control:
@@ -1915,7 +2093,7 @@ class JogoPorcentagem:
                 ft.Container(
                     content=ft.Column(
                         controls=[
-                            ft.Icon(icone, color=cor, size=72),
+                            ft.Icon(icone, color=cor, size=48),
                             ft.Text(
                                 titulo,
                                 color=cor,
@@ -1984,15 +2162,15 @@ class JogoPorcentagem:
                                 icon=ft.Icons.SWAP_HORIZ,
                                 color=tema["fundo_1"],
                                 bgcolor=tema["destaque"],
-                                height=52,
+                                height=46,
                                 on_click=self._proxima_rodada,
                             ),
                         ],
-                        spacing=15,
+                        spacing=10,
                         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                     ),
                     width=860,
-                    padding=ft.Padding.all(28),
+                    padding=ft.Padding.symmetric(horizontal=24, vertical=18),
                     bgcolor=tema["cartao"],
                     border=_borda(cor, 2),
                     border_radius=_raio(24),
@@ -2098,37 +2276,45 @@ class JogoPorcentagem:
                 )
             )
 
-        return ft.Container(
-            content=ft.Column(
-                controls=[
-                    ft.Icon(
-                        ft.Icons.EMOJI_EVENTS,
-                        color=tema["destaque"],
-                        size=82,
-                    ),
-                    ft.Text(
-                        "FIM DO JOGO",
-                        color=tema["destaque"],
-                        size=36,
-                        weight=ft.FontWeight.BOLD,
-                        text_align=ft.TextAlign.CENTER,
-                    ),
-                    ft.Text(
-                        mensagem,
-                        color=tema["texto"],
-                        size=22,
-                        weight=ft.FontWeight.BOLD,
-                        text_align=ft.TextAlign.CENTER,
-                    ),
-                    ft.Text(
-                        (
-                            "✓ acertos  •  ✗ erros  •  📖 escolhas de estudo"
+        # RESULTADO EM DUAS COLUNAS (cabe na tela sem rolar):
+        # esquerda = vencedor, classificação e botões; direita = pódio e conquistas.
+        coluna_resumo = ft.Column(
+            controls=[
+                ft.Row(
+                    controls=[
+                        ft.Icon(
+                            ft.Icons.EMOJI_EVENTS,
+                            color=tema["destaque"],
+                            size=46,
                         ),
-                        color=tema["suave"],
-                        size=12,
-                    ),
-                    rj.podio(self, self.jogadores, tema, formatar_reais),
-                    *linhas,
+                        ft.Column(
+                            controls=[
+                                ft.Text(
+                                    "FIM DO JOGO",
+                                    color=tema["destaque"],
+                                    size=28,
+                                    weight=ft.FontWeight.BOLD,
+                                ),
+                                ft.Text(
+                                    mensagem,
+                                    color=tema["texto"],
+                                    size=19,
+                                    weight=ft.FontWeight.BOLD,
+                                ),
+                            ],
+                            spacing=0,
+                            expand=True,
+                        ),
+                    ],
+                    spacing=12,
+                    vertical_alignment=ft.CrossAxisAlignment.CENTER,
+                ),
+                ft.Text(
+                    "✓ acertos  •  ✗ erros  •  📖 escolhas de estudo",
+                    color=tema["suave"],
+                    size=12,
+                ),
+                *linhas,
                     ft.ResponsiveRow(
                         controls=[
                             ft.Button(
@@ -2156,18 +2342,30 @@ class JogoPorcentagem:
                         spacing=12,
                         run_spacing=12,
                     ),
+            ],
+            spacing=10,
+            horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
+        )
+        return ft.Container(
+            content=ft.ResponsiveRow(
+                controls=[
+                    ft.Container(content=coluna_resumo, col={"xs": 12, "lg": 6}),
+                    ft.Container(
+                        content=rj.podio(self, self.jogadores, tema, formatar_reais),
+                        col={"xs": 12, "lg": 6},
+                    ),
                 ],
-                spacing=14,
-                horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                columns=12,
+                spacing=18,
+                run_spacing=14,
+                vertical_alignment=ft.CrossAxisAlignment.START,
             ),
-            width=900,
-            padding=ft.Padding.all(28),
+            padding=ft.Padding.symmetric(horizontal=22, vertical=18),
             bgcolor=tema["cartao"],
             border=_borda(tema["destaque"], 2),
             border_radius=_raio(24),
             shadow=_sombra("#55000000", 24, 8),
-            alignment=ft.Alignment.CENTER,
-            margin=ft.Margin.symmetric(vertical=16),
+            margin=ft.Margin.symmetric(vertical=6),
         )
 
     def _jogar_novamente(self, _evento: ft.ControlEvent) -> None:

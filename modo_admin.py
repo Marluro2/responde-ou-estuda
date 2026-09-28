@@ -35,7 +35,7 @@ from urllib.parse import urlencode
 import flet as ft
 
 from estado_jogo import DADOS_DIR, EstadoJogo
-from formatacao_matematica import markdown_matematico, texto_para_narracao
+from formatacao_matematica import texto_para_narracao
 
 
 ADMIN_ATIVO = os.environ.get("RESPONDA_ADMIN", "").strip() == "1"
@@ -220,14 +220,14 @@ def barra_admin(jogo: Any) -> ft.Control:
             for indice, q in enumerate(questoes)
         ],
         label=f"Questão ({total} no banco)",
-        leading_icon=ft.Icons.LIST_ALT,
         bgcolor=tema["cartao"],
         color=tema["texto"],
         border_color=tema["destaque"],
         focused_border_color=tema["primaria"],
-        border_radius=12,
+        border_radius=10,
         dense=True,
-        width=440,
+        text_size=12,
+        width=330,
         menu_height=420,
         on_select=ao_escolher,
     )
@@ -239,21 +239,48 @@ def barra_admin(jogo: Any) -> ft.Control:
             icon=icone,
             color=tema["fundo_1"] if ativo else tema["texto"],
             bgcolor=tema["destaque"] if ativo else tema["cartao_2"],
+            height=32,
+            style=ft.ButtonStyle(padding=ft.Padding.symmetric(horizontal=10)),
             on_click=abrir(tela),
         )
 
-    linha_navegacao = ft.Row(
+    # GABARITO RESUMIDO: uma linha com reticências; o texto completo aparece
+    # ao passar o mouse (tooltip).
+    gabarito: list[ft.Control] = []
+    if em_questao and total:
+        questao = questoes[posicao]
+        correta = int(questao["correta"])
+        letra = LETRAS[correta] if correta < len(LETRAS) else str(correta + 1)
+        alternativa = _texto_para_libras(str(questao["alternativas"][correta]))
+        gabarito = [
+            ft.Container(
+                content=ft.Text(
+                    f"🔑 {letra}) {alternativa}",
+                    color=tema["positivo"],
+                    size=12,
+                    weight=ft.FontWeight.BOLD,
+                    max_lines=1,
+                    overflow=ft.TextOverflow.ELLIPSIS,
+                ),
+                tooltip=f"Gabarito da questão {posicao + 1} de {total}: {letra}) {alternativa}",
+                expand=True,
+            )
+        ]
+
+    # BARRA EM UMA LINHA: ocupa pouco espaço para as telas caberem sem rolar.
+    linha = ft.Row(
         controls=[
             ft.Container(
                 content=ft.Text(
-                    "MODO ADMINISTRADOR",
+                    "ADMIN",
                     color=tema["fundo_1"],
-                    size=12,
+                    size=11,
                     weight=ft.FontWeight.BOLD,
                 ),
                 bgcolor=tema["destaque"],
-                padding=ft.Padding.symmetric(horizontal=10, vertical=6),
-                border_radius=8,
+                padding=ft.Padding.symmetric(horizontal=8, vertical=4),
+                border_radius=6,
+                tooltip="Modo administrador: cronômetro desligado e saldos de teste",
             ),
             ft.IconButton(
                 icon=ft.Icons.CHEVRON_LEFT,
@@ -279,70 +306,26 @@ def barra_admin(jogo: Any) -> ft.Control:
             botao_tela("ESTUDO", ft.Icons.MENU_BOOK, "estudo"),
             botao_tela("RESOLUÇÃO", ft.Icons.FACT_CHECK, "feedback"),
             # TESTE LIBRAS: envia a questão atual à página do VLibras.
-            ft.OutlinedButton(
-                content="LIBRAS (TESTE)",
+            ft.IconButton(
                 icon=ft.Icons.SIGN_LANGUAGE,
-                style=ft.ButtonStyle(
-                    color=tema["texto"],
-                    side=ft.BorderSide(1.5, tema["primaria"]),
-                ),
+                icon_color=tema["primaria"],
+                tooltip="LIBRAS (TESTE): abrir esta questão no VLibras",
                 disabled=not total,
                 on_click=lambda _e: abrir_teste_libras(
                     jogo, questoes[posicao]
                 ),
             ),
+            *gabarito,
         ],
-        spacing=8,
-        wrap=True,
+        spacing=6,
         vertical_alignment=ft.CrossAxisAlignment.CENTER,
     )
 
-    controles: list[ft.Control] = [linha_navegacao]
-    if em_questao and total:
-        questao = questoes[posicao]
-        correta = int(questao["correta"])
-        letra = LETRAS[correta] if correta < len(LETRAS) else str(correta + 1)
-        alternativa = str(questao["alternativas"][correta])
-        controles.append(
-            ft.Row(
-                controls=[
-                    ft.Icon(
-                        ft.Icons.KEY,
-                        color=tema["positivo"],
-                        size=18,
-                    ),
-                    ft.Text(
-                        f"GABARITO: {letra})",
-                        color=tema["positivo"],
-                        size=13,
-                        weight=ft.FontWeight.BOLD,
-                    ),
-                    ft.Container(
-                        content=markdown_matematico(
-                            alternativa,
-                            cor=tema["texto"],
-                            tamanho=13,
-                            alinhamento=ft.MainAxisAlignment.START,
-                        ),
-                        expand=True,
-                    ),
-                    ft.Text(
-                        f"Questão {posicao + 1} de {total} · "
-                        "cronômetro desligado · saldo de teste",
-                        color=tema["suave"],
-                        size=11,
-                    ),
-                ],
-                spacing=8,
-                vertical_alignment=ft.CrossAxisAlignment.CENTER,
-            )
-        )
-
     return ft.Container(
-        content=ft.Column(controls=controles, spacing=6),
-        padding=ft.Padding.symmetric(horizontal=14, vertical=8),
+        content=linha,
+        padding=ft.Padding.symmetric(horizontal=10, vertical=4),
         margin=ft.Margin.symmetric(horizontal=16),
         bgcolor=tema["cartao"],
         border=ft.Border.all(2, tema["destaque"]),
-        border_radius=ft.BorderRadius.all(14),
+        border_radius=ft.BorderRadius.all(12),
     )

@@ -236,8 +236,9 @@ def pulsar_cronometro(jogo: Any) -> None:
 # ======================================================================
 # Situação:     R = responder   E = estudar
 # Alternativas: A, B, C, D, E  ou  1, 2, 3, 4, 5
+# Estudo:       Enter ou Espaço = avançar a página / concluir
 # Resolução:    Enter ou Espaço = passar a vez
-ATALHOS_TEXTO = "Atalhos: R responder · E estudar · A–E ou 1–5 alternativas · Enter passar a vez"
+ATALHOS_TEXTO = "Atalhos: R responder · E estudar · A–E ou 1–5 alternativas · Enter avançar / passar a vez"
 
 
 def ativar_teclado(jogo: Any) -> None:
@@ -266,6 +267,18 @@ def _tecla(jogo: Any, evento: ft.KeyboardEvent) -> None:
                 jogo._responder(indice, None)
         elif tela == "feedback" and tecla in {"ENTER", " ", "SPACE"}:
             jogo._proxima_rodada(None)
+        elif tela == "estudo" and tecla in {"ENTER", " ", "SPACE"}:
+            # Estudo em páginas: Enter avança; na última página, conclui.
+            pagina = int(getattr(jogo, "pagina_estudo", 0))
+            if hasattr(jogo, "_total_paginas_estudo"):  # PRICE
+                if pagina < jogo._total_paginas_estudo() - 1:
+                    jogo._avancar_pagina_estudo(None)
+                else:
+                    jogo._concluir_estudo(None)
+            elif pagina == 0:
+                jogo._alterar_pagina_estudo(1)
+            else:
+                jogo._proxima_rodada(None)
     except Exception as erro:
         print(f"Atalho de teclado ignorado: {erro}")
 

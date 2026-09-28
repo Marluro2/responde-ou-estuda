@@ -62,6 +62,18 @@ RECURSOS DE JOGO (VERSÃO DE 28/09/2026)
 • Atalhos de teclado: R responder · E estudar · A–E ou 1–5 alternativas ·
   Enter ou Espaço passar a vez.
 
+TELAS SEM ROLAGEM
+
+As telas foram ajustadas para caber inteiras na janela do jogo em uma tela
+1920 x 1080 com zoom de 125% (área útil de cerca de 1536 x 786), sem rolar:
+• O estudo de Porcentagem e de Juros tem duas páginas, como no PRICE:
+  1) conceito, fórmula e exemplos; 2) resolução passo a passo e o botão
+  CONCLUIR ESTUDO E PASSAR A VEZ. Enter avança a página.
+• O resultado mostra, lado a lado, a classificação e o pódio.
+• No modo administrador a barra ocupa uma só linha (o gabarito completo
+  aparece ao passar o mouse) e o placar de saldos de teste fica oculto.
+Em telas menores a barra de rolagem aparece automaticamente.
+
 DADOS PARA A PESQUISA
 
 Cada jogada é registrada automaticamente (abre no Excel):

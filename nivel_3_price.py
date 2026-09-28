@@ -56,7 +56,7 @@ TEMPO_POR_QUESTAO = 60
 MODULO_PESQUISA = "PRICE"
 
 # ROLAGEM DAS TELAS: espaço livre, em pixels, no fim de cada tela do módulo.
-ESPACO_FINAL_ROLAGEM = 48
+ESPACO_FINAL_ROLAGEM = 12
 
 # VELOCIDADES DA NARRAÇÃO: o primeiro número é o valor usado internamente
 # pela voz. O segundo texto é o que aparece no menu da interface.
@@ -1689,6 +1689,9 @@ class JogoPrice:
     # ------------------------------------------------------------------
 
     def _placar(self, *, compacto: bool = False) -> ft.Control:
+        if ADMIN_ATIVO:
+            # Modo administrador: saldos de teste ficam ocultos (economiza espaço).
+            return ft.Container()
         tema = self.tema
         cartoes = []
         for indice, jogador in enumerate(self.jogadores):
@@ -4145,37 +4148,45 @@ class JogoPrice:
                 )
             )
 
-        return ft.Container(
-            content=ft.Column(
-                controls=[
-                    ft.Icon(
-                        ft.Icons.EMOJI_EVENTS,
-                        color=tema["destaque"],
-                        size=82,
-                    ),
-                    ft.Text(
-                        "FIM DO JOGO",
-                        color=tema["destaque"],
-                        size=36,
-                        weight=ft.FontWeight.BOLD,
-                        text_align=ft.TextAlign.CENTER,
-                    ),
-                    ft.Text(
-                        mensagem,
-                        color=tema["texto"],
-                        size=22,
-                        weight=ft.FontWeight.BOLD,
-                        text_align=ft.TextAlign.CENTER,
-                    ),
-                    ft.Text(
-                        (
-                            "✓ acertos  •  ✗ erros  •  📖 escolhas de estudo"
+        # RESULTADO EM DUAS COLUNAS (cabe na tela sem rolar):
+        # esquerda = vencedor, classificação e botões; direita = pódio e conquistas.
+        coluna_resumo = ft.Column(
+            controls=[
+                ft.Row(
+                    controls=[
+                        ft.Icon(
+                            ft.Icons.EMOJI_EVENTS,
+                            color=tema["destaque"],
+                            size=46,
                         ),
-                        color=tema["suave"],
-                        size=12,
-                    ),
-                    rj.podio(self, self.jogadores, tema, formatar_reais),
-                    *linhas,
+                        ft.Column(
+                            controls=[
+                                ft.Text(
+                                    "FIM DO JOGO",
+                                    color=tema["destaque"],
+                                    size=28,
+                                    weight=ft.FontWeight.BOLD,
+                                ),
+                                ft.Text(
+                                    mensagem,
+                                    color=tema["texto"],
+                                    size=19,
+                                    weight=ft.FontWeight.BOLD,
+                                ),
+                            ],
+                            spacing=0,
+                            expand=True,
+                        ),
+                    ],
+                    spacing=12,
+                    vertical_alignment=ft.CrossAxisAlignment.CENTER,
+                ),
+                ft.Text(
+                    "✓ acertos  •  ✗ erros  •  📖 escolhas de estudo",
+                    color=tema["suave"],
+                    size=12,
+                ),
+                *linhas,
                     ft.ResponsiveRow(
                         controls=[
                             ft.Button(
@@ -4203,18 +4214,30 @@ class JogoPrice:
                         spacing=12,
                         run_spacing=12,
                     ),
+            ],
+            spacing=10,
+            horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
+        )
+        return ft.Container(
+            content=ft.ResponsiveRow(
+                controls=[
+                    ft.Container(content=coluna_resumo, col={"xs": 12, "lg": 6}),
+                    ft.Container(
+                        content=rj.podio(self, self.jogadores, tema, formatar_reais),
+                        col={"xs": 12, "lg": 6},
+                    ),
                 ],
-                spacing=14,
-                horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                columns=12,
+                spacing=18,
+                run_spacing=14,
+                vertical_alignment=ft.CrossAxisAlignment.START,
             ),
-            width=900,
-            padding=ft.Padding.all(28),
+            padding=ft.Padding.symmetric(horizontal=22, vertical=18),
             bgcolor=tema["cartao"],
             border=_borda(tema["destaque"], 2),
             border_radius=_raio(24),
             shadow=_sombra("#55000000", 24, 8),
-            alignment=ft.Alignment.CENTER,
-            margin=ft.Margin.symmetric(vertical=16),
+            margin=ft.Margin.symmetric(vertical=6),
         )
 
     def _jogar_novamente(self, _evento: ft.ControlEvent) -> None:

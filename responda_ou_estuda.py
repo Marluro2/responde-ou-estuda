@@ -812,7 +812,7 @@ class AplicativoRespondaOuEstuda:
                 painel_inferior,
                 # MARGEM FINAL: permite ver a parte de baixo dos cartões dos
                 # jogadores e do rodapé ao rolar até o fim da tela inicial.
-                ft.Container(height=48),
+                ft.Container(height=12),
             ],
             # A ordem acima controla: configurações, título do projeto, área do
             # jogo e jogadores. Mova apenas linhas visuais, não os eventos.
@@ -1383,7 +1383,7 @@ class AplicativoRespondaOuEstuda:
                 run_spacing=9,
                 vertical_alignment=ft.CrossAxisAlignment.CENTER,
             ),
-            height=176,
+            height=164,
             # Aumente se ampliar muito o título; diminua para compactar o painel.
             padding=ft.Padding.symmetric(horizontal=22, vertical=15),
             # horizontal altera as laterais; vertical altera topo e base.
@@ -1701,7 +1701,7 @@ class AplicativoRespondaOuEstuda:
             width=170,
             # Para ampliar/reduzir a mascote, altere width e height juntos.
             # Exemplo maior: width=190. Exemplo menor: width=140.
-            height=150,
+            height=138,
             # Exemplo maior: height=170. Use valores próximos para não deformar.
             fit=ft.BoxFit.CONTAIN,
             # CONTAIN mostra a imagem inteira. COVER preenche toda a área, mas
@@ -1735,9 +1735,9 @@ class AplicativoRespondaOuEstuda:
         # imagem; sm/md=2 reserva 2 das 12 colunas em telas maiores.
         cartao_imagem = ft.Container(
             content=imagem,
-            height=164,
-            # Para aumentar a mascote, aumente esta altura e também width/height
-            # da imagem acima. Mantenha 164 nos três cartões desta faixa.
+            height=150,
+            # Para aumentar a mascote, aumente esta altura (150) e também width/height
+            # da imagem acima. Mantenha 150 nos três cartões desta faixa.
             alignment=ft.Alignment.CENTER,
             # TOP_CENTER move a mascote para cima; BOTTOM_CENTER move para baixo.
             padding=4,
@@ -1798,7 +1798,7 @@ class AplicativoRespondaOuEstuda:
                 # Controla a distância entre a lâmpada e os textos.
                 vertical_alignment=ft.CrossAxisAlignment.CENTER,
             ),
-            height=164,
+            height=150,
             # Mantenha igual à altura dos cartões de mascote e progresso.
             padding=ft.Padding.symmetric(horizontal=18, vertical=12),
             # horizontal move o conteúdo para dentro dos lados; vertical cria
@@ -1867,7 +1867,7 @@ class AplicativoRespondaOuEstuda:
                 alignment=ft.MainAxisAlignment.CENTER,
                 horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
             ),
-            height=164,
+            height=150,
             # Mantenha igual à altura dos cartões de mascote e estratégia.
             padding=ft.Padding.symmetric(horizontal=15, vertical=12),
             # Aumente horizontal para afastar a barra das laterais.
@@ -1970,7 +1970,7 @@ class AplicativoRespondaOuEstuda:
                     ),
                     *controles,
                 ],
-                spacing=8,
+                spacing=6,
                 horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
             ),
             padding=11,
@@ -2093,8 +2093,9 @@ class AplicativoRespondaOuEstuda:
                 spacing=8,
                 vertical_alignment=ft.CrossAxisAlignment.CENTER,
             ),
-            height=62 if ativo else 54,
-            padding=ft.Padding.symmetric(horizontal=8, vertical=6),
+            height=56 if ativo else 46,
+            # Altura das etapas reduzida para a tela inicial caber sem rolar.
+            padding=ft.Padding.symmetric(horizontal=8, vertical=4),
             bgcolor=cor_fundo,
             border=_borda(cor_contorno, 2),
             border_radius=_raio(13),
@@ -2669,7 +2670,7 @@ class AplicativoRespondaOuEstuda:
                         # DESEMPENHO POR QUESTÃO (dados da pesquisa).
                         self._cartao_desempenho(),
                         # MARGEM FINAL: evita que o último cartão fique cortado.
-                        ft.Container(height=48),
+                        ft.Container(height=12),
                     ],
                     spacing=14,
                     # ALWAYS permite rolar e mostra a barra quando há muitos
