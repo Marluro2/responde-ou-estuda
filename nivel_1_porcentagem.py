@@ -485,6 +485,8 @@ class JogoPorcentagem:
                     seletor_tema,
                     seletor_trilha,
                     botao_som,
+                    # LUPA (acessibilidade): liga/desliga a Lupa do Windows.
+                    rj.botao_lupa(tema["texto"], tema["primaria"], tema["destaque"], tema["fundo_1"]),
                     botao_voltar,
                 ],
                 spacing=10,
@@ -1279,7 +1281,7 @@ class JogoPorcentagem:
         return ft.Container(
             content=ft.Column(
                 controls=[
-                    self._imagem_mascote(105),
+                    self._imagem_mascote(80),
                     # ALTURA DO MASCOTE NESTA TELA: altere 105 para aumentar
                     # ou diminuir a imagem. Valores maiores ocupam mais altura.
                     ft.Text(

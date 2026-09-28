@@ -307,6 +307,7 @@ from estado_jogo import (
     formatar_reais,
 )
 from modo_admin import ADMIN_ATIVO, criar_estado_admin
+import recursos_jogo
 
 # COMO USAR AS ANOTAÇÕES DE PERSONALIZAÇÃO:
 # Quando um comentário aparece imediatamente depois de uma propriedade como
@@ -1050,6 +1051,10 @@ class AplicativoRespondaOuEstuda:
                 seletor_trilha,
                 botao_musica,
                 botao_som,
+                # LUPA (acessibilidade): liga/desliga a Lupa do Windows.
+                recursos_jogo.botao_lupa(
+                    CORES["branco"], CORES["ciano_2"], CORES["amarelo"], CORES["fundo_topo"]
+                ),
                 botao_nova_turma,
                 botao_ranking,
             ],

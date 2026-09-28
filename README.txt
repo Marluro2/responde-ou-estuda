@@ -62,6 +62,18 @@ RECURSOS DE JOGO (VERSÃO DE 28/09/2026)
 • Atalhos de teclado: R responder · E estudar · A–E ou 1–5 alternativas ·
   Enter ou Espaço passar a vez.
 
+LUPA (ACESSIBILIDADE)
+
+O botão LUPA, no topo da tela inicial e de cada módulo, liga a Lupa do
+Windows no modo lente: um retângulo ampliado acompanha o mouse. Clique de
+novo (LUPA LIGADA) para desligar.
+Atalhos da própria Lupa do Windows:
+   Windows + "+"   aumenta o zoom (e liga a lupa)
+   Windows + "−"   diminui o zoom
+   Windows + Esc   desliga a lupa
+Na primeira vez, se o zoom estiver em 100%, pressione Windows + "+" para
+ampliar; o Windows lembra o nível escolhido.
+
 TELAS SEM ROLAGEM
 
 As telas foram ajustadas para caber inteiras na janela do jogo em uma tela

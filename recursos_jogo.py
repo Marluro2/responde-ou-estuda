@@ -232,6 +232,102 @@ def pulsar_cronometro(jogo: Any) -> None:
 
 
 # ======================================================================
+# LUPA (ACESSIBILIDADE)
+# ======================================================================
+# Liga/desliga a Lupa do Windows no modo "lente": um retângulo ampliado que
+# acompanha o mouse. Atalhos do próprio Windows: Windows + "+" liga/aumenta,
+# Windows + "−" diminui e Windows + Esc desliga.
+_MAGNIFY = Path(os.environ.get("WINDIR", r"C:\Windows")) / "System32" / "Magnify.exe"
+
+
+def lupa_disponivel() -> bool:
+    return os.name == "nt" and _MAGNIFY.exists()
+
+
+def lupa_ativa() -> bool:
+    """Verifica se a Lupa do Windows está aberta."""
+    if not lupa_disponivel():
+        return False
+    import subprocess
+
+    try:
+        saida = subprocess.run(
+            ["tasklist", "/FI", "IMAGENAME eq Magnify.exe", "/NH"],
+            capture_output=True,
+            text=True,
+            timeout=5,
+            creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
+        ).stdout
+        return "magnify.exe" in saida.lower()
+    except Exception:
+        return False
+
+
+def alternar_lupa() -> bool:
+    """Abre a lupa em modo lente ou a fecha. Devolve True se ficou ligada."""
+    import subprocess
+
+    if not lupa_disponivel():
+        return False
+    sem_janela = getattr(subprocess, "CREATE_NO_WINDOW", 0)
+    if lupa_ativa():
+        subprocess.run(["taskkill", "/IM", "Magnify.exe"], capture_output=True,
+                       timeout=5, creationflags=sem_janela)
+        if lupa_ativa():
+            _teclas_windows_esc()  # atalho oficial para fechar a Lupa
+        return lupa_ativa()
+    # A Lupa é um aplicativo de acessibilidade do Windows (uiAccess): precisa
+    # ser aberta pelo ShellExecute, como um atalho, e não por CreateProcess.
+    os.startfile(str(_MAGNIFY), arguments="/lens")
+    return True
+
+
+def _teclas_windows_esc() -> None:
+    """Envia Windows + Esc (fecha a Lupa do Windows)."""
+    import ctypes
+    import time
+
+    usuario = ctypes.windll.user32
+    tecla_windows, tecla_esc, soltar = 0x5B, 0x1B, 0x0002
+    usuario.keybd_event(tecla_windows, 0, 0, 0)
+    usuario.keybd_event(tecla_esc, 0, 0, 0)
+    usuario.keybd_event(tecla_esc, 0, soltar, 0)
+    usuario.keybd_event(tecla_windows, 0, soltar, 0)
+    time.sleep(0.8)
+
+
+def botao_lupa(cor_texto: str, cor_borda: str, cor_destaque: str, cor_fundo_ativo: str) -> ft.Control:
+    """Botão LUPA para os cabeçalhos (tela inicial e módulos)."""
+    if not lupa_disponivel():
+        return ft.Container()
+    ativa = lupa_ativa()
+    botao = ft.OutlinedButton(height=42, tooltip=(
+        "Lupa do Windows: amplia o que estiver sob o mouse. "
+        "Atalhos: Windows + \"+\" aumenta, Windows + \"−\" diminui, Windows + Esc desliga."
+    ))
+
+    def pintar(ligada: bool) -> None:
+        botao.content = "LUPA LIGADA" if ligada else "LUPA"
+        botao.icon = ft.Icons.ZOOM_OUT if ligada else ft.Icons.ZOOM_IN
+        botao.style = ft.ButtonStyle(
+            color=cor_fundo_ativo if ligada else cor_texto,
+            bgcolor=cor_destaque if ligada else None,
+            side=ft.BorderSide(1.5, cor_destaque if ligada else cor_borda),
+        )
+
+    def clicar(_evento: ft.ControlEvent) -> None:
+        pintar(alternar_lupa())
+        try:
+            botao.update()
+        except Exception:
+            pass
+
+    pintar(ativa)
+    botao.on_click = clicar
+    return botao
+
+
+# ======================================================================
 # ATALHOS DE TECLADO
 # ======================================================================
 # Situação:     R = responder   E = estudar
