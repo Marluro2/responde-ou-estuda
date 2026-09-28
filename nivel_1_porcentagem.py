@@ -31,6 +31,7 @@ from flet_audio import Audio, ReleaseMode
 from estado_jogo import EstadoJogo
 from formatacao_matematica import markdown_matematico, texto_para_narracao
 from modo_admin import ADMIN_ATIVO, barra_admin
+import recursos_jogo as rj
 
 try:
     import winsound
@@ -49,6 +50,9 @@ PREMIO_ESTUDO = 50.0
 # CRONÔMETRO: altere 60 para definir quantos segundos o jogador terá em cada
 # questão. O tempo começa quando a situação-problema é apresentada.
 TEMPO_POR_QUESTAO = 60
+
+# Nome do módulo nos relatórios de pesquisa (dados/respostas.csv).
+MODULO_PESQUISA = "Porcentagem"
 
 # ROLAGEM DAS TELAS: espaço livre, em pixels, no fim de cada tela do módulo.
 ESPACO_FINAL_ROLAGEM = 48
@@ -300,6 +304,7 @@ class JogoPorcentagem:
         if validos:
             self._preparar_nova_partida()
         self._renderizar()
+        rj.ativar_teclado(self)
 
     @property
     def tema(self) -> dict[str, str]:
@@ -315,6 +320,7 @@ class JogoPorcentagem:
 
     def _preparar_nova_partida(self) -> None:
         """Inicia as rodadas sem zerar o saldo acumulado dos jogadores."""
+        rj.nova_sessao(self, MODULO_PESQUISA)
         self.jogadores = self.estado.jogadores_ativos()
         self.questoes = random.sample(
             self.questoes_originais,
@@ -364,7 +370,7 @@ class JogoPorcentagem:
                     self._cabecalho(),
                     *self._controles_admin(),
                     ft.Container(
-                        content=construtor(),
+                        content=rj.com_transicao(self, construtor()),
                         padding=ft.Padding.symmetric(
                             horizontal=16,
                             # AJUSTE DE POSIÇÃO GERAL: diminua "vertical" para
@@ -709,11 +715,13 @@ class JogoPorcentagem:
                                 ],
                                 spacing=6,
                             ),
-                            ft.Text(
-                                formatar_reais(saldo),
-                                color=cor_saldo,
-                                size=20,
-                                weight=ft.FontWeight.BOLD,
+                            rj.texto_saldo(
+                                self,
+                                jogador,
+                                formatar_reais,
+                                cor_positiva=tema["positivo"],
+                                cor_negativa=tema["negativo"],
+                                tamanho=20,
                             ),
                         ],
                         spacing=4,
@@ -854,6 +862,7 @@ class JogoPorcentagem:
             if self.texto_cronometro is not None:
                 self.texto_cronometro.value = f"{self.tempo_restante:02d}s"
                 self.texto_cronometro.color = cor
+                rj.pulsar_cronometro(self)
                 self.texto_cronometro.update()
             if self.barra_cronometro is not None:
                 self.barra_cronometro.value = (
@@ -882,6 +891,13 @@ class JogoPorcentagem:
             str(self.jogador_atual["id"]),
             "erro",
         )
+        rj.registrar_resposta(
+            self,
+            MODULO_PESQUISA,
+            "tempo_esgotado",
+            tempo_total=TEMPO_POR_QUESTAO,
+        )
+        rj.efeitos(self).tocar(self, "erro")
         self.ultimo_resultado = {
             "acertou": False,
             "resposta": None,
@@ -1360,6 +1376,9 @@ class JogoPorcentagem:
             botoes = []
             letras = "ABCD"
             for indice, alternativa in enumerate(questao["alternativas"]):
+                destaque = rj.cores_alternativa(self, indice, tema) or (
+                    tema["cartao_2"], tema["primaria"], 1.5
+                )
                 botoes.append(
                     ft.OutlinedButton(
                         content=markdown_matematico(
@@ -1372,8 +1391,8 @@ class JogoPorcentagem:
                         ),
                         style=ft.ButtonStyle(
                             color=tema["texto"],
-                            side=_lado(tema["primaria"], 1.5),
-                            bgcolor=tema["cartao_2"],
+                            side=_lado(destaque[1], destaque[2]),
+                            bgcolor=destaque[0],
                         ),
                         height=60,
                         on_click=lambda evento, resposta=indice: self._responder(
@@ -1469,7 +1488,8 @@ class JogoPorcentagem:
                             ft.Text(
                                 (
                                     "Acertou: +R$ 100,00  •  Errou: −R$ 200,00  "
-                                    "•  Estudou: +R$ 50,00"
+                                    "•  Estudou: +R$ 50,00\n"
+                                    + rj.ATALHOS_TEXTO
                                 ),
                                 color=tema["suave"],
                                 size=12,
@@ -1523,6 +1543,12 @@ class JogoPorcentagem:
             str(self.jogador_atual["id"]),
             "estudo",
         )
+        rj.registrar_resposta(
+            self,
+            MODULO_PESQUISA,
+            "estudo",
+            tempo_total=TEMPO_POR_QUESTAO,
+        )
         self.tela_atual = "estudo"
         self._renderizar()
 
@@ -1565,7 +1591,23 @@ class JogoPorcentagem:
             "variacao": variacao,
             "tempo_esgotado": False,
         }
-        self.tela_atual = "feedback"
+        rj.registrar_resposta(
+            self,
+            MODULO_PESQUISA,
+            "acerto" if acertou else "erro",
+            escolhida=indice_resposta,
+            tempo_total=TEMPO_POR_QUESTAO,
+        )
+        self._parar_cronometro()
+        # DESTAQUE: a alternativa escolhida fica verde/vermelha por alguns
+        # instantes (recursos_jogo.ESPERA_DESTAQUE) antes da resolução.
+        indice_questao = self.indice_questao
+
+        def abrir_resolucao() -> None:
+            if self.tela_atual == "pergunta" and self.indice_questao == indice_questao:
+                self.tela_atual = "feedback"
+                self._renderizar()
+        rj.iniciar_destaque(self, indice_resposta, int(questao["correta"]), abrir_resolucao)
         self._renderizar()
 
     def _cartao_exemplo_estudo(
@@ -1865,6 +1907,11 @@ class JogoPorcentagem:
             controls=[
                 self._placar(),
                 self._progresso(),
+                *(
+                    [faixa]
+                    if (faixa := rj.faixa_sequencia(self, tema))
+                    else []
+                ),
                 ft.Container(
                     content=ft.Column(
                         controls=[
@@ -2080,6 +2127,7 @@ class JogoPorcentagem:
                         color=tema["suave"],
                         size=12,
                     ),
+                    rj.podio(self, self.jogadores, tema, formatar_reais),
                     *linhas,
                     ft.ResponsiveRow(
                         controls=[

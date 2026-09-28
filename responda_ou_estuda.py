@@ -1025,6 +1025,21 @@ class AplicativoRespondaOuEstuda:
             on_click=self._mostrar_ranking,
         )
 
+        # BOTÃO NOVA TURMA:
+        # Guarda os dados da turma atual em dados/turmas/<data> e começa do
+        # zero (jogadores, saldos, ranking e respostas da pesquisa).
+        botao_nova_turma = ft.OutlinedButton(
+            content="NOVA TURMA",
+            icon=ft.Icons.GROUP_ADD,
+            height=42,
+            style=ft.ButtonStyle(
+                color=CORES["branco"],
+                side=ft.BorderSide(width=1.5, color=CORES["ciano_2"]),
+            ),
+            on_click=self._confirmar_nova_turma,
+            tooltip="Arquivar os dados desta turma e começar do zero",
+        )
+
         # POSIÇÃO DOS CONTROLES SUPERIORES:
         # END alinha tudo à direita. CENTER centralizaria e START levaria à
         # esquerda. wrap=True quebra a linha quando faltar espaço.
@@ -1035,6 +1050,7 @@ class AplicativoRespondaOuEstuda:
                 seletor_trilha,
                 botao_musica,
                 botao_som,
+                botao_nova_turma,
                 botao_ranking,
             ],
             alignment=ft.MainAxisAlignment.END,
@@ -2157,7 +2173,90 @@ class AplicativoRespondaOuEstuda:
         self.host.content = self.tela_inicial
         self.host.bgcolor = CORES["fundo_topo"]
         self.page.bgcolor = CORES["fundo_topo"]
+        # Os atalhos de teclado valem só dentro dos módulos.
+        self.page.on_keyboard_event = None
         self.page.update()
+
+    # ------------------------------------------------------------------
+    # Nova turma
+    # ------------------------------------------------------------------
+
+    def _confirmar_nova_turma(self, _evento: ft.ControlEvent) -> None:
+        """Pergunta antes de arquivar a turma atual."""
+
+        def fechar(_e: ft.ControlEvent) -> None:
+            self.page.pop_dialog()
+
+        def confirmar(_e: ft.ControlEvent) -> None:
+            self.page.pop_dialog()
+            self._arquivar_turma()
+
+        self.page.show_dialog(
+            ft.AlertDialog(
+                modal=True,
+                title=ft.Text("Começar uma nova turma?"),
+                content=ft.Text(
+                    "Os jogadores, saldos, ranking e respostas registradas serão "
+                    "guardados na pasta dados/turmas e o jogo recomeçará do zero.\n\n"
+                    "Nada é apagado: os dados da turma atual continuam "
+                    "disponíveis nessa pasta."
+                ),
+                actions=[
+                    ft.TextButton(content="CANCELAR", on_click=fechar),
+                    ft.Button(
+                        content="ARQUIVAR E COMEÇAR",
+                        icon=ft.Icons.ARCHIVE,
+                        on_click=confirmar,
+                    ),
+                ],
+            )
+        )
+
+    def _arquivar_turma(self) -> None:
+        """Move os dados da turma para dados/turmas/AAAA-MM-DD_HHhMM."""
+        from datetime import datetime
+
+        import recursos_jogo
+
+        pasta_dados = self.estado.caminho.parent
+        destino = pasta_dados / "turmas" / datetime.now().strftime("%Y-%m-%d_%Hh%M")
+        arquivos = [
+            self.estado.caminho,
+            recursos_jogo.ARQUIVO_RESPOSTAS,
+            recursos_jogo.ARQUIVO_POR_QUESTAO,
+            recursos_jogo.ARQUIVO_POR_JOGADOR,
+        ]
+        if self.estado.gerar_ranking:
+            arquivos.append(pasta_dados / "ranking.xlsx")
+        preferencias = {
+            chave: self.estado.dados.get(chave)
+            for chave in ("tema", "trilha", "trilhas_personalizadas")
+        }
+        try:
+            destino.mkdir(parents=True, exist_ok=True)
+            movidos = 0
+            for arquivo in arquivos:
+                if arquivo.exists():
+                    shutil.move(str(arquivo), str(destino / arquivo.name))
+                    movidos += 1
+            # Recria o estado vazio mantendo tema e músicas escolhidos.
+            self.estado = (
+                criar_estado_admin()
+                if ADMIN_ATIVO
+                else EstadoJogo(gerar_ranking=self.estado.gerar_ranking)
+            )
+            self.estado.dados.update(
+                {chave: valor for chave, valor in preferencias.items() if valor}
+            )
+            self.estado.salvar()
+            self._reconstruir_inicio()
+            self._mostrar_aviso(
+                f"NOVA TURMA INICIADA. {movidos} ARQUIVOS GUARDADOS EM "
+                f"dados/turmas/{destino.name}"
+            )
+        except Exception as erro:
+            print(f"Erro ao arquivar a turma: {erro}")
+            self._mostrar_aviso("NÃO FOI POSSÍVEL ARQUIVAR A TURMA")
 
     def _alterar_quantidade_jogadores(
         self,
@@ -2311,6 +2410,95 @@ class AplicativoRespondaOuEstuda:
         if estava_ativo:
             await self._iniciar_audio_atual()
         self._reconstruir_inicio()
+
+    def _cartao_desempenho(self) -> ft.Control:
+        """Resumo das questões com menor índice de acerto nesta turma."""
+        import recursos_jogo
+
+        resumo = [
+            q
+            for q in recursos_jogo.resumo_por_questao(recursos_jogo.ler_respostas())
+            if q["tentativas"] > 0
+        ]
+        respostas = sum(q["tentativas"] for q in resumo)
+        dificeis = sorted(resumo, key=lambda q: q["percentual_acerto"])[:5]
+        linhas: list[ft.Control] = []
+        for q in dificeis:
+            percentual = q["percentual_acerto"]
+            linhas.append(
+                ft.Row(
+                    controls=[
+                        ft.Container(
+                            content=ft.Text(
+                                f"{percentual:.0f}%",
+                                color=CORES["fundo_topo"],
+                                weight=ft.FontWeight.BOLD,
+                                size=13,
+                            ),
+                            bgcolor=CORES["amarelo"] if percentual >= 50 else "#FF8A9E",
+                            padding=ft.Padding.symmetric(horizontal=8, vertical=3),
+                            border_radius=_raio(8),
+                            width=58,
+                            alignment=ft.Alignment.CENTER,
+                        ),
+                        ft.Text(
+                            f"{q['modulo']} · {q['questao_id']} · {q['titulo']}",
+                            color=CORES["branco"],
+                            size=13,
+                            expand=True,
+                        ),
+                        ft.Text(
+                            f"{q['acertos']}/{q['tentativas']} acertos",
+                            color=CORES["texto_suave"],
+                            size=12,
+                        ),
+                    ],
+                    spacing=10,
+                    vertical_alignment=ft.CrossAxisAlignment.CENTER,
+                )
+            )
+        if not linhas:
+            linhas.append(
+                ft.Text(
+                    "Ainda não há respostas registradas nesta turma.",
+                    color=CORES["texto_suave"],
+                    size=13,
+                )
+            )
+        return ft.Container(
+            content=ft.Column(
+                controls=[
+                    ft.Row(
+                        controls=[
+                            ft.Icon(ft.Icons.INSIGHTS, color=CORES["amarelo"]),
+                            ft.Text(
+                                "DESEMPENHO DA TURMA · QUESTÕES COM MENOS ACERTOS",
+                                color=CORES["amarelo"],
+                                weight=ft.FontWeight.BOLD,
+                            ),
+                        ],
+                        spacing=10,
+                        wrap=True,
+                    ),
+                    *linhas,
+                    ft.Text(
+                        (
+                            f"{respostas} respostas registradas. Relatórios completos "
+                            "(abrem no Excel): dados/respostas.csv, "
+                            "dados/relatorio_por_questao.csv e "
+                            "dados/relatorio_por_jogador.csv"
+                        ),
+                        color=CORES["texto_suave"],
+                        size=12,
+                    ),
+                ],
+                spacing=8,
+            ),
+            padding=14,
+            bgcolor=CORES["azul_cartao"],
+            border=_borda(CORES["amarelo"]),
+            border_radius=_raio(14),
+        )
 
     def _mostrar_ranking(self, _evento: ft.ControlEvent) -> None:
         # TELA DO RANKING:
@@ -2478,6 +2666,8 @@ class AplicativoRespondaOuEstuda:
                             border=_borda(CORES["verde"]),
                             border_radius=_raio(14),
                         ),
+                        # DESEMPENHO POR QUESTÃO (dados da pesquisa).
+                        self._cartao_desempenho(),
                         # MARGEM FINAL: evita que o último cartão fique cortado.
                         ft.Container(height=48),
                     ],

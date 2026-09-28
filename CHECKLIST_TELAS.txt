@@ -46,6 +46,17 @@ PRICE / SAF
 [x] Difícil - estudo, páginas 1, 2, 3 e 4
 [x] Difícil - resolução (justificativa com frases e fórmulas em ordem)
 
+RECURSOS NOVOS (28/09/2026) - testados por código; conferir na tela
+[ ] Alternativa escolhida fica verde/vermelha antes da resolução
+[ ] Saldo do placar "rola" até o novo valor
+[ ] Sons de acerto, erro e tique (com ATIVAR SOM ligado)
+[ ] Cronômetro pulsa nos últimos 10 segundos
+[ ] Faixa "N acertos seguidos" na resolução
+[ ] Pódio animado e conquistas no fim do módulo
+[ ] Atalhos: R, E, A–E / 1–5, Enter
+[ ] RANKING mostra "Desempenho da turma"
+[ ] NOVA TURMA pede confirmação e guarda os dados em dados\turmas
+
 PENDENTES (não verificados visualmente nesta rodada)
 [ ] Tela de resultado ao final de cada módulo
 [ ] Tela de ranking

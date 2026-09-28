@@ -45,6 +45,51 @@ instalado.
 Não retire os arquivos Python de dentro da pasta. O programa precisa encontrar
 as pastas assets e dados.
 
+RECURSOS DE JOGO (VERSÃO DE 28/09/2026)
+
+• Ao responder, a alternativa escolhida fica verde (acerto) ou vermelha
+  (erro) e a correta é destacada por cerca de 1 segundo antes da resolução.
+• O saldo no placar "rola" até o novo valor.
+• Efeitos sonoros de acerto, erro e conquista; nos últimos 10 segundos o
+  cronômetro pulsa e faz tique. Os efeitos só tocam com o som ligado
+  (botão ATIVAR SOM). Para recriá-los: py -3.14 ferramentas\gerar_efeitos.py
+• Transição suave entre as telas.
+• Sequência de acertos: a partir de 2 acertos seguidos aparece a faixa
+  "🔥 N acertos seguidos!". É só um reconhecimento visual: a pontuação
+  (+100, −200, +50) não muda.
+• Resultado com pódio animado e conquistas da partida: Mais preciso, Maior
+  sequência, Mais rápido e Mais estudioso.
+• Atalhos de teclado: R responder · E estudar · A–E ou 1–5 alternativas ·
+  Enter ou Espaço passar a vez.
+
+DADOS PARA A PESQUISA
+
+Cada jogada é registrada automaticamente (abre no Excel):
+
+   dados\respostas.csv
+       Uma linha por jogada: data e hora, sessão, módulo, nível, questão,
+       jogador, resultado (acerto, erro, tempo_esgotado ou estudo),
+       alternativa escolhida, alternativa correta e tempo de resposta.
+   dados\relatorio_por_questao.csv
+       Tentativas, acertos, erros, tempo esgotado, estudos, % de acerto e
+       tempo médio de cada questão (as mais difíceis aparecem primeiro).
+   dados\relatorio_por_jogador.csv
+       Resumo de cada jogador por módulo.
+
+A tela RANKING mostra as 5 questões com menor índice de acerto da turma.
+No modo administrador os arquivos recebem o sufixo _admin e não se misturam
+aos dados dos estudantes.
+
+Atenção (ética em pesquisa): os arquivos contêm os nomes digitados pelos
+jogadores. Se o protocolo da pesquisa exigir anonimato, cadastre apelidos ou
+códigos (ex.: A01, A02) no lugar dos nomes.
+
+NOVA TURMA
+
+O botão NOVA TURMA, no topo da tela inicial, guarda jogadores, saldos,
+ranking e respostas da turma atual em dados\turmas\<data e hora> e recomeça
+o jogo do zero, mantendo tema e músicas. Nada é apagado.
+
 MODO ADMINISTRADOR (PARA O PROFESSOR)
 
 Clique duas vezes em INICIAR_ADMIN.bat para conferir o conteúdo sem precisar
