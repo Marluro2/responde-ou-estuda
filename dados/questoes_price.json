@@ -1,0 +1,1687 @@
+{
+  "versao": 1,
+  "atualizado_em": "2026-08-07",
+  "observacao": "Banco PRICE com 60 questões e cinco alternativas. Os níveis Superfácil e Fácil foram reorganizados em enunciados curtos e objetivos; Médio e Difícil permanecem preservados.",
+  "questoes": [
+    {
+      "id": "PRI001",
+      "titulo": "Questão 1 - Notebook",
+      "produto": "Nível Super fácil: Sistema PRICE / SAF",
+      "nivel": "Super fácil",
+      "imagem": "imagens/price/notebook_system76.webp",
+      "enunciado": "No financiamento de um notebook pelo Sistema PRICE, como são as prestações?",
+      "alternativas": [
+        "Elas aumentam a cada mês.",
+        "Elas diminuem a cada mês.",
+        "Elas variam sem regra.",
+        "Elas têm o mesmo valor.",
+        "Elas são pagas somente no final."
+      ],
+      "correta": 3,
+      "explicacao": "No Sistema PRICE, o valor da prestação permanece constante: $$PMT_1=PMT_2=\\cdots=PMT_n.$$",
+      "estudo": {
+        "titulo": "Prestações fixas",
+        "texto": "No PRICE, todas as prestações previstas no contrato têm o mesmo valor.",
+        "formula": "$$PMT_1=PMT_2=\\cdots=PMT_n$$",
+        "exemplo": "Se a primeira prestação é R\\$ 500,00, as demais também são R\\$ 500,00."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI002",
+      "titulo": "Questão 2 - Smartphone",
+      "produto": "Nível Super fácil: Sistema PRICE / SAF",
+      "nivel": "Super fácil",
+      "imagem": "imagens/price/smartphone_iphone_xr.webp",
+      "enunciado": "Na fórmula do Sistema PRICE, o que representa a sigla $PMT$?",
+      "alternativas": [
+        "O valor da prestação.",
+        "O número de prestações.",
+        "A taxa de juros.",
+        "O saldo devedor.",
+        "O valor da entrada."
+      ],
+      "correta": 0,
+      "explicacao": "$PMT$ representa o valor fixo pago em cada prestação do financiamento.",
+      "estudo": {
+        "titulo": "Significado de PMT",
+        "texto": "$PMT$ é a prestação periódica e fixa do Sistema PRICE.",
+        "formula": "$$PMT=\\text{prestação fixa}$$",
+        "exemplo": "Em 12 pagamentos iguais de R\\$ 300,00, o valor de $PMT$ é R\\$ 300,00."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI003",
+      "titulo": "Questão 3 - Automóvel",
+      "produto": "Nível Super fácil: Sistema PRICE / SAF",
+      "nivel": "Super fácil",
+      "imagem": "imagens/price/automovel_corolla.webp",
+      "enunciado": "No Sistema PRICE, o que acontece com os juros de cada prestação ao longo do tempo?",
+      "alternativas": [
+        "Permanecem iguais.",
+        "Aumentam.",
+        "Diminuem.",
+        "Desaparecem na segunda prestação.",
+        "Variam sem relação com o saldo."
+      ],
+      "correta": 2,
+      "explicacao": "Os juros diminuem porque são calculados sobre um saldo devedor cada vez menor: $$J_t=i\\cdot SD_{t-1}.$$",
+      "estudo": {
+        "titulo": "Juros decrescentes",
+        "texto": "Como o saldo devedor diminui, os juros de cada período também diminuem.",
+        "formula": "$$J_t=i\\cdot SD_{t-1}$$",
+        "exemplo": "Com a mesma taxa, um saldo menor produz menos juros."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI004",
+      "titulo": "Questão 4 - Geladeira",
+      "produto": "Nível Super fácil: Sistema PRICE / SAF",
+      "nivel": "Super fácil",
+      "imagem": "imagens/price/geladeira_liebherr.webp",
+      "enunciado": "No Sistema PRICE, o que acontece com a amortização ao longo das prestações?",
+      "alternativas": [
+        "Permanece igual.",
+        "Diminui.",
+        "É sempre zero.",
+        "Varia sem regra.",
+        "Aumenta."
+      ],
+      "correta": 4,
+      "explicacao": "A prestação é fixa e os juros diminuem. Por isso, a parte destinada à amortização aumenta: $$A_t=PMT-J_t.$$",
+      "estudo": {
+        "titulo": "Amortização crescente",
+        "texto": "A amortização cresce porque ocupa uma parte cada vez maior da prestação fixa.",
+        "formula": "$$A_t=PMT-J_t$$",
+        "exemplo": "Quando os juros caem, sobra mais da prestação para reduzir a dívida."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI005",
+      "titulo": "Questão 5 - Lavadora",
+      "produto": "Nível Super fácil: Sistema PRICE / SAF",
+      "nivel": "Super fácil",
+      "imagem": "imagens/price/lavadora_sharp.webp",
+      "enunciado": "Uma prestação PRICE é formada por quais duas partes?",
+      "alternativas": [
+        "Entrada e tarifa.",
+        "Juros e amortização.",
+        "Multa e imposto.",
+        "Saldo e prazo.",
+        "Taxa e entrada."
+      ],
+      "correta": 1,
+      "explicacao": "Cada prestação reúne os juros do período e a amortização da dívida: $$PMT=J_t+A_t.$$",
+      "estudo": {
+        "titulo": "Composição da prestação",
+        "texto": "A prestação fixa é dividida entre juros e amortização.",
+        "formula": "$$PMT=J_t+A_t$$",
+        "exemplo": "Uma prestação de R\\$ 500,00 pode conter R\\$ 80,00 de juros e R\\$ 420,00 de amortização."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI006",
+      "titulo": "Questão 6 - Televisor",
+      "produto": "Nível Super fácil: Sistema PRICE / SAF",
+      "nivel": "Super fácil",
+      "imagem": "imagens/price/televisor_samsung.webp",
+      "enunciado": "A sequência $\\frac{PMT}{1+i},\\frac{PMT}{(1+i)^2},\\ldots$ representa os valores presentes das prestações. Que sequência é essa?",
+      "alternativas": [
+        "Uma progressão aritmética crescente.",
+        "Uma sequência constante.",
+        "Uma progressão aritmética decrescente.",
+        "Uma progressão geométrica decrescente.",
+        "Uma sequência sem padrão."
+      ],
+      "correta": 3,
+      "explicacao": "Cada termo é o anterior multiplicado por $\\frac{1}{1+i}$. Portanto, os valores presentes formam uma PG decrescente.",
+      "estudo": {
+        "titulo": "PG dos valores presentes",
+        "texto": "Os valores presentes das prestações formam uma progressão geométrica decrescente.",
+        "formula": "$$a_t=\\frac{PMT}{(1+i)^t}$$",
+        "exemplo": "Os termos $\\frac{P}{1{,}02}$ e $\\frac{P}{(1{,}02)^2}$ diminuem com o tempo."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI007",
+      "titulo": "Questão 7 - Bicicleta",
+      "produto": "Nível Super fácil: Sistema PRICE / SAF",
+      "nivel": "Super fácil",
+      "imagem": "imagens/price/bicicleta_mountain_bike.webp",
+      "enunciado": "Qual é o primeiro termo da PG dos valores presentes no Sistema PRICE?",
+      "alternativas": [
+        "$a_1=\\frac{PMT}{1+i}$",
+        "$a_1=PMT$",
+        "$a_1=PMT(1+i)$",
+        "$a_1=\\frac{1+i}{PMT}$",
+        "$a_1=i$"
+      ],
+      "correta": 0,
+      "explicacao": "A primeira prestação vence após um período. Seu valor presente é $$a_1=\\frac{PMT}{1+i}.$$",
+      "estudo": {
+        "titulo": "Primeiro termo da PG",
+        "texto": "A primeira prestação é descontada por um período até a data da compra.",
+        "formula": "$$a_1=\\frac{PMT}{1+i}$$",
+        "exemplo": "Para uma prestação $P$ e taxa de 2%, o primeiro termo é $\\frac{P}{1{,}02}$."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI008",
+      "titulo": "Questão 8 - Motocicleta",
+      "produto": "Nível Super fácil: Sistema PRICE / SAF",
+      "nivel": "Super fácil",
+      "imagem": "imagens/price/motocicleta_honda_cb500.webp",
+      "enunciado": "Qual é a razão da PG dos valores presentes das prestações?",
+      "alternativas": [
+        "$q=1+i$",
+        "$q=i$",
+        "$q=\\frac{1}{1+i}$",
+        "$q=PMT$",
+        "$q=n$"
+      ],
+      "correta": 2,
+      "explicacao": "Cada valor presente é obtido multiplicando o anterior por $$q=\\frac{1}{1+i}.$$",
+      "estudo": {
+        "titulo": "Razão da PG",
+        "texto": "A razão corresponde ao fator usado para descontar uma prestação por mais um período.",
+        "formula": "$$q=\\frac{1}{1+i}$$",
+        "exemplo": "Se $i=2\\%$, então $q=\\frac{1}{1{,}02}$."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI009",
+      "titulo": "Questão 9 - Console",
+      "produto": "Nível Super fácil: Sistema PRICE / SAF",
+      "nivel": "Super fácil",
+      "imagem": "imagens/price/console_playstation5.webp",
+      "enunciado": "No início do financiamento, a soma dos valores presentes das prestações deve ser igual a quê?",
+      "alternativas": [
+        "Ao total dos juros.",
+        "Ao valor da última prestação.",
+        "À taxa mensal.",
+        "Ao número de prestações.",
+        "Ao saldo financiado."
+      ],
+      "correta": 4,
+      "explicacao": "Pela equivalência financeira, a soma dos valores presentes das prestações é igual ao saldo financiado $SD$.",
+      "estudo": {
+        "titulo": "Equivalência na data da compra",
+        "texto": "Todas as prestações são trazidas à data zero e somadas.",
+        "formula": "$$SD=\\sum_{t=1}^{n}\\frac{PMT}{(1+i)^t}$$",
+        "exemplo": "O valor financiado deve equivaler hoje ao conjunto dos pagamentos futuros."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI010",
+      "titulo": "Questão 10 - Câmera",
+      "produto": "Nível Super fácil: Sistema PRICE / SAF",
+      "nivel": "Super fácil",
+      "imagem": "imagens/price/camera_canon_eos5d.webp",
+      "enunciado": "Uma prestação $PMT$ vence daqui a um mês. Qual é seu valor presente?",
+      "alternativas": [
+        "$PMT(1+i)$",
+        "$\\frac{PMT}{1+i}$",
+        "$PMT+i$",
+        "$\\frac{1+i}{PMT}$",
+        "$PMT-i$"
+      ],
+      "correta": 1,
+      "explicacao": "Para trazer um pagamento de um mês à data atual, divide-se pelo fator de capitalização: $$VP=\\frac{PMT}{1+i}.$$",
+      "estudo": {
+        "titulo": "Valor presente da primeira prestação",
+        "texto": "Um pagamento futuro deve ser descontado para ser comparado com o valor de hoje.",
+        "formula": "$$VP=\\frac{PMT}{1+i}$$",
+        "exemplo": "Uma prestação $P$ a 1% ao mês vale hoje $\\frac{P}{1{,}01}$."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI011",
+      "titulo": "Questão 11 - Ar-condicionado",
+      "produto": "Nível Super fácil: Sistema PRICE / SAF",
+      "nivel": "Super fácil",
+      "imagem": "imagens/price/ar_condicionado_panasonic.webp",
+      "enunciado": "Qual fórmula calcula a prestação fixa do Sistema PRICE?",
+      "alternativas": [
+        "$PMT=SD\\cdot i\\cdot n$",
+        "$PMT=SD(1+i)^n$",
+        "$PMT=SD+i+n$",
+        "$PMT=SD\\cdot\\frac{i(1+i)^n}{(1+i)^n-1}$",
+        "$PMT=\\frac{SD}{n}$"
+      ],
+      "correta": 3,
+      "explicacao": "A prestação fixa é calculada por $$PMT=SD\\cdot\\frac{i(1+i)^n}{(1+i)^n-1}.$$",
+      "estudo": {
+        "titulo": "Fórmula da prestação PRICE",
+        "texto": "A fórmula relaciona o saldo financiado, a taxa por período e o número de prestações.",
+        "formula": "$$PMT=SD\\cdot\\frac{i(1+i)^n}{(1+i)^n-1}$$",
+        "exemplo": "Antes de usar a fórmula, escreva a taxa na forma decimal."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI012",
+      "titulo": "Questão 12 - Violão",
+      "produto": "Nível Super fácil: Sistema PRICE / SAF",
+      "nivel": "Super fácil",
+      "imagem": "imagens/price/violao_yamaha_fgx04.webp",
+      "enunciado": "Na fórmula PRICE, o que representa $n$?",
+      "alternativas": [
+        "O número de prestações.",
+        "A taxa de juros.",
+        "O saldo devedor.",
+        "O valor dos juros.",
+        "A entrada."
+      ],
+      "correta": 0,
+      "explicacao": "$n$ indica quantas prestações periódicas existem no financiamento.",
+      "estudo": {
+        "titulo": "Número de prestações",
+        "texto": "A variável $n$ informa a quantidade de pagamentos do contrato.",
+        "formula": "$$n=\\text{número de prestações}$$",
+        "exemplo": "Em um plano de 12 meses com pagamentos mensais, $n=12$."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI013",
+      "titulo": "Questão 13 - Patinete elétrico",
+      "produto": "Nível Super fácil: Sistema PRICE / SAF",
+      "nivel": "Super fácil",
+      "imagem": "imagens/price/patinete_eletrico.webp",
+      "enunciado": "Na fórmula PRICE, o que representa $i$?",
+      "alternativas": [
+        "O número de prestações.",
+        "O valor da entrada.",
+        "A taxa de juros por período.",
+        "A amortização final.",
+        "O preço à vista."
+      ],
+      "correta": 2,
+      "explicacao": "$i$ é a taxa de juros de cada período e deve estar na forma decimal.",
+      "estudo": {
+        "titulo": "Taxa por período",
+        "texto": "A taxa deve usar a mesma unidade de tempo das prestações.",
+        "formula": "$$i=\\frac{p}{100}$$",
+        "exemplo": "Uma taxa de $2\\%$ ao mês corresponde a $i=0{,}02$."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI014",
+      "titulo": "Questão 14 - Robô aspirador",
+      "produto": "Nível Super fácil: Sistema PRICE / SAF",
+      "nivel": "Super fácil",
+      "imagem": "imagens/price/robo_aspirador_xiaomi.webp",
+      "enunciado": "Após o pagamento correto da última prestação, qual deve ser o saldo devedor?",
+      "alternativas": [
+        "Igual à primeira prestação.",
+        "Igual aos juros do mês.",
+        "Maior que o saldo inicial.",
+        "Igual à taxa de juros.",
+        "Zero."
+      ],
+      "correta": 4,
+      "explicacao": "A última amortização quita o valor restante. Assim, ao fim do contrato, $$SD_n=0.$$",
+      "estudo": {
+        "titulo": "Quitação do saldo",
+        "texto": "Cada amortização reduz a dívida até que o saldo final seja zerado.",
+        "formula": "$$SD_t=SD_{t-1}-A_t$$",
+        "exemplo": "Se o saldo antes da última prestação é totalmente amortizado, o novo saldo é R\\$ 0,00."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI015",
+      "titulo": "Questão 15 - Micro-ondas",
+      "produto": "Nível Super fácil: Sistema PRICE / SAF",
+      "nivel": "Super fácil",
+      "imagem": "imagens/price/microondas_daewoo.webp",
+      "enunciado": "Como são calculados os juros de um mês no Sistema PRICE?",
+      "alternativas": [
+        "Somando a taxa ao número de prestações.",
+        "Multiplicando a taxa pelo saldo anterior.",
+        "Dividindo a prestação pelo prazo.",
+        "Subtraindo a taxa da amortização.",
+        "Multiplicando a taxa pela entrada."
+      ],
+      "correta": 1,
+      "explicacao": "Os juros do período são calculados sobre o saldo devedor anterior: $$J_t=i\\cdot SD_{t-1}.$$",
+      "estudo": {
+        "titulo": "Cálculo dos juros",
+        "texto": "A taxa do período incide sobre o saldo existente antes do pagamento.",
+        "formula": "$$J_t=i\\cdot SD_{t-1}$$",
+        "exemplo": "Com saldo de R\\$ 1.000,00 e $i=1\\%$, os juros são R\\$ 10,00."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI016",
+      "titulo": "Questão 16 - Notebook",
+      "produto": "Nível Fácil: Sistema PRICE / SAF",
+      "nivel": "Fácil",
+      "imagem": "imagens/price/notebook_system76.webp",
+      "enunciado": "Um notebook será financiado à taxa de $2\\%$ ao mês. Qual valor decimal deve ser usado na fórmula PRICE?",
+      "alternativas": [
+        "$2$",
+        "$0{,}2$",
+        "$0{,}002$",
+        "$0{,}02$",
+        "$20$"
+      ],
+      "correta": 3,
+      "explicacao": "Converte-se a porcentagem dividindo por 100: $$i=\\frac{2}{100}=0{,}02.$$",
+      "estudo": {
+        "titulo": "Conversão da taxa",
+        "texto": "A fórmula PRICE utiliza a taxa escrita na forma decimal.",
+        "formula": "$$i=\\frac{p}{100}$$",
+        "exemplo": "$1{,}5\\%=\\frac{1{,}5}{100}=0{,}015$."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI017",
+      "titulo": "Questão 17 - Smartphone",
+      "produto": "Nível Fácil: Sistema PRICE / SAF",
+      "nivel": "Fácil",
+      "imagem": "imagens/price/smartphone_iphone_xr.webp",
+      "enunciado": "Um smartphone será financiado a $1\\%$ ao mês. Qual é a razão da PG dos valores presentes?",
+      "alternativas": [
+        "$q=\\frac{1}{1{,}01}$",
+        "$q=1{,}01$",
+        "$q=0{,}01$",
+        "$q=\\frac{1}{0{,}01}$",
+        "$q=1$"
+      ],
+      "correta": 0,
+      "explicacao": "A razão é $$q=\\frac{1}{1+i}=\\frac{1}{1{,}01}.$$",
+      "estudo": {
+        "titulo": "Razão numérica da PG",
+        "texto": "Some 1 à taxa decimal e use o inverso do resultado.",
+        "formula": "$$q=\\frac{1}{1+i}$$",
+        "exemplo": "Para $i=2\\%$, tem-se $q=\\frac{1}{1{,}02}$."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI018",
+      "titulo": "Questão 18 - Automóvel",
+      "produto": "Nível Fácil: Sistema PRICE / SAF",
+      "nivel": "Fácil",
+      "imagem": "imagens/price/automovel_corolla.webp",
+      "enunciado": "A prestação de um automóvel é R\\$ 510,00 e a taxa é $2\\%$ ao mês. Qual expressão representa o primeiro valor presente?",
+      "alternativas": [
+        "$a_1=510(1{,}02)$",
+        "$a_1=510+0{,}02$",
+        "$a_1=\\frac{510}{1{,}02}$",
+        "$a_1=\\frac{1{,}02}{510}$",
+        "$a_1=510(0{,}02)$"
+      ],
+      "correta": 2,
+      "explicacao": "A primeira prestação é descontada por um período: $$a_1=\\frac{510}{1{,}02}.$$",
+      "estudo": {
+        "titulo": "Primeiro valor presente",
+        "texto": "O primeiro pagamento é dividido por um fator de capitalização.",
+        "formula": "$$a_1=\\frac{PMT}{1+i}$$",
+        "exemplo": "Se $PMT=400$ e $i=1\\%$, então $a_1=\\frac{400}{1{,}01}$."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI019",
+      "titulo": "Questão 19 - Geladeira",
+      "produto": "Nível Fácil: Sistema PRICE / SAF",
+      "nivel": "Fácil",
+      "imagem": "imagens/price/geladeira_liebherr.webp",
+      "enunciado": "Uma geladeira será paga em três prestações iguais $P$, a $1\\%$ ao mês. Qual soma representa os valores presentes?",
+      "alternativas": [
+        "$P+P+P$",
+        "$P(1{,}01)+P(1{,}01)^2+P(1{,}01)^3$",
+        "$\\frac{P}{1{,}01}+\\frac{P}{1{,}01}+\\frac{P}{1{,}01}$",
+        "$\\frac{P}{1{,}01}+\\frac{P}{(1{,}01)^2}$",
+        "$\\frac{P}{1{,}01}+\\frac{P}{(1{,}01)^2}+\\frac{P}{(1{,}01)^3}$"
+      ],
+      "correta": 4,
+      "explicacao": "Cada prestação é descontada pelo número de meses até seu vencimento. A soma correta tem três termos, com expoentes 1, 2 e 3.",
+      "estudo": {
+        "titulo": "Soma dos valores presentes",
+        "texto": "Cada pagamento futuro recebe um expoente correspondente ao seu vencimento.",
+        "formula": "$$SD=\\frac{PMT}{1+i}+\\frac{PMT}{(1+i)^2}+\\frac{PMT}{(1+i)^3}$$",
+        "exemplo": "Para quatro prestações, a soma terá quatro termos."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI020",
+      "titulo": "Questão 20 - Lavadora",
+      "produto": "Nível Fácil: Sistema PRICE / SAF",
+      "nivel": "Fácil",
+      "imagem": "imagens/price/lavadora_sharp.webp",
+      "enunciado": "Uma lavadora tem saldo devedor de R\\$ 3.000,00 e taxa de $1\\%$ ao mês. Qual é o juro do primeiro mês?",
+      "alternativas": [
+        "R\\$ 3,00",
+        "R\\$ 30,00",
+        "R\\$ 300,00",
+        "R\\$ 1.000,00",
+        "R\\$ 3.030,00"
+      ],
+      "correta": 1,
+      "explicacao": "$$J_1=3.000\\cdot0{,}01=30.$$ Portanto, o juro do primeiro mês é R\\$ 30,00.",
+      "estudo": {
+        "titulo": "Juros do primeiro mês",
+        "texto": "Multiplique o saldo inicial pela taxa decimal.",
+        "formula": "$$J_1=i\\cdot SD_0$$",
+        "exemplo": "Para R\\$ 2.000,00 a $2\\%$, o juro é R\\$ 40,00."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI021",
+      "titulo": "Questão 21 - Televisor",
+      "produto": "Nível Fácil: Sistema PRICE / SAF",
+      "nivel": "Fácil",
+      "imagem": "imagens/price/televisor_samsung.webp",
+      "enunciado": "A prestação de um televisor é R\\$ 500,00 e os juros do mês são R\\$ 60,00. Qual é a amortização?",
+      "alternativas": [
+        "R\\$ 560,00",
+        "R\\$ 500,00",
+        "R\\$ 60,00",
+        "R\\$ 440,00",
+        "R\\$ 8,33"
+      ],
+      "correta": 3,
+      "explicacao": "$$A=PMT-J=500-60=440.$$ A amortização é R\\$ 440,00.",
+      "estudo": {
+        "titulo": "Cálculo da amortização",
+        "texto": "Subtraia os juros do valor da prestação.",
+        "formula": "$$A_t=PMT-J_t$$",
+        "exemplo": "Prestação de R\\$ 600,00 com juros de R\\$ 90,00 gera amortização de R\\$ 510,00."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI022",
+      "titulo": "Questão 22 - Bicicleta",
+      "produto": "Nível Fácil: Sistema PRICE / SAF",
+      "nivel": "Fácil",
+      "imagem": "imagens/price/bicicleta_mountain_bike.webp",
+      "enunciado": "O saldo de uma bicicleta é R\\$ 3.300,00. Após amortizar R\\$ 500,00, qual é o novo saldo?",
+      "alternativas": [
+        "R\\$ 2.800,00",
+        "R\\$ 3.800,00",
+        "R\\$ 3.300,00",
+        "R\\$ 500,00",
+        "R\\$ 2.300,00"
+      ],
+      "correta": 0,
+      "explicacao": "$$SD_1=3.300-500=2.800.$$ O novo saldo devedor é R\\$ 2.800,00.",
+      "estudo": {
+        "titulo": "Atualização do saldo",
+        "texto": "A amortização reduz diretamente o saldo devedor.",
+        "formula": "$$SD_t=SD_{t-1}-A_t$$",
+        "exemplo": "Saldo de R\\$ 2.000,00 menos amortização de R\\$ 300,00 resulta em R\\$ 1.700,00."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI023",
+      "titulo": "Questão 23 - Motocicleta",
+      "produto": "Nível Fácil: Sistema PRICE / SAF",
+      "nivel": "Fácil",
+      "imagem": "imagens/price/motocicleta_honda_cb500.webp",
+      "enunciado": "Uma motocicleta será paga em 10 prestações de R\\$ 1.000,00. Qual é o total desembolsado?",
+      "alternativas": [
+        "R\\$ 1.000,00",
+        "R\\$ 9.000,00",
+        "R\\$ 10.000,00",
+        "R\\$ 11.000,00",
+        "R\\$ 100.000,00"
+      ],
+      "correta": 2,
+      "explicacao": "$$C_{total}=10\\cdot1.000=10.000.$$ O total desembolsado é R\\$ 10.000,00.",
+      "estudo": {
+        "titulo": "Total desembolsado",
+        "texto": "Multiplique a quantidade de prestações pelo valor de cada uma.",
+        "formula": "$$C_{total}=n\\cdot PMT$$",
+        "exemplo": "Seis prestações de R\\$ 400,00 totalizam R\\$ 2.400,00."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI024",
+      "titulo": "Questão 24 - Console",
+      "produto": "Nível Fácil: Sistema PRICE / SAF",
+      "nivel": "Fácil",
+      "imagem": "imagens/price/console_playstation5.webp",
+      "enunciado": "Um console custa R\\$ 4.200,00 financiados. O total das prestações é R\\$ 4.500,00. Qual é o encargo total?",
+      "alternativas": [
+        "R\\$ 4.500,00",
+        "R\\$ 4.200,00",
+        "R\\$ 8.700,00",
+        "R\\$ 700,00",
+        "R\\$ 300,00"
+      ],
+      "correta": 4,
+      "explicacao": "$$E=4.500-4.200=300.$$ O encargo total é R\\$ 300,00.",
+      "estudo": {
+        "titulo": "Encargo total",
+        "texto": "Compare o total pago com o saldo inicialmente financiado.",
+        "formula": "$$E=C_{total}-SD$$",
+        "exemplo": "Total de R\\$ 2.200,00 para saldo de R\\$ 2.000,00 gera encargo de R\\$ 200,00."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI025",
+      "titulo": "Questão 25 - Câmera",
+      "produto": "Nível Fácil: Sistema PRICE / SAF",
+      "nivel": "Fácil",
+      "imagem": "imagens/price/camera_canon_eos5d.webp",
+      "enunciado": "Qual expressão calcula a prestação fixa de uma câmera financiada pelo Sistema PRICE?",
+      "alternativas": [
+        "$PMT=SD\\cdot i\\cdot n$",
+        "$PMT=SD\\cdot\\frac{i(1+i)^n}{(1+i)^n-1}$",
+        "$PMT=SD(1+i)^n$",
+        "$PMT=\\frac{SD}{i+n}$",
+        "$PMT=SD-i-n$"
+      ],
+      "correta": 1,
+      "explicacao": "A expressão correta é $$PMT=SD\\cdot\\frac{i(1+i)^n}{(1+i)^n-1}.$$",
+      "estudo": {
+        "titulo": "Prestação fixa",
+        "texto": "A fórmula considera simultaneamente saldo, taxa e prazo.",
+        "formula": "$$PMT=SD\\cdot\\frac{i(1+i)^n}{(1+i)^n-1}$$",
+        "exemplo": "Use a taxa decimal e o número de prestações na mesma periodicidade."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI026",
+      "titulo": "Questão 26 - Ar-condicionado",
+      "produto": "Nível Fácil: Sistema PRICE / SAF",
+      "nivel": "Fácil",
+      "imagem": "imagens/price/ar_condicionado_panasonic.webp",
+      "enunciado": "Um ar-condicionado será financiado a $1{,}8\\%$ ao mês. Qual é a razão da PG dos valores presentes?",
+      "alternativas": [
+        "$q=1{,}018$",
+        "$q=0{,}018$",
+        "$q=\\frac{1}{0{,}018}$",
+        "$q=\\frac{1}{1{,}018}$",
+        "$q=1$"
+      ],
+      "correta": 3,
+      "explicacao": "Como $i=0{,}018$, a razão é $$q=\\frac{1}{1+i}=\\frac{1}{1{,}018}.$$",
+      "estudo": {
+        "titulo": "Razão e taxa",
+        "texto": "Converta a taxa para decimal e aplique o fator de desconto.",
+        "formula": "$$q=\\frac{1}{1+i}$$",
+        "exemplo": "Com $i=0{,}03$, a razão é $\\frac{1}{1{,}03}$."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI027",
+      "titulo": "Questão 27 - Violão",
+      "produto": "Nível Fácil: Sistema PRICE / SAF",
+      "nivel": "Fácil",
+      "imagem": "imagens/price/violao_yamaha_fgx04.webp",
+      "enunciado": "Um violão será pago em 5 prestações. Quantos termos existem na PG dos valores presentes?",
+      "alternativas": [
+        "5 termos",
+        "4 termos",
+        "6 termos",
+        "1 termo",
+        "10 termos"
+      ],
+      "correta": 0,
+      "explicacao": "Cada prestação gera um valor presente. Portanto, 5 prestações formam uma PG com 5 termos.",
+      "estudo": {
+        "titulo": "Quantidade de termos",
+        "texto": "O número de termos da PG é igual ao número de prestações.",
+        "formula": "$$n_{PG}=n_{prestações}$$",
+        "exemplo": "Oito prestações produzem oito valores presentes."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI028",
+      "titulo": "Questão 28 - Patinete elétrico",
+      "produto": "Nível Fácil: Sistema PRICE / SAF",
+      "nivel": "Fácil",
+      "imagem": "imagens/price/patinete_eletrico.webp",
+      "enunciado": "A PG dos valores presentes de um patinete tem primeiro termo $a_1$, razão $q$ e 8 termos. Qual é sua soma?",
+      "alternativas": [
+        "$S_8=a_1(1+8q)$",
+        "$S_8=8a_1q$",
+        "$S_8=a_1\\cdot\\frac{1-q^8}{1-q}$",
+        "$S_8=a_1+q^8$",
+        "$S_8=\\frac{a_1}{q}$"
+      ],
+      "correta": 2,
+      "explicacao": "A soma de uma PG finita com 8 termos é $$S_8=a_1\\cdot\\frac{1-q^8}{1-q}.$$",
+      "estudo": {
+        "titulo": "Soma da PG finita",
+        "texto": "Substitua o número de termos no expoente da fórmula da soma.",
+        "formula": "$$S_n=a_1\\cdot\\frac{1-q^n}{1-q}$$",
+        "exemplo": "Para 4 termos, usa-se $S_4=a_1\\cdot\\frac{1-q^4}{1-q}$."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI029",
+      "titulo": "Questão 29 - Robô aspirador",
+      "produto": "Nível Fácil: Sistema PRICE / SAF",
+      "nivel": "Fácil",
+      "imagem": "imagens/price/robo_aspirador_xiaomi.webp",
+      "enunciado": "Dois financiamentos de um robô aspirador têm o mesmo saldo e prazo. Qual tende a ter a maior prestação?",
+      "alternativas": [
+        "O de menor taxa.",
+        "Os dois sempre têm prestação zero.",
+        "Os dois sempre têm a mesma prestação.",
+        "Não é possível comparar as taxas.",
+        "O de maior taxa."
+      ],
+      "correta": 4,
+      "explicacao": "Mantidos o saldo e o prazo, uma taxa maior aumenta o custo financeiro e, portanto, a prestação PRICE.",
+      "estudo": {
+        "titulo": "Efeito da taxa",
+        "texto": "Com saldo e prazo iguais, o aumento da taxa eleva a prestação.",
+        "formula": "$$i_2>i_1\\qquad PMT_2>PMT_1$$",
+        "exemplo": "Compare propostas com o mesmo prazo para perceber o efeito da taxa."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI030",
+      "titulo": "Questão 30 - Micro-ondas",
+      "produto": "Nível Fácil: Sistema PRICE / SAF",
+      "nivel": "Fácil",
+      "imagem": "imagens/price/microondas_daewoo.webp",
+      "enunciado": "Ao aumentar o prazo de um financiamento PRICE, o que geralmente acontece?",
+      "alternativas": [
+        "A prestação e o total de juros sempre zeram.",
+        "A prestação diminui, mas o total de juros tende a aumentar.",
+        "A prestação aumenta e o total de juros diminui.",
+        "Nada muda.",
+        "O saldo financiado desaparece."
+      ],
+      "correta": 1,
+      "explicacao": "Um prazo maior costuma reduzir o valor mensal, porém mantém a dívida por mais tempo e tende a aumentar o total de juros.",
+      "estudo": {
+        "titulo": "Efeito do prazo",
+        "texto": "Parcela menor não significa necessariamente menor custo total.",
+        "formula": "$$n_2>n_1\\qquad PMT_2<PMT_1\\qquad E_2>E_1$$",
+        "exemplo": "Compare sempre a prestação e o total desembolsado antes de escolher o prazo."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI031",
+      "titulo": "Questão 31 - Notebook",
+      "produto": "Nível Médio: Sistema PRICE / SAF",
+      "nivel": "Médio",
+      "imagem": "imagens/price/notebook_system76.webp",
+      "enunciado": "Um notebook de R\\$ 6.800,00 será financiado pelo PRICE em 12 prestações mensais, a $2\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
+      "alternativas": [
+        "$P\\approx \\text{R\\$}\\,566{,}67$.",
+        "$P\\approx \\text{R\\$}\\,630{,}40$.",
+        "$P\\approx \\text{R\\$}\\,655{,}87$.",
+        "$P\\approx \\text{R\\$}\\,643{,}01$.",
+        "$P\\approx \\text{R\\$}\\,702{,}67$."
+      ],
+      "correta": 3,
+      "explicacao": "$$PMT=6.800\\cdot\\frac{0{,}02(1{,}02)^{12}}{(1{,}02)^{12}-1}\\approx 643{,}01.$$ A prestação fixa é R\\$ 643,01.",
+      "estudo": {
+        "titulo": "Cálculo da prestação fixa do Sistema PRICE",
+        "texto": "Identifique saldo devedor, taxa e número de parcelas. Depois, aplique o fator de recuperação de capital e arredonde só ao final.",
+        "formula": "$$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$",
+        "exemplo": "Para $SD=\\text{R\\$ }7.000{,}00$, $i=2\\%$ e $n=4$, a prestação é aproximadamente R\\$ 1.838,37."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI032",
+      "titulo": "Questão 32 - Smartphone",
+      "produto": "Nível Médio: Sistema PRICE / SAF",
+      "nivel": "Médio",
+      "imagem": "imagens/price/smartphone_iphone_xr.webp",
+      "enunciado": "Um smartphone de R\\$ 3.600,00 será financiado pelo PRICE em 10 prestações mensais, a $2{,}4\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
+      "alternativas": [
+        "$P\\approx \\text{R\\$}\\,409{,}21$.",
+        "$P\\approx \\text{R\\$}\\,360{,}00$.",
+        "$P\\approx \\text{R\\$}\\,399{,}62$.",
+        "$P\\approx \\text{R\\$}\\,419{,}03$.",
+        "$P\\approx \\text{R\\$}\\,446{,}40$."
+      ],
+      "correta": 0,
+      "explicacao": "$$PMT=3.600\\cdot\\frac{0{,}024(1{,}024)^{10}}{(1{,}024)^{10}-1}\\approx 409{,}21.$$ A prestação fixa é R\\$ 409,21.",
+      "estudo": {
+        "titulo": "Cálculo da prestação fixa do Sistema PRICE",
+        "texto": "Identifique saldo devedor, taxa e número de parcelas. Depois, aplique o fator de recuperação de capital e arredonde só ao final.",
+        "formula": "$$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$",
+        "exemplo": "Para $SD=\\text{R\\$ }7.000{,}00$, $i=2\\%$ e $n=4$, a prestação é aproximadamente R\\$ 1.838,37."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI033",
+      "titulo": "Questão 33 - Automóvel",
+      "produto": "Nível Médio: Sistema PRICE / SAF",
+      "nivel": "Médio",
+      "imagem": "imagens/price/automovel_corolla.webp",
+      "enunciado": "Um Toyota Corolla de R\\$ 55.000,00 será financiado pelo PRICE em 36 prestações mensais, a $1{,}35\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
+      "alternativas": [
+        "$P\\approx \\text{R\\$}\\,1{.}527{,}78$.",
+        "$P\\approx \\text{R\\$}\\,1{.}913{,}24$.",
+        "$P\\approx \\text{R\\$}\\,1{.}939{,}07$.",
+        "$P\\approx \\text{R\\$}\\,1{.}965{,}25$.",
+        "$P\\approx \\text{R\\$}\\,2{.}270{,}28$."
+      ],
+      "correta": 2,
+      "explicacao": "$$PMT=55.000\\cdot\\frac{0{,}0135(1{,}0135)^{36}}{(1{,}0135)^{36}-1}\\approx 1.939{,}07.$$ A prestação fixa é R\\$ 1.939,07.",
+      "estudo": {
+        "titulo": "Cálculo da prestação fixa do Sistema PRICE",
+        "texto": "Identifique saldo devedor, taxa e número de parcelas. Depois, aplique o fator de recuperação de capital e arredonde só ao final.",
+        "formula": "$$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$",
+        "exemplo": "Para $SD=\\text{R\\$ }7.000{,}00$, $i=2\\%$ e $n=4$, a prestação é aproximadamente R\\$ 1.838,37."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI034",
+      "titulo": "Questão 34 - Geladeira",
+      "produto": "Nível Médio: Sistema PRICE / SAF",
+      "nivel": "Médio",
+      "imagem": "imagens/price/geladeira_liebherr.webp",
+      "enunciado": "Uma geladeira de R\\$ 5.600,00 será financiada pelo PRICE em 12 prestações mensais, a $1{,}8\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
+      "alternativas": [
+        "$P\\approx \\text{R\\$}\\,466{,}67$.",
+        "$P\\approx \\text{R\\$}\\,513{,}80$.",
+        "$P\\approx \\text{R\\$}\\,532{,}47$.",
+        "$P\\approx \\text{R\\$}\\,567{,}47$.",
+        "$P\\approx \\text{R\\$}\\,523{,}05$."
+      ],
+      "correta": 4,
+      "explicacao": "$$PMT=5.600\\cdot\\frac{0{,}018(1{,}018)^{12}}{(1{,}018)^{12}-1}\\approx 523{,}05.$$ A prestação fixa é R\\$ 523,05.",
+      "estudo": {
+        "titulo": "Cálculo da prestação fixa do Sistema PRICE",
+        "texto": "Identifique saldo devedor, taxa e número de parcelas. Depois, aplique o fator de recuperação de capital e arredonde só ao final.",
+        "formula": "$$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$",
+        "exemplo": "Para $SD=\\text{R\\$ }7.000{,}00$, $i=2\\%$ e $n=4$, a prestação é aproximadamente R\\$ 1.838,37."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI035",
+      "titulo": "Questão 35 - Lavadora",
+      "produto": "Nível Médio: Sistema PRICE / SAF",
+      "nivel": "Médio",
+      "imagem": "imagens/price/lavadora_sharp.webp",
+      "enunciado": "Uma lavadora de R\\$ 4.200,00 será financiada pelo PRICE em 10 prestações mensais, a $2{,}1\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
+      "alternativas": [
+        "$P\\approx \\text{R\\$}\\,420{,}00$.",
+        "$P\\approx \\text{R\\$}\\,470{,}02$.",
+        "$P\\approx \\text{R\\$}\\,460{,}35$.",
+        "$P\\approx \\text{R\\$}\\,479{,}89$.",
+        "$P\\approx \\text{R\\$}\\,508{,}20$."
+      ],
+      "correta": 1,
+      "explicacao": "$$PMT=4.200\\cdot\\frac{0{,}021(1{,}021)^{10}}{(1{,}021)^{10}-1}\\approx 470{,}02.$$ A prestação fixa é R\\$ 470,02.",
+      "estudo": {
+        "titulo": "Cálculo da prestação fixa do Sistema PRICE",
+        "texto": "Identifique saldo devedor, taxa e número de parcelas. Depois, aplique o fator de recuperação de capital e arredonde só ao final.",
+        "formula": "$$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$",
+        "exemplo": "Para $SD=\\text{R\\$ }7.000{,}00$, $i=2\\%$ e $n=4$, a prestação é aproximadamente R\\$ 1.838,37."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI036",
+      "titulo": "Questão 36 - Televisor",
+      "produto": "Nível Médio: Sistema PRICE / SAF",
+      "nivel": "Médio",
+      "imagem": "imagens/price/televisor_samsung.webp",
+      "enunciado": "Um televisor de R\\$ 6.500,00 será financiado pelo PRICE em 15 prestações mensais, a $1{,}7\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
+      "alternativas": [
+        "$P\\approx \\text{R\\$}\\,433{,}33$.",
+        "$P\\approx \\text{R\\$}\\,486{,}31$.",
+        "$P\\approx \\text{R\\$}\\,502{,}99$.",
+        "$P\\approx \\text{R\\$}\\,494{,}58$.",
+        "$P\\approx \\text{R\\$}\\,543{,}83$."
+      ],
+      "correta": 3,
+      "explicacao": "$$PMT=6.500\\cdot\\frac{0{,}017(1{,}017)^{15}}{(1{,}017)^{15}-1}\\approx 494{,}58.$$ A prestação fixa é R\\$ 494,58.",
+      "estudo": {
+        "titulo": "Cálculo da prestação fixa do Sistema PRICE",
+        "texto": "Identifique saldo devedor, taxa e número de parcelas. Depois, aplique o fator de recuperação de capital e arredonde só ao final.",
+        "formula": "$$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$",
+        "exemplo": "Para $SD=\\text{R\\$ }7.000{,}00$, $i=2\\%$ e $n=4$, a prestação é aproximadamente R\\$ 1.838,37."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI037",
+      "titulo": "Questão 37 - Bicicleta",
+      "produto": "Nível Médio: Sistema PRICE / SAF",
+      "nivel": "Médio",
+      "imagem": "imagens/price/bicicleta_mountain_bike.webp",
+      "enunciado": "Uma bicicleta de R\\$ 4.800,00 será financiada pelo PRICE em 12 prestações mensais, a $1{,}5\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
+      "alternativas": [
+        "$P\\approx \\text{R\\$}\\,440{,}06$.",
+        "$P\\approx \\text{R\\$}\\,400{,}00$.",
+        "$P\\approx \\text{R\\$}\\,433{,}56$.",
+        "$P\\approx \\text{R\\$}\\,446{,}66$.",
+        "$P\\approx \\text{R\\$}\\,472{,}00$."
+      ],
+      "correta": 0,
+      "explicacao": "$$PMT=4.800\\cdot\\frac{0{,}015(1{,}015)^{12}}{(1{,}015)^{12}-1}\\approx 440{,}06.$$ A prestação fixa é R\\$ 440,06.",
+      "estudo": {
+        "titulo": "Cálculo da prestação fixa do Sistema PRICE",
+        "texto": "Identifique saldo devedor, taxa e número de parcelas. Depois, aplique o fator de recuperação de capital e arredonde só ao final.",
+        "formula": "$$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$",
+        "exemplo": "Para $SD=\\text{R\\$ }7.000{,}00$, $i=2\\%$ e $n=4$, a prestação é aproximadamente R\\$ 1.838,37."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI038",
+      "titulo": "Questão 38 - Motocicleta",
+      "produto": "Nível Médio: Sistema PRICE / SAF",
+      "nivel": "Médio",
+      "imagem": "imagens/price/motocicleta_honda_cb500.webp",
+      "enunciado": "Uma Honda CB 500 de R\\$ 26.000,00 será financiada pelo PRICE em 24 prestações mensais, a $1{,}6\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
+      "alternativas": [
+        "$P\\approx \\text{R\\$}\\,1{.}083{,}33$.",
+        "$P\\approx \\text{R\\$}\\,1{.}292{,}47$.",
+        "$P\\approx \\text{R\\$}\\,1{.}313{,}15$.",
+        "$P\\approx \\text{R\\$}\\,1{.}334{,}16$.",
+        "$P\\approx \\text{R\\$}\\,1{.}499{,}33$."
+      ],
+      "correta": 2,
+      "explicacao": "$$PMT=26.000\\cdot\\frac{0{,}016(1{,}016)^{24}}{(1{,}016)^{24}-1}\\approx 1.313{,}15.$$ A prestação fixa é R\\$ 1.313,15.",
+      "estudo": {
+        "titulo": "Cálculo da prestação fixa do Sistema PRICE",
+        "texto": "Identifique saldo devedor, taxa e número de parcelas. Depois, aplique o fator de recuperação de capital e arredonde só ao final.",
+        "formula": "$$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$",
+        "exemplo": "Para $SD=\\text{R\\$ }7.000{,}00$, $i=2\\%$ e $n=4$, a prestação é aproximadamente R\\$ 1.838,37."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI039",
+      "titulo": "Questão 39 - Console",
+      "produto": "Nível Médio: Sistema PRICE / SAF",
+      "nivel": "Médio",
+      "imagem": "imagens/price/console_playstation5.webp",
+      "enunciado": "Um PlayStation 5 de R\\$ 4.500,00 será financiado pelo PRICE em 12 prestações mensais, a $2{,}6\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
+      "alternativas": [
+        "$P\\approx \\text{R\\$}\\,375{,}00$.",
+        "$P\\approx \\text{R\\$}\\,430{,}17$.",
+        "$P\\approx \\text{R\\$}\\,452{,}83$.",
+        "$P\\approx \\text{R\\$}\\,492{,}00$.",
+        "$P\\approx \\text{R\\$}\\,441{,}35$."
+      ],
+      "correta": 4,
+      "explicacao": "$$PMT=4.500\\cdot\\frac{0{,}026(1{,}026)^{12}}{(1{,}026)^{12}-1}\\approx 441{,}35.$$ A prestação fixa é R\\$ 441,35.",
+      "estudo": {
+        "titulo": "Cálculo da prestação fixa do Sistema PRICE",
+        "texto": "Identifique saldo devedor, taxa e número de parcelas. Depois, aplique o fator de recuperação de capital e arredonde só ao final.",
+        "formula": "$$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$",
+        "exemplo": "Para $SD=\\text{R\\$ }7.000{,}00$, $i=2\\%$ e $n=4$, a prestação é aproximadamente R\\$ 1.838,37."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI040",
+      "titulo": "Questão 40 - Câmera",
+      "produto": "Nível Médio: Sistema PRICE / SAF",
+      "nivel": "Médio",
+      "imagem": "imagens/price/camera_canon_eos5d.webp",
+      "enunciado": "Uma câmera de R\\$ 9.800,00 será financiada pelo PRICE em 18 prestações mensais, a $1{,}4\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
+      "alternativas": [
+        "$P\\approx \\text{R\\$}\\,544{,}44$.",
+        "$P\\approx \\text{R\\$}\\,619{,}70$.",
+        "$P\\approx \\text{R\\$}\\,611{,}15$.",
+        "$P\\approx \\text{R\\$}\\,628{,}38$.",
+        "$P\\approx \\text{R\\$}\\,681{,}64$."
+      ],
+      "correta": 1,
+      "explicacao": "$$PMT=9.800\\cdot\\frac{0{,}014(1{,}014)^{18}}{(1{,}014)^{18}-1}\\approx 619{,}70.$$ A prestação fixa é R\\$ 619,70.",
+      "estudo": {
+        "titulo": "Cálculo da prestação fixa do Sistema PRICE",
+        "texto": "Identifique saldo devedor, taxa e número de parcelas. Depois, aplique o fator de recuperação de capital e arredonde só ao final.",
+        "formula": "$$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$",
+        "exemplo": "Para $SD=\\text{R\\$ }7.000{,}00$, $i=2\\%$ e $n=4$, a prestação é aproximadamente R\\$ 1.838,37."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI041",
+      "titulo": "Questão 41 - Ar-condicionado",
+      "produto": "Nível Médio: Sistema PRICE / SAF",
+      "nivel": "Médio",
+      "imagem": "imagens/price/ar_condicionado_panasonic.webp",
+      "enunciado": "Um ar-condicionado de R\\$ 5.200,00 será financiado pelo PRICE em 12 prestações mensais, a $2\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
+      "alternativas": [
+        "$P\\approx \\text{R\\$}\\,433{,}33$.",
+        "$P\\approx \\text{R\\$}\\,482{,}07$.",
+        "$P\\approx \\text{R\\$}\\,501{,}54$.",
+        "$P\\approx \\text{R\\$}\\,491{,}71$.",
+        "$P\\approx \\text{R\\$}\\,537{,}33$."
+      ],
+      "correta": 3,
+      "explicacao": "$$PMT=5.200\\cdot\\frac{0{,}02(1{,}02)^{12}}{(1{,}02)^{12}-1}\\approx 491{,}71.$$ A prestação fixa é R\\$ 491,71.",
+      "estudo": {
+        "titulo": "Cálculo da prestação fixa do Sistema PRICE",
+        "texto": "Identifique saldo devedor, taxa e número de parcelas. Depois, aplique o fator de recuperação de capital e arredonde só ao final.",
+        "formula": "$$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$",
+        "exemplo": "Para $SD=\\text{R\\$ }7.000{,}00$, $i=2\\%$ e $n=4$, a prestação é aproximadamente R\\$ 1.838,37."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI042",
+      "titulo": "Questão 42 - Violão",
+      "produto": "Nível Médio: Sistema PRICE / SAF",
+      "nivel": "Médio",
+      "imagem": "imagens/price/violao_yamaha_fgx04.webp",
+      "enunciado": "Um violão de R\\$ 3.600,00 será financiado pelo PRICE em 10 prestações mensais, a $1{,}8\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
+      "alternativas": [
+        "$P\\approx \\text{R\\$}\\,396{,}59$.",
+        "$P\\approx \\text{R\\$}\\,360{,}00$.",
+        "$P\\approx \\text{R\\$}\\,389{,}58$.",
+        "$P\\approx \\text{R\\$}\\,403{,}73$.",
+        "$P\\approx \\text{R\\$}\\,424{,}80$."
+      ],
+      "correta": 0,
+      "explicacao": "$$PMT=3.600\\cdot\\frac{0{,}018(1{,}018)^{10}}{(1{,}018)^{10}-1}\\approx 396{,}59.$$ A prestação fixa é R\\$ 396,59.",
+      "estudo": {
+        "titulo": "Cálculo da prestação fixa do Sistema PRICE",
+        "texto": "Identifique saldo devedor, taxa e número de parcelas. Depois, aplique o fator de recuperação de capital e arredonde só ao final.",
+        "formula": "$$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$",
+        "exemplo": "Para $SD=\\text{R\\$ }7.000{,}00$, $i=2\\%$ e $n=4$, a prestação é aproximadamente R\\$ 1.838,37."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI043",
+      "titulo": "Questão 43 - Patinete elétrico",
+      "produto": "Nível Médio: Sistema PRICE / SAF",
+      "nivel": "Médio",
+      "imagem": "imagens/price/patinete_eletrico.webp",
+      "enunciado": "Um patinete elétrico de R\\$ 5.800,00 será financiado pelo PRICE em 15 prestações mensais, a $2{,}2\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
+      "alternativas": [
+        "$P\\approx \\text{R\\$}\\,386{,}67$.",
+        "$P\\approx \\text{R\\$}\\,448{,}31$.",
+        "$P\\approx \\text{R\\$}\\,458{,}17$.",
+        "$P\\approx \\text{R\\$}\\,468{,}25$.",
+        "$P\\approx \\text{R\\$}\\,514{,}27$."
+      ],
+      "correta": 2,
+      "explicacao": "$$PMT=5.800\\cdot\\frac{0{,}022(1{,}022)^{15}}{(1{,}022)^{15}-1}\\approx 458{,}17.$$ A prestação fixa é R\\$ 458,17.",
+      "estudo": {
+        "titulo": "Cálculo da prestação fixa do Sistema PRICE",
+        "texto": "Identifique saldo devedor, taxa e número de parcelas. Depois, aplique o fator de recuperação de capital e arredonde só ao final.",
+        "formula": "$$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$",
+        "exemplo": "Para $SD=\\text{R\\$ }7.000{,}00$, $i=2\\%$ e $n=4$, a prestação é aproximadamente R\\$ 1.838,37."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI044",
+      "titulo": "Questão 44 - Robô aspirador",
+      "produto": "Nível Médio: Sistema PRICE / SAF",
+      "nivel": "Médio",
+      "imagem": "imagens/price/robo_aspirador_xiaomi.webp",
+      "enunciado": "Um robô aspirador de R\\$ 2.800,00 será financiado pelo PRICE em 8 prestações mensais, a $2{,}5\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
+      "alternativas": [
+        "$P\\approx \\text{R\\$}\\,350{,}00$.",
+        "$P\\approx \\text{R\\$}\\,380{,}98$.",
+        "$P\\approx \\text{R\\$}\\,400{,}27$.",
+        "$P\\approx \\text{R\\$}\\,420{,}00$.",
+        "$P\\approx \\text{R\\$}\\,390{,}51$."
+      ],
+      "correta": 4,
+      "explicacao": "$$PMT=2.800\\cdot\\frac{0{,}025(1{,}025)^8}{(1{,}025)^8-1}\\approx 390{,}51.$$ A prestação fixa é R\\$ 390,51.",
+      "estudo": {
+        "titulo": "Cálculo da prestação fixa do Sistema PRICE",
+        "texto": "Identifique saldo devedor, taxa e número de parcelas. Depois, aplique o fator de recuperação de capital e arredonde só ao final.",
+        "formula": "$$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$",
+        "exemplo": "Para $SD=\\text{R\\$ }7.000{,}00$, $i=2\\%$ e $n=4$, a prestação é aproximadamente R\\$ 1.838,37."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI045",
+      "titulo": "Questão 45 - Micro-ondas",
+      "produto": "Nível Médio: Sistema PRICE / SAF",
+      "nivel": "Médio",
+      "imagem": "imagens/price/microondas_daewoo.webp",
+      "enunciado": "Um micro-ondas de R\\$ 1.350,00 será financiado pelo PRICE em 6 prestações mensais, a $1{,}9\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
+      "alternativas": [
+        "$P\\approx \\text{R\\$}\\,225{,}00$.",
+        "$P\\approx \\text{R\\$}\\,240{,}20$.",
+        "$P\\approx \\text{R\\$}\\,235{,}72$.",
+        "$P\\approx \\text{R\\$}\\,244{,}76$.",
+        "$P\\approx \\text{R\\$}\\,250{,}65$."
+      ],
+      "correta": 1,
+      "explicacao": "$$PMT=1.350\\cdot\\frac{0{,}019(1{,}019)^6}{(1{,}019)^6-1}\\approx 240{,}20.$$ A prestação fixa é R\\$ 240,20.",
+      "estudo": {
+        "titulo": "Cálculo da prestação fixa do Sistema PRICE",
+        "texto": "Identifique saldo devedor, taxa e número de parcelas. Depois, aplique o fator de recuperação de capital e arredonde só ao final.",
+        "formula": "$$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$",
+        "exemplo": "Para $SD=\\text{R\\$ }7.000{,}00$, $i=2\\%$ e $n=4$, a prestação é aproximadamente R\\$ 1.838,37."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI046",
+      "titulo": "Questão 46 - Notebook",
+      "produto": "Nível Difícil: Sistema PRICE / SAF",
+      "nivel": "Difícil",
+      "imagem": "imagens/price/notebook_system76.webp",
+      "enunciado": "Uma compra de R\\$ 7.200,00 referente a um notebook System76 Darter Pro será financiada pelo Sistema PRICE em 18 prestações mensais iguais. A instituição concede adiamento do início dos pagamentos: a primeira prestação vencerá no final do 4º mês após a compra. Durante todo o período sem pagamento, a dívida continua sendo atualizada à taxa composta de 1,8% ao mês. Não há tarifas adicionais. Como a série comum começaria no mês 1, existe um deslocamento adicional de $\\delta=3$ meses. Assinale a alternativa que apresenta corretamente a equivalência na data zero, o valor da prestação fixa e a interpretação do efeito da carência.",
+      "alternativas": [
+        "$7200.00=P\\left[\\frac{1-(1+0.018)^{-18}}{0.018}\\right]$, $P\\approx \\text{R\\$}\\,471{,}85$; a carência não altera a prestação.",
+        "$7200.00=P(1+0.018)^{3}\\left[\\frac{1-(1+0.018)^{-18}}{0.018}\\right]$, $P\\approx \\text{R\\$}\\,447{,}26$; a carência reduz a prestação.",
+        "$7200.00=P(1+0.018)^{-4}\\left[\\frac{1-(1+0.018)^{-18}}{0.018}\\right]$, $P\\approx \\text{R\\$}\\,506{,}75$; usa-se deslocamento de 4 meses.",
+        "$7200.00=P(1+0.018)^{-3}\\left[\\frac{1-(1+0.018)^{-18}}{0.018}\\right]$, $P\\approx \\text{R\\$}\\,497{,}79$; a carência eleva a prestação porque a dívida capitaliza antes da amortização.",
+        "$7200.00=P(1-3\\cdot 0.018)\\left[\\frac{1-(1+0.018)^{-18}}{0.018}\\right]$, $P\\approx \\text{R\\$}\\,497{,}33$; a carência é tratada por juros simples."
+      ],
+      "correta": 3,
+      "explicacao": "A equivalência na data zero é $$7200.00=\\sum_{t=4}^{21}\\frac{P}{(1+0.018)^t}.$$ Fatorando o deslocamento: $$7200.00=P(1+0.018)^{-3}\\left[\\frac{1-(1+0.018)^{-18}}{0.018}\\right].$$ Assim, $$P=7200.00(1+0.018)^3\\frac{0.018}{1-(1+0.018)^{-18}}\\approx 497.79.$$ Prestação: R\\$ 497,79. A carência eleva $P$ porque os juros capitalizam a dívida antes de começar a amortização.",
+      "estudo": {
+        "titulo": "Sistema PRICE com carência",
+        "texto": "A carência desloca a série no tempo. Como a dívida continua capitalizando antes do primeiro pagamento, a prestação aumenta.",
+        "formula": "$$SD=PMT\\cdot(1+i)^{-\\delta}\\cdot\\frac{1-(1+i)^{-n}}{i}$$",
+        "exemplo": "Se a primeira prestação, normalmente no mês 1, passa ao mês 3, o deslocamento adicional é $\\delta=2$."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI047",
+      "titulo": "Questão 47 - Smartphone",
+      "produto": "Nível Difícil: Sistema PRICE / SAF",
+      "nivel": "Difícil",
+      "imagem": "imagens/price/smartphone_iphone_xr.webp",
+      "enunciado": "Uma compra de R\\$ 4.800,00 referente a um smartphone iPhone XR Product Red será financiada pelo Sistema PRICE em 12 prestações mensais iguais. A instituição concede adiamento do início dos pagamentos: a primeira prestação vencerá no final do 3º mês após a compra. Durante todo o período sem pagamento, a dívida continua sendo atualizada à taxa composta de 2,5% ao mês. Não há tarifas adicionais. Como a série comum começaria no mês 1, existe um deslocamento adicional de $\\delta=2$ meses. Assinale a alternativa que apresenta corretamente a equivalência na data zero, o valor da prestação fixa e a interpretação do efeito da carência.",
+      "alternativas": [
+        "$4800.00=P(1+0.025)^{-2}\\left[\\frac{1-(1+0.025)^{-12}}{0.025}\\right]$, $P\\approx \\text{R\\$}\\,491{,}63$; a carência eleva a prestação porque a dívida capitaliza antes da amortização.",
+        "$4800.00=P\\left[\\frac{1-(1+0.025)^{-12}}{0.025}\\right]$, $P\\approx \\text{R\\$}\\,467{,}94$; a carência não altera a prestação.",
+        "$4800.00=P(1+0.025)^{2}\\left[\\frac{1-(1+0.025)^{-12}}{0.025}\\right]$, $P\\approx \\text{R\\$}\\,445{,}39$; a carência reduz a prestação.",
+        "$4800.00=P(1+0.025)^{-3}\\left[\\frac{1-(1+0.025)^{-12}}{0.025}\\right]$, $P\\approx \\text{R\\$}\\,503{,}92$; usa-se deslocamento de 3 meses.",
+        "$4800.00=P(1-2\\cdot 0.025)\\left[\\frac{1-(1+0.025)^{-12}}{0.025}\\right]$, $P\\approx \\text{R\\$}\\,491{,}34$; a carência é tratada por juros simples."
+      ],
+      "correta": 0,
+      "explicacao": "A equivalência na data zero é $$4800.00=\\sum_{t=3}^{14}\\frac{P}{(1+0.025)^t}.$$ Fatorando o deslocamento: $$4800.00=P(1+0.025)^{-2}\\left[\\frac{1-(1+0.025)^{-12}}{0.025}\\right].$$ Assim, $$P=4800.00(1+0.025)^2\\frac{0.025}{1-(1+0.025)^{-12}}\\approx 491.63.$$ Prestação: R\\$ 491,63. A carência eleva $P$ porque os juros capitalizam a dívida antes de começar a amortização.",
+      "estudo": {
+        "titulo": "Sistema PRICE com carência",
+        "texto": "A carência desloca a série no tempo. Como a dívida continua capitalizando antes do primeiro pagamento, a prestação aumenta.",
+        "formula": "$$SD=PMT\\cdot(1+i)^{-\\delta}\\cdot\\frac{1-(1+i)^{-n}}{i}$$",
+        "exemplo": "Se a primeira prestação, normalmente no mês 1, passa ao mês 3, o deslocamento adicional é $\\delta=2$."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI048",
+      "titulo": "Questão 48 - Automóvel",
+      "produto": "Nível Difícil: Sistema PRICE / SAF",
+      "nivel": "Difícil",
+      "imagem": "imagens/price/automovel_corolla.webp",
+      "enunciado": "Uma compra de R\\$ 62.000,00 referente a um automóvel Toyota Corolla 2018 será financiada pelo Sistema PRICE em 48 prestações mensais iguais. A instituição concede adiamento do início dos pagamentos: a primeira prestação vencerá no final do 7º mês após a compra. Durante todo o período sem pagamento, a dívida continua sendo atualizada à taxa composta de 1,4% ao mês. Não há tarifas adicionais. Como a série comum começaria no mês 1, existe um deslocamento adicional de $\\delta=6$ meses. Assinale a alternativa que apresenta corretamente a equivalência na data zero, o valor da prestação fixa e a interpretação do efeito da carência.",
+      "alternativas": [
+        "$62000.00=P\\left[\\frac{1-(1+0.014)^{-48}}{0.014}\\right]$, $P\\approx \\text{R\\$}\\,1{.}782{,}60$; a carência não altera a prestação.",
+        "$62000.00=P(1+0.014)^{6}\\left[\\frac{1-(1+0.014)^{-48}}{0.014}\\right]$, $P\\approx \\text{R\\$}\\,1{.}639{,}94$; a carência reduz a prestação.",
+        "$62000.00=P(1+0.014)^{-6}\\left[\\frac{1-(1+0.014)^{-48}}{0.014}\\right]$, $P\\approx \\text{R\\$}\\,1{.}937{,}68$; a carência eleva a prestação porque a dívida capitaliza antes da amortização.",
+        "$62000.00=P(1+0.014)^{-7}\\left[\\frac{1-(1+0.014)^{-48}}{0.014}\\right]$, $P\\approx \\text{R\\$}\\,1{.}964{,}81$; usa-se deslocamento de 7 meses.",
+        "$62000.00=P(1-6\\cdot 0.014)\\left[\\frac{1-(1+0.014)^{-48}}{0.014}\\right]$, $P\\approx \\text{R\\$}\\,1{.}932{,}34$; a carência é tratada por juros simples."
+      ],
+      "correta": 2,
+      "explicacao": "A equivalência na data zero é $$62000.00=\\sum_{t=7}^{54}\\frac{P}{(1+0.014)^t}.$$ Fatorando o deslocamento: $$62000.00=P(1+0.014)^{-6}\\left[\\frac{1-(1+0.014)^{-48}}{0.014}\\right].$$ Assim, $$P=62000.00(1+0.014)^6\\frac{0.014}{1-(1+0.014)^{-48}}\\approx 1937.68.$$ Prestação: R\\$ 1.937,68. A carência eleva $P$ porque os juros capitalizam a dívida antes de começar a amortização.",
+      "estudo": {
+        "titulo": "Sistema PRICE com carência",
+        "texto": "A carência desloca a série no tempo. Como a dívida continua capitalizando antes do primeiro pagamento, a prestação aumenta.",
+        "formula": "$$SD=PMT\\cdot(1+i)^{-\\delta}\\cdot\\frac{1-(1+i)^{-n}}{i}$$",
+        "exemplo": "Se a primeira prestação, normalmente no mês 1, passa ao mês 3, o deslocamento adicional é $\\delta=2$."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI049",
+      "titulo": "Questão 49 - Geladeira",
+      "produto": "Nível Difícil: Sistema PRICE / SAF",
+      "nivel": "Difícil",
+      "imagem": "imagens/price/geladeira_liebherr.webp",
+      "enunciado": "Uma compra de R\\$ 7.800,00 referente a um geladeira Liebherr Comfort será financiada pelo Sistema PRICE em 18 prestações mensais iguais. A instituição concede adiamento do início dos pagamentos: a primeira prestação vencerá no final do 5º mês após a compra. Durante todo o período sem pagamento, a dívida continua sendo atualizada à taxa composta de 2% ao mês. Não há tarifas adicionais. Como a série comum começaria no mês 1, existe um deslocamento adicional de $\\delta=4$ meses. Assinale a alternativa que apresenta corretamente a equivalência na data zero, o valor da prestação fixa e a interpretação do efeito da carência.",
+      "alternativas": [
+        "$7800.00=P\\left[\\frac{1-(1+0.02)^{-18}}{0.02}\\right]$, $P\\approx \\text{R\\$}\\,520{,}28$; a carência não altera a prestação.",
+        "$7800.00=P(1+0.02)^{4}\\left[\\frac{1-(1+0.02)^{-18}}{0.02}\\right]$, $P\\approx \\text{R\\$}\\,480{,}65$; a carência reduz a prestação.",
+        "$7800.00=P(1+0.02)^{-5}\\left[\\frac{1-(1+0.02)^{-18}}{0.02}\\right]$, $P\\approx \\text{R\\$}\\,574{,}43$; usa-se deslocamento de 5 meses.",
+        "$7800.00=P(1-4\\cdot 0.02)\\left[\\frac{1-(1+0.02)^{-18}}{0.02}\\right]$, $P\\approx \\text{R\\$}\\,561{,}90$; a carência é tratada por juros simples.",
+        "$7800.00=P(1+0.02)^{-4}\\left[\\frac{1-(1+0.02)^{-18}}{0.02}\\right]$, $P\\approx \\text{R\\$}\\,563{,}16$; a carência eleva a prestação porque a dívida capitaliza antes da amortização."
+      ],
+      "correta": 4,
+      "explicacao": "A equivalência na data zero é $$7800.00=\\sum_{t=5}^{22}\\frac{P}{(1+0.02)^t}.$$ Fatorando o deslocamento: $$7800.00=P(1+0.02)^{-4}\\left[\\frac{1-(1+0.02)^{-18}}{0.02}\\right].$$ Assim, $$P=7800.00(1+0.02)^4\\frac{0.02}{1-(1+0.02)^{-18}}\\approx 563.16.$$ Prestação: R\\$ 563,16. A carência eleva $P$ porque os juros capitalizam a dívida antes de começar a amortização.",
+      "estudo": {
+        "titulo": "Sistema PRICE com carência",
+        "texto": "A carência desloca a série no tempo. Como a dívida continua capitalizando antes do primeiro pagamento, a prestação aumenta.",
+        "formula": "$$SD=PMT\\cdot(1+i)^{-\\delta}\\cdot\\frac{1-(1+i)^{-n}}{i}$$",
+        "exemplo": "Se a primeira prestação, normalmente no mês 1, passa ao mês 3, o deslocamento adicional é $\\delta=2$."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI050",
+      "titulo": "Questão 50 - Lavadora",
+      "produto": "Nível Difícil: Sistema PRICE / SAF",
+      "nivel": "Difícil",
+      "imagem": "imagens/price/lavadora_sharp.webp",
+      "enunciado": "Uma compra de R\\$ 5.200,00 referente a um lavadora Sharp ES-HD63P será financiada pelo Sistema PRICE em 15 prestações mensais iguais. A instituição concede adiamento do início dos pagamentos: a primeira prestação vencerá no final do 4º mês após a compra. Durante todo o período sem pagamento, a dívida continua sendo atualizada à taxa composta de 2,1% ao mês. Não há tarifas adicionais. Como a série comum começaria no mês 1, existe um deslocamento adicional de $\\delta=3$ meses. Assinale a alternativa que apresenta corretamente a equivalência na data zero, o valor da prestação fixa e a interpretação do efeito da carência.",
+      "alternativas": [
+        "$5200.00=P\\left[\\frac{1-(1+0.021)^{-15}}{0.021}\\right]$, $P\\approx \\text{R\\$}\\,407{,}73$; a carência não altera a prestação.",
+        "$5200.00=P(1+0.021)^{-3}\\left[\\frac{1-(1+0.021)^{-15}}{0.021}\\right]$, $P\\approx \\text{R\\$}\\,433{,}96$; a carência eleva a prestação porque a dívida capitaliza antes da amortização.",
+        "$5200.00=P(1+0.021)^{3}\\left[\\frac{1-(1+0.021)^{-15}}{0.021}\\right]$, $P\\approx \\text{R\\$}\\,383{,}08$; a carência reduz a prestação.",
+        "$5200.00=P(1+0.021)^{-4}\\left[\\frac{1-(1+0.021)^{-15}}{0.021}\\right]$, $P\\approx \\text{R\\$}\\,443{,}07$; usa-se deslocamento de 4 meses.",
+        "$5200.00=P(1-3\\cdot 0.021)\\left[\\frac{1-(1+0.021)^{-15}}{0.021}\\right]$, $P\\approx \\text{R\\$}\\,433{,}41$; a carência é tratada por juros simples."
+      ],
+      "correta": 1,
+      "explicacao": "A equivalência na data zero é $$5200.00=\\sum_{t=4}^{18}\\frac{P}{(1+0.021)^t}.$$ Fatorando o deslocamento: $$5200.00=P(1+0.021)^{-3}\\left[\\frac{1-(1+0.021)^{-15}}{0.021}\\right].$$ Assim, $$P=5200.00(1+0.021)^3\\frac{0.021}{1-(1+0.021)^{-15}}\\approx 433.96.$$ Prestação: R\\$ 433,96. A carência eleva $P$ porque os juros capitalizam a dívida antes de começar a amortização.",
+      "estudo": {
+        "titulo": "Sistema PRICE com carência",
+        "texto": "A carência desloca a série no tempo. Como a dívida continua capitalizando antes do primeiro pagamento, a prestação aumenta.",
+        "formula": "$$SD=PMT\\cdot(1+i)^{-\\delta}\\cdot\\frac{1-(1+i)^{-n}}{i}$$",
+        "exemplo": "Se a primeira prestação, normalmente no mês 1, passa ao mês 3, o deslocamento adicional é $\\delta=2$."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI051",
+      "titulo": "Questão 51 - Televisor",
+      "produto": "Nível Difícil: Sistema PRICE / SAF",
+      "nivel": "Difícil",
+      "imagem": "imagens/price/televisor_samsung.webp",
+      "enunciado": "Uma compra de R\\$ 9.000,00 referente a um televisor Samsung será financiada pelo Sistema PRICE em 24 prestações mensais iguais. A instituição concede adiamento do início dos pagamentos: a primeira prestação vencerá no final do 6º mês após a compra. Durante todo o período sem pagamento, a dívida continua sendo atualizada à taxa composta de 1,6% ao mês. Não há tarifas adicionais. Como a série comum começaria no mês 1, existe um deslocamento adicional de $\\delta=5$ meses. Assinale a alternativa que apresenta corretamente a equivalência na data zero, o valor da prestação fixa e a interpretação do efeito da carência.",
+      "alternativas": [
+        "$9000.00=P\\left[\\frac{1-(1+0.016)^{-24}}{0.016}\\right]$, $P\\approx \\text{R\\$}\\,454{,}55$; a carência não altera a prestação.",
+        "$9000.00=P(1+0.016)^{5}\\left[\\frac{1-(1+0.016)^{-24}}{0.016}\\right]$, $P\\approx \\text{R\\$}\\,419{,}87$; a carência reduz a prestação.",
+        "$9000.00=P(1+0.016)^{-6}\\left[\\frac{1-(1+0.016)^{-24}}{0.016}\\right]$, $P\\approx \\text{R\\$}\\,499{,}97$; usa-se deslocamento de 6 meses.",
+        "$9000.00=P(1+0.016)^{-5}\\left[\\frac{1-(1+0.016)^{-24}}{0.016}\\right]$, $P\\approx \\text{R\\$}\\,492{,}10$; a carência eleva a prestação porque a dívida capitaliza antes da amortização.",
+        "$9000.00=P(1-5\\cdot 0.016)\\left[\\frac{1-(1+0.016)^{-24}}{0.016}\\right]$, $P\\approx \\text{R\\$}\\,490{,}92$; a carência é tratada por juros simples."
+      ],
+      "correta": 3,
+      "explicacao": "A equivalência na data zero é $$9000.00=\\sum_{t=6}^{29}\\frac{P}{(1+0.016)^t}.$$ Fatorando o deslocamento: $$9000.00=P(1+0.016)^{-5}\\left[\\frac{1-(1+0.016)^{-24}}{0.016}\\right].$$ Assim, $$P=9000.00(1+0.016)^5\\frac{0.016}{1-(1+0.016)^{-24}}\\approx 492.10.$$ Prestação: R\\$ 492,10. A carência eleva $P$ porque os juros capitalizam a dívida antes de começar a amortização.",
+      "estudo": {
+        "titulo": "Sistema PRICE com carência",
+        "texto": "A carência desloca a série no tempo. Como a dívida continua capitalizando antes do primeiro pagamento, a prestação aumenta.",
+        "formula": "$$SD=PMT\\cdot(1+i)^{-\\delta}\\cdot\\frac{1-(1+i)^{-n}}{i}$$",
+        "exemplo": "Se a primeira prestação, normalmente no mês 1, passa ao mês 3, o deslocamento adicional é $\\delta=2$."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI052",
+      "titulo": "Questão 52 - Bicicleta",
+      "produto": "Nível Difícil: Sistema PRICE / SAF",
+      "nivel": "Difícil",
+      "imagem": "imagens/price/bicicleta_mountain_bike.webp",
+      "enunciado": "Uma compra de R\\$ 6.000,00 referente a um bicicleta de montanha com suspensão integral será financiada pelo Sistema PRICE em 20 prestações mensais iguais. A instituição concede adiamento do início dos pagamentos: a primeira prestação vencerá no final do 3º mês após a compra. Durante todo o período sem pagamento, a dívida continua sendo atualizada à taxa composta de 1,5% ao mês. Não há tarifas adicionais. Como a série comum começaria no mês 1, existe um deslocamento adicional de $\\delta=2$ meses. Assinale a alternativa que apresenta corretamente a equivalência na data zero, o valor da prestação fixa e a interpretação do efeito da carência.",
+      "alternativas": [
+        "$6000.00=P(1+0.015)^{-2}\\left[\\frac{1-(1+0.015)^{-20}}{0.015}\\right]$, $P\\approx \\text{R\\$}\\,360{,}04$; a carência eleva a prestação porque a dívida capitaliza antes da amortização.",
+        "$6000.00=P\\left[\\frac{1-(1+0.015)^{-20}}{0.015}\\right]$, $P\\approx \\text{R\\$}\\,349{,}47$; a carência não altera a prestação.",
+        "$6000.00=P(1+0.015)^{2}\\left[\\frac{1-(1+0.015)^{-20}}{0.015}\\right]$, $P\\approx \\text{R\\$}\\,339{,}22$; a carência reduz a prestação.",
+        "$6000.00=P(1+0.015)^{-3}\\left[\\frac{1-(1+0.015)^{-20}}{0.015}\\right]$, $P\\approx \\text{R\\$}\\,365{,}44$; usa-se deslocamento de 3 meses.",
+        "$6000.00=P(1-2\\cdot 0.015)\\left[\\frac{1-(1+0.015)^{-20}}{0.015}\\right]$, $P\\approx \\text{R\\$}\\,359{,}96$; a carência é tratada por juros simples."
+      ],
+      "correta": 0,
+      "explicacao": "A equivalência na data zero é $$6000.00=\\sum_{t=3}^{22}\\frac{P}{(1+0.015)^t}.$$ Fatorando o deslocamento: $$6000.00=P(1+0.015)^{-2}\\left[\\frac{1-(1+0.015)^{-20}}{0.015}\\right].$$ Assim, $$P=6000.00(1+0.015)^2\\frac{0.015}{1-(1+0.015)^{-20}}\\approx 360.04.$$ Prestação: R\\$ 360,04. A carência eleva $P$ porque os juros capitalizam a dívida antes de começar a amortização.",
+      "estudo": {
+        "titulo": "Sistema PRICE com carência",
+        "texto": "A carência desloca a série no tempo. Como a dívida continua capitalizando antes do primeiro pagamento, a prestação aumenta.",
+        "formula": "$$SD=PMT\\cdot(1+i)^{-\\delta}\\cdot\\frac{1-(1+i)^{-n}}{i}$$",
+        "exemplo": "Se a primeira prestação, normalmente no mês 1, passa ao mês 3, o deslocamento adicional é $\\delta=2$."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI053",
+      "titulo": "Questão 53 - Motocicleta",
+      "produto": "Nível Difícil: Sistema PRICE / SAF",
+      "nivel": "Difícil",
+      "imagem": "imagens/price/motocicleta_honda_cb500.webp",
+      "enunciado": "Uma compra de R\\$ 28.000,00 referente a um motocicleta Honda CB 500 será financiada pelo Sistema PRICE em 36 prestações mensais iguais. A instituição concede adiamento do início dos pagamentos: a primeira prestação vencerá no final do 5º mês após a compra. Durante todo o período sem pagamento, a dívida continua sendo atualizada à taxa composta de 1,7% ao mês. Não há tarifas adicionais. Como a série comum começaria no mês 1, existe um deslocamento adicional de $\\delta=4$ meses. Assinale a alternativa que apresenta corretamente a equivalência na data zero, o valor da prestação fixa e a interpretação do efeito da carência.",
+      "alternativas": [
+        "$28000.00=P\\left[\\frac{1-(1+0.017)^{-36}}{0.017}\\right]$, $P\\approx \\text{R\\$}\\,1{.}046{,}30$; a carência não altera a prestação.",
+        "$28000.00=P(1+0.017)^{4}\\left[\\frac{1-(1+0.017)^{-36}}{0.017}\\right]$, $P\\approx \\text{R\\$}\\,978{,}07$; a carência reduz a prestação.",
+        "$28000.00=P(1+0.017)^{-4}\\left[\\frac{1-(1+0.017)^{-36}}{0.017}\\right]$, $P\\approx \\text{R\\$}\\,1{.}119{,}28$; a carência eleva a prestação porque a dívida capitaliza antes da amortização.",
+        "$28000.00=P(1+0.017)^{-5}\\left[\\frac{1-(1+0.017)^{-36}}{0.017}\\right]$, $P\\approx \\text{R\\$}\\,1{.}138{,}31$; usa-se deslocamento de 5 meses.",
+        "$28000.00=P(1-4\\cdot 0.017)\\left[\\frac{1-(1+0.017)^{-36}}{0.017}\\right]$, $P\\approx \\text{R\\$}\\,1{.}117{,}44$; a carência é tratada por juros simples."
+      ],
+      "correta": 2,
+      "explicacao": "A equivalência na data zero é $$28000.00=\\sum_{t=5}^{40}\\frac{P}{(1+0.017)^t}.$$ Fatorando o deslocamento: $$28000.00=P(1+0.017)^{-4}\\left[\\frac{1-(1+0.017)^{-36}}{0.017}\\right].$$ Assim, $$P=28000.00(1+0.017)^4\\frac{0.017}{1-(1+0.017)^{-36}}\\approx 1119.28.$$ Prestação: R\\$ 1.119,28. A carência eleva $P$ porque os juros capitalizam a dívida antes de começar a amortização.",
+      "estudo": {
+        "titulo": "Sistema PRICE com carência",
+        "texto": "A carência desloca a série no tempo. Como a dívida continua capitalizando antes do primeiro pagamento, a prestação aumenta.",
+        "formula": "$$SD=PMT\\cdot(1+i)^{-\\delta}\\cdot\\frac{1-(1+i)^{-n}}{i}$$",
+        "exemplo": "Se a primeira prestação, normalmente no mês 1, passa ao mês 3, o deslocamento adicional é $\\delta=2$."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI054",
+      "titulo": "Questão 54 - Console",
+      "produto": "Nível Difícil: Sistema PRICE / SAF",
+      "nivel": "Difícil",
+      "imagem": "imagens/price/console_playstation5.webp",
+      "enunciado": "Considere um financiamento de R\\$ 4.800,00 para a aquisição de um console PlayStation 5 com controle DualSense, pelo Sistema PRICE, à taxa de 3% ao mês. Para $n$ prestações, o valor mensal é $$P_n=P_v\\frac{i}{1-(1+i)^{-n}}.$$ Assinale a alternativa que apresenta corretamente os valores de $P_n$ para $n=12$, $n=60$ e $n=360$, o limite $\\lim_{n\\to\\infty}P_n$ e sua interpretação financeira.",
+      "alternativas": [
+        "$P_{12}\\approx \\text{R\\$}\\,482{,}22$; $P_{60}\\approx \\text{R\\$}\\,173{,}44$; $P_{360}\\approx \\text{R\\$}\\,144{,}00$; $\\lim_{n\\to\\infty}P_n=0$. A prestação pode ser reduzida indefinidamente até zerar.",
+        "$P_{12}\\approx \\text{R\\$}\\,400{,}00$; $P_{60}\\approx \\text{R\\$}\\,80{,}00$; $P_{360}\\approx \\text{R\\$}\\,13{,}33$; $\\lim_{n\\to\\infty}P_n=0$. O custo financeiro desaparece quando o prazo cresce.",
+        "$P_{12}\\approx \\text{R\\$}\\,482{,}22$; $P_{60}\\approx \\text{R\\$}\\,173{,}44$; $P_{360}\\approx \\text{R\\$}\\,144{,}00$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,144{,}00$. A amortização inicial tende ao valor total da prestação.",
+        "$P_{360}\\approx \\text{R\\$}\\,144{,}00$; $P_{60}\\approx \\text{R\\$}\\,173{,}44$; $P_{12}\\approx \\text{R\\$}\\,482{,}22$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,160{.}000{,}00$. O limite corresponde ao principal dividido pela taxa.",
+        "$P_{12}\\approx \\text{R\\$}\\,482{,}22$; $P_{60}\\approx \\text{R\\$}\\,173{,}44$; $P_{360}\\approx \\text{R\\$}\\,144{,}00$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,144{,}00$. A amortização inicial tende a zero, e o limite corresponde aos juros do primeiro mês."
+      ],
+      "correta": 4,
+      "explicacao": "$P_{12}\\approx \\text{R\\$}\\,482{,}22$; $P_{60}\\approx \\text{R\\$}\\,173{,}44$; $P_{360}\\approx \\text{R\\$}\\,144{,}00$. Como $(1+i)^{-n}\\to0$, $$\\lim_{n\\to\\infty}P_n=P_v\\,i=4800.00\\cdot 0.03=144.00.$$ O piso teórico da prestação é R\\$ 144,00, exatamente o juro do primeiro mês. Quando $P_n$ se aproxima desse valor, a amortização inicial $A_1=P_n-iP_v$ tende a zero. No limite, paga-se apenas o juro periódico e o principal não diminui.",
+      "estudo": {
+        "titulo": "Prazo longo e limite da prestação",
+        "texto": "Quando o prazo cresce muito, a parcela se aproxima do juro do primeiro período. A amortização inicial tende a zero.",
+        "formula": "$$PMT_n=\\frac{SD\\cdot i}{1-(1+i)^{-n}}\\qquad\\lim_{n\\to\\infty}PMT_n=SD\\cdot i$$",
+        "exemplo": "Com $SD=\\text{R\\$ }7.000{,}00$ e $i=2\\%$ ao mês, o piso teórico da prestação é R\\$ 140,00, que corresponde aos juros do primeiro mês."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI055",
+      "titulo": "Questão 55 - Câmera",
+      "produto": "Nível Difícil: Sistema PRICE / SAF",
+      "nivel": "Difícil",
+      "imagem": "imagens/price/camera_canon_eos5d.webp",
+      "enunciado": "Considere um financiamento de R\\$ 12.500,00 para a aquisição de um câmera Canon EOS 5D Mark IV, pelo Sistema PRICE, à taxa de 1,8% ao mês. Para $n$ prestações, o valor mensal é $$P_n=P_v\\frac{i}{1-(1+i)^{-n}}.$$ Assinale a alternativa que apresenta corretamente os valores de $P_n$ para $n=18$, $n=120$ e $n=600$, o limite $\\lim_{n\\to\\infty}P_n$ e sua interpretação financeira.",
+      "alternativas": [
+        "$P_{18}\\approx \\text{R\\$}\\,819{,}19$; $P_{120}\\approx \\text{R\\$}\\,254{,}98$; $P_{600}\\approx \\text{R\\$}\\,225{,}01$; $\\lim_{n\\to\\infty}P_n=0$. A prestação pode ser reduzida indefinidamente até zerar.",
+        "$P_{18}\\approx \\text{R\\$}\\,819{,}19$; $P_{120}\\approx \\text{R\\$}\\,254{,}98$; $P_{600}\\approx \\text{R\\$}\\,225{,}01$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,225{,}00$. A amortização inicial tende a zero, e o limite corresponde aos juros do primeiro mês.",
+        "$P_{18}\\approx \\text{R\\$}\\,694{,}44$; $P_{120}\\approx \\text{R\\$}\\,104{,}17$; $P_{600}\\approx \\text{R\\$}\\,20{,}83$; $\\lim_{n\\to\\infty}P_n=0$. O custo financeiro desaparece quando o prazo cresce.",
+        "$P_{18}\\approx \\text{R\\$}\\,819{,}19$; $P_{120}\\approx \\text{R\\$}\\,254{,}98$; $P_{600}\\approx \\text{R\\$}\\,225{,}01$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,225{,}00$. A amortização inicial tende ao valor total da prestação.",
+        "$P_{600}\\approx \\text{R\\$}\\,225{,}01$; $P_{120}\\approx \\text{R\\$}\\,254{,}98$; $P_{18}\\approx \\text{R\\$}\\,819{,}19$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,694{.}444{,}44$. O limite corresponde ao principal dividido pela taxa."
+      ],
+      "correta": 1,
+      "explicacao": "$P_{18}\\approx \\text{R\\$}\\,819{,}19$; $P_{120}\\approx \\text{R\\$}\\,254{,}98$; $P_{600}\\approx \\text{R\\$}\\,225{,}01$. Como $(1+i)^{-n}\\to0$, $$\\lim_{n\\to\\infty}P_n=P_v\\,i=12500.00\\cdot 0.018=225.00.$$ O piso teórico da prestação é R\\$ 225,00, exatamente o juro do primeiro mês. Quando $P_n$ se aproxima desse valor, a amortização inicial $A_1=P_n-iP_v$ tende a zero. No limite, paga-se apenas o juro periódico e o principal não diminui.",
+      "estudo": {
+        "titulo": "Prazo longo e limite da prestação",
+        "texto": "Quando o prazo cresce muito, a parcela se aproxima do juro do primeiro período. A amortização inicial tende a zero.",
+        "formula": "$$PMT_n=\\frac{SD\\cdot i}{1-(1+i)^{-n}}\\qquad\\lim_{n\\to\\infty}PMT_n=SD\\cdot i$$",
+        "exemplo": "Com $SD=\\text{R\\$ }7.000{,}00$ e $i=2\\%$ ao mês, o piso teórico da prestação é R\\$ 140,00, que corresponde aos juros do primeiro mês."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI056",
+      "titulo": "Questão 56 - Ar-condicionado",
+      "produto": "Nível Difícil: Sistema PRICE / SAF",
+      "nivel": "Difícil",
+      "imagem": "imagens/price/ar_condicionado_panasonic.webp",
+      "enunciado": "Considere um financiamento de R\\$ 8.000,00 para a aquisição de um condicionador de ar Panasonic CS-C10KJ2, pelo Sistema PRICE, à taxa de 2% ao mês. Para $n$ prestações, o valor mensal é $$P_n=P_v\\frac{i}{1-(1+i)^{-n}}.$$ Assinale a alternativa que apresenta corretamente os valores de $P_n$ para $n=12$, $n=72$ e $n=480$, o limite $\\lim_{n\\to\\infty}P_n$ e sua interpretação financeira.",
+      "alternativas": [
+        "$P_{12}\\approx \\text{R\\$}\\,756{,}48$; $P_{72}\\approx \\text{R\\$}\\,210{,}61$; $P_{480}\\approx \\text{R\\$}\\,160{,}01$; $\\lim_{n\\to\\infty}P_n=0$. A prestação pode ser reduzida indefinidamente até zerar.",
+        "$P_{12}\\approx \\text{R\\$}\\,666{,}67$; $P_{72}\\approx \\text{R\\$}\\,111{,}11$; $P_{480}\\approx \\text{R\\$}\\,16{,}67$; $\\lim_{n\\to\\infty}P_n=0$. O custo financeiro desaparece quando o prazo cresce.",
+        "$P_{12}\\approx \\text{R\\$}\\,756{,}48$; $P_{72}\\approx \\text{R\\$}\\,210{,}61$; $P_{480}\\approx \\text{R\\$}\\,160{,}01$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,160{,}00$. A amortização inicial tende ao valor total da prestação.",
+        "$P_{12}\\approx \\text{R\\$}\\,756{,}48$; $P_{72}\\approx \\text{R\\$}\\,210{,}61$; $P_{480}\\approx \\text{R\\$}\\,160{,}01$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,160{,}00$. A amortização inicial tende a zero, e o limite corresponde aos juros do primeiro mês.",
+        "$P_{480}\\approx \\text{R\\$}\\,160{,}01$; $P_{72}\\approx \\text{R\\$}\\,210{,}61$; $P_{12}\\approx \\text{R\\$}\\,756{,}48$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,400{.}000{,}00$. O limite corresponde ao principal dividido pela taxa."
+      ],
+      "correta": 3,
+      "explicacao": "$P_{12}\\approx \\text{R\\$}\\,756{,}48$; $P_{72}\\approx \\text{R\\$}\\,210{,}61$; $P_{480}\\approx \\text{R\\$}\\,160{,}01$. Como $(1+i)^{-n}\\to0$, $$\\lim_{n\\to\\infty}P_n=P_v\\,i=8000.00\\cdot 0.02=160.00.$$ O piso teórico da prestação é R\\$ 160,00, exatamente o juro do primeiro mês. Quando $P_n$ se aproxima desse valor, a amortização inicial $A_1=P_n-iP_v$ tende a zero. No limite, paga-se apenas o juro periódico e o principal não diminui.",
+      "estudo": {
+        "titulo": "Prazo longo e limite da prestação",
+        "texto": "Quando o prazo cresce muito, a parcela se aproxima do juro do primeiro período. A amortização inicial tende a zero.",
+        "formula": "$$PMT_n=\\frac{SD\\cdot i}{1-(1+i)^{-n}}\\qquad\\lim_{n\\to\\infty}PMT_n=SD\\cdot i$$",
+        "exemplo": "Com $SD=\\text{R\\$ }7.000{,}00$ e $i=2\\%$ ao mês, o piso teórico da prestação é R\\$ 140,00, que corresponde aos juros do primeiro mês."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI057",
+      "titulo": "Questão 57 - Violão",
+      "produto": "Nível Difícil: Sistema PRICE / SAF",
+      "nivel": "Difícil",
+      "imagem": "imagens/price/violao_yamaha_fgx04.webp",
+      "enunciado": "Considere um financiamento de R\\$ 4.500,00 para a aquisição de um violão Yamaha FGX04, pelo Sistema PRICE, à taxa de 1,5% ao mês. Para $n$ prestações, o valor mensal é $$P_n=P_v\\frac{i}{1-(1+i)^{-n}}.$$ Assinale a alternativa que apresenta corretamente os valores de $P_n$ para $n=10$, $n=100$ e $n=600$, o limite $\\lim_{n\\to\\infty}P_n$ e sua interpretação financeira.",
+      "alternativas": [
+        "$P_{10}\\approx \\text{R\\$}\\,487{,}95$; $P_{100}\\approx \\text{R\\$}\\,87{,}17$; $P_{600}\\approx \\text{R\\$}\\,67{,}51$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,67{,}50$. A amortização inicial tende a zero, e o limite corresponde aos juros do primeiro mês.",
+        "$P_{10}\\approx \\text{R\\$}\\,487{,}95$; $P_{100}\\approx \\text{R\\$}\\,87{,}17$; $P_{600}\\approx \\text{R\\$}\\,67{,}51$; $\\lim_{n\\to\\infty}P_n=0$. A prestação pode ser reduzida indefinidamente até zerar.",
+        "$P_{10}\\approx \\text{R\\$}\\,450{,}00$; $P_{100}\\approx \\text{R\\$}\\,45{,}00$; $P_{600}\\approx \\text{R\\$}\\,7{,}50$; $\\lim_{n\\to\\infty}P_n=0$. O custo financeiro desaparece quando o prazo cresce.",
+        "$P_{10}\\approx \\text{R\\$}\\,487{,}95$; $P_{100}\\approx \\text{R\\$}\\,87{,}17$; $P_{600}\\approx \\text{R\\$}\\,67{,}51$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,67{,}50$. A amortização inicial tende ao valor total da prestação.",
+        "$P_{600}\\approx \\text{R\\$}\\,67{,}51$; $P_{100}\\approx \\text{R\\$}\\,87{,}17$; $P_{10}\\approx \\text{R\\$}\\,487{,}95$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,300{.}000{,}00$. O limite corresponde ao principal dividido pela taxa."
+      ],
+      "correta": 0,
+      "explicacao": "$P_{10}\\approx \\text{R\\$}\\,487{,}95$; $P_{100}\\approx \\text{R\\$}\\,87{,}17$; $P_{600}\\approx \\text{R\\$}\\,67{,}51$. Como $(1+i)^{-n}\\to0$, $$\\lim_{n\\to\\infty}P_n=P_v\\,i=4500.00\\cdot 0.015=67.50.$$ O piso teórico da prestação é R\\$ 67,50, exatamente o juro do primeiro mês. Quando $P_n$ se aproxima desse valor, a amortização inicial $A_1=P_n-iP_v$ tende a zero. No limite, paga-se apenas o juro periódico e o principal não diminui.",
+      "estudo": {
+        "titulo": "Prazo longo e limite da prestação",
+        "texto": "Quando o prazo cresce muito, a parcela se aproxima do juro do primeiro período. A amortização inicial tende a zero.",
+        "formula": "$$PMT_n=\\frac{SD\\cdot i}{1-(1+i)^{-n}}\\qquad\\lim_{n\\to\\infty}PMT_n=SD\\cdot i$$",
+        "exemplo": "Com $SD=\\text{R\\$ }7.000{,}00$ e $i=2\\%$ ao mês, o piso teórico da prestação é R\\$ 140,00, que corresponde aos juros do primeiro mês."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI058",
+      "titulo": "Questão 58 - Patinete elétrico",
+      "produto": "Nível Difícil: Sistema PRICE / SAF",
+      "nivel": "Difícil",
+      "imagem": "imagens/price/patinete_eletrico.webp",
+      "enunciado": "Considere um financiamento de R\\$ 6.200,00 para a aquisição de um patinete elétrico urbano, pelo Sistema PRICE, à taxa de 2,2% ao mês. Para $n$ prestações, o valor mensal é $$P_n=P_v\\frac{i}{1-(1+i)^{-n}}.$$ Assinale a alternativa que apresenta corretamente os valores de $P_n$ para $n=15$, $n=120$ e $n=480$, o limite $\\lim_{n\\to\\infty}P_n$ e sua interpretação financeira.",
+      "alternativas": [
+        "$P_{15}\\approx \\text{R\\$}\\,489{,}77$; $P_{120}\\approx \\text{R\\$}\\,147{,}21$; $P_{480}\\approx \\text{R\\$}\\,136{,}40$; $\\lim_{n\\to\\infty}P_n=0$. A prestação pode ser reduzida indefinidamente até zerar.",
+        "$P_{15}\\approx \\text{R\\$}\\,413{,}33$; $P_{120}\\approx \\text{R\\$}\\,51{,}67$; $P_{480}\\approx \\text{R\\$}\\,12{,}92$; $\\lim_{n\\to\\infty}P_n=0$. O custo financeiro desaparece quando o prazo cresce.",
+        "$P_{15}\\approx \\text{R\\$}\\,489{,}77$; $P_{120}\\approx \\text{R\\$}\\,147{,}21$; $P_{480}\\approx \\text{R\\$}\\,136{,}40$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,136{,}40$. A amortização inicial tende a zero, e o limite corresponde aos juros do primeiro mês.",
+        "$P_{15}\\approx \\text{R\\$}\\,489{,}77$; $P_{120}\\approx \\text{R\\$}\\,147{,}21$; $P_{480}\\approx \\text{R\\$}\\,136{,}40$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,136{,}40$. A amortização inicial tende ao valor total da prestação.",
+        "$P_{480}\\approx \\text{R\\$}\\,136{,}40$; $P_{120}\\approx \\text{R\\$}\\,147{,}21$; $P_{15}\\approx \\text{R\\$}\\,489{,}77$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,281{.}818{,}18$. O limite corresponde ao principal dividido pela taxa."
+      ],
+      "correta": 2,
+      "explicacao": "$P_{15}\\approx \\text{R\\$}\\,489{,}77$; $P_{120}\\approx \\text{R\\$}\\,147{,}21$; $P_{480}\\approx \\text{R\\$}\\,136{,}40$. Como $(1+i)^{-n}\\to0$, $$\\lim_{n\\to\\infty}P_n=P_v\\,i=6200.00\\cdot 0.022=136.40.$$ O piso teórico da prestação é R\\$ 136,40, exatamente o juro do primeiro mês. Quando $P_n$ se aproxima desse valor, a amortização inicial $A_1=P_n-iP_v$ tende a zero. No limite, paga-se apenas o juro periódico e o principal não diminui.",
+      "estudo": {
+        "titulo": "Prazo longo e limite da prestação",
+        "texto": "Quando o prazo cresce muito, a parcela se aproxima do juro do primeiro período. A amortização inicial tende a zero.",
+        "formula": "$$PMT_n=\\frac{SD\\cdot i}{1-(1+i)^{-n}}\\qquad\\lim_{n\\to\\infty}PMT_n=SD\\cdot i$$",
+        "exemplo": "Com $SD=\\text{R\\$ }7.000{,}00$ e $i=2\\%$ ao mês, o piso teórico da prestação é R\\$ 140,00, que corresponde aos juros do primeiro mês."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI059",
+      "titulo": "Questão 59 - Robô aspirador",
+      "produto": "Nível Difícil: Sistema PRICE / SAF",
+      "nivel": "Difícil",
+      "imagem": "imagens/price/robo_aspirador_xiaomi.webp",
+      "enunciado": "Considere um financiamento de R\\$ 3.200,00 para a aquisição de um robô aspirador Xiaomi Mi Robot, pelo Sistema PRICE, à taxa de 2,5% ao mês. Para $n$ prestações, o valor mensal é $$P_n=P_v\\frac{i}{1-(1+i)^{-n}}.$$ Assinale a alternativa que apresenta corretamente os valores de $P_n$ para $n=8$, $n=60$ e $n=360$, o limite $\\lim_{n\\to\\infty}P_n$ e sua interpretação financeira.",
+      "alternativas": [
+        "$P_{8}\\approx \\text{R\\$}\\,446{,}30$; $P_{60}\\approx \\text{R\\$}\\,103{,}53$; $P_{360}\\approx \\text{R\\$}\\,80{,}01$; $\\lim_{n\\to\\infty}P_n=0$. A prestação pode ser reduzida indefinidamente até zerar.",
+        "$P_{8}\\approx \\text{R\\$}\\,400{,}00$; $P_{60}\\approx \\text{R\\$}\\,53{,}33$; $P_{360}\\approx \\text{R\\$}\\,8{,}89$; $\\lim_{n\\to\\infty}P_n=0$. O custo financeiro desaparece quando o prazo cresce.",
+        "$P_{8}\\approx \\text{R\\$}\\,446{,}30$; $P_{60}\\approx \\text{R\\$}\\,103{,}53$; $P_{360}\\approx \\text{R\\$}\\,80{,}01$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,80{,}00$. A amortização inicial tende ao valor total da prestação.",
+        "$P_{360}\\approx \\text{R\\$}\\,80{,}01$; $P_{60}\\approx \\text{R\\$}\\,103{,}53$; $P_{8}\\approx \\text{R\\$}\\,446{,}30$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,128{.}000{,}00$. O limite corresponde ao principal dividido pela taxa.",
+        "$P_{8}\\approx \\text{R\\$}\\,446{,}30$; $P_{60}\\approx \\text{R\\$}\\,103{,}53$; $P_{360}\\approx \\text{R\\$}\\,80{,}01$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,80{,}00$. A amortização inicial tende a zero, e o limite corresponde aos juros do primeiro mês."
+      ],
+      "correta": 4,
+      "explicacao": "$P_{8}\\approx \\text{R\\$}\\,446{,}30$; $P_{60}\\approx \\text{R\\$}\\,103{,}53$; $P_{360}\\approx \\text{R\\$}\\,80{,}01$. Como $(1+i)^{-n}\\to0$, $$\\lim_{n\\to\\infty}P_n=P_v\\,i=3200.00\\cdot 0.025=80.00.$$ O piso teórico da prestação é R\\$ 80,00, exatamente o juro do primeiro mês. Quando $P_n$ se aproxima desse valor, a amortização inicial $A_1=P_n-iP_v$ tende a zero. No limite, paga-se apenas o juro periódico e o principal não diminui.",
+      "estudo": {
+        "titulo": "Prazo longo e limite da prestação",
+        "texto": "Quando o prazo cresce muito, a parcela se aproxima do juro do primeiro período. A amortização inicial tende a zero.",
+        "formula": "$$PMT_n=\\frac{SD\\cdot i}{1-(1+i)^{-n}}\\qquad\\lim_{n\\to\\infty}PMT_n=SD\\cdot i$$",
+        "exemplo": "Com $SD=\\text{R\\$ }7.000{,}00$ e $i=2\\%$ ao mês, o piso teórico da prestação é R\\$ 140,00, que corresponde aos juros do primeiro mês."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    },
+    {
+      "id": "PRI060",
+      "titulo": "Questão 60 - Micro-ondas",
+      "produto": "Nível Difícil: Sistema PRICE / SAF",
+      "nivel": "Difícil",
+      "imagem": "imagens/price/microondas_daewoo.webp",
+      "enunciado": "Considere um financiamento de R\\$ 1.800,00 para a aquisição de um forno de micro-ondas Daewoo KOR-1N0A, pelo Sistema PRICE, à taxa de 2,8% ao mês. Para $n$ prestações, o valor mensal é $$P_n=P_v\\frac{i}{1-(1+i)^{-n}}.$$ Assinale a alternativa que apresenta corretamente os valores de $P_n$ para $n=6$, $n=48$ e $n=360$, o limite $\\lim_{n\\to\\infty}P_n$ e sua interpretação financeira.",
+      "alternativas": [
+        "$P_{6}\\approx \\text{R\\$}\\,330{,}08$; $P_{48}\\approx \\text{R\\$}\\,68{,}63$; $P_{360}\\approx \\text{R\\$}\\,50{,}40$; $\\lim_{n\\to\\infty}P_n=0$. A prestação pode ser reduzida indefinidamente até zerar.",
+        "$P_{6}\\approx \\text{R\\$}\\,330{,}08$; $P_{48}\\approx \\text{R\\$}\\,68{,}63$; $P_{360}\\approx \\text{R\\$}\\,50{,}40$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,50{,}40$. A amortização inicial tende a zero, e o limite corresponde aos juros do primeiro mês.",
+        "$P_{6}\\approx \\text{R\\$}\\,300{,}00$; $P_{48}\\approx \\text{R\\$}\\,37{,}50$; $P_{360}\\approx \\text{R\\$}\\,5{,}00$; $\\lim_{n\\to\\infty}P_n=0$. O custo financeiro desaparece quando o prazo cresce.",
+        "$P_{6}\\approx \\text{R\\$}\\,330{,}08$; $P_{48}\\approx \\text{R\\$}\\,68{,}63$; $P_{360}\\approx \\text{R\\$}\\,50{,}40$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,50{,}40$. A amortização inicial tende ao valor total da prestação.",
+        "$P_{360}\\approx \\text{R\\$}\\,50{,}40$; $P_{48}\\approx \\text{R\\$}\\,68{,}63$; $P_{6}\\approx \\text{R\\$}\\,330{,}08$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,64{.}285{,}71$. O limite corresponde ao principal dividido pela taxa."
+      ],
+      "correta": 1,
+      "explicacao": "$P_{6}\\approx \\text{R\\$}\\,330{,}08$; $P_{48}\\approx \\text{R\\$}\\,68{,}63$; $P_{360}\\approx \\text{R\\$}\\,50{,}40$. Como $(1+i)^{-n}\\to0$, $$\\lim_{n\\to\\infty}P_n=P_v\\,i=1800.00\\cdot 0.028=50.40.$$ O piso teórico da prestação é R\\$ 50,40, exatamente o juro do primeiro mês. Quando $P_n$ se aproxima desse valor, a amortização inicial $A_1=P_n-iP_v$ tende a zero. No limite, paga-se apenas o juro periódico e o principal não diminui.",
+      "estudo": {
+        "titulo": "Prazo longo e limite da prestação",
+        "texto": "Quando o prazo cresce muito, a parcela se aproxima do juro do primeiro período. A amortização inicial tende a zero.",
+        "formula": "$$PMT_n=\\frac{SD\\cdot i}{1-(1+i)^{-n}}\\qquad\\lim_{n\\to\\infty}PMT_n=SD\\cdot i$$",
+        "exemplo": "Com $SD=\\text{R\\$ }7.000{,}00$ e $i=2\\%$ ao mês, o piso teórico da prestação é R\\$ 140,00, que corresponde aos juros do primeiro mês."
+      },
+      "fonte": {
+        "loja": "Wikimedia Commons, imagem didática do produto",
+        "url": "Arquivo local incluído no aplicativo",
+        "consulta": "06/08/2026"
+      }
+    }
+  ]
+}

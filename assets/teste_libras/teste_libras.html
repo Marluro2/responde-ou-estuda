@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teste Libras - Responda ou Estuda</title>
+<!--
+  TESTE LIBRAS (experimental) - veja TESTE_LIBRAS.txt na pasta do jogo.
+
+  MODO DIRETO (padrão): a página mostra o avatar do VLibras em um quadro
+  próprio e envia o texto ao tradutor público do VLibras. Foi criado porque o
+  VLibras Widget 7.x fica preso em "carregando" (o widget desiste antes de o
+  avatar terminar de iniciar).
+
+  MODO WIDGET (comparação): acrescente ?modo=widget ao endereço. Para escolher
+  uma versão anterior do widget: ?modo=widget&versao=7.9.1
+
+  Requer internet. Serviços usados (VLibras, governo federal):
+    avatar:     https://vlibras.gov.br/app/unity/index.html
+    tradutor:   https://traducao2.vlibras.gov.br/translate
+    dicionário: https://dicionario2.vlibras.gov.br/2018.3.1/WEBGL/
+-->
+<style>
+  :root {
+    --fundo: #06143C;
+    --cartao: #092B66;
+    --cartao-2: #0B4B94;
+    --ciano: #59F4FF;
+    --amarelo: #FFD34E;
+    --verde: #45E59A;
+    --texto: #FFFFFF;
+    --suave: #C7F3FF;
+    --largura-avatar: 340px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: linear-gradient(180deg, var(--fundo), #073B7A);
+    color: var(--texto);
+    min-height: 100vh;
+  }
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--largura-avatar);
+    gap: 18px;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px 16px 60px;
+  }
+  body.modo-widget .layout { grid-template-columns: minmax(0, 1fr); max-width: 980px; }
+  body.modo-widget #painel-avatar, body.modo-widget .botao-traduzir { display: none; }
+  h1 { color: var(--amarelo); margin: 0 0 4px; font-size: 26px; }
+  .selo {
+    display: inline-block; background: var(--amarelo); color: var(--fundo);
+    font-weight: 700; font-size: 12px; padding: 4px 10px; border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  .instrucoes {
+    background: var(--cartao); border: 2px solid var(--ciano);
+    border-radius: 14px; padding: 12px 16px; margin: 14px 0 20px;
+    color: var(--suave); line-height: 1.5;
+  }
+  .instrucoes b { color: var(--texto); }
+  h2 {
+    color: var(--ciano); font-size: 14px; letter-spacing: 1px;
+    text-transform: uppercase; margin: 22px 0 8px;
+  }
+  .cartao {
+    background: var(--cartao); border: 1.5px solid #245F96;
+    border-radius: 14px; padding: 12px 16px; margin-bottom: 10px;
+  }
+  .cartao.jogo { border: 2px solid var(--amarelo); }
+  .cartao.tocando { border-color: var(--verde); box-shadow: 0 0 0 2px var(--verde) inset; }
+  .rotulo { color: var(--amarelo); font-size: 12px; font-weight: 700; margin: 0 0 4px; }
+  .texto { font-size: 18px; line-height: 1.5; margin: 0; }
+  .glosa {
+    margin: 8px 0 0; font-size: 13px; color: var(--verde);
+    font-family: Consolas, "Courier New", monospace; display: none;
+  }
+  .glosa.visivel { display: block; }
+  button {
+    background: var(--amarelo); color: var(--fundo);
+    border: 0; border-radius: 10px; padding: 9px 14px;
+    font-weight: 700; font-size: 14px; cursor: pointer;
+  }
+  button:disabled { opacity: .5; cursor: not-allowed; }
+  .botao-traduzir { margin-top: 10px; }
+  textarea {
+    width: 100%; min-height: 90px; font-size: 16px; padding: 10px;
+    border-radius: 10px; border: 1.5px solid var(--ciano);
+    background: #03163B; color: var(--texto); margin-bottom: 8px;
+  }
+  .aviso { color: #FF9EB2; font-weight: 700; }
+  #sem-texto-jogo { color: var(--suave); font-style: italic; }
+
+  /* Painel fixo do avatar (modo direto) */
+  #painel-avatar {
+    position: sticky; top: 16px; align-self: start;
+    background: #FFFFFF; border: 3px solid var(--amarelo);
+    border-radius: 16px; overflow: hidden;
+  }
+  #painel-avatar iframe { display: block; width: 100%; height: 440px; border: 0; }
+  #estado-avatar {
+    background: var(--cartao); color: var(--suave);
+    padding: 10px 12px; font-size: 13px; line-height: 1.4;
+  }
+  #estado-avatar b { color: var(--texto); }
+  .controles-avatar { display: flex; gap: 8px; padding: 0 12px 12px; background: var(--cartao); flex-wrap: wrap; }
+  .controles-avatar button { font-size: 12px; padding: 7px 10px; }
+
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: minmax(0, 1fr); }
+    #painel-avatar { position: static; order: -1; }
+    #painel-avatar iframe { height: 360px; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+<main>
+  <span class="selo" id="selo">TESTE LIBRAS</span>
+  <h1>Tradução para Libras com VLibras</h1>
+
+  <div class="instrucoes" id="instrucoes-direto">
+    <b>Como testar:</b><br>
+    1. Aguarde o avatar aparecer no quadro à direita (na primeira vez pode levar até 1 minuto).<br>
+    2. Clique em <b>TRADUZIR EM LIBRAS</b> embaixo de um texto.<br>
+    3. O avatar sinaliza o texto. Abaixo do texto aparece a <b>glosa</b>: a sequência de
+    sinais que o VLibras escolheu (útil para avaliar a tradução).<br>
+    <span class="aviso" id="aviso"></span>
+  </div>
+
+  <div class="instrucoes" id="instrucoes-widget" hidden>
+    <b>Modo widget (comparação):</b> clique no botão azul do VLibras, no lado direito da
+    tela, e depois clique em um texto.<br>
+    <span class="aviso" id="aviso-widget"></span>
+  </div>
+
+  <h2>Texto enviado pelo jogo</h2>
+  <div id="area-jogo">
+    <p id="sem-texto-jogo">
+      Nenhum texto recebido. No modo administrador, abra uma questão e clique em
+      LIBRAS (TESTE) para enviá-la a esta página.
+    </p>
+  </div>
+
+  <h2>Exemplos fixos para comparar</h2>
+  <div id="area-exemplos"></div>
+
+  <h2>Testar outro texto</h2>
+  <div class="cartao">
+    <p class="rotulo">COLE OU DIGITE UM TEXTO</p>
+    <textarea id="texto-livre" placeholder="Ex.: Estudar acrescenta R$ 50,00 ao saldo."></textarea>
+    <button type="button" id="botao-livre">MOSTRAR PARA TRADUZIR</button>
+  </div>
+  <div id="area-livre"></div>
+</main>
+
+<aside id="painel-avatar" aria-label="Avatar do VLibras">
+  <iframe id="quadro-avatar" title="Avatar do VLibras" allow="fullscreen"></iframe>
+  <div id="estado-avatar"><b>Avatar:</b> <span id="estado-texto">preparando…</span></div>
+  <div class="controles-avatar">
+    <button type="button" id="botao-repetir" disabled>REPETIR</button>
+    <button type="button" id="botao-parar" disabled>PARAR</button>
+    <button type="button" id="botao-lento">VELOCIDADE: NORMAL</button>
+  </div>
+</aside>
+</div>
+
+<script>
+  var EXEMPLOS = [
+    ["PORCENTAGEM · PCT001 · ENUNCIADO",
+     "Na Apple, o iPhone 16 de 128 GB aparece por R$ 6.799,00. Em uma compra à vista com 10% de desconto, qual será o valor pago?"],
+    ["PORCENTAGEM · PCT001 · RESOLUÇÃO",
+     "10% de R$ 6.799,00 são R$ 679,90. Então: R$ 6.799,00 menos R$ 679,90 é igual a R$ 6.119,10."],
+    ["JUROS · JUR001 · ENUNCIADO",
+     "Uma pessoa tomou R$ 1.200,00 emprestados a juros simples de 2% ao mês por 5 meses. Qual será o valor total dos juros?"],
+    ["JUROS · CONCEITO",
+     "Nos juros simples, a taxa incide sempre sobre o valor inicialmente emprestado."],
+    ["PRICE · PRI031 · ENUNCIADO (com fórmula escrita por extenso)",
+     "Um notebook de R$ 6.800,00 será financiado pelo PRICE em 12 prestações mensais, a 2% ao mês. A primeira vence em um mês. Use PMT igual a SD vezes i vezes 1 mais i elevado a n, dividido por 1 mais i elevado a n, menos 1, e assinale a prestação fixa."],
+    ["PRICE · CONCEITO",
+     "No Sistema PRICE as prestações são fixas. Os juros diminuem a cada mês e a amortização do saldo devedor aumenta."]
+  ];
+
+  var parametros = new URLSearchParams(location.search);
+  var MODO_WIDGET = parametros.get("modo") === "widget";
+
+  // ------------------------------------------------------------------
+  // Cartões de texto
+  // ------------------------------------------------------------------
+  function criarCartao(rotulo, texto, destino, destaque, noInicio) {
+    var cartao = document.createElement("div");
+    cartao.className = "cartao" + (destaque ? " jogo" : "");
+    if (rotulo) {
+      var p = document.createElement("p");
+      p.className = "rotulo";
+      p.textContent = rotulo;
+      cartao.appendChild(p);
+    }
+    var t = document.createElement("p");
+    t.className = "texto";
+    t.textContent = texto;
+    cartao.appendChild(t);
+    var glosa = document.createElement("p");
+    glosa.className = "glosa";
+    cartao.appendChild(glosa);
+    var botao = document.createElement("button");
+    botao.type = "button";
+    botao.className = "botao-traduzir";
+    botao.textContent = "TRADUZIR EM LIBRAS";
+    botao.addEventListener("click", function () { traduzir(texto, cartao, glosa, botao); });
+    cartao.appendChild(botao);
+    if (noInicio) destino.prepend(cartao); else destino.appendChild(cartao);
+  }
+
+  (function textoDoJogo() {
+    var dados = new URLSearchParams(location.hash.slice(1));
+    var area = document.getElementById("area-jogo");
+    var recebido = false;
+    [["enunciado", "ENUNCIADO"], ["resolucao", "RESOLUÇÃO"]].forEach(function (campo) {
+      var valor = dados.get(campo[0]);
+      if (!valor) return;
+      recebido = true;
+      criarCartao((dados.get("id") || "QUESTÃO") + " · " + campo[1], valor, area, true);
+    });
+    if (recebido) document.getElementById("sem-texto-jogo").remove();
+  })();
+
+  EXEMPLOS.forEach(function (e) {
+    criarCartao(e[0], e[1], document.getElementById("area-exemplos"), false);
+  });
+
+  document.getElementById("botao-livre").addEventListener("click", function () {
+    var valor = document.getElementById("texto-livre").value.trim();
+    if (valor) criarCartao("TEXTO DIGITADO", valor, document.getElementById("area-livre"), false, true);
+  });
+
+  // ------------------------------------------------------------------
+  // MODO DIRETO: avatar em quadro próprio + tradutor do VLibras
+  // ------------------------------------------------------------------
+  var URL_AVATAR = "https://vlibras.gov.br/app/unity/index.html";
+  var URL_TRADUTOR = "https://traducao2.vlibras.gov.br/translate";
+  var URL_DICIONARIO = "https://dicionario2.vlibras.gov.br/2018.3.1/WEBGL/";
+
+  var quadro = document.getElementById("quadro-avatar");
+  var estado = document.getElementById("estado-texto");
+  var avatarPronto = false;
+  var ultimaGlosa = "";
+  var velocidades = [["NORMAL", 1.1], ["LENTA", 0.8], ["RÁPIDA", 1.5]];
+  var indiceVelocidade = 0;
+
+  function enviarAvatar(objeto, metodo, valor) {
+    if (!quadro.contentWindow) return;
+    quadro.contentWindow.postMessage(
+      { type: "unity", object: objeto, method: metodo, params: valor }, "*"
+    );
+  }
+
+  function mostrarEstado(texto) { estado.textContent = texto; }
+
+  window.addEventListener("message", function (evento) {
+    if (evento.source !== quadro.contentWindow) return;
+    var dados = evento.data || {};
+    if (dados.type !== "unity_event") return;
+    if (dados.event === "update_progress" && !avatarPronto) {
+      var p = Math.round(Number(dados.data) * 100);
+      if (!isNaN(p)) mostrarEstado("carregando… " + p + "%");
+    }
+    if (dados.event === "on_load_player") {
+      avatarPronto = true;
+      enviarAvatar("PlayerManager", "setBaseUrl", URL_DICIONARIO);
+      mostrarEstado("pronto. Clique em TRADUZIR EM LIBRAS.");
+    }
+    if (dados.event === "on_playing_state_change") {
+      var partes = [].concat(dados.data || []).map(function (v) { return v === "True"; });
+      if (partes[0] && !partes[1]) mostrarEstado("sinalizando…");
+      else if (!partes[0] && !partes[3]) mostrarEstado("pronto.");
+    }
+  });
+
+  function traduzir(texto, cartao, glosa, botao) {
+    if (!avatarPronto) {
+      mostrarEstado("ainda carregando o avatar; aguarde e tente de novo.");
+      return;
+    }
+    botao.disabled = true;
+    mostrarEstado("traduzindo o texto…");
+    fetch(URL_TRADUTOR, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text: texto })
+    })
+      .then(function (r) {
+        if (!r.ok) throw new Error("tradutor respondeu " + r.status);
+        return r.text();
+      })
+      .then(function (resultado) {
+        ultimaGlosa = resultado.trim();
+        glosa.textContent = "Glosa (sinais escolhidos pelo VLibras): " + ultimaGlosa;
+        glosa.classList.add("visivel");
+        document.querySelectorAll(".cartao.tocando").forEach(function (c) { c.classList.remove("tocando"); });
+        cartao.classList.add("tocando");
+        enviarAvatar("PlayerManager", "playNow", ultimaGlosa);
+        document.getElementById("botao-repetir").disabled = false;
+        document.getElementById("botao-parar").disabled = false;
+        mostrarEstado("sinalizando…");
+      })
+      .catch(function (erro) {
+        mostrarEstado("não foi possível traduzir (" + erro.message + "). Verifique a internet.");
+      })
+      .finally(function () { botao.disabled = false; });
+  }
+
+  document.getElementById("botao-repetir").addEventListener("click", function () {
+    if (ultimaGlosa) enviarAvatar("PlayerManager", "playNow", ultimaGlosa);
+  });
+  document.getElementById("botao-parar").addEventListener("click", function () {
+    enviarAvatar("PlayerManager", "stopAll", "");
+    mostrarEstado("pronto.");
+  });
+  document.getElementById("botao-lento").addEventListener("click", function (e) {
+    indiceVelocidade = (indiceVelocidade + 1) % velocidades.length;
+    var v = velocidades[indiceVelocidade];
+    enviarAvatar("PlayerManager", "setSlider", v[1]);
+    e.target.textContent = "VELOCIDADE: " + v[0];
+  });
+
+  // ------------------------------------------------------------------
+  // Início conforme o modo
+  // ------------------------------------------------------------------
+  if (!navigator.onLine) {
+    document.getElementById("aviso").textContent =
+      "Sem internet: o VLibras não vai carregar. Conecte-se e recarregue a página.";
+  }
+
+  if (MODO_WIDGET) {
+    document.body.classList.add("modo-widget");
+    document.getElementById("instrucoes-direto").hidden = true;
+    document.getElementById("instrucoes-widget").hidden = false;
+    var versao = parametros.get("versao");
+    var raiz = versao
+      ? "https://cdn.jsdelivr.net/gh/spbgovbr-vlibras/vlibras-portal@v" + versao + "/app"
+      : "https://vlibras.gov.br/app";
+    document.getElementById("selo").textContent =
+      "TESTE LIBRAS · MODO WIDGET · " + (versao ? "v" + versao : "versão atual");
+    var script = document.createElement("script");
+    script.src = raiz + "/vlibras-plugin.js";
+    script.onload = function () {
+      if (window.VLibras) new window.VLibras.Widget({ rootPath: raiz, position: "R" });
+    };
+    script.onerror = function () {
+      document.getElementById("aviso-widget").textContent =
+        "O VLibras não carregou (sem internet ou versão indisponível).";
+    };
+    document.body.appendChild(script);
+  } else {
+    document.getElementById("selo").textContent = "TESTE LIBRAS · MODO DIRETO";
+    mostrarEstado("carregando… (na primeira vez pode levar até 1 minuto)");
+    quadro.src = URL_AVATAR;
+  }
+</script>
+</body>
+</html>

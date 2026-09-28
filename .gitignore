@@ -1,0 +1,21 @@
+# Arquivos gerados pelo Python
+__pycache__/
+*.pyc
+
+# DADOS DOS ESTUDANTES (não versionar: privacidade e mudam a cada partida)
+dados/estado_jogo.json
+dados/estado_admin.json
+dados/*.json.tmp
+dados/ranking.xlsx
+dados/ranking.xlsx.tmp
+dados/respostas*.csv
+dados/relatorio_*.csv
+dados/turmas/
+dados/*.log
+dados/teste_libras_ultimo_envio.txt
+
+# Fotos dos jogadores e músicas importadas pelo usuário
+assets/perfis/*
+!assets/perfis/LEIA-ME.txt
+assets/sons_personalizados/*
+!assets/sons_personalizados/LEIA-ME.txt

@@ -1,0 +1,95 @@
+TESTE LIBRAS (EXPERIMENTAL)
+Criado em 28/09/2026
+
+OBJETIVO
+Verificar se o VLibras (tradutor gratuito do governo federal, https://vlibras.gov.br)
+traduz de forma aceitável os textos do jogo para Libras, antes de decidir se
+vale integrá-lo ao jogo. O teste NÃO altera o jogo normal.
+
+IMPORTANTE
+• O VLibras precisa de internet. O restante do jogo continua funcionando offline.
+• O próprio site do governo avisa: o VLibras não substitui um intérprete humano.
+• Recomenda-se avaliar o resultado com o NAPNE do IFSP ou um intérprete de Libras.
+
+COMO FAZER O TESTE
+Opção A - a partir do jogo (questão real):
+  1. Abra INICIAR_ADMIN.bat.
+  2. Entre em um módulo e escolha uma questão na barra amarela.
+  3. Clique em LIBRAS (TESTE). O Edge (ou Chrome) abre a página de teste com
+     o enunciado e a resolução da questão. A página abre direto do arquivo:
+     continua funcionando mesmo depois de fechar o jogo.
+Opção B - só a página (sem abrir o jogo):
+  Dê dois cliques em assets\teste_libras\teste_libras.html. Aparecem os
+  exemplos fixos e o campo para digitar qualquer texto.
+
+Na página (MODO DIRETO, o padrão):
+  1. Aguarde o avatar aparecer no quadro à direita (na primeira vez pode levar
+     até 1 minuto). O quadro informa "carregando… %" e depois "pronto".
+  2. Clique em TRADUZIR EM LIBRAS embaixo de um texto.
+  3. O avatar sinaliza. Abaixo do texto aparece a GLOSA: a sequência de sinais
+     escolhida pelo VLibras (ex.: "ESTUDAR ACRESCENTAR 50 REAL SALDO [PONTO]").
+     A glosa ajuda o intérprete a avaliar a tradução.
+  4. Botões do quadro: REPETIR, PARAR e VELOCIDADE.
+  A página também tem exemplos fixos (Porcentagem, Juros e PRICE) e um campo
+  para colar qualquer outro texto.
+
+MODO WIDGET (só para comparação): acrescente ?modo=widget ao endereço da página.
+Para uma versão anterior do widget: ?modo=widget&versao=7.9.1
+(versões publicadas: 7.12.2, 7.9.1, 7.8.0, 7.6.0, 7.5.0)
+
+POR QUE EXISTE O MODO DIRETO
+Em 28/09/2026 o VLibras Widget (versão 7.12.2 e também 7.9.1) ficou preso em
+"carregando", inclusive no site oficial gov.br. Diagnóstico:
+• O avatar funciona sozinho (https://vlibras.gov.br/app/unity/index.html),
+  levando cerca de 9 segundos para iniciar.
+• O widget espera 8 s, 16 s e 30 s (até 5 tentativas) e depois desiste. O
+  avatar, escondido atrás da tela de carregamento, não chega a avisar que está
+  pronto, e o widget reinicia sem parar.
+• Há relatos parecidos no repositório oficial:
+  https://github.com/spbgovbr-vlibras/vlibras-portal/issues
+O modo direto mostra o avatar visível em um quadro próprio e usa o mesmo
+tradutor e dicionário do VLibras, sem o widget.
+
+O QUE AVALIAR (anote aqui os resultados)
+[ ] O avatar carrega no computador da escola / do laboratório?
+[ ] Valores em dinheiro (R$ 6.799,00) são sinalizados de forma compreensível?
+[ ] Porcentagens (10%, 2% ao mês) ficam claras?
+[ ] Termos financeiros: juros, montante, prestação, amortização, saldo devedor,
+    Sistema PRICE — são sinalizados ou apenas soletrados?
+[ ] Fórmulas escritas por extenso (ex.: "PMT igual a SD vezes...") fazem sentido?
+[ ] Questões do nível Difícil ficam compreensíveis?
+[ ] Um estudante surdo/intérprete considera a tradução útil?
+
+Observações:
+______________________________________________________________________________
+______________________________________________________________________________
+
+O QUE JÁ FOI VERIFICADO (28/09/2026)
+• A página de teste abre e recebe o texto da questão enviado pelo jogo.
+• O botão LIBRAS (TESTE) abre a página em uma janela do navegador (testado:
+  abriu no Google Chrome).
+• O VLibras Widget (versão 7.12.2) carrega e abre na página.
+• No modo widget, o avatar fica preso em "carregando" (confirmado pelo usuário
+  no Chrome). Motivo descrito em "POR QUE EXISTE O MODO DIRETO".
+• O tradutor do VLibras responde e aceita chamadas da página (CORS liberado).
+  Exemplo: "Estudar acrescenta 50 reais ao saldo." ->
+  "ESTUDAR ACRESCENTAR 50 REAL SALDO [PONTO]".
+• O modo direto ainda precisa ser confirmado no Chrome/Edge do computador.
+
+LIMITAÇÕES CONHECIDAS
+• O jogo é desenhado como imagem (Flet/Flutter); por isso o VLibras não lê as
+  telas diretamente. O texto precisa ser enviado para uma página comum, como
+  neste teste.
+• Fórmulas são convertidas em palavras ("elevado a", "dividido por"), do mesmo
+  modo que a narração por voz; a tradução delas tende a ser fraca.
+
+ARQUIVOS DO TESTE
+• assets/teste_libras/teste_libras.html  -> página de teste com o VLibras
+• modo_admin.py                          -> botão LIBRAS (TESTE) (somente no
+                                            modo administrador)
+• dados/teste_libras_ultimo_envio.txt    -> registro do último envio (gerado
+                                            automaticamente ao usar o botão)
+
+PARA REMOVER O TESTE
+Apague a pasta assets/teste_libras, o arquivo dados/teste_libras_ultimo_envio.txt
+e, em modo_admin.py, o bloco "TESTE LIBRAS" e o botão "LIBRAS (TESTE)".

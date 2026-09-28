@@ -1,0 +1,63 @@
+COMO MANTER O SALDO NAS PRÓXIMAS ETAPAS
+
+O estado compartilhado é criado uma única vez no arquivo principal:
+
+    self.estado = EstadoJogo()
+
+Ao abrir um novo módulo, passe sempre esse mesmo objeto:
+
+    tela = criar_tela_nova_etapa(
+        self.page,
+        self.mostrar_inicio,
+        self.estado,
+    )
+
+A fábrica da nova etapa deve receber o terceiro argumento:
+
+    def criar_tela_nova_etapa(page, ao_voltar, estado):
+        ...
+
+Para registrar uma jogada:
+
+    estado.registrar_resultado(jogador["id"], "acerto")
+    estado.registrar_resultado(jogador["id"], "erro")
+    estado.registrar_resultado(jogador["id"], "estudo")
+
+O próprio objeto atualiza:
+
+    dados/estado_jogo.json
+    dados/ranking.xlsx
+
+Não crie uma nova lista de jogadores e não zere o campo "saldo" dentro dos
+módulos. Use:
+
+    jogadores = estado.jogadores_ativos()
+
+Esse é o padrão já aplicado ao módulo nivel_1_porcentagem.py.
+
+ETAPA 2 JÁ INTEGRADA
+
+O arquivo nivel_2_juros.py segue esse mesmo padrão. A página inicial chama:
+
+    criar_tela_juros(
+        self.page,
+        self.mostrar_inicio,
+        self.estado,
+    )
+
+Por isso, o valor identificado na interface como PONTUAÇÃO TOTAL é o mesmo em
+Porcentagem, Juros, tela inicial e ranking. Não zere saldo, acertos, erros,
+estudos ou rodadas ao criar as próximas etapas.
+
+ETAPA 3 JÁ INTEGRADA
+
+O arquivo nivel_3_price.py recebe a mesma instância de EstadoJogo pela função:
+
+    criar_tela_price(
+        self.page,
+        self.mostrar_inicio,
+        self.estado,
+    )
+
+Assim, os resultados das 60 questões PRICE são somados ao saldo já conquistado
+em Porcentagem e Juros e aparecem no mesmo cabeçalho e ranking.

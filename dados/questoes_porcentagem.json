@@ -1,0 +1,547 @@
+{
+  "versao": 1,
+  "atualizado_em": "2026-07-27",
+  "observacao": "Preços de referência consultados em lojas brasileiras. Podem mudar; atualize o preço e a data antes de novas aplicações.",
+  "questoes": [
+    {
+      "id": "PCT001",
+      "titulo": "Desconto à vista no iPhone",
+      "produto": "Apple iPhone 16 de 128 GB",
+      "preco_referencia": 6799.0,
+      "imagem": "imagens/produtos/01_iphone_16.webp",
+      "enunciado": "Na Apple, o iPhone 16 de 128 GB aparece por R\\$ 6.799,00. Em uma compra à vista com 10% de desconto, qual será o valor pago?",
+      "alternativas": [
+        "R\\$ 5.439,20",
+        "R\\$ 6.119,10",
+        "R\\$ 6.179,00",
+        "R\\$ 6.731,01"
+      ],
+      "correta": 1,
+      "explicacao": "10% de R\\$ 6.799,00 são R\\$ 679,90. Então: R\\$ 6.799,00 − R\\$ 679,90 = R\\$ 6.119,10.",
+      "estudo": {
+        "titulo": "Como calcular um desconto",
+        "texto": "Calcule a porcentagem do preço original e subtraia esse valor. Também é possível multiplicar diretamente pelo fator restante.",
+        "formula": "$$P_f=P_0\\cdot\\left(1-\\frac{d}{100}\\right)$$",
+        "exemplo": "Com 10% de desconto, permanece 90% do preço. Assim, R\\$ 200,00 × 0,90 = R\\$ 180,00."
+      },
+      "fonte": {
+        "loja": "Apple Brasil",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "2026-07-27"
+      }
+    },
+    {
+      "id": "PCT002",
+      "titulo": "Cupom para o tênis de corrida",
+      "produto": "Tênis Olympikus Corre 4",
+      "preco_referencia": 499.99,
+      "imagem": "imagens/produtos/02_olympikus_corre_4.webp",
+      "enunciado": "O Olympikus Corre 4 aparece por R\\$ 499,99. Um cupom especial concede 20% de desconto. Qual será o preço aproximado após o cupom?",
+      "alternativas": [
+        "R\\$ 299,99",
+        "R\\$ 379,99",
+        "R\\$ 399,99",
+        "R\\$ 479,99"
+      ],
+      "correta": 2,
+      "explicacao": "Com 20% de desconto, paga-se 80%: R\\$ 499,99 × 0,80 = R\\$ 399,992, que arredondado aos centavos resulta em R\\$ 399,99.",
+      "estudo": {
+        "titulo": "Fator de desconto",
+        "texto": "Se o desconto é de 20%, o cliente paga os 80% restantes. Transforme 80% em 0,80 e multiplique pelo preço.",
+        "formula": "$$f=100\\%-d$$",
+        "exemplo": "Um produto de R\\$ 300,00 com 20% de desconto custa R\\$ 300,00 × 0,80 = R\\$ 240,00."
+      },
+      "fonte": {
+        "loja": "Olympikus",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "2026-07-27"
+      }
+    },
+    {
+      "id": "PCT003",
+      "titulo": "Desconto no Pix para a Air Fryer",
+      "produto": "Air Fryer Mondial 5L AFN-50-BI",
+      "preco_referencia": 609.9,
+      "imagem": "imagens/produtos/03_air_fryer_mondial.webp",
+      "enunciado": "A Air Fryer Mondial de 5 litros custa R\\$ 609,90 parcelada e recebe 10% de desconto no Pix. Qual é o preço no Pix?",
+      "alternativas": [
+        "R\\$ 487,92",
+        "R\\$ 539,90",
+        "R\\$ 548,91",
+        "R\\$ 599,90"
+      ],
+      "correta": 2,
+      "explicacao": "10% de R\\$ 609,90 correspondem a R\\$ 60,99. Preço final: R\\$ 609,90 − R\\$ 60,99 = R\\$ 548,91.",
+      "estudo": {
+        "titulo": "Desconto de 10%",
+        "texto": "Para obter 10%, divida o preço por 10. Depois subtraia o desconto do preço original.",
+        "formula": "$$10\\%\\text{ de }V=\\frac{V}{10}$$",
+        "exemplo": "10% de R\\$ 450,00 são R\\$ 45,00. O preço com desconto será R\\$ 405,00."
+      },
+      "fonte": {
+        "loja": "Mondial",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "2026-07-27"
+      }
+    },
+    {
+      "id": "PCT004",
+      "titulo": "Cupom no fone Bluetooth",
+      "produto": "JBL Tune 520BT",
+      "preco_referencia": 339.0,
+      "imagem": "imagens/produtos/04_jbl_tune_520bt.webp",
+      "enunciado": "O fone JBL Tune 520BT custa R\\$ 339,00. Em uma campanha, o cliente recebe 15% de desconto. Quanto pagará?",
+      "alternativas": [
+        "R\\$ 254,25",
+        "R\\$ 288,15",
+        "R\\$ 299,00",
+        "R\\$ 323,85"
+      ],
+      "correta": 1,
+      "explicacao": "15% de R\\$ 339,00 são R\\$ 50,85. Assim, R\\$ 339,00 − R\\$ 50,85 = R\\$ 288,15.",
+      "estudo": {
+        "titulo": "Cálculo de 15%",
+        "texto": "Uma estratégia é somar 10% e 5%. Como 5% é a metade de 10%, o cálculo pode ser feito mentalmente.",
+        "formula": "$$15\\%=10\\%+5\\%$$",
+        "exemplo": "De R\\$ 200,00: 10% = R\\$ 20,00 e 5% = R\\$ 10,00. Logo, 15% = R\\$ 30,00."
+      },
+      "fonte": {
+        "loja": "JBL Brasil",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "2026-07-27"
+      }
+    },
+    {
+      "id": "PCT005",
+      "titulo": "Economia na bicicleta",
+      "produto": "Bicicleta aro 29 KRW 24 velocidades",
+      "preco_referencia": 1599.0,
+      "imagem": "imagens/produtos/05_bicicleta_aro_29.webp",
+      "enunciado": "Uma bicicleta aro 29 passou de R\\$ 1.599,00 para R\\$ 879,00. Qual foi a economia em reais?",
+      "alternativas": [
+        "R\\$ 550,00",
+        "R\\$ 650,00",
+        "R\\$ 700,00",
+        "R\\$ 720,00"
+      ],
+      "correta": 3,
+      "explicacao": "Economia = preço anterior − preço atual. Logo, R\\$ 1.599,00 − R\\$ 879,00 = R\\$ 720,00.",
+      "estudo": {
+        "titulo": "Economia em reais",
+        "texto": "Antes de calcular a porcentagem, identifique quanto o preço diminuiu. Essa diferença é a economia em dinheiro.",
+        "formula": "$$E=P_0-P_p$$",
+        "exemplo": "De R\\$ 800,00 por R\\$ 600,00: economia de R\\$ 200,00."
+      },
+      "fonte": {
+        "loja": "Decathlon",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "2026-07-27"
+      }
+    },
+    {
+      "id": "PCT006",
+      "titulo": "Cupom no jogo de panelas",
+      "produto": "Jogo de Panelas Tramontina Paris",
+      "preco_referencia": 675.45,
+      "imagem": "imagens/produtos/06_panelas_tramontina.webp",
+      "enunciado": "O jogo de panelas Tramontina Paris custa R\\$ 675,45. Com um cupom de 10% de desconto, qual é o preço final?",
+      "alternativas": [
+        "R\\$ 540,36",
+        "R\\$ 600,45",
+        "R\\$ 607,91",
+        "R\\$ 665,45"
+      ],
+      "correta": 2,
+      "explicacao": "10% de R\\$ 675,45 são R\\$ 67,545. Subtraindo e arredondando aos centavos: R\\$ 607,91.",
+      "estudo": {
+        "titulo": "Arredondamento monetário",
+        "texto": "Valores em reais são apresentados com duas casas decimais. Observe a terceira casa decimal para arredondar os centavos.",
+        "formula": "Se a terceira casa decimal for 5 ou mais, acrescente 1 à segunda casa.",
+        "exemplo": "R\\$ 12,345 é arredondado para R\\$ 12,35."
+      },
+      "fonte": {
+        "loja": "Tramontina",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "2026-07-27"
+      }
+    },
+    {
+      "id": "PCT007",
+      "titulo": "Promoção do perfume",
+      "produto": "Natura Kaiak Urbe 100 ml",
+      "preco_referencia": 189.9,
+      "imagem": "imagens/produtos/07_natura_kaiak.webp",
+      "enunciado": "O Kaiak Urbe custa R\\$ 189,90. Em uma promoção de 20%, qual será o preço final?",
+      "alternativas": [
+        "R\\$ 124,90",
+        "R\\$ 142,43",
+        "R\\$ 151,92",
+        "R\\$ 169,90"
+      ],
+      "correta": 2,
+      "explicacao": "Paga-se 80% do preço: R\\$ 189,90 × 0,80 = R\\$ 151,92.",
+      "estudo": {
+        "titulo": "Percentual restante",
+        "texto": "Um desconto de 20% significa que 80% do preço será pago. Use o fator decimal 0,80.",
+        "formula": "$$100\\%-20\\%=80\\%=0{,}80$$",
+        "exemplo": "R\\$ 150,00 × 0,80 = R\\$ 120,00."
+      },
+      "fonte": {
+        "loja": "Natura",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "2026-07-27"
+      }
+    },
+    {
+      "id": "PCT008",
+      "titulo": "Desconto no brinquedo de montar",
+      "produto": "LEGO DC Batman e Robin Batmóvel",
+      "preco_referencia": 299.99,
+      "imagem": "imagens/produtos/08_lego_batmovel.webp",
+      "enunciado": "Um conjunto LEGO de R\\$ 299,99 recebe cupom de 15%. Qual será o valor aproximado da compra?",
+      "alternativas": [
+        "R\\$ 224,99",
+        "R\\$ 249,99",
+        "R\\$ 254,99",
+        "R\\$ 284,99"
+      ],
+      "correta": 2,
+      "explicacao": "Com 15% de desconto, paga-se 85%: R\\$ 299,99 × 0,85 = R\\$ 254,9915, aproximadamente R\\$ 254,99.",
+      "estudo": {
+        "titulo": "Multiplicação pelo fator restante",
+        "texto": "Subtraia o desconto de 100% e transforme o resultado em decimal.",
+        "formula": "$$85\\%=\\frac{85}{100}=0{,}85$$",
+        "exemplo": "Com 15% de desconto em R\\$ 100,00, paga-se R\\$ 100,00 × 0,85 = R\\$ 85,00."
+      },
+      "fonte": {
+        "loja": "LEGO Brasil",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "2026-07-27"
+      }
+    },
+    {
+      "id": "PCT009",
+      "titulo": "Quanto foi economizado no tênis?",
+      "produto": "Nike Pegasus 41 Masculino",
+      "preco_referencia": 999.99,
+      "imagem": "imagens/produtos/09_nike_pegasus.webp",
+      "enunciado": "O Nike Pegasus 41 tinha preço de R\\$ 999,99 e aparece por R\\$ 687,49 no Pix. Qual é a economia?",
+      "alternativas": [
+        "R\\$ 287,50",
+        "R\\$ 300,00",
+        "R\\$ 312,50",
+        "R\\$ 319,99"
+      ],
+      "correta": 2,
+      "explicacao": "R\\$ 999,99 − R\\$ 687,49 = R\\$ 312,50.",
+      "estudo": {
+        "titulo": "Comparação de preços",
+        "texto": "A economia absoluta é obtida pela diferença entre o preço inicial e o preço efetivamente pago.",
+        "formula": "$$E=P_i-P_f$$",
+        "exemplo": "R\\$ 500,00 − R\\$ 375,00 = R\\$ 125,00 de economia."
+      },
+      "fonte": {
+        "loja": "Nike Brasil",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "2026-07-27"
+      }
+    },
+    {
+      "id": "PCT010",
+      "titulo": "Liquidação da mochila",
+      "produto": "Mochila Adidas Classic",
+      "preco_referencia": 349.99,
+      "imagem": "imagens/produtos/10_mochila_adidas.webp",
+      "enunciado": "Uma mochila Adidas passou de R\\$ 349,99 para R\\$ 199,99. Quanto o consumidor economiza?",
+      "alternativas": [
+        "R\\$ 120,00",
+        "R\\$ 140,00",
+        "R\\$ 150,00",
+        "R\\$ 160,00"
+      ],
+      "correta": 2,
+      "explicacao": "R\\$ 349,99 − R\\$ 199,99 = R\\$ 150,00.",
+      "estudo": {
+        "titulo": "Diferença entre valores",
+        "texto": "Alinhe reais e centavos ao efetuar a subtração. Os centavos iguais se anulam neste caso.",
+        "formula": "$$349{,}99-199{,}99=150{,}00$$",
+        "exemplo": "R\\$ 89,90 − R\\$ 59,90 = R\\$ 30,00."
+      },
+      "fonte": {
+        "loja": "Adidas Brasil",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "2026-07-27"
+      }
+    },
+    {
+      "id": "PCT011",
+      "titulo": "Oferta no jogo de corrida",
+      "produto": "Gran Turismo 7 para PS4 e PS5",
+      "preco_referencia": 349.9,
+      "imagem": "imagens/produtos/11_gran_turismo_7.webp",
+      "enunciado": "A edição padrão de Gran Turismo 7 passou de R\\$ 349,90 para R\\$ 146,95. Aproximadamente qual foi o percentual de desconto?",
+      "alternativas": [
+        "42%",
+        "50%",
+        "58%",
+        "67%"
+      ],
+      "correta": 2,
+      "explicacao": "A economia é R\\$ 202,95. Dividindo por R\\$ 349,90 e multiplicando por 100, obtemos aproximadamente 58%.",
+      "estudo": {
+        "titulo": "Descobrir a porcentagem de desconto",
+        "texto": "Primeiro encontre a economia. Depois divida a economia pelo preço inicial e multiplique por 100.",
+        "formula": "$$d=\\frac{E}{P_i}\\cdot100\\%$$",
+        "exemplo": "De R\\$ 200,00 por R\\$ 150,00: economia de R\\$ 50,00. $\\frac{50}{200}\\cdot100=25\\%$."
+      },
+      "fonte": {
+        "loja": "PlayStation Store Brasil",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "2026-07-27"
+      }
+    },
+    {
+      "id": "PCT012",
+      "titulo": "Oferta da geladeira",
+      "produto": "Geladeira Electrolux Frost Free 320L TF38S",
+      "preco_referencia": 3389.0,
+      "imagem": "imagens/produtos/12_geladeira_electrolux.webp",
+      "enunciado": "Uma geladeira Electrolux aparece de R\\$ 3.389,00 por R\\$ 2.649,00. Qual é a economia em reais?",
+      "alternativas": [
+        "R\\$ 640,00",
+        "R\\$ 700,00",
+        "R\\$ 720,00",
+        "R\\$ 740,00"
+      ],
+      "correta": 3,
+      "explicacao": "R\\$ 3.389,00 − R\\$ 2.649,00 = R\\$ 740,00.",
+      "estudo": {
+        "titulo": "Avaliar uma promoção",
+        "texto": "A diferença de preço revela a economia direta. Para comparar promoções de preços muito diferentes, depois calcule também o percentual.",
+        "formula": "$$E=P_a-P_f$$",
+        "exemplo": "R\\$ 2.500,00 − R\\$ 2.000,00 = R\\$ 500,00."
+      },
+      "fonte": {
+        "loja": "Electrolux",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "2026-07-27"
+      }
+    },
+    {
+      "id": "PCT013",
+      "titulo": "Promoção da cafeteira",
+      "produto": "Nespresso Vertuo Pop",
+      "preco_referencia": 999.0,
+      "imagem": "imagens/produtos/13_nespresso_vertuo.webp",
+      "enunciado": "A Nespresso Vertuo Pop passou de R\\$ 999,00 para R\\$ 649,35. Qual percentual de desconto foi aplicado?",
+      "alternativas": [
+        "25%",
+        "30%",
+        "35%",
+        "40%"
+      ],
+      "correta": 2,
+      "explicacao": "A economia é R\\$ 349,65. Então: $\\frac{349{,}65}{999}\\cdot100=35\\%$.",
+      "estudo": {
+        "titulo": "Do valor economizado ao percentual",
+        "texto": "A porcentagem compara a economia com o preço original, não com o preço promocional.",
+        "formula": "$$d=\\frac{P_0-P_f}{P_0}\\cdot100\\%$$",
+        "exemplo": "De R\\$ 400,00 por R\\$ 300,00: $\\frac{100}{400}\\cdot100=25\\%$."
+      },
+      "fonte": {
+        "loja": "Nespresso Brasil",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "2026-07-27"
+      }
+    },
+    {
+      "id": "PCT014",
+      "titulo": "Preço no Pix da lavadora",
+      "produto": "Máquina de Lavar Consul 12kg CWM12AB",
+      "preco_referencia": 2129.0,
+      "imagem": "imagens/produtos/14_lavadora_consul.webp",
+      "enunciado": "A lavadora Consul custa R\\$ 2.129,00 e aparece por R\\$ 1.899,05 no Pix. Qual é a economia?",
+      "alternativas": [
+        "R\\$ 199,95",
+        "R\\$ 219,00",
+        "R\\$ 229,95",
+        "R\\$ 249,95"
+      ],
+      "correta": 2,
+      "explicacao": "R\\$ 2.129,00 − R\\$ 1.899,05 = R\\$ 229,95.",
+      "estudo": {
+        "titulo": "Subtração com centavos",
+        "texto": "Escreva os dois valores com duas casas decimais e alinhe a vírgula antes de subtrair.",
+        "formula": "$$2.129{,}00-1.899{,}05=229{,}95$$",
+        "exemplo": "R\\$ 700,00 − R\\$ 649,90 = R\\$ 50,10."
+      },
+      "fonte": {
+        "loja": "Consul",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "2026-07-27"
+      }
+    },
+    {
+      "id": "PCT015",
+      "titulo": "Oferta da fragrância",
+      "produto": "Malbec Eau de Parfum 90 ml",
+      "preco_referencia": 279.9,
+      "imagem": "imagens/produtos/15_malbec.webp",
+      "enunciado": "O Malbec Eau de Parfum passou de R\\$ 279,90 para R\\$ 244,90. Qual foi a redução em reais?",
+      "alternativas": [
+        "R\\$ 25,00",
+        "R\\$ 30,00",
+        "R\\$ 35,00",
+        "R\\$ 45,00"
+      ],
+      "correta": 2,
+      "explicacao": "R\\$ 279,90 − R\\$ 244,90 = R\\$ 35,00.",
+      "estudo": {
+        "titulo": "Redução de preço",
+        "texto": "A redução absoluta indica quantos reais deixaram de ser pagos.",
+        "formula": "$$R=V_a-V_f$$",
+        "exemplo": "De R\\$ 120,00 para R\\$ 95,00: redução de R\\$ 25,00."
+      },
+      "fonte": {
+        "loja": "O Boticário",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "2026-07-27"
+      }
+    },
+    {
+      "id": "PCT016",
+      "titulo": "Cupom na caixa de chocolates",
+      "produto": "Chocolate Língua de Gato",
+      "preco_referencia": 54.99,
+      "imagem": "imagens/produtos/16_chocolate.webp",
+      "enunciado": "Uma caixa de chocolates custa R\\$ 54,99. Com 10% de desconto, qual será o preço aproximado?",
+      "alternativas": [
+        "R\\$ 44,99",
+        "R\\$ 49,49",
+        "R\\$ 50,50",
+        "R\\$ 53,99"
+      ],
+      "correta": 1,
+      "explicacao": "R\\$ 54,99 × 0,90 = R\\$ 49,491. Arredondando aos centavos, R\\$ 49,49.",
+      "estudo": {
+        "titulo": "Desconto e arredondamento",
+        "texto": "Após multiplicar pelo fator 0,90, arredonde o resultado para duas casas decimais.",
+        "formula": "$$P_f=P_0\\cdot0{,}90$$",
+        "exemplo": "R\\$ 30,00 × 0,90 = R\\$ 27,00."
+      },
+      "fonte": {
+        "loja": "Cacau Show",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "2026-07-27"
+      }
+    },
+    {
+      "id": "PCT017",
+      "titulo": "Compra para o mês",
+      "produto": "Arroz Branco Camil Tipo 1 5kg",
+      "preco_referencia": 20.99,
+      "imagem": "imagens/produtos/17_arroz_camil.webp",
+      "enunciado": "Cada pacote de arroz custa R\\$ 20,99. Uma família compra 5 pacotes e recebe 8% de desconto sobre o total. Quanto pagará?",
+      "alternativas": [
+        "R\\$ 83,96",
+        "R\\$ 92,36",
+        "R\\$ 96,55",
+        "R\\$ 100,95"
+      ],
+      "correta": 2,
+      "explicacao": "Total sem desconto: 5 × R\\$ 20,99 = R\\$ 104,95. Com 8% de desconto, paga-se 92%: R\\$ 104,95 × 0,92 = R\\$ 96,55.",
+      "estudo": {
+        "titulo": "Desconto sobre várias unidades",
+        "texto": "Primeiro calcule o total da compra. Depois aplique o desconto sobre esse total, e não sobre apenas uma unidade.",
+        "formula": "$$T_f=q\\cdot P_u\\cdot f$$",
+        "exemplo": "4 itens de R\\$ 25,00 somam R\\$ 100,00. Com 10% de desconto, o total é R\\$ 90,00."
+      },
+      "fonte": {
+        "loja": "Carrefour",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "2026-07-27"
+      }
+    },
+    {
+      "id": "PCT018",
+      "titulo": "Reajuste do café",
+      "produto": "Café União Tradicional 500g",
+      "preco_referencia": 25.9,
+      "imagem": "imagens/produtos/18_cafe_uniao.webp",
+      "enunciado": "Um pacote de café custa R\\$ 25,90. Se houver reajuste de 12%, qual será o novo preço?",
+      "alternativas": [
+        "R\\$ 27,20",
+        "R\\$ 28,49",
+        "R\\$ 29,01",
+        "R\\$ 29,59"
+      ],
+      "correta": 2,
+      "explicacao": "Com aumento de 12%, o fator é 1,12: R\\$ 25,90 × 1,12 = R\\$ 29,008, aproximadamente R\\$ 29,01.",
+      "estudo": {
+        "titulo": "Acréscimo percentual",
+        "texto": "Em um aumento, some a taxa a 100%. Um aumento de 12% corresponde ao fator 1,12.",
+        "formula": "$$P_f=P_0\\cdot\\left(1+\\frac{a}{100}\\right)$$",
+        "exemplo": "R\\$ 50,00 com aumento de 10%: R\\$ 50,00 × 1,10 = R\\$ 55,00."
+      },
+      "fonte": {
+        "loja": "Carrefour",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "2026-07-27"
+      }
+    },
+    {
+      "id": "PCT019",
+      "titulo": "Promoção da ração",
+      "produto": "Ração Liva Natural Filhotes 10,1kg",
+      "preco_referencia": 191.9,
+      "imagem": "imagens/produtos/19_racao_petlove.webp",
+      "enunciado": "Uma ração passou de R\\$ 191,90 para R\\$ 143,93. Aproximadamente qual foi o desconto percentual?",
+      "alternativas": [
+        "15%",
+        "20%",
+        "25%",
+        "30%"
+      ],
+      "correta": 2,
+      "explicacao": "A economia foi R\\$ 47,97. Então: $\\frac{47{,}97}{191{,}90}\\cdot100=25\\%$.",
+      "estudo": {
+        "titulo": "Percentual de economia",
+        "texto": "Divida a economia pelo preço original. O preço original é a base de comparação.",
+        "formula": "$$p=\\frac{E}{P_0}\\cdot100\\%$$",
+        "exemplo": "Economizar R\\$ 30,00 em um produto de R\\$ 120,00 representa $\\frac{30}{120}\\cdot100=25\\%$."
+      },
+      "fonte": {
+        "loja": "Petlove",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "2026-07-27"
+      }
+    },
+    {
+      "id": "PCT020",
+      "titulo": "Desconto estudantil",
+      "produto": "Calculadora Casio FX-82MS-2",
+      "preco_referencia": 75.3,
+      "imagem": "imagens/produtos/20_calculadora_casio.webp",
+      "enunciado": "Uma calculadora científica custa R\\$ 75,30. Com desconto estudantil de 15%, qual será o preço final aproximado?",
+      "alternativas": [
+        "R\\$ 60,24",
+        "R\\$ 64,01",
+        "R\\$ 66,50",
+        "R\\$ 71,54"
+      ],
+      "correta": 1,
+      "explicacao": "Com desconto de 15%, paga-se 85%: R\\$ 75,30 × 0,85 = R\\$ 64,005, aproximadamente R\\$ 64,01.",
+      "estudo": {
+        "titulo": "Aplicação do fator 0,85",
+        "texto": "Depois de um desconto de 15%, restam 85% do preço. Em valor decimal, 85% é 0,85.",
+        "formula": "$$P_f=P_0\\cdot0{,}85$$",
+        "exemplo": "R\\$ 80,00 × 0,85 = R\\$ 68,00."
+      },
+      "fonte": {
+        "loja": "Kalunga",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "2026-07-27"
+      }
+    }
+  ]
+}

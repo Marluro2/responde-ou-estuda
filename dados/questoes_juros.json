@@ -1,0 +1,527 @@
+{
+  "versao": 1,
+  "atualizado_em": "2026-07-31",
+  "observacao": "Questões autorais sobre juros simples e compostos com imagens locais para execução totalmente offline.",
+  "questoes": [
+    {
+      "id": "JUR001",
+      "titulo": "Empréstimo para uma emergência",
+      "produto": "Juros simples: cálculo dos juros",
+      "imagem": "imagens/juros/emprestimo_e_credito.webp",
+      "enunciado": "Uma pessoa tomou R\\$ 1.200,00 emprestados a juros simples de 2% ao mês por 5 meses. Qual será o valor total dos juros?",
+      "alternativas": [
+        "R\\$ 100,00",
+        "R\\$ 120,00",
+        "R\\$ 124,00",
+        "R\\$ 132,00"
+      ],
+      "correta": 1,
+      "explicacao": "Use J = C × i × t. Assim: J = 1.200 × 0,02 × 5 = 120. Portanto, os juros totalizam R\\$ 120,00.",
+      "estudo": {
+        "titulo": "Juros simples sobre o capital inicial",
+        "texto": "Nos juros simples, a taxa incide sempre sobre o valor inicialmente emprestado.",
+        "formula": "$$J=C\\cdot i\\cdot t$$",
+        "exemplo": "R\\$ 900,00 a 1% ao mês por 4 meses geram 900 × 0,01 × 4 = R\\$ 36,00 de juros."
+      },
+      "fonte": {
+        "loja": "Imagem local incluída no aplicativo",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "31/07/2026"
+      }
+    },
+    {
+      "id": "JUR002",
+      "titulo": "Aplicação de curto prazo",
+      "produto": "Juros simples: cálculo do montante",
+      "imagem": "imagens/juros/investimento_e_planejamento.webp",
+      "enunciado": "Um investimento de R\\$ 2.500,00 rende juros simples de 1,5% ao mês durante 8 meses. Qual será o montante ao final?",
+      "alternativas": [
+        "R\\$ 2.500,00",
+        "R\\$ 2.700,00",
+        "R\\$ 2.800,00",
+        "R\\$ 3.000,00"
+      ],
+      "correta": 2,
+      "explicacao": "J = 2.500 × 0,015 × 8 = 300. Depois, M = C + J = 2.500 + 300 = R\\$ 2.800,00.",
+      "estudo": {
+        "titulo": "Do juro ao montante",
+        "texto": "Calcule os juros e some-os ao capital para encontrar o valor acumulado.",
+        "formula": "$$M=C+J$$",
+        "exemplo": "Capital de R\\$ 1.600,00 com R\\$ 192,00 de juros resulta em montante de R\\$ 1.792,00."
+      },
+      "fonte": {
+        "loja": "Imagem local incluída no aplicativo",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "31/07/2026"
+      }
+    },
+    {
+      "id": "JUR003",
+      "titulo": "Atraso em uma mensalidade",
+      "produto": "Juros simples em pagamento atrasado",
+      "imagem": "imagens/juros/emprestimo_e_credito.webp",
+      "enunciado": "Uma mensalidade de R\\$ 800,00 ficou atrasada por 4 meses, com juros simples de 3% ao mês. Quanto será cobrado somente de juros?",
+      "alternativas": [
+        "R\\$ 24,00",
+        "R\\$ 72,00",
+        "R\\$ 96,00",
+        "R\\$ 896,00"
+      ],
+      "correta": 2,
+      "explicacao": "J = 800 × 0,03 × 4 = 96. O acréscimo de juros será de R\\$ 96,00.",
+      "estudo": {
+        "titulo": "Taxa e tempo na mesma unidade",
+        "texto": "Como a taxa está ao mês, o tempo também deve ser informado em meses.",
+        "formula": "$$3\\%\\text{ a.m.}=0{,}03\\text{ a.m.}$$",
+        "exemplo": "R\\$ 700,00 a 2% ao mês por 3 meses geram R\\$ 42,00 de juros simples."
+      },
+      "fonte": {
+        "loja": "Imagem local incluída no aplicativo",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "31/07/2026"
+      }
+    },
+    {
+      "id": "JUR004",
+      "titulo": "Entrada complementar para um veículo",
+      "produto": "Juros simples em financiamento",
+      "imagem": "imagens/juros/financiamento_veiculo.webp",
+      "enunciado": "Uma parte de R\\$ 18.000,00 de um veículo foi financiada a juros simples de 1,2% ao mês por 10 meses. Qual será o montante dessa parte financiada?",
+      "alternativas": [
+        "R\\$ 18.216,00",
+        "R\\$ 20.160,00",
+        "R\\$ 21.160,00",
+        "R\\$ 21.600,00"
+      ],
+      "correta": 1,
+      "explicacao": "J = 18.000 × 0,012 × 10 = 2.160. Então, M = 18.000 + 2.160 = R\\$ 20.160,00.",
+      "estudo": {
+        "titulo": "Montante de uma dívida",
+        "texto": "O montante é a soma do capital financiado com os juros gerados no período.",
+        "formula": "$$M=C+C\\cdot i\\cdot t$$",
+        "exemplo": "R\\$ 6.000,00 a 1% ao mês por 5 meses resultam em M = R\\$ 6.300,00."
+      },
+      "fonte": {
+        "loja": "Imagem local incluída no aplicativo",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "31/07/2026"
+      }
+    },
+    {
+      "id": "JUR005",
+      "titulo": "Crédito para ampliar um negócio",
+      "produto": "Juros simples com taxa anual",
+      "imagem": "imagens/juros/emprestimo_e_credito.webp",
+      "enunciado": "Uma pequena empresa obteve crédito de R\\$ 5.000,00 a juros simples de 12% ao ano por 2 anos. Qual é o valor dos juros?",
+      "alternativas": [
+        "R\\$ 1.200,00",
+        "R\\$ 1.000,00",
+        "R\\$ 600,00",
+        "R\\$ 6.200,00"
+      ],
+      "correta": 0,
+      "explicacao": "J = 5.000 × 0,12 × 2 = 1.200. Os juros são de R\\$ 1.200,00.",
+      "estudo": {
+        "titulo": "Trabalho com taxa anual",
+        "texto": "Quando a taxa está ao ano, mantenha o tempo em anos antes de aplicar a fórmula.",
+        "formula": "$$12\\%\\text{ a.a.}=0{,}12\\text{ a.a.}$$",
+        "exemplo": "R\\$ 4.000,00 a 10% ao ano por 3 anos geram R\\$ 1.200,00 de juros."
+      },
+      "fonte": {
+        "loja": "Imagem local incluída no aplicativo",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "31/07/2026"
+      }
+    },
+    {
+      "id": "JUR006",
+      "titulo": "Empréstimo por trinta dias",
+      "produto": "Juros simples com taxa diária",
+      "imagem": "imagens/juros/emprestimo_e_credito.webp",
+      "enunciado": "Um empréstimo de R\\$ 2.000,00 cobra juros simples de 0,1% ao dia durante 30 dias. Qual é o valor dos juros?",
+      "alternativas": [
+        "R\\$ 6,00",
+        "R\\$ 20,00",
+        "R\\$ 30,00",
+        "R\\$ 60,00"
+      ],
+      "correta": 3,
+      "explicacao": "Converta 0,1% para 0,001. J = 2.000 × 0,001 × 30 = R\\$ 60,00.",
+      "estudo": {
+        "titulo": "Conversão de porcentagem pequena",
+        "texto": "Divida a porcentagem por 100. Assim, 0,1% corresponde ao número decimal 0,001.",
+        "formula": "$$\\frac{0{,}1}{100}=0{,}001$$",
+        "exemplo": "R\\$ 1.500,00 a 0,2% ao dia por 10 dias geram R\\$ 30,00 de juros."
+      },
+      "fonte": {
+        "loja": "Imagem local incluída no aplicativo",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "31/07/2026"
+      }
+    },
+    {
+      "id": "JUR007",
+      "titulo": "Descobrindo a taxa do empréstimo",
+      "produto": "Juros simples: cálculo da taxa",
+      "imagem": "imagens/juros/emprestimo_e_credito.webp",
+      "enunciado": "Um capital de R\\$ 3.000,00 gerou R\\$ 270,00 de juros simples em 3 meses. Qual foi a taxa mensal?",
+      "alternativas": [
+        "1% ao mês",
+        "2% ao mês",
+        "3% ao mês",
+        "9% ao mês"
+      ],
+      "correta": 2,
+      "explicacao": "Isole a taxa: $i=\\frac{J}{C\\cdot t}$. Logo, $i=\\frac{270}{3.000\\cdot3}=0{,}03=3\\%$ ao mês.",
+      "estudo": {
+        "titulo": "Isolando a taxa",
+        "texto": "Quando os juros, o capital e o tempo são conhecidos, divida os juros pelo produto entre capital e tempo.",
+        "formula": "$$i=\\frac{J}{C\\cdot t}$$",
+        "exemplo": "J = 100, C = 2.000 e t = 5 produzem i = $\\frac{100}{10.000}=1\\%$ ao mês."
+      },
+      "fonte": {
+        "loja": "Imagem local incluída no aplicativo",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "31/07/2026"
+      }
+    },
+    {
+      "id": "JUR008",
+      "titulo": "Por quanto tempo o dinheiro ficou aplicado?",
+      "produto": "Juros simples: cálculo do tempo",
+      "imagem": "imagens/juros/investimento_e_planejamento.webp",
+      "enunciado": "Uma aplicação de R\\$ 1.500,00, a juros simples de 2% ao mês, rendeu R\\$ 180,00. Durante quantos meses o dinheiro ficou aplicado?",
+      "alternativas": [
+        "4 meses",
+        "6 meses",
+        "8 meses",
+        "12 meses"
+      ],
+      "correta": 1,
+      "explicacao": "$t=\\frac{J}{C\\cdot i}$. Assim, $t=\\frac{180}{1.500\\cdot0{,}02}=\\frac{180}{30}=6$ meses.",
+      "estudo": {
+        "titulo": "Isolando o tempo",
+        "texto": "Divida os juros pelo produto do capital com a taxa decimal.",
+        "formula": "$$t=\\frac{J}{C\\cdot i}$$",
+        "exemplo": "Com J = 240, C = 2.000 e i = 0,02, o tempo é $\\frac{240}{40}=6$ meses."
+      },
+      "fonte": {
+        "loja": "Imagem local incluída no aplicativo",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "31/07/2026"
+      }
+    },
+    {
+      "id": "JUR009",
+      "titulo": "Qual foi o capital inicial?",
+      "produto": "Juros simples: cálculo do capital",
+      "imagem": "imagens/juros/investimento_e_planejamento.webp",
+      "enunciado": "Uma aplicação gerou R\\$ 480,00 de juros simples à taxa de 2% ao mês por 8 meses. Qual era o capital inicial?",
+      "alternativas": [
+        "R\\$ 2.000,00",
+        "R\\$ 2.400,00",
+        "R\\$ 3.000,00",
+        "R\\$ 3.840,00"
+      ],
+      "correta": 2,
+      "explicacao": "$C=\\frac{J}{i\\cdot t}$. Portanto, $C=\\frac{480}{0{,}02\\cdot8}=\\frac{480}{0{,}16}=\\text{R\\$ }3.000{,}00$.",
+      "estudo": {
+        "titulo": "Isolando o capital",
+        "texto": "Divida os juros pelo produto da taxa decimal com o tempo.",
+        "formula": "$$C=\\frac{J}{i\\cdot t}$$",
+        "exemplo": "J = 300, i = 0,025 e t = 4 resultam em C = $\\frac{300}{0{,}10}=\\text{R\\$ }3.000{,}00$."
+      },
+      "fonte": {
+        "loja": "Imagem local incluída no aplicativo",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "31/07/2026"
+      }
+    },
+    {
+      "id": "JUR010",
+      "titulo": "Reserva para uma viagem",
+      "produto": "Juros simples: valor acumulado",
+      "imagem": "imagens/juros/investimento_e_planejamento.webp",
+      "enunciado": "Uma reserva de R\\$ 4.000,00 foi aplicada a juros simples de 1,5% ao mês por 6 meses. Qual será o valor acumulado?",
+      "alternativas": [
+        "R\\$ 4.240,00",
+        "R\\$ 4.360,00",
+        "R\\$ 4.600,00",
+        "R\\$ 4.900,00"
+      ],
+      "correta": 1,
+      "explicacao": "J = 4.000 × 0,015 × 6 = 360. O montante é M = 4.000 + 360 = R\\$ 4.360,00.",
+      "estudo": {
+        "titulo": "Planejamento com valor acumulado",
+        "texto": "Encontre quanto a aplicação rende e some esse rendimento à reserva inicial.",
+        "formula": "$$M=C\\cdot(1+i\\cdot t)$$",
+        "exemplo": "R\\$ 2.500,00 a 2% ao mês por 4 meses resultam em M = 2.500 × 1,08 = R\\$ 2.700,00."
+      },
+      "fonte": {
+        "loja": "Imagem local incluída no aplicativo",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "31/07/2026"
+      }
+    },
+    {
+      "id": "JUR011",
+      "titulo": "Investimento com rendimento mensal",
+      "produto": "Juros compostos: cálculo do montante",
+      "imagem": "imagens/juros/investimento_e_planejamento.webp",
+      "enunciado": "Um investimento de R\\$ 2.000,00 rende 2% ao mês, com juros compostos, durante 3 meses. Qual será o montante aproximado?",
+      "alternativas": [
+        "R\\$ 2.060,00",
+        "R\\$ 2.120,00",
+        "R\\$ 2.122,42",
+        "R\\$ 2.200,00"
+      ],
+      "correta": 2,
+      "explicacao": "M = 2.000 × (1 + 0,02)³ = 2.000 × 1,061208 = R\\$ 2.122,416. Arredondando: R\\$ 2.122,42.",
+      "estudo": {
+        "titulo": "Capitalização composta",
+        "texto": "Eleve o fator 1 + i ao número de períodos e multiplique pelo capital.",
+        "formula": "$$M=C\\cdot(1+i)^t$$",
+        "exemplo": "R\\$ 1.500,00 a 3% ao mês por 2 meses resultam em 1.500 × (1,03)² = R\\$ 1.591,35."
+      },
+      "fonte": {
+        "loja": "Imagem local incluída no aplicativo",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "31/07/2026"
+      }
+    },
+    {
+      "id": "JUR012",
+      "titulo": "Empréstimo por um ano",
+      "produto": "Juros compostos: custo dos juros",
+      "imagem": "imagens/juros/emprestimo_e_credito.webp",
+      "enunciado": "Um empréstimo de R\\$ 5.000,00 cobra juros compostos de 1% ao mês por 12 meses. Aproximadamente quanto será pago somente de juros?",
+      "alternativas": [
+        "R\\$ 500,00",
+        "R\\$ 600,00",
+        "R\\$ 634,13",
+        "R\\$ 5.634,13"
+      ],
+      "correta": 2,
+      "explicacao": "M = 5.000 × (1,01)¹² ≈ R\\$ 5.634,13. Logo, J = M − C = 5.634,13 − 5.000 = R\\$ 634,13.",
+      "estudo": {
+        "titulo": "Juros como diferença",
+        "texto": "Depois de encontrar o montante composto, subtraia o capital para obter apenas os juros.",
+        "formula": "$$J=M-C$$",
+        "exemplo": "Se R\\$ 2.400,00 se transformam em R\\$ 2.700,00, os juros acumulados são R\\$ 300,00."
+      },
+      "fonte": {
+        "loja": "Imagem local incluída no aplicativo",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "31/07/2026"
+      }
+    },
+    {
+      "id": "JUR013",
+      "titulo": "Poupança para um curso",
+      "produto": "Juros compostos com taxa anual",
+      "imagem": "imagens/juros/investimento_e_planejamento.webp",
+      "enunciado": "Uma família investiu R\\$ 3.000,00 a juros compostos de 10% ao ano por 2 anos. Qual será o montante?",
+      "alternativas": [
+        "R\\$ 3.300,00",
+        "R\\$ 3.630,00",
+        "R\\$ 3.600,00",
+        "R\\$ 4.000,00"
+      ],
+      "correta": 1,
+      "explicacao": "M = 3.000 × (1,10)² = 3.000 × 1,21 = R\\$ 3.630,00.",
+      "estudo": {
+        "titulo": "Potência do fator de crescimento",
+        "texto": "Em dois anos, o fator anual é aplicado duas vezes ao saldo.",
+        "formula": "$$(1+0{,}10)^2=1{,}21$$",
+        "exemplo": "R\\$ 2.000,00 a 5% ao ano por 2 anos resultam em 2.000 × 1,1025 = R\\$ 2.205,00."
+      },
+      "fonte": {
+        "loja": "Imagem local incluída no aplicativo",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "31/07/2026"
+      }
+    },
+    {
+      "id": "JUR014",
+      "titulo": "Financiamento para reforma da casa",
+      "produto": "Juros compostos em financiamento",
+      "imagem": "imagens/juros/reforma_residencial.webp",
+      "enunciado": "Uma reforma de R\\$ 10.000,00 foi financiada a juros compostos de 1,5% ao mês por 6 meses. Qual será o montante aproximado?",
+      "alternativas": [
+        "R\\$ 10.150,00",
+        "R\\$ 10.600,00",
+        "R\\$ 10.900,00",
+        "R\\$ 10.934,43"
+      ],
+      "correta": 3,
+      "explicacao": "M = 10.000 × (1,015)⁶ ≈ 10.000 × 1,093443 = R\\$ 10.934,43.",
+      "estudo": {
+        "titulo": "Financiamento com juros sobre juros",
+        "texto": "Cada mês atualiza o saldo; por isso o fator mensal deve ser elevado ao prazo.",
+        "formula": "$$M=10.000\\cdot(1{,}015)^6$$",
+        "exemplo": "R\\$ 8.000,00 a 1% ao mês por 4 meses resultam em aproximadamente R\\$ 8.324,83."
+      },
+      "fonte": {
+        "loja": "Imagem local incluída no aplicativo",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "31/07/2026"
+      }
+    },
+    {
+      "id": "JUR015",
+      "titulo": "Comparação entre dois regimes",
+      "produto": "Juros simples versus compostos",
+      "imagem": "imagens/juros/investimento_e_planejamento.webp",
+      "enunciado": "Um capital de R\\$ 4.000,00 é aplicado a 2% ao mês por 4 meses. O montante simples é R\\$ 4.320,00 e o composto é aproximadamente R\\$ 4.329,73. Quanto o regime composto supera o simples?",
+      "alternativas": [
+        "R\\$ 9,73",
+        "R\\$ 29,73",
+        "R\\$ 80,00",
+        "R\\$ 329,73"
+      ],
+      "correta": 0,
+      "explicacao": "Calcule a diferença: R\\$ 4.329,73 − R\\$ 4.320,00 = R\\$ 9,73.",
+      "estudo": {
+        "titulo": "Comparação pelo mesmo capital, taxa e prazo",
+        "texto": "Para comparar regimes, mantenha capital, taxa e tempo iguais e confronte os montantes.",
+        "formula": "$$D=M_c-M_s$$",
+        "exemplo": "Se um regime gera R\\$ 2.150,00 e outro R\\$ 2.155,00, a diferença é R\\$ 5,00."
+      },
+      "fonte": {
+        "loja": "Imagem local incluída no aplicativo",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "31/07/2026"
+      }
+    },
+    {
+      "id": "JUR016",
+      "titulo": "Reserva de emergência investida",
+      "produto": "Juros compostos: rendimento obtido",
+      "imagem": "imagens/juros/investimento_e_planejamento.webp",
+      "enunciado": "Uma reserva de R\\$ 8.000,00 foi investida a juros compostos de 0,8% ao mês por 10 meses. Aproximadamente quanto rendeu em juros?",
+      "alternativas": [
+        "R\\$ 640,00",
+        "R\\$ 663,54",
+        "R\\$ 800,00",
+        "R\\$ 8.663,54"
+      ],
+      "correta": 1,
+      "explicacao": "M = 8.000 × (1,008)¹⁰ ≈ R\\$ 8.663,54. Os juros são J = 8.663,54 − 8.000 = R\\$ 663,54.",
+      "estudo": {
+        "titulo": "Rendimento acumulado",
+        "texto": "O montante inclui capital e rendimento; subtraia o valor inicial para descobrir o ganho.",
+        "formula": "$$J=C\\cdot\\left[(1+i)^t-1\\right]$$",
+        "exemplo": "Se R\\$ 5.000,00 chegam a R\\$ 5.350,00, o rendimento acumulado é de R\\$ 350,00."
+      },
+      "fonte": {
+        "loja": "Imagem local incluída no aplicativo",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "31/07/2026"
+      }
+    },
+    {
+      "id": "JUR017",
+      "titulo": "Capitalização em dois meses",
+      "produto": "Juros compostos em sequência",
+      "imagem": "imagens/juros/emprestimo_e_credito.webp",
+      "enunciado": "Uma dívida de R\\$ 1.000,00 cresce 5% ao mês com juros compostos. Qual será o valor depois de 2 meses?",
+      "alternativas": [
+        "R\\$ 1.050,00",
+        "R\\$ 1.100,00",
+        "R\\$ 1.102,50",
+        "R\\$ 1.150,00"
+      ],
+      "correta": 2,
+      "explicacao": "M = 1.000 × (1,05)² = 1.000 × 1,1025 = R\\$ 1.102,50.",
+      "estudo": {
+        "titulo": "Atualização período a período",
+        "texto": "No primeiro mês o saldo vai a R\\$ 1.050,00; no segundo, 5% incidem sobre R\\$ 1.050,00.",
+        "formula": "$$1.000\\cdot1{,}05\\cdot1{,}05=1.102{,}50$$",
+        "exemplo": "R\\$ 800,00 crescendo 10% por 2 períodos chegam a R\\$ 968,00."
+      },
+      "fonte": {
+        "loja": "Imagem local incluída no aplicativo",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "31/07/2026"
+      }
+    },
+    {
+      "id": "JUR018",
+      "titulo": "Descobrindo o investimento inicial",
+      "produto": "Juros compostos: cálculo do capital",
+      "imagem": "imagens/juros/investimento_e_planejamento.webp",
+      "enunciado": "Um investimento chegou a R\\$ 1.331,00 após 3 anos, rendendo 10% ao ano com juros compostos. Qual foi o capital inicial?",
+      "alternativas": [
+        "R\\$ 1.000,00",
+        "R\\$ 1.100,00",
+        "R\\$ 1.210,00",
+        "R\\$ 1.231,00"
+      ],
+      "correta": 0,
+      "explicacao": "$C=\\frac{M}{(1+i)^t}$. Assim, $C=\\frac{1.331}{(1{,}10)^3}=\\frac{1.331}{1{,}331}=\\text{R\\$ }1.000{,}00$.",
+      "estudo": {
+        "titulo": "Voltando do montante ao capital",
+        "texto": "Divida o montante pelo fator composto elevado ao número de períodos.",
+        "formula": "$$C=\\frac{M}{(1+i)^t}$$",
+        "exemplo": "Montante de R\\$ 2.420,00 após 2 anos a 10% vem de $C=\\frac{2.420}{1{,}21}=\\text{R\\$ }2.000{,}00$."
+      },
+      "fonte": {
+        "loja": "Imagem local incluída no aplicativo",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "31/07/2026"
+      }
+    },
+    {
+      "id": "JUR019",
+      "titulo": "Saldo do cartão não pago",
+      "produto": "Juros compostos em dívida",
+      "imagem": "imagens/juros/emprestimo_e_credito.webp",
+      "enunciado": "Um saldo de R\\$ 1.500,00 permaneceu por 3 meses com juros compostos de 4% ao mês. Qual será a dívida aproximada?",
+      "alternativas": [
+        "R\\$ 1.620,00",
+        "R\\$ 1.680,00",
+        "R\\$ 1.687,00",
+        "R\\$ 1.687,30"
+      ],
+      "correta": 3,
+      "explicacao": "M = 1.500 × (1,04)³ = 1.500 × 1,124864 = R\\$ 1.687,296. Arredondando: R\\$ 1.687,30.",
+      "estudo": {
+        "titulo": "Crescimento de uma dívida",
+        "texto": "Taxas mensais elevadas se acumulam rapidamente porque cada mês incide sobre o saldo atualizado.",
+        "formula": "$$M=C\\cdot(1+i)^t$$",
+        "exemplo": "R\\$ 2.000,00 a 3% ao mês por 2 meses resultam em R\\$ 2.121,80."
+      },
+      "fonte": {
+        "loja": "Imagem local incluída no aplicativo",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "31/07/2026"
+      }
+    },
+    {
+      "id": "JUR020",
+      "titulo": "Escolha entre dois investimentos",
+      "produto": "Comparação de rentabilidade",
+      "imagem": "imagens/juros/investimento_e_planejamento.webp",
+      "enunciado": "Para R\\$ 5.000,00 durante 12 meses, a opção A rende 1% ao mês em juros simples e chega a R\\$ 5.600,00. A opção B rende 0,9% ao mês em juros compostos e chega a aproximadamente R\\$ 5.567,55. Qual opção oferece maior montante e por quanto?",
+      "alternativas": [
+        "Opção B, por R\\$ 32,45",
+        "Opção B, por R\\$ 67,55",
+        "Opção A, por R\\$ 32,45",
+        "Opção A, por R\\$ 600,00"
+      ],
+      "correta": 2,
+      "explicacao": "Compare os montantes: R\\$ 5.600,00 − R\\$ 5.567,55 = R\\$ 32,45. Logo, a opção A oferece R\\$ 32,45 a mais.",
+      "estudo": {
+        "titulo": "Decisão baseada no montante",
+        "texto": "Taxa e regime precisam ser avaliados juntos. Calcule o valor final de cada opção antes de decidir.",
+        "formula": "$$\\text{Melhor opção}=\\max(M_l)$$",
+        "exemplo": "Entre R\\$ 3.300,00 e R\\$ 3.280,00, o primeiro montante é R\\$ 20,00 maior."
+      },
+      "fonte": {
+        "loja": "Imagem local incluída no aplicativo",
+        "url": "Referência registrada localmente no aplicativo",
+        "consulta": "31/07/2026"
+      }
+    }
+  ]
+}

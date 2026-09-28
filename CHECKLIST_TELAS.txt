@@ -1,0 +1,52 @@
+CHECKLIST DE TELAS - RESPONDA OU ESTUDA
+Última verificação: 28/09/2026, janela 1536 x 785 (tela 1920 x 1080 com zoom de 125%)
+
+Como conferir rapidamente: abra INICIAR_ADMIN.bat e use a barra amarela para
+ir direto a cada questão e tela. Em cada tela, role até o fim e confira se a
+borda de baixo do último cartão e os botões aparecem inteiros.
+
+Antes de conferir as telas, rode também:
+    py -3.14 ferramentas\validar_conteudo.py
+    py -3.14 ferramentas\testar_telas.py
+
+ABERTURA
+[x] Janela abre sem a mensagem "Agora estamos sincronizando seus dados..."
+    (confirmado no perfil do Edge; confira ao abrir pelo INICIAR_JOGO.bat)
+
+TELA INICIAL
+[x] Mapa do jogo, missão e título
+[x] Cartões dos jogadores e rodapé visíveis ao rolar até o fim
+
+PORCENTAGEM
+[x] Situação (imagem inteira dentro do retângulo)
+[x] Alternativas
+[x] Estudo (painel lateral com os 5 passos até o fim)
+[x] Resolução
+
+JUROS
+[x] Revisão (escolha entre rever e ir às questões)
+[x] Teoria 1 - Juros simples (fórmulas do exemplo sem "Parser Error")
+[x] Teoria 2 - Juros compostos
+[x] Teoria 3 - Comparação e aplicações
+[x] Situação
+[x] Alternativas
+[x] Estudo
+[x] Resolução
+
+PRICE / SAF
+[x] Revisão
+[x] Teoria 1 - Sistema PRICE
+[x] Teoria 2 - Progressão geométrica
+[x] Teoria 3 - Evolução da amortização (tabela inteira)
+[x] Teoria 4 - Custo total e decisão
+[x] Escolha do nível
+[x] Super fácil - situação e estudo (1 página)
+[x] Médio - estudo, páginas 1 e 2
+[x] Difícil - alternativas com fórmulas longas
+[x] Difícil - estudo, páginas 1, 2, 3 e 4
+[x] Difícil - resolução (justificativa com frases e fórmulas em ordem)
+
+PENDENTES (não verificados visualmente nesta rodada)
+[ ] Tela de resultado ao final de cada módulo
+[ ] Tela de ranking
+[ ] Níveis Super fácil e Fácil: alternativas e resolução

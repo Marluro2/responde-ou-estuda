@@ -1,0 +1,78 @@
+COMO ADICIONAR OU ATUALIZAR QUESTÕES
+
+O local destinado às questões é:
+
+    dados/questoes_porcentagem.json
+
+PARA ACRESCENTAR UMA QUESTÃO
+
+1. Coloque a nova imagem em:
+
+   assets/imagens/produtos/
+
+2. Abra dados/questoes_porcentagem.json em um editor de texto.
+
+3. Dentro da lista "questoes", copie um bloco completo já existente.
+
+4. Troque todos os campos:
+
+   id
+       Use um código novo e não repetido, por exemplo PCT021.
+
+   titulo
+       Título curto da situação.
+
+   produto
+       Nome do produto real.
+
+   preco_referencia
+       Preço numérico usando ponto decimal e sem R$.
+       Exemplo: 1499.90
+
+   imagem
+       Caminho relativo dentro de assets.
+       Exemplo: imagens/produtos/21_novo_produto.webp
+
+   enunciado
+       Problema completo apresentado ao jogador.
+
+   alternativas
+       Lista de respostas possíveis.
+
+   correta
+       Posição da alternativa correta, começando em zero:
+       0 = primeira; 1 = segunda; 2 = terceira; 3 = quarta.
+
+   explicacao
+       Resolução que aparecerá depois da resposta.
+
+   estudo
+       Título, explicação do conteúdo, fórmula e exemplo diferente do problema.
+
+   fonte
+       Loja, endereço da página consultada e data da consulta.
+
+5. Separe os blocos por vírgula e preserve os colchetes e as chaves do JSON.
+
+6. Execute a validação:
+
+   py -3.14 ferramentas\validar_conteudo.py
+
+PARA ATUALIZAR UM PREÇO
+
+1. Consulte novamente a página indicada em "fonte".
+2. Atualize "preco_referencia".
+3. Refaça os valores do enunciado, alternativas e explicação.
+4. Atualize a data "consulta".
+5. Execute o validador.
+
+CUIDADOS
+
+• Não repita o campo "id".
+• Não remova as aspas dos textos.
+• Use ponto, e não vírgula, nos números internos do JSON.
+• Confirme se o índice "correta" aponta para a resposta certa.
+• Mantenha pelo menos 20 questões no banco.
+• No banco questoes_price.json, mantenha exatamente 60 questões com cinco
+  alternativas em cada uma.
+• Use imagens quadradas ou próximas do formato quadrado.
