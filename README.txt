@@ -71,8 +71,9 @@ Atalhos da própria Lupa do Windows:
    Windows + "+"   aumenta o zoom (e liga a lupa)
    Windows + "−"   diminui o zoom
    Windows + Esc   desliga a lupa
-Na primeira vez, se o zoom estiver em 100%, pressione Windows + "+" para
-ampliar; o Windows lembra o nível escolhido.
+Neste computador o zoom inicial da Lupa foi definido em 300%. Em outro
+computador, se o zoom estiver em 100%, pressione Windows + "+" para ampliar;
+o Windows lembra o nível escolhido.
 
 TELAS SEM ROLAGEM
 
