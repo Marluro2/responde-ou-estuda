@@ -1,9 +1,9 @@
-"""Monta as telas matemáticas dos três módulos com Flet 0.86.3.
+"""Monta as telas matemáticas dos quatro módulos com Flet 0.86.3.
 
 O teste não abre navegador nem inicia cronômetros. Ele verifica se todas as 100
 questões conseguem construir enunciado, alternativas, painel Estudar e feedback
-com componentes ``ft.Markdown``. Também monta cada página teórica de Juros e
-PRICE, incluindo a fórmula da prestação com fração LaTeX empilhada.
+com componentes ``ft.Markdown``. Também monta cada página teórica de Juros,
+PRICE e SAC, incluindo a fórmula da prestação com fração LaTeX empilhada.
 """
 
 from __future__ import annotations
@@ -26,6 +26,7 @@ from formatacao_matematica import texto_para_narracao  # noqa: E402
 from nivel_1_porcentagem import JogoPorcentagem  # noqa: E402
 from nivel_2_juros import JogoJuros, PAGINAS_TEORIA as TEORIA_JUROS  # noqa: E402
 from nivel_3_price import JogoPrice, PAGINAS_TEORIA as TEORIA_PRICE  # noqa: E402
+from nivel_4_sac import JogoSac, PAGINAS_TEORIA as TEORIA_SAC  # noqa: E402
 
 
 class PaginaDeTeste:
@@ -73,7 +74,7 @@ def _markdowns(controle: ft.Control) -> list[ft.Markdown]:
 
 def _testar_questoes(
     nome: str,
-    classe: type[JogoPorcentagem | JogoJuros | JogoPrice],
+    classe: type[JogoPorcentagem | JogoJuros | JogoPrice | JogoSac],
     estado: EstadoJogo,
 ) -> tuple[int, int]:
     jogo = classe(PaginaDeTeste(), lambda *_args: None, estado)
@@ -132,7 +133,7 @@ def _testar_questoes(
 
 def _testar_teoria(
     nome: str,
-    classe: type[JogoJuros | JogoPrice],
+    classe: type[JogoJuros | JogoPrice | JogoSac],
     paginas: list[dict[str, Any]],
     estado: EstadoJogo,
 ) -> int:
@@ -175,11 +176,13 @@ def main() -> int:
             _testar_questoes("Porcentagem", JogoPorcentagem, estado),
             _testar_questoes("Juros", JogoJuros, estado),
             _testar_questoes("PRICE", JogoPrice, estado),
+            _testar_questoes("SAC", JogoSac, estado),
         ]
         _testar_teoria("Juros", JogoJuros, TEORIA_JUROS, estado)
         total_teoria_price = _testar_teoria(
             "PRICE", JogoPrice, TEORIA_PRICE, estado
         )
+        total_teoria_price += _testar_teoria("SAC", JogoSac, TEORIA_SAC, estado)
 
     formulas_price = " ".join(str(pagina.get("formula", "")) for pagina in TEORIA_PRICE)
     formula_exigida = r"\frac{i\cdot(1+i)^n}{(1+i)^n-1}"

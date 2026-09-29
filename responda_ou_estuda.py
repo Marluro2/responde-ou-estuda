@@ -352,7 +352,7 @@ TEXTOS_TELA = {
     "premio_apoio": "POR ACERTO  •  ACUMULE E AVANCE",
     "imagem_vazia": "ADICIONE SUA IMAGEM\nNA PASTA ASSETS",
     "rodape": "PENSE  •  DECIDA  •  CONQUISTE",
-    "instrucao": "Escolha Porcentagem, Juros ou Sistema PRICE para começar",
+    "instrucao": "Escolha Porcentagem, Juros, PRICE ou SAC para começar",
 }
 
 
@@ -387,11 +387,11 @@ ASSUNTOS = [
         "ativo": True,
     },
     {
-        "nome": "EM BREVE",
-        "descricao": "Novo assunto\nem preparação",
-        "status": "BLOQUEADO",
-        "icone": "04",
-        "ativo": False,
+        "nome": "SISTEMA SAC",
+        "descricao": "Amortização constante e PA",
+        "status": "JOGAR AGORA",
+        "icone": "S$",
+        "ativo": True,
     },
     {
         "nome": "EM BREVE",
@@ -419,6 +419,7 @@ PASTA_ASSETS = BASE_DIR / "assets"
 ARQUIVO_QUIZ = "nivel_1_porcentagem.py"
 ARQUIVO_QUIZ_JUROS = "nivel_2_juros.py"
 ARQUIVO_QUIZ_PRICE = "nivel_3_price.py"
+ARQUIVO_QUIZ_SAC = "nivel_4_sac.py"
 ARQUIVO_IMAGEM_MISSAO = "mascote_financeiro.webp"
 ARQUIVO_SOM_INICIAL = PASTA_ASSETS / "sons" / "01_aventura.wav"
 
@@ -697,6 +698,8 @@ class AplicativoRespondaOuEstuda:
         self.tela_juros: ft.Control | None = None
         self.modulo_price: Any = None
         self.tela_price: ft.Control | None = None
+        self.modulo_sac: Any = None
+        self.tela_sac: ft.Control | None = None
         self.page.add(self.host)
         self.mostrar_inicio()
 
@@ -2885,7 +2888,7 @@ class AplicativoRespondaOuEstuda:
         indice: int,
         _evento: ft.ControlEvent,
     ) -> None:
-        # Índices: 0 abre Porcentagem, 1 abre Juros e 2 abre PRICE / SAF.
+        # Índices: 0 abre Porcentagem, 1 Juros, 2 PRICE / SAF e 3 SAC.
         # As etapas seguintes exibem aviso enquanto estiverem bloqueadas.
         if indice == 0 and ASSUNTOS[indice]["ativo"]:
             await self._abrir_porcentagem()
@@ -2895,6 +2898,9 @@ class AplicativoRespondaOuEstuda:
             return
         if indice == 2 and ASSUNTOS[indice]["ativo"]:
             await self._abrir_price()
+            return
+        if indice == 3 and ASSUNTOS[indice]["ativo"]:
+            await self._abrir_sac()
             return
         self._mostrar_aviso("ESTE ASSUNTO ESTARÁ DISPONÍVEL EM BREVE")
 
@@ -3098,6 +3104,72 @@ class AplicativoRespondaOuEstuda:
             print(f"Erro ao abrir o módulo PRICE / SAF: {erro}")
             self._mostrar_aviso(
                 "NÃO FOI POSSÍVEL ABRIR O MÓDULO PRICE / SAF"
+            )
+
+    async def _abrir_sac(self) -> None:
+        """Carrega a Etapa 4 (SAC) e mantém o mesmo estado global dos jogadores."""
+        caminho = BASE_DIR / ARQUIVO_QUIZ_SAC
+        if not caminho.exists():
+            self._mostrar_aviso(
+                f"COLOQUE {ARQUIVO_QUIZ_SAC} NA MESMA PASTA DESTE ARQUIVO"
+            )
+            return
+
+        try:
+            self._sincronizar_nomes_campos()
+            nomes_validos, mensagem = self.estado.nomes_validos()
+            if not nomes_validos:
+                self._mostrar_aviso(mensagem.upper())
+                return
+
+            if self.som_ativo:
+                await self._parar_audio_atual()
+                self.som_ativo = False
+                self.icone_som.icon = ft.Icons.VOLUME_OFF
+                self.texto_som.value = "ATIVAR SOM"
+
+            spec = importlib.util.spec_from_file_location(
+                "quiz_sac_flet",
+                caminho,
+            )
+            if spec is None or spec.loader is None:
+                raise ImportError(
+                    "Não foi possível preparar o módulo SAC."
+                )
+            modulo = importlib.util.module_from_spec(spec)
+            sys.modules["quiz_sac_flet"] = modulo
+            spec.loader.exec_module(modulo)
+
+            fabrica: Callable[..., ft.Control] | None = getattr(
+                modulo,
+                "criar_tela_sac",
+                None,
+            )
+            if fabrica is None:
+                self._mostrar_aviso(
+                    "CRIE A FUNÇÃO criar_tela_sac NO ARQUIVO DA ETAPA 4"
+                )
+                return
+
+            # ESTADO GLOBAL: a mesma instância acumula os saldos conquistados
+            # em Porcentagem, Juros, PRICE e SAC. Não crie EstadoJogo() neste ponto.
+            tela_quiz = fabrica(self.page, self.mostrar_inicio, self.estado)
+            if tela_quiz is None:
+                return
+            if not isinstance(tela_quiz, ft.Control):
+                raise TypeError(
+                    "criar_tela_sac deve devolver um controle do Flet."
+                )
+
+            self.modulo_sac = modulo
+            self.tela_sac = tela_quiz
+            self.host.content = tela_quiz
+            self.host.bgcolor = CORES["fundo_topo"]
+            self.page.update()
+        except Exception as erro:
+            print(f"Erro ao abrir o módulo SAC: {erro}")
+            self._mostrar_aviso(
+                "NÃO FOI POSSÍVEL ABRIR O MÓDULO SAC"
             )
 
     def _mostrar_aviso(self, texto: str) -> None:

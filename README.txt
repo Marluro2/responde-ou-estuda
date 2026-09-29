@@ -172,7 +172,7 @@ REGRAS DO JOGO
   alternativas ou a resolução que estiver visível.
 • Depois de acerto, erro ou estudo, a vez passa obrigatoriamente ao próximo
   jogador.
-• Porcentagem e Juros usam 20 situações cada; PRICE usa 60 situações.
+• Porcentagem e Juros usam 20 situações cada; PRICE e SAC usam 60 situações cada.
 • O saldo fica acumulado ao voltar à tela inicial ou jogar novamente.
 • A pontuação obtida em Porcentagem e Juros permanece ao iniciar PRICE.
 • Os dados continuam salvos ao fechar e reabrir o programa na mesma pasta.
@@ -258,6 +258,37 @@ Super fácil, Fácil, Médio e Difícil. As imagens são locais e ficam em:
 
 Todas as telas mantêm TELA ANTERIOR e INÍCIO. A narração acompanha a revisão,
 o enunciado, as cinco alternativas ou a resolução aberta em ESTUDAR.
+
+MÓDULO DO SISTEMA SAC (ETAPA 4) — PROGRESSÃO ARITMÉTICA
+
+Na tela inicial, escolha SISTEMA SAC. O módulo funciona como o do PRICE
+(revisão, 4 níveis, 60 questões com 5 alternativas), com foco em Progressão
+Aritmética. Base teórica: Rodrigues (2013), dissertação PROFMAT/UTFPR,
+seções 2.7 (SAC) e 4.2 (PA na Matemática Financeira).
+
+A revisão tem seis partes:
+
+• SAC e amortização constante: A = SD/n (exemplo de Marcos, R$ 24.000,00);
+• saldo devedor em PA de razão −A e como função afim de domínio discreto;
+• juros em PA: J_k = i·A·(n − k + 1), razão −i·A;
+• prestações em PA: P_k = A·[1 + i·(n − k + 1)], com tabela SAC;
+• soma da PA e custo total: J_total = i·SD·(n + 1)/2;
+• SAC × PRICE (PA × PG) e limite da amortização quando n → ∞ (Madalena).
+
+Níveis: Super fácil (ideias e reconhecimento de PA), Fácil (razão, próximo
+termo, saldo após k meses), Médio (termo geral, soma, média, função afim) e
+Difícil (demonstração, SAC × PRICE, inequação, carência, amortização extra,
+reconstrução do contrato a partir da PA, limites).
+
+Novidade em relação ao PRICE: no ESTUDO, muitas questões mostram a FAIXA DA PA
+(termo 1 → termo 2 → termo 3 → … → termo n, com o tipo e a razão da PA).
+
+Arquivos:
+   nivel_4_sac.py                    módulo (teoria em PAGINAS_TEORIA)
+   dados/questoes_sac.json           banco de questões (não editar à mão)
+   ferramentas/gerar_questoes_sac.py gera o banco com todas as contas feitas
+                                     pelo programa: py -3.14 ferramentas\gerar_questoes_sac.py
+As imagens são as locais de assets/imagens/juros e assets/imagens/price.
 
 RANKING
 

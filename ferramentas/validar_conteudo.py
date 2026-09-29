@@ -1,4 +1,4 @@
-"""Valida Porcentagem, Juros, PRICE e os arquivos usados pelo jogo."""
+"""Valida Porcentagem, Juros, PRICE, SAC e os arquivos usados pelo jogo."""
 
 from __future__ import annotations
 
@@ -29,6 +29,11 @@ BANCOS = (
     (
         "PRICE",
         BASE_DIR / "dados" / "questoes_price.json",
+        set(),
+    ),
+    (
+        "SAC",
+        BASE_DIR / "dados" / "questoes_sac.json",
         set(),
     ),
 )
@@ -102,6 +107,7 @@ def validar_textos_do_codigo() -> list[str]:
         "nivel_1_porcentagem.py",
         "nivel_2_juros.py",
         "nivel_3_price.py",
+        "nivel_4_sac.py",
     ):
         arvore = ast.parse((BASE_DIR / nome).read_text(encoding="utf-8"))
         for no in ast.walk(arvore):
@@ -135,9 +141,9 @@ def validar_banco(
         return [f'{nome}: a chave "questoes" deve conter uma lista.'], 0, 0
     if len(questoes) < 20:
         erros.append(f"{nome}: o banco precisa manter pelo menos 20 questões.")
-    if nome == "PRICE" and len(questoes) != 60:
+    if nome in {"PRICE", "SAC"} and len(questoes) != 60:
         erros.append(
-            f"PRICE: o banco deve conter exatamente 60 questões; "
+            f"{nome}: o banco deve conter exatamente 60 questões; "
             f"foram encontradas {len(questoes)}."
         )
 
@@ -182,9 +188,9 @@ def validar_banco(
             )
         elif not isinstance(correta, int) or not 0 <= correta < len(alternativas):
             erros.append(f"{identificador}: índice 'correta' inválido.")
-        if nome == "PRICE" and isinstance(alternativas, list) and len(alternativas) != 5:
+        if nome in {"PRICE", "SAC"} and isinstance(alternativas, list) and len(alternativas) != 5:
             erros.append(
-                f"{identificador}: questões PRICE devem ter 5 alternativas."
+                f"{identificador}: questões {nome} devem ter 5 alternativas."
             )
 
         imagem_informada = str(questao["imagem"])
@@ -261,10 +267,12 @@ def validar_infraestrutura_visual() -> list[str]:
         from nivel_2_juros import PAGINAS_TEORIA as TEORIA_JUROS
         from nivel_3_price import IMAGENS_TEORIA as IMAGENS_PRICE
         from nivel_3_price import PAGINAS_TEORIA as TEORIA_PRICE
+        from nivel_4_sac import IMAGENS_TEORIA as IMAGENS_SAC
+        from nivel_4_sac import PAGINAS_TEORIA as TEORIA_SAC
     except Exception as erro:
         return [f"Não foi possível importar as páginas teóricas: {erro}"]
 
-    for nome, paginas in (("Juros", TEORIA_JUROS), ("PRICE", TEORIA_PRICE)):
+    for nome, paginas in (("Juros", TEORIA_JUROS), ("PRICE", TEORIA_PRICE), ("SAC", TEORIA_SAC)):
         for indice, pagina in enumerate(paginas, start=1):
             identificador = f"Teoria {nome}, página {indice}"
             for chave in ("definicao", "formula", "passos", "significados", "aplicacao"):
@@ -282,7 +290,7 @@ def validar_infraestrutura_visual() -> list[str]:
                             f"{identificador}: fração visual ainda usa barra."
                         )
 
-    for nome, caminhos in (("Juros", IMAGENS_JUROS), ("PRICE", IMAGENS_PRICE)):
+    for nome, caminhos in (("Juros", IMAGENS_JUROS), ("PRICE", IMAGENS_PRICE), ("SAC", IMAGENS_SAC)):
         for chave, relativo in caminhos.items():
             relativo = str(relativo)
             if relativo.startswith(("http://", "https://")):
@@ -297,6 +305,7 @@ def validar_infraestrutura_visual() -> list[str]:
         BASE_DIR / "nivel_1_porcentagem.py",
         BASE_DIR / "nivel_2_juros.py",
         BASE_DIR / "nivel_3_price.py",
+        BASE_DIR / "nivel_4_sac.py",
     )
     for caminho in pontos_entrada:
         codigo = caminho.read_text(encoding="utf-8")
