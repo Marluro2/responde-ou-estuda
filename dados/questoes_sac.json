@@ -1523,11 +1523,11 @@
       "imagem": "imagens/sac/casa_propria_chave.webp",
       "enunciado": "Madalena financia R\\$ 100.000,00 pelo SAC a 1,5% ao mês. Hipoteticamente, o número de parcelas passa a ser $n=200$, $n=400$ e $n=1000$. Assinale a alternativa com as amortizações (em reais), o limite de $A_n=\\frac{SD}{n}$ quando $n\\to\\infty$ e sua interpretação.",
       "alternativas": [
-        "$A_{200}=500;\\;A_{400}=250;\\;A_{1000}=100$; $\\lim_{n\\to\\infty}A_n=0$; $P_1\\to\\text{R\\$}\\,0{,}00$. A primeira prestação também desaparece.",
-        "$A_{200}=1{.}000;\\;A_{400}=500;\\;A_{1000}=200$; $\\lim_{n\\to\\infty}A_n=100$; $P_1\\to\\text{R\\$}\\,1{.}600{,}00$. Existe um piso para a amortização.",
-        "$A_{200}=500;\\;A_{400}=250;\\;A_{1000}=100$; $\\lim_{n\\to\\infty}A_n=0$; $J_{total}\\to\\text{R\\$}\\,0{,}00$. O custo com juros desaparece quando o prazo cresce.",
-        "$A_{200}=500;\\;A_{400}=250;\\;A_{1000}=100$; $\\lim_{n\\to\\infty}A_n=1{.}500$; $P_1\\to\\text{R\\$}\\,3{.}000{,}00$. A amortização tende aos juros do primeiro mês.",
-        "$A_{200}=500;\\;A_{400}=250;\\;A_{1000}=100$; $\\lim_{n\\to\\infty}A_n=0$; $P_1\\to\\text{R\\$}\\,1{.}500{,}00$. A amortização some e paga-se praticamente só juros."
+        "$A_{200}=500$; $A_{400}=250$; $A_{1000}=100$; $\\lim_{n\\to\\infty}A_n=0$. A 1ª prestação também tende a zero.",
+        "$A_{200}=1{.}000$; $A_{400}=500$; $A_{1000}=200$; $\\lim_{n\\to\\infty}A_n=100$. A amortização tem piso de R\\$ 100,00.",
+        "$A_{200}=500$; $A_{400}=250$; $A_{1000}=100$; $\\lim_{n\\to\\infty}A_n=0$. O total de juros tende a zero.",
+        "$A_{200}=500$; $A_{400}=250$; $A_{1000}=100$; $\\lim_{n\\to\\infty}A_n=1{.}500$. A amortização tende aos juros do primeiro mês.",
+        "$A_{200}=500$; $A_{400}=250$; $A_{1000}=100$; $\\lim_{n\\to\\infty}A_n=0$. A 1ª prestação tende a R\\$ 1.500,00: quase só juros."
       ],
       "correta": 4,
       "explicacao": "$$A_{200}=\\frac{100{.}000}{200}=500\\qquad A_{400}=250\\qquad A_{1000}=100.$$ Como $\\frac{SD}{n}\\to0$: $$\\lim_{n\\to\\infty}A_n=0\\qquad P_1=A_n+i\\cdot SD\\to i\\cdot SD=1{.}500.$$ Com prazo muito longo, a dívida quase não diminui e paga-se basicamente juros (RODRIGUES, 2013, Ex. 4.10).",
@@ -1551,11 +1551,11 @@
       "imagem": "imagens/sac/apartamento_edificio.webp",
       "enunciado": "Mostre que, no SAC, o total de juros é $J_{total}=\\frac{i\\cdot SD\\cdot(n+1)}{2}$ e aplique a um financiamento de R\\$ 80.000,00 em 40 meses a 1,2% ao mês.",
       "alternativas": [
-        "$J_{total}=i\\cdot SD\\cdot n$; $J_{total}=\\text{R\\$}\\,38{.}400{,}00$. O juro do 1º mês repetido em todos os meses.",
-        "$J_{total}=\\frac{(i\\cdot SD+i\\cdot A)\\cdot n}{2}=\\frac{i\\cdot SD\\cdot(n+1)}{2}$; $J_{total}=\\text{R\\$}\\,19{.}680{,}00$. Soma de uma PA de n termos, do 1º ao último juro.",
-        "$J_{total}=\\frac{i\\cdot SD\\cdot n}{2}$; $J_{total}=\\text{R\\$}\\,19{.}200{,}00$. Metade dos juros simples do período.",
-        "$J_{total}=SD\\cdot[(1+i)^n-1]$; $J_{total}=\\text{R\\$}\\,48{.}917{,}09$. Juros compostos sobre a dívida inteira.",
-        "$J_{total}=\\frac{i\\cdot SD\\cdot(n-1)}{2}$; $J_{total}=\\text{R\\$}\\,18{.}720{,}00$. Soma de apenas n − 1 termos da PA."
+        "$J_{total}=i\\cdot SD\\cdot n$; $J_{total}=\\text{R\\$}\\,38{.}400{,}00$. Juro do 1º mês repetido n vezes.",
+        "$J_{total}=\\frac{i\\cdot SD\\cdot(n+1)}{2}$; $J_{total}=\\text{R\\$}\\,19{.}680{,}00$. Soma da PA dos n juros.",
+        "$J_{total}=\\frac{i\\cdot SD\\cdot n}{2}$; $J_{total}=\\text{R\\$}\\,19{.}200{,}00$. Metade dos juros simples.",
+        "$J_{total}=SD\\cdot[(1+i)^n-1]$; $J_{total}=\\text{R\\$}\\,48{.}917{,}09$. Juros compostos sobre a dívida.",
+        "$J_{total}=\\frac{i\\cdot SD\\cdot(n-1)}{2}$; $J_{total}=\\text{R\\$}\\,18{.}720{,}00$. Soma de só n − 1 termos."
       ],
       "correta": 1,
       "explicacao": "Os juros formam uma PA com $J_1=i\\cdot SD$ e $J_n=i\\cdot A=\\frac{i\\cdot SD}{n}$: $$J_{total}=\\frac{\\left(i\\cdot SD+\\frac{i\\cdot SD}{n}\\right)\\cdot n}{2}=\\frac{i\\cdot SD\\cdot(n+1)}{2}.$$ $$J_{total}=\\frac{0{,}012\\cdot80{.}000\\cdot41}{2}=19{.}680.$$",
@@ -1591,11 +1591,11 @@
       "imagem": "imagens/sac/casas_bairro.webp",
       "enunciado": "Marcos compara SAC e PRICE para R\\$ 24.000,00 em 12 meses a 1% ao mês. No PRICE, $PMT\\approx\\text{R\\$ }2.132{,}37$. Assinale a comparação correta do **total de juros** e da **1ª prestação**.",
       "alternativas": [
-        "$J_{SAC}=\\text{R\\$}\\,1{.}560{,}00$; $J_{PRICE}\\approx\\text{R\\$}\\,1{.}560{,}00$; $P_1^{SAC}=\\text{R\\$}\\,2{.}240{,}00$. Os dois sistemas pagam os mesmos juros.",
-        "$J_{SAC}=\\text{R\\$}\\,1{.}588{,}44$; $J_{PRICE}\\approx\\text{R\\$}\\,1{.}560{,}00$; $P_1^{SAC}=\\text{R\\$}\\,2{.}020{,}00$. O PRICE paga menos juros, e o SAC começa com prestação menor.",
-        "$J_{SAC}=\\text{R\\$}\\,1{.}560{,}00$; $J_{PRICE}\\approx\\text{R\\$}\\,1{.}588{,}44$; $P_1^{SAC}=\\text{R\\$}\\,2{.}000{,}00$. O SAC paga menos juros e tem todas as prestações menores.",
-        "$J_{SAC}=\\text{R\\$}\\,1{.}560{,}00$; $J_{PRICE}\\approx\\text{R\\$}\\,1{.}588{,}44$; $P_1^{SAC}=\\text{R\\$}\\,2{.}240{,}00$. O SAC paga menos juros, mas começa com prestação maior que a do PRICE.",
-        "$J_{SAC}=\\text{R\\$}\\,2{.}880{,}00$; $J_{PRICE}\\approx\\text{R\\$}\\,1{.}588{,}44$; $P_1^{SAC}=\\text{R\\$}\\,2{.}240{,}00$. O SAC paga mais juros porque a 1ª prestação é maior."
+        "$J_{SAC}=\\text{R\\$}\\,1{.}560{,}00$; $J_{PRICE}\\approx\\text{R\\$}\\,1{.}560{,}00$; $P_1^{SAC}=\\text{R\\$}\\,2{.}240{,}00$. Os dois pagam os mesmos juros.",
+        "$J_{SAC}=\\text{R\\$}\\,1{.}588{,}44$; $J_{PRICE}\\approx\\text{R\\$}\\,1{.}560{,}00$; $P_1^{SAC}=\\text{R\\$}\\,2{.}020{,}00$. PRICE paga menos; SAC começa menor.",
+        "$J_{SAC}=\\text{R\\$}\\,1{.}560{,}00$; $J_{PRICE}\\approx\\text{R\\$}\\,1{.}588{,}44$; $P_1^{SAC}=\\text{R\\$}\\,2{.}000{,}00$. SAC: menos juros e prestações sempre menores.",
+        "$J_{SAC}=\\text{R\\$}\\,1{.}560{,}00$; $J_{PRICE}\\approx\\text{R\\$}\\,1{.}588{,}44$; $P_1^{SAC}=\\text{R\\$}\\,2{.}240{,}00$. SAC: menos juros, mas começa mais caro.",
+        "$J_{SAC}=\\text{R\\$}\\,2{.}880{,}00$; $J_{PRICE}\\approx\\text{R\\$}\\,1{.}588{,}44$; $P_1^{SAC}=\\text{R\\$}\\,2{.}240{,}00$. SAC paga mais juros (1ª prestação maior)."
       ],
       "correta": 3,
       "explicacao": "SAC: $$J=\\frac{(240+20)\\cdot12}{2}=1{.}560.$$ PRICE: $$J=12\\cdot2{.}132{,}37-24{.}000\\approx1{.}588{,}44.$$ No SAC a dívida cai mais depressa no início, por isso rende menos juros; em troca, $P_1=2{.}240>2{.}132{,}37$.",
@@ -1659,11 +1659,11 @@
       "imagem": "imagens/juros/emprestimo_e_credito.webp",
       "enunciado": "Qual encadeamento demonstra corretamente a fórmula $J_k=i\\cdot A\\cdot(n-k+1)$ a partir do termo geral da PA dos juros?",
       "alternativas": [
-        "$J_1=i\\cdot SD$; $J_k=J_1\\cdot(1-i)^{k-1}$; $J_k=i\\cdot A\\cdot(n-k+1)$. Os juros formariam uma PG.",
-        "$J_1=i\\cdot SD$; $J_k=J_1+k\\cdot(-iA)$; $J_k=i\\cdot A\\cdot(n-k)$. A razão é somada k vezes a partir do 1º termo.",
-        "$J_1=i\\cdot SD=i\\cdot nA$; $J_k=J_1+(k-1)\\cdot(-iA)$; $J_k=i\\cdot A\\cdot(n-k+1)$. Termo geral da PA dos juros, de razão −iA.",
-        "$SD_k=A\\cdot(n-k)$; $J_k=i\\cdot SD_k$; $J_k=i\\cdot A\\cdot(n-k)$. Os juros incidem sobre o saldo após o pagamento.",
-        "$J_1=i\\cdot SD$; $J_k=J_1-(k-1)\\cdot A$; $J_k=i\\cdot A\\cdot(n-k+1)$. A razão dos juros seria −A."
+        "$J_k=J_1(1-i)^{k-1}$; $J_k=iA(n-k+1)$. Os juros formariam uma PG.",
+        "$J_k=J_1+k(-iA)$; $J_k=iA(n-k)$. A razão foi somada k vezes.",
+        "$J_k=inA+(k-1)(-iA)$; $J_k=iA(n-k+1)$. Termo geral: J₁ = i·SD = i·n·A e razão −iA.",
+        "$J_k=i\\cdot SD_k$; $J_k=iA(n-k)$. Juros sobre o saldo após o pagamento.",
+        "$J_k=J_1-(k-1)A$; $J_k=iA(n-k+1)$. A razão dos juros seria −A."
       ],
       "correta": 2,
       "explicacao": "Os juros formam PA com $J_1=i\\cdot SD=i\\cdot n\\cdot A$ e razão $r=-i\\cdot A$. Pelo termo geral: $$J_k=i\\cdot nA-(k-1)\\cdot iA=i\\cdot A\\cdot(n-k+1).$$ Para uma prova formal, usa-se indução sobre $k$ (RODRIGUES, 2013, seção 2.7).",
@@ -1867,11 +1867,11 @@
       "imagem": "imagens/sac/casa_propria_chave.webp",
       "enunciado": "Um imóvel de R\\$ 100.000,00 pelo SAC a 1% ao mês pode ser pago em 100 ou em 200 meses. Compare a 1ª prestação e o total de juros.",
       "alternativas": [
-        "$P_1^{(100)}=\\text{R\\$}\\,2{.}000{,}00$; $J^{(100)}=\\text{R\\$}\\,50{.}500{,}00$; $P_1^{(200)}=\\text{R\\$}\\,1{.}000{,}00$; $J^{(200)}=\\text{R\\$}\\,100{.}500{,}00$. Dobrar o prazo reduz a 1ª prestação pela metade.",
+        "$P_1^{(100)}=\\text{R\\$}\\,2{.}000{,}00$; $J^{(100)}=\\text{R\\$}\\,50{.}500{,}00$; $P_1^{(200)}=\\text{R\\$}\\,1{.}000{,}00$; $J^{(200)}=\\text{R\\$}\\,100{.}500{,}00$. A 1ª prestação cai pela metade.",
         "$P_1^{(100)}=\\text{R\\$}\\,2{.}000{,}00$; $J^{(100)}=\\text{R\\$}\\,50{.}500{,}00$; $P_1^{(200)}=\\text{R\\$}\\,1{.}500{,}00$; $J^{(200)}=\\text{R\\$}\\,50{.}500{,}00$. Os juros não dependem do prazo.",
         "$P_1^{(100)}=\\text{R\\$}\\,2{.}000{,}00$; $J^{(100)}=\\text{R\\$}\\,100{.}500{,}00$; $P_1^{(200)}=\\text{R\\$}\\,1{.}500{,}00$; $J^{(200)}=\\text{R\\$}\\,50{.}500{,}00$. O prazo maior reduz os juros.",
-        "$P_1^{(100)}=\\text{R\\$}\\,1{.}000{,}00$; $J^{(100)}=\\text{R\\$}\\,50{.}000{,}00$; $P_1^{(200)}=\\text{R\\$}\\,500{,}00$; $J^{(200)}=\\text{R\\$}\\,100{.}000{,}00$. Dobrar o prazo dobra exatamente os juros.",
-        "$P_1^{(100)}=\\text{R\\$}\\,2{.}000{,}00$; $J^{(100)}=\\text{R\\$}\\,50{.}500{,}00$; $P_1^{(200)}=\\text{R\\$}\\,1{.}500{,}00$; $J^{(200)}=\\text{R\\$}\\,100{.}500{,}00$. Dobrar o prazo reduz a 1ª prestação em 25%, mas quase dobra os juros."
+        "$P_1^{(100)}=\\text{R\\$}\\,1{.}000{,}00$; $J^{(100)}=\\text{R\\$}\\,50{.}000{,}00$; $P_1^{(200)}=\\text{R\\$}\\,500{,}00$; $J^{(200)}=\\text{R\\$}\\,100{.}000{,}00$. Os juros dobram exatamente.",
+        "$P_1^{(100)}=\\text{R\\$}\\,2{.}000{,}00$; $J^{(100)}=\\text{R\\$}\\,50{.}500{,}00$; $P_1^{(200)}=\\text{R\\$}\\,1{.}500{,}00$; $J^{(200)}=\\text{R\\$}\\,100{.}500{,}00$. 1ª prestação cai 25%; juros quase dobram."
       ],
       "correta": 4,
       "explicacao": "$$P_1^{(100)}=1{.}000+1{.}000=2{.}000\\qquad P_1^{(200)}=500+1{.}000=1{.}500$$ $$J^{(100)}=\\frac{0{,}01\\cdot100{.}000\\cdot101}{2}=50{.}500\\qquad J^{(200)}=\\frac{0{,}01\\cdot100{.}000\\cdot201}{2}=100{.}500.$$",
@@ -1896,10 +1896,10 @@
       "enunciado": "Em um SAC de R\\$ 12.000,00 em 12 meses a 2% ao mês, os saldos antes de cada pagamento são 12.000; 11.000; …; 1.000. Qual é a soma desses saldos e o total de juros?",
       "alternativas": [
         "$\\sum SD_{k-1}=\\text{R\\$}\\,72{.}000{,}00$; $J_{total}=\\text{R\\$}\\,1{.}440{,}00$. Juros = taxa × soma dos saldos.",
-        "$\\sum SD_{k-1}=\\text{R\\$}\\,78{.}000{,}00$; $J_{total}=\\text{R\\$}\\,2{.}880{,}00$. Juros = taxa × soma dos saldos, contada duas vezes.",
+        "$\\sum SD_{k-1}=\\text{R\\$}\\,78{.}000{,}00$; $J_{total}=\\text{R\\$}\\,2{.}880{,}00$. Soma dos saldos contada duas vezes.",
         "$\\sum SD_{k-1}=\\text{R\\$}\\,78{.}000{,}00$; $J_{total}=\\text{R\\$}\\,1{.}560{,}00$. Juros = taxa × soma dos saldos.",
-        "$\\sum SD_{k-1}=\\text{R\\$}\\,66{.}000{,}00$; $J_{total}=\\text{R\\$}\\,1{.}320{,}00$. Juros = taxa × soma dos saldos após os pagamentos.",
-        "$\\sum SD_{k-1}=\\text{R\\$}\\,144{.}000{,}00$; $J_{total}=\\text{R\\$}\\,2{.}880{,}00$. Juros = taxa × 12 vezes o saldo inicial."
+        "$\\sum SD_{k-1}=\\text{R\\$}\\,66{.}000{,}00$; $J_{total}=\\text{R\\$}\\,1{.}320{,}00$. Saldos após os pagamentos.",
+        "$\\sum SD_{k-1}=\\text{R\\$}\\,144{.}000{,}00$; $J_{total}=\\text{R\\$}\\,2{.}880{,}00$. 12 vezes o saldo inicial."
       ],
       "correta": 2,
       "explicacao": "Os saldos formam uma PA de 12 termos: $$\\sum SD_{k-1}=\\frac{(12{.}000+1{.}000)\\cdot12}{2}=78{.}000.$$ Como cada juro é $i\\cdot SD_{k-1}$: $$J_{total}=i\\cdot\\sum SD_{k-1}=0{,}02\\cdot78{.}000=1{.}560.$$",
@@ -1933,13 +1933,13 @@
       "produto": "Nível Difícil: Sistema SAC",
       "nivel": "Difícil",
       "imagem": "imagens/sac/casa_em_construcao.webp",
-      "enunciado": "Uma reforma de R\\$ 60.000,00 pelo SAC tem 30 prestações a 1% ao mês. Após 10 pagamentos, a família faz uma amortização extra de R\\$ 10.000,00, mantendo $A=\\text{R\\$ }2.000{,}00$. Quantas prestações restam e quanto se economiza de juros?",
+      "enunciado": "Uma reforma de R\\$ 60.000,00 pelo SAC tem 30 prestações a 1% ao mês. Após 10 pagamentos, a família faz uma amortização extra de R\\$ 10.000,00, mantendo a amortização de R\\$ 2.000,00. Quantas prestações restam e quanto se economiza de juros?",
       "alternativas": [
-        "$m_{antes}=20$; $m_{depois}=15$; $\\text{economia}=\\text{R\\$}\\,10{.}000{,}00$. A economia é o próprio valor antecipado.",
+        "$m_{antes}=20$; $m_{depois}=15$; $\\text{economia}=\\text{R\\$}\\,10{.}000{,}00$. Economia = valor antecipado.",
         "$m_{antes}=20$; $m_{depois}=15$; $\\text{economia}=\\text{R\\$}\\,1{.}800{,}00$. Menos termos na PA dos juros.",
         "$m_{antes}=20$; $m_{depois}=20$; $\\text{economia}=\\text{R\\$}\\,0{,}00$. Antecipar não muda o contrato.",
         "$m_{antes}=20$; $m_{depois}=16$; $\\text{economia}=\\text{R\\$}\\,1{.}500{,}00$. Menos termos na PA dos juros.",
-        "$m_{antes}=20$; $m_{depois}=5$; $\\text{economia}=\\text{R\\$}\\,4{.}200{,}00$. Todos os juros restantes são eliminados."
+        "$m_{antes}=20$; $m_{depois}=5$; $\\text{economia}=\\text{R\\$}\\,4{.}200{,}00$. Todos os juros restantes somem."
       ],
       "correta": 1,
       "explicacao": "$$SD_{10}=2{.}000\\cdot20=40{.}000\\;\\to\\;40{.}000-10{.}000=30{.}000\\;\\Rightarrow\\;\\frac{30{.}000}{2{.}000}=15.$$ Juros restantes (PA): sem o extra $0{,}01\\cdot2{.}000\\cdot\\frac{20\\cdot21}{2}=4{.}200$; com o extra $0{,}01\\cdot2{.}000\\cdot\\frac{15\\cdot16}{2}=2{.}400$. Economia: $1{.}800$.",

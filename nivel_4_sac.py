@@ -2803,14 +2803,8 @@ class JogoSac:
 
         blocos_formula: list[ft.Control] = []
         for formula in formulas:
-            tamanho_formula = (
-                9.5
-                if (
-                    self.questao_atual["nivel"] == "Difícil"
-                    and len(formula) > 35
-                )
-                else tamanho
-            )
+            # Fórmulas muito longas ficam só um pouco menores que o texto.
+            tamanho_formula = max(13, tamanho - 2) if len(formula) > 60 else tamanho
             blocos_formula.append(
                 ft.Container(
                     content=ft.Row(
@@ -2829,17 +2823,17 @@ class JogoSac:
                 )
             )
 
-        if len(blocos_formula) >= 3:
+        if len(blocos_formula) >= 2:
+            # Duas a quatro fórmulas lado a lado (mini-colunas); com cinco ou
+            # mais, a grade continua em uma segunda linha.
+            largura = max(3, 12 // len(blocos_formula))
             area_formula: ft.Control = ft.ResponsiveRow(
                 controls=[
-                    ft.Container(
-                        content=bloco,
-                        col={"xs": 12, "sm": 6},
-                    )
+                    ft.Container(content=bloco, col={"xs": 6, "sm": largura})
                     for bloco in blocos_formula
                 ],
                 columns=12,
-                spacing=4,
+                spacing=6,
                 run_spacing=2,
                 vertical_alignment=ft.CrossAxisAlignment.CENTER,
             )
@@ -3100,7 +3094,7 @@ class JogoSac:
                                 markdown_matematico(
                                     str(questao["enunciado"]),
                                     cor=tema["texto"],
-                                    tamanho=14.5,
+                                    tamanho=16,
                                     peso=ft.FontWeight.W_600,
                                     alinhamento=ft.MainAxisAlignment.START,
                                     escala_latex=1.0,
@@ -3133,14 +3127,16 @@ class JogoSac:
         nivel_dificil = questao["nivel"] == "Difícil"
         for indice, alternativa in enumerate(questao["alternativas"]):
             texto_alternativa = str(alternativa)
+            # TAMANHO DAS LETRAS DAS ALTERNATIVAS (SAC): aumente/diminua estes
+            # valores. O Difícil usa 15 porque tem várias fórmulas por opção.
             tamanho = (
-                11.5
+                15
                 if nivel_dificil
-                else 14.5
-                if len(texto_alternativa) > 180
-                else 15
-                if len(texto_alternativa) > 90
                 else 16
+                if len(texto_alternativa) > 180
+                else 17
+                if len(texto_alternativa) > 90
+                else 19
             )
             destaque = rj.cores_alternativa(self, indice, tema) or (
                 tema["cartao_2"], tema["primaria"], 1.4
@@ -3155,11 +3151,11 @@ class JogoSac:
                                         content=ft.Text(
                                             letras[indice],
                                             color=tema["fundo_1"],
-                                            size=14 if nivel_dificil else 16,
+                                            size=16,
                                             weight=ft.FontWeight.BOLD,
                                         ),
-                                        width=28 if nivel_dificil else 32,
-                                        height=28 if nivel_dificil else 32,
+                                        width=32,
+                                        height=32,
                                         alignment=ft.Alignment.CENTER,
                                         bgcolor=tema["primaria"],
                                         border_radius=_raio(10),
@@ -3167,7 +3163,7 @@ class JogoSac:
                                     ft.Text(
                                         rj.rotulo_alternativa(self, indice) + f"ALTERNATIVA {letras[indice]}",
                                         color=tema["primaria"],
-                                        size=10 if nivel_dificil else 11,
+                                        size=11,
                                         weight=ft.FontWeight.BOLD,
                                     ),
                                 ],
@@ -3182,10 +3178,7 @@ class JogoSac:
                         spacing=3 if nivel_dificil else 5,
                         horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
                     ),
-                    padding=ft.Padding.symmetric(
-                        horizontal=6 if nivel_dificil else 11,
-                        vertical=5 if nivel_dificil else 8,
-                    ),
+                    padding=ft.Padding.symmetric(horizontal=12, vertical=5 if nivel_dificil else 8),
                     bgcolor=destaque[0],
                     border=_borda(destaque[1], destaque[2]),
                     border_radius=_raio(15),
@@ -3195,17 +3188,12 @@ class JogoSac:
                         resposta,
                         evento,
                     ),
+                    # Difícil: 3 colunas (A-B-C / D-E) para caber sem rolar.
+                    # Demais níveis: 2 colunas (A-B / C-D / E na largura toda).
                     col=(
-                        {
-                            "xs": 12,
-                            "sm": 6,
-                            "lg": 2.4,
-                        }
+                        {"xs": 12, "sm": 6, "lg": 4}
                         if nivel_dificil
-                        else {
-                            "xs": 12,
-                            "sm": 12 if indice == 4 else 6,
-                        }
+                        else {"xs": 12, "sm": 12 if indice == 4 else 6}
                     ),
                     tooltip=f"Selecionar alternativa {letras[indice]}",
                 )
