@@ -1322,7 +1322,7 @@ class JogoPorcentagem:
                     ft.Text(
                         "A narração é opcional e pode ser interrompida a qualquer momento.",
                         color=tema["suave"],
-                        size=10,
+                        size=12,
                         text_align=ft.TextAlign.CENTER,
                     ),
                 ],
@@ -1371,7 +1371,7 @@ class JogoPorcentagem:
                     size=60,
                 ),
             ),
-            height=240,
+            height=320 if mostrar_alternativas else 240,
             # ALTURA DO CARTÃO DA IMAGEM: altere 240 para aumentar ou
             # diminuir a altura da questão. Um valor menor sobe os botões
             # "Responder" e "Estudar" na tela.
@@ -1388,19 +1388,19 @@ class JogoPorcentagem:
             ft.Text(
                 questao["titulo"].upper(),
                 color=tema["destaque"],
-                size=13,
+                size=15,
                 weight=ft.FontWeight.BOLD,
             ),
             ft.Text(
                 questao["produto"],
                 color=tema["primaria"],
-                size=18,
+                size=20,
                 weight=ft.FontWeight.BOLD,
             ),
             markdown_matematico(
                 questao["enunciado"],
                 cor=tema["texto"],
-                tamanho=20,
+                tamanho=26 if mostrar_alternativas else 23,
                 peso=ft.FontWeight.W_600,
             ),
         ]
@@ -1419,7 +1419,8 @@ class JogoPorcentagem:
                             cor=tema["texto"],
                             # FONTE DAS ALTERNATIVAS: tamanho padronizado para
                             # leitura confortável em todos os módulos.
-                            tamanho=16,
+                            # Alternativas curtas em 26; longas em 22 (evita quebra).
+                            tamanho=26 if len(str(alternativa)) <= 16 else 22,
                             escala_latex=1.0,
                         ),
                         style=ft.ButtonStyle(
@@ -1427,7 +1428,7 @@ class JogoPorcentagem:
                             side=_lado(destaque[1], destaque[2]),
                             bgcolor=destaque[0],
                         ),
-                        height=60,
+                        height=96,
                         on_click=lambda evento, resposta=indice: self._responder(
                             resposta,
                             evento,
@@ -1485,7 +1486,7 @@ class JogoPorcentagem:
                             ft.Text(
                                 f"{self.jogador_atual['nome']}, qual é sua escolha?",
                                 color=tema["texto"],
-                                size=18,
+                                size=21,
                                 weight=ft.FontWeight.BOLD,
                                 text_align=ft.TextAlign.CENTER,
                             ),
@@ -1525,7 +1526,7 @@ class JogoPorcentagem:
                                     + rj.ATALHOS_TEXTO
                                 ),
                                 color=tema["suave"],
-                                size=12,
+                                size=14,
                                 text_align=ft.TextAlign.CENTER,
                             ),
                         ],
@@ -1656,13 +1657,13 @@ class JogoPorcentagem:
                     ft.Text(
                         titulo,
                         color=tema["primaria"],
-                        size=11,
+                        size=13,
                         weight=ft.FontWeight.BOLD,
                     ),
                     markdown_matematico(
                         texto,
                         cor=tema["texto"],
-                        tamanho=13,
+                        tamanho=16,
                     ),
                 ],
                 spacing=4,
@@ -1700,13 +1701,13 @@ class JogoPorcentagem:
                         ft.Text(
                             titulo,
                             color=tema["primaria"],
-                            size=12,
+                            size=14,
                             weight=ft.FontWeight.BOLD,
                         ),
                         markdown_matematico(
                             texto,
                             cor=tema["texto"],
-                            tamanho=13,
+                            tamanho=16,
                             expandir=True,
                         ),
                     ],
@@ -1733,7 +1734,7 @@ class JogoPorcentagem:
                     ft.Text(
                         "EXEMPLOS EXTRAS DE PORCENTAGEM",
                         color=tema["destaque"],
-                        size=15,
+                        size=17,
                         weight=ft.FontWeight.BOLD,
                         text_align=ft.TextAlign.CENTER,
                     ),
@@ -1808,7 +1809,7 @@ class JogoPorcentagem:
                     ft.Text(
                         "EXEMPLOS EXTRAS DE PORCENTAGEM",
                         color=tema["destaque"],
-                        size=15,
+                        size=17,
                         weight=ft.FontWeight.BOLD,
                         text_align=ft.TextAlign.CENTER,
                     ),
@@ -1925,20 +1926,20 @@ class JogoPorcentagem:
                                 ft.Text(
                                     estudo["titulo"],
                                     color=tema["primaria"],
-                                    size=20,
+                                    size=23,
                                     weight=ft.FontWeight.BOLD,
                                     text_align=ft.TextAlign.CENTER,
                                 ),
                                 markdown_matematico(
                                     estudo["texto"],
                                     cor=tema["texto"],
-                                    tamanho=16,
+                                    tamanho=19,
                                 ),
                                 ft.Container(
                                     content=markdown_matematico(
                                         estudo["formula"],
                                         cor=tema["fundo_1"],
-                                        tamanho=18,
+                                        tamanho=21,
                                         peso=ft.FontWeight.BOLD,
                                         alinhamento=ft.MainAxisAlignment.CENTER,
                                         escala_latex=1.15,
@@ -2001,7 +2002,7 @@ class JogoPorcentagem:
                                 "A próxima vez será de outro jogador."
                             ),
                             color=tema["positivo"],
-                            size=14,
+                            size=16,
                             weight=ft.FontWeight.BOLD,
                             text_align=ft.TextAlign.CENTER,
                         ),
@@ -2140,7 +2141,7 @@ class JogoPorcentagem:
                                     )
                                 ),
                                 color=tema["suave"],
-                                size=13,
+                                size=15,
                                 text_align=ft.TextAlign.CENTER,
                             ),
                             ft.Text(
@@ -2152,7 +2153,7 @@ class JogoPorcentagem:
                             markdown_matematico(
                                 f"**Resposta correta:** {resposta_correta}",
                                 cor=tema["destaque"],
-                                tamanho=17,
+                                tamanho=20,
                                 peso=ft.FontWeight.BOLD,
                                 alinhamento=ft.MainAxisAlignment.CENTER,
                             ),
@@ -2160,7 +2161,7 @@ class JogoPorcentagem:
                                 content=markdown_matematico(
                                     self.questao_atual["explicacao"],
                                     cor=tema["texto"],
-                                    tamanho=17,
+                                    tamanho=20,
                                 ),
                                 padding=18,
                                 bgcolor=tema["cartao_2"],
@@ -2173,7 +2174,7 @@ class JogoPorcentagem:
                                     f"{formatar_reais(self.jogador_atual['saldo'])}"
                                 ),
                                 color=tema["texto"],
-                                size=20,
+                                size=22,
                                 weight=ft.FontWeight.BOLD,
                             ),
                             ft.Text(
@@ -2197,8 +2198,8 @@ class JogoPorcentagem:
                         spacing=10,
                         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                     ),
-                    width=860,
-                    padding=ft.Padding.symmetric(horizontal=24, vertical=18),
+                    width=1100,
+                    padding=ft.Padding.symmetric(horizontal=28, vertical=16),
                     bgcolor=tema["cartao"],
                     border=_borda(cor, 2),
                     border_radius=_raio(24),

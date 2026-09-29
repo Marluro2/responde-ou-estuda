@@ -982,7 +982,7 @@ class JogoJuros:
                                         "Dinheiro usado para representar "
                                         "empréstimos e investimentos"
                                     ),
-                                    245,
+                                    300,
                                 ),
                                 col={"xs": 12, "md": 5},
                             ),
@@ -992,19 +992,19 @@ class JogoJuros:
                                         ft.Icon(
                                             ft.Icons.SAVINGS,
                                             color=tema["destaque"],
-                                            size=58,
+                                            size=66,
                                         ),
                                         ft.Text(
                                             "JUROS SIMPLES E COMPOSTOS",
                                             color=tema["destaque"],
-                                            size=28,
+                                            size=34,
                                             weight=ft.FontWeight.BOLD,
                                             text_align=ft.TextAlign.CENTER,
                                         ),
                                         ft.Text(
                                             "Deseja rever o assunto antes de começar?",
                                             color=tema["texto"],
-                                            size=20,
+                                            size=24,
                                             weight=ft.FontWeight.BOLD,
                                             text_align=ft.TextAlign.CENTER,
                                         ),
@@ -1015,7 +1015,7 @@ class JogoJuros:
                                                 "financiamentos e investimentos."
                                             ),
                                             color=tema["suave"],
-                                            size=14,
+                                            size=17,
                                             text_align=ft.TextAlign.CENTER,
                                         ),
                                         self._controles_narracao(),
@@ -1026,7 +1026,7 @@ class JogoJuros:
                                                     icon=ft.Icons.AUTO_STORIES,
                                                     color=tema["fundo_1"],
                                                     bgcolor=tema["primaria"],
-                                                    height=50,
+                                                    height=58,
                                                     on_click=self._abrir_teoria,
                                                     col={"xs": 12, "sm": 6},
                                                 ),
@@ -1035,7 +1035,7 @@ class JogoJuros:
                                                     icon=ft.Icons.PLAY_ARROW,
                                                     color=tema["fundo_1"],
                                                     bgcolor=tema["destaque"],
-                                                    height=50,
+                                                    height=58,
                                                     on_click=self._ir_para_questoes,
                                                     col={"xs": 12, "sm": 6},
                                                 ),
@@ -1077,7 +1077,7 @@ class JogoJuros:
                     content=ft.Text(
                         str(numero),
                         color=tema["fundo_1"],
-                        size=12,
+                        size=14,
                         weight=ft.FontWeight.BOLD,
                     ),
                     width=28,
@@ -1089,7 +1089,7 @@ class JogoJuros:
                 markdown_matematico(
                     texto,
                     cor=tema["texto"],
-                    tamanho=13,
+                    tamanho=15,
                     expandir=True,
                 ),
             ],
@@ -1136,7 +1136,7 @@ class JogoJuros:
                                     ft.Text(
                                         pagina["subtitulo"],
                                         color=tema["primaria"],
-                                        size=12,
+                                        size=14,
                                         weight=ft.FontWeight.BOLD,
                                     ),
                                 ],
@@ -1149,7 +1149,7 @@ class JogoJuros:
                     markdown_matematico(
                         pagina["definicao"],
                         cor=tema["texto"],
-                        tamanho=15,
+                        tamanho=17,
                     ),
                     ft.Container(
                         content=ft.Column(
@@ -1157,7 +1157,7 @@ class JogoJuros:
                                 markdown_matematico(
                                     pagina["formula"],
                                     cor=tema["fundo_1"],
-                                    tamanho=18,
+                                    tamanho=20,
                                     peso=ft.FontWeight.BOLD,
                                     alinhamento=ft.MainAxisAlignment.CENTER,
                                     escala_latex=1.18,
@@ -1165,7 +1165,7 @@ class JogoJuros:
                                 markdown_matematico(
                                     pagina["significados"],
                                     cor=tema["fundo_1"],
-                                    tamanho=11,
+                                    tamanho=14,
                                     alinhamento=ft.MainAxisAlignment.CENTER,
                                 ),
                             ],
@@ -1193,7 +1193,7 @@ class JogoJuros:
                         content=markdown_matematico(
                             pagina["aplicacao"],
                             cor=tema["texto"],
-                            tamanho=12,
+                            tamanho=14,
                         ),
                         padding=10,
                         bgcolor=tema["cartao_2"],
@@ -2006,7 +2006,7 @@ class JogoJuros:
                     ft.Text(
                         "A narração é opcional e pode ser interrompida a qualquer momento.",
                         color=tema["suave"],
-                        size=10,
+                        size=12,
                         text_align=ft.TextAlign.CENTER,
                     ),
                 ],
@@ -2055,7 +2055,7 @@ class JogoJuros:
                     size=60,
                 ),
             ),
-            height=240,
+            height=320 if mostrar_alternativas else 240,
             # ALTURA DO CARTÃO DA IMAGEM: altere 240 para aumentar ou
             # diminuir a altura da questão. Um valor menor sobe os botões
             # "Responder" e "Estudar" na tela.
@@ -2072,19 +2072,19 @@ class JogoJuros:
             ft.Text(
                 questao["titulo"].upper(),
                 color=tema["destaque"],
-                size=13,
+                size=15,
                 weight=ft.FontWeight.BOLD,
             ),
             ft.Text(
                 questao["produto"],
                 color=tema["primaria"],
-                size=18,
+                size=20,
                 weight=ft.FontWeight.BOLD,
             ),
             markdown_matematico(
                 questao["enunciado"],
                 cor=tema["texto"],
-                tamanho=20,
+                tamanho=26 if mostrar_alternativas else 23,
                 peso=ft.FontWeight.W_600,
             ),
         ]
@@ -2103,7 +2103,8 @@ class JogoJuros:
                             cor=tema["texto"],
                             # FONTE DAS ALTERNATIVAS: tamanho padronizado para
                             # leitura confortável em todos os módulos.
-                            tamanho=16,
+                            # Alternativas curtas em 26; longas em 22 (evita quebra).
+                            tamanho=26 if len(str(alternativa)) <= 16 else 22,
                             escala_latex=1.0,
                         ),
                         style=ft.ButtonStyle(
@@ -2111,7 +2112,7 @@ class JogoJuros:
                             side=_lado(destaque[1], destaque[2]),
                             bgcolor=destaque[0],
                         ),
-                        height=60,
+                        height=96,
                         on_click=lambda evento, resposta=indice: self._responder(
                             resposta,
                             evento,
@@ -2169,7 +2170,7 @@ class JogoJuros:
                             ft.Text(
                                 f"{self.jogador_atual['nome']}, qual é sua escolha?",
                                 color=tema["texto"],
-                                size=18,
+                                size=21,
                                 weight=ft.FontWeight.BOLD,
                                 text_align=ft.TextAlign.CENTER,
                             ),
@@ -2209,7 +2210,7 @@ class JogoJuros:
                                     + rj.ATALHOS_TEXTO
                                 ),
                                 color=tema["suave"],
-                                size=12,
+                                size=14,
                                 text_align=ft.TextAlign.CENTER,
                             ),
                         ],
@@ -2337,13 +2338,13 @@ class JogoJuros:
                     ft.Text(
                         titulo,
                         color=tema["primaria"],
-                        size=11,
+                        size=13,
                         weight=ft.FontWeight.BOLD,
                     ),
                     markdown_matematico(
                         texto,
                         cor=tema["texto"],
-                        tamanho=13,
+                        tamanho=16,
                     ),
                 ],
                 spacing=4,
@@ -2381,13 +2382,13 @@ class JogoJuros:
                         ft.Text(
                             titulo,
                             color=tema["primaria"],
-                            size=12,
+                            size=14,
                             weight=ft.FontWeight.BOLD,
                         ),
                         markdown_matematico(
                             texto,
                             cor=tema["texto"],
-                            tamanho=13,
+                            tamanho=16,
                             expandir=True,
                         ),
                     ],
@@ -2414,7 +2415,7 @@ class JogoJuros:
                     ft.Text(
                         "EXEMPLOS EXTRAS DE JUROS",
                         color=tema["destaque"],
-                        size=15,
+                        size=17,
                         weight=ft.FontWeight.BOLD,
                         text_align=ft.TextAlign.CENTER,
                     ),
@@ -2491,7 +2492,7 @@ class JogoJuros:
                     ft.Text(
                         "EXEMPLOS EXTRAS DE JUROS",
                         color=tema["destaque"],
-                        size=15,
+                        size=17,
                         weight=ft.FontWeight.BOLD,
                         text_align=ft.TextAlign.CENTER,
                     ),
@@ -2610,20 +2611,20 @@ class JogoJuros:
                                 ft.Text(
                                     estudo["titulo"],
                                     color=tema["primaria"],
-                                    size=20,
+                                    size=23,
                                     weight=ft.FontWeight.BOLD,
                                     text_align=ft.TextAlign.CENTER,
                                 ),
                                 markdown_matematico(
                                     estudo["texto"],
                                     cor=tema["texto"],
-                                    tamanho=16,
+                                    tamanho=19,
                                 ),
                                 ft.Container(
                                     content=markdown_matematico(
                                         estudo["formula"],
                                         cor=tema["fundo_1"],
-                                        tamanho=18,
+                                        tamanho=21,
                                         peso=ft.FontWeight.BOLD,
                                         alinhamento=ft.MainAxisAlignment.CENTER,
                                         escala_latex=1.15,
@@ -2686,7 +2687,7 @@ class JogoJuros:
                                 "A próxima vez será de outro jogador."
                             ),
                             color=tema["positivo"],
-                            size=14,
+                            size=16,
                             weight=ft.FontWeight.BOLD,
                             text_align=ft.TextAlign.CENTER,
                         ),
@@ -2825,7 +2826,7 @@ class JogoJuros:
                                     )
                                 ),
                                 color=tema["suave"],
-                                size=13,
+                                size=15,
                                 text_align=ft.TextAlign.CENTER,
                             ),
                             ft.Text(
@@ -2837,7 +2838,7 @@ class JogoJuros:
                             markdown_matematico(
                                 f"**Resposta correta:** {resposta_correta}",
                                 cor=tema["destaque"],
-                                tamanho=17,
+                                tamanho=20,
                                 peso=ft.FontWeight.BOLD,
                                 alinhamento=ft.MainAxisAlignment.CENTER,
                             ),
@@ -2845,7 +2846,7 @@ class JogoJuros:
                                 content=markdown_matematico(
                                     self.questao_atual["explicacao"],
                                     cor=tema["texto"],
-                                    tamanho=17,
+                                    tamanho=20,
                                 ),
                                 padding=18,
                                 bgcolor=tema["cartao_2"],
@@ -2858,7 +2859,7 @@ class JogoJuros:
                                     f"{formatar_reais(self.jogador_atual['saldo'])}"
                                 ),
                                 color=tema["texto"],
-                                size=20,
+                                size=22,
                                 weight=ft.FontWeight.BOLD,
                             ),
                             ft.Text(
@@ -2882,8 +2883,8 @@ class JogoJuros:
                         spacing=10,
                         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
                     ),
-                    width=860,
-                    padding=ft.Padding.symmetric(horizontal=24, vertical=18),
+                    width=1100,
+                    padding=ft.Padding.symmetric(horizontal=28, vertical=16),
                     bgcolor=tema["cartao"],
                     border=_borda(cor, 2),
                     border_radius=_raio(24),

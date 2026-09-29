@@ -1106,7 +1106,7 @@ class JogoPrice:
                                         "Dinheiro usado para representar "
                                         "empréstimos e investimentos"
                                     ),
-                                    245,
+                                    300,
                                 ),
                                 col={"xs": 12, "md": 5},
                             ),
@@ -1116,19 +1116,19 @@ class JogoPrice:
                                         ft.Icon(
                                             ft.Icons.SAVINGS,
                                             color=tema["destaque"],
-                                            size=58,
+                                            size=66,
                                         ),
                                         ft.Text(
                                         "SISTEMA PRICE / SAF",
                                             color=tema["destaque"],
-                                            size=28,
+                                            size=34,
                                             weight=ft.FontWeight.BOLD,
                                             text_align=ft.TextAlign.CENTER,
                                         ),
                                         ft.Text(
                                             "Deseja rever o assunto antes de começar?",
                                             color=tema["texto"],
-                                            size=20,
+                                            size=24,
                                             weight=ft.FontWeight.BOLD,
                                             text_align=ft.TextAlign.CENTER,
                                         ),
@@ -1139,7 +1139,7 @@ class JogoPrice:
                                                 "saldo devedor e custo total."
                                             ),
                                             color=tema["suave"],
-                                            size=14,
+                                            size=17,
                                             text_align=ft.TextAlign.CENTER,
                                         ),
                                         self._controles_narracao(),
@@ -1150,7 +1150,7 @@ class JogoPrice:
                                                     icon=ft.Icons.AUTO_STORIES,
                                                     color=tema["fundo_1"],
                                                     bgcolor=tema["primaria"],
-                                                    height=50,
+                                                    height=58,
                                                     on_click=self._abrir_teoria,
                                                     col={"xs": 12, "sm": 6},
                                                 ),
@@ -1159,7 +1159,7 @@ class JogoPrice:
                                                     icon=ft.Icons.PLAY_ARROW,
                                                     color=tema["fundo_1"],
                                                     bgcolor=tema["destaque"],
-                                                    height=50,
+                                                    height=58,
                                                     on_click=self._ir_para_questoes,
                                                     col={"xs": 12, "sm": 6},
                                                 ),
@@ -1201,11 +1201,11 @@ class JogoPrice:
                     content=ft.Text(
                         str(numero),
                         color=tema["fundo_1"],
-                        size=12,
+                        size=14,
                         weight=ft.FontWeight.BOLD,
                     ),
-                    width=25,
-                    height=25,
+                    width=29,
+                    height=29,
                     alignment=ft.Alignment.CENTER,
                     bgcolor=tema["destaque"],
                     border_radius=_raio(14),
@@ -1213,7 +1213,7 @@ class JogoPrice:
                 markdown_matematico(
                     texto,
                     cor=tema["texto"],
-                    tamanho=12.5,
+                    tamanho=15,
                     expandir=True,
                 ),
             ],
@@ -1318,13 +1318,13 @@ class JogoPrice:
                                     ft.Text(
                                         pagina["titulo"],
                                         color=tema["destaque"],
-                                        size=20,
+                                        size=23,
                                         weight=ft.FontWeight.BOLD,
                                     ),
                                     ft.Text(
                                         pagina["subtitulo"],
                                         color=tema["primaria"],
-                                        size=12,
+                                        size=14,
                                         weight=ft.FontWeight.BOLD,
                                     ),
                                 ],
@@ -1337,7 +1337,7 @@ class JogoPrice:
                     markdown_matematico(
                         pagina["definicao"],
                         cor=tema["texto"],
-                        tamanho=13.5,
+                        tamanho=16,
                     ),
                     ft.Container(
                         content=ft.Column(
@@ -1345,7 +1345,7 @@ class JogoPrice:
                                 markdown_matematico(
                                     pagina["formula"],
                                     cor=tema["fundo_1"],
-                                    tamanho=17,
+                                    tamanho=20,
                                     peso=ft.FontWeight.BOLD,
                                     alinhamento=ft.MainAxisAlignment.CENTER,
                                     escala_latex=1.10,
@@ -1353,7 +1353,7 @@ class JogoPrice:
                                 markdown_matematico(
                                     pagina["significados"],
                                     cor=tema["fundo_1"],
-                                    tamanho=11,
+                                    tamanho=13,
                                     alinhamento=ft.MainAxisAlignment.CENTER,
                                 ),
                             ],
@@ -1367,7 +1367,7 @@ class JogoPrice:
                     ft.Text(
                         pagina["exemplo_titulo"],
                         color=tema["primaria"],
-                        size=13,
+                        size=15,
                         weight=ft.FontWeight.BOLD,
                     ),
                     *(
@@ -1386,7 +1386,7 @@ class JogoPrice:
                         content=markdown_matematico(
                             pagina["aplicacao"],
                             cor=tema["texto"],
-                            tamanho=11.5,
+                            tamanho=14,
                         ),
                         padding=6,
                         bgcolor=tema["cartao_2"],
@@ -1550,10 +1550,10 @@ class JogoPrice:
                                 content=ft.Icon(
                                     configuracao["icone"],
                                     color=tema["fundo_1"],
-                                    size=25,
+                                    size=32,
                                 ),
-                                width=44,
-                                height=44,
+                                width=58,
+                                height=58,
                                 alignment=ft.Alignment.CENTER,
                                 bgcolor=cor,
                                 border_radius=_raio(13),
@@ -1563,19 +1563,19 @@ class JogoPrice:
                                     ft.Text(
                                         str(configuracao["rotulo"]),
                                         color=cor,
-                                        size=18,
+                                        size=23,
                                         weight=ft.FontWeight.BOLD,
                                     ),
                                     ft.Text(
                                         f"{quantidade} questões",
                                         color=tema["texto"],
-                                        size=12,
+                                        size=15,
                                         weight=ft.FontWeight.BOLD,
                                     ),
                                     ft.Text(
                                         str(configuracao["descricao"]),
                                         color=tema["suave"],
-                                        size=11,
+                                        size=15,
                                     ),
                                 ],
                                 spacing=2,
@@ -1597,7 +1597,7 @@ class JogoPrice:
                         shape=ft.RoundedRectangleBorder(radius=18),
                         padding=ft.Padding.all(12),
                     ),
-                    height=98,
+                    height=132,
                     on_click=(
                         lambda evento, nivel_escolhido=nivel:
                         self._selecionar_nivel(nivel_escolhido, evento)
@@ -1619,12 +1619,12 @@ class JogoPrice:
                             ft.Icon(
                                 ft.Icons.TUNE,
                                 color=tema["destaque"],
-                                size=38,
+                                size=44,
                             ),
                             ft.Text(
                                 "ESCOLHA O NÍVEL DAS QUESTÕES",
                                 color=tema["destaque"],
-                                size=24,
+                                size=30,
                                 weight=ft.FontWeight.BOLD,
                                 text_align=ft.TextAlign.CENTER,
                             ),
@@ -1634,7 +1634,7 @@ class JogoPrice:
                                     "apresentará somente a dificuldade escolhida."
                                 ),
                                 color=tema["texto"],
-                                size=14,
+                                size=17,
                                 text_align=ft.TextAlign.CENTER,
                             ),
                             ft.ResponsiveRow(
@@ -1651,14 +1651,14 @@ class JogoPrice:
                                     "mantida."
                                 ),
                                 color=tema["suave"],
-                                size=11,
+                                size=14,
                                 text_align=ft.TextAlign.CENTER,
                             ),
                         ],
                         spacing=10,
                         horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
                     ),
-                    width=1040,
+                    width=1240,
                     padding=ft.Padding.all(16),
                     bgcolor=tema["cartao"],
                     border=_borda(tema["primaria"], 2),
@@ -2479,7 +2479,7 @@ class JogoPrice:
         return ft.Container(
             content=ft.Column(
                 controls=[
-                    self._imagem_mascote(68 if compacto else 105),
+                    self._imagem_mascote(68 if compacto else 140),
                     ft.Text(
                         "MASCOTE FINANCEIRO",
                         color=tema["primaria"],
@@ -2496,7 +2496,7 @@ class JogoPrice:
                             ft.Text(
                                 "A narração é opcional e pode ser interrompida a qualquer momento.",
                                 color=tema["suave"],
-                                size=10,
+                                size=12,
                                 text_align=ft.TextAlign.CENTER,
                             )
                         ]
@@ -2750,7 +2750,7 @@ class JogoPrice:
         blocos_formula: list[ft.Control] = []
         for formula in formulas:
             tamanho_formula = (
-                9.5
+                10.5
                 if (
                     self.questao_atual["nivel"] == "Difícil"
                     and len(formula) > 35
@@ -2975,17 +2975,19 @@ class JogoPrice:
         """Monta número, nível, imagem e enunciado em um cartão legível."""
         tema = self.tema
         questao = self.questao_atual
+        # TAMANHO DO ENUNCIADO: maior na tela de situação (compacto=False),
+        # que tem mais espaço; um pouco menor ao lado das alternativas.
         tamanho_enunciado = (
-            17
-            if questao["nivel"] in {"Super fácil", "Fácil"}
-            else 16
+            (19 if questao["nivel"] in {"Super fácil", "Fácil"} else 18)
+            if compacto
+            else (23 if questao["nivel"] in {"Super fácil", "Fácil"} else 21)
         )
         if questao["nivel"] == "Difícil":
             altura_imagem = 105
         elif questao["nivel"] == "Médio":
-            altura_imagem = 125
+            altura_imagem = 150
         else:
-            altura_imagem = 135
+            altura_imagem = 175
         produto = str(questao["titulo"]).split(" - ", 1)[-1]
         return ft.Container(
             content=ft.Column(
@@ -2994,7 +2996,7 @@ class JogoPrice:
                     ft.Text(
                         produto.upper(),
                         color=tema["primaria"],
-                        size=15,
+                        size=17,
                         weight=ft.FontWeight.BOLD,
                     ),
                     self._imagem_questao(altura_imagem if compacto else 245),
@@ -3079,14 +3081,16 @@ class JogoPrice:
         nivel_dificil = questao["nivel"] == "Difícil"
         for indice, alternativa in enumerate(questao["alternativas"]):
             texto_alternativa = str(alternativa)
+            # TAMANHO DAS LETRAS DAS ALTERNATIVAS (PRICE). O Difícil mantém cinco
+            # colunas por causa das fórmulas longas da carência.
             tamanho = (
-                11.5
+                13.5
                 if nivel_dificil
-                else 14.5
+                else 17
                 if len(texto_alternativa) > 180
-                else 15
+                else 19
                 if len(texto_alternativa) > 90
-                else 16
+                else 22
             )
             destaque = rj.cores_alternativa(self, indice, tema) or (
                 tema["cartao_2"], tema["primaria"], 1.4
@@ -3130,7 +3134,7 @@ class JogoPrice:
                     ),
                     padding=ft.Padding.symmetric(
                         horizontal=6 if nivel_dificil else 11,
-                        vertical=5 if nivel_dificil else 8,
+                        vertical=5 if nivel_dificil else 13,
                     ),
                     bgcolor=destaque[0],
                     border=_borda(destaque[1], destaque[2]),
@@ -3207,7 +3211,7 @@ class JogoPrice:
         questao = self.questao_atual
         produto = str(questao["titulo"]).split(" - ", 1)[-1]
         imagem = ft.Container(
-            content=self._imagem_questao(260),
+            content=self._imagem_questao(330),
             col={"xs": 12, "md": 5},
         )
         texto = ft.Container(
@@ -3217,16 +3221,20 @@ class JogoPrice:
                     ft.Text(
                         produto.upper(),
                         color=tema["primaria"],
-                        size=18,
+                        size=21,
                         weight=ft.FontWeight.BOLD,
                     ),
                     markdown_matematico(
                         str(questao["enunciado"]),
                         cor=tema["texto"],
+                        # Enunciado na tela de situação: o Difícil tem textos
+                        # longos e usa letra menor para os botões caberem.
                         tamanho=(
-                            18
+                            24
                             if questao["nivel"] in {"Super fácil", "Fácil"}
-                            else 16
+                            else 21
+                            if questao["nivel"] == "Médio"
+                            else 18
                         ),
                         peso=ft.FontWeight.W_600,
                         alinhamento=(
@@ -3272,7 +3280,7 @@ class JogoPrice:
                             ft.Text(
                                 f"{self.jogador_atual['nome']}, qual é sua escolha?",
                                 color=tema["texto"],
-                                size=18,
+                                size=21,
                                 weight=ft.FontWeight.BOLD,
                                 text_align=ft.TextAlign.CENTER,
                             ),
@@ -3283,7 +3291,7 @@ class JogoPrice:
                                         icon=ft.Icons.PSYCHOLOGY,
                                         color=tema["fundo_1"],
                                         bgcolor=tema["destaque"],
-                                        height=46,
+                                        height=52,
                                         # ALTURA DO BOTÃO RESPONDER: altere
                                         # 46 para aumentar ou diminuir.
                                         on_click=self._escolher_responder,
@@ -3294,7 +3302,7 @@ class JogoPrice:
                                         icon=ft.Icons.MENU_BOOK,
                                         color=tema["fundo_1"],
                                         bgcolor=tema["primaria"],
-                                        height=46,
+                                        height=52,
                                         # ALTURA DO BOTÃO ESTUDAR: altere
                                         # 46 para aumentar ou diminuir.
                                         on_click=self._escolher_estudar,
@@ -3312,7 +3320,7 @@ class JogoPrice:
                                     + rj.ATALHOS_TEXTO
                                 ),
                                 color=tema["suave"],
-                                size=12,
+                                size=14,
                                 text_align=ft.TextAlign.CENTER,
                             ),
                         ],
@@ -3454,13 +3462,13 @@ class JogoPrice:
                     ft.Text(
                         titulo,
                         color=tema["primaria"],
-                        size=11,
+                        size=12 + self._extra_estudo(),
                         weight=ft.FontWeight.BOLD,
                     ),
                     markdown_matematico(
                         texto_seguro,
                         cor=tema["texto"],
-                        tamanho=15,
+                        tamanho=15 + self._extra_estudo(),
                         alinhamento=ft.MainAxisAlignment.START,
                     ),
                 ],
@@ -3484,7 +3492,7 @@ class JogoPrice:
         conteudo_passo = conteudo or markdown_matematico(
             texto or "",
             cor=tema["texto"],
-            tamanho=15,
+            tamanho=15 + self._extra_estudo(),
             expandir=True,
         )
         return ft.Row(
@@ -3507,7 +3515,7 @@ class JogoPrice:
                         ft.Text(
                         titulo,
                         color=tema["primaria"],
-                        size=13,
+                        size=13 + self._extra_estudo(),
                         weight=ft.FontWeight.BOLD,
                         ),
                         conteudo_passo,
@@ -3519,6 +3527,14 @@ class JogoPrice:
             spacing=10,
             vertical_alignment=ft.CrossAxisAlignment.START,
         )
+
+    def _extra_estudo(self) -> int:
+        """Pontos a somar às letras do estudo conforme o espaço da página.
+
+        Super fácil e Fácil mostram tudo em uma página (+1). No Médio e no
+        Difícil o conteúdo é dividido em páginas, que têm mais espaço (+3).
+        """
+        return 1 if self._total_paginas_estudo() == 1 else 3
 
     def _total_paginas_estudo(self) -> int:
         """Dimensiona o estudo sem comprimir textos ou criar rolagem vertical."""
@@ -3555,20 +3571,20 @@ class JogoPrice:
                     ft.Text(
                         estudo["titulo"],
                         color=tema["primaria"],
-                        size=19,
+                        size=20 + self._extra_estudo(),
                         weight=ft.FontWeight.BOLD,
                         text_align=ft.TextAlign.CENTER,
                     ),
                     markdown_matematico(
                         estudo["texto"],
                         cor=tema["texto"],
-                        tamanho=15.5,
+                        tamanho=16 + self._extra_estudo(),
                     ),
                     ft.Container(
                         content=markdown_matematico(
                             estudo["formula"],
                             cor=tema["fundo_1"],
-                            tamanho=17,
+                            tamanho=18 + self._extra_estudo(),
                             peso=ft.FontWeight.BOLD,
                             alinhamento=ft.MainAxisAlignment.CENTER,
                             escala_latex=1.08,
@@ -3616,7 +3632,7 @@ class JogoPrice:
                 "CALCULE E JUSTIFIQUE",
                 conteudo=self._explicacao_em_ordem(
                     str(questao["explicacao"]),
-                    tamanho=15,
+                    tamanho=15 + self._extra_estudo(),
                 ),
             ),
             4: self._passo_resolucao(
@@ -3624,7 +3640,7 @@ class JogoPrice:
                 "CONFIRA A RESPOSTA",
                 conteudo=self._conteudo_alternativa_price(
                     str(resposta_correta),
-                    tamanho=15,
+                    tamanho=15 + self._extra_estudo(),
                 ),
             ),
         }
@@ -3925,7 +3941,7 @@ class JogoPrice:
                                                     ft.Text(
                                                         titulo,
                                                         color=cor,
-                                                        size=23,
+                                                        size=28,
                                                         weight=ft.FontWeight.BOLD,
                                                     ),
                                                     ft.Text(
@@ -3935,7 +3951,7 @@ class JogoPrice:
                                                             else "Confira a resolução desta situação-problema."
                                                         ),
                                                         color=tema["suave"],
-                                                        size=12,
+                                                        size=14,
                                                     ),
                                                 ],
                                                 spacing=1,
@@ -3949,7 +3965,7 @@ class JogoPrice:
                                         content=ft.Text(
                                             valor,
                                             color=cor,
-                                            size=27,
+                                            size=32,
                                             weight=ft.FontWeight.BOLD,
                                             text_align=ft.TextAlign.CENTER,
                                         ),
@@ -3970,13 +3986,13 @@ class JogoPrice:
                                                 ft.Text(
                                                     "RESPOSTA CORRETA",
                                                     color=tema["destaque"],
-                                                    size=13,
+                                                    size=15,
                                                     weight=ft.FontWeight.BOLD,
                                                     text_align=ft.TextAlign.CENTER,
                                                 ),
                                                 self._conteudo_alternativa_price(
                                                     resposta_correta,
-                                                    tamanho=15,
+                                                    tamanho=21,
                                                 ),
                                             ],
                                             spacing=5,
@@ -3994,12 +4010,12 @@ class JogoPrice:
                                                 ft.Text(
                                                     "JUSTIFICATIVA",
                                                     color=tema["primaria"],
-                                                    size=13,
+                                                    size=15,
                                                     weight=ft.FontWeight.BOLD,
                                                 ),
                                                 self._explicacao_em_ordem(
                                                     self.questao_atual["explicacao"],
-                                                    tamanho=15,
+                                                    tamanho=21,
                                                 ),
                                             ],
                                             spacing=5,
@@ -4028,13 +4044,13 @@ class JogoPrice:
                                                         f"{formatar_reais(self.jogador_atual['saldo'])}"
                                                     ),
                                                     color=tema["texto"],
-                                                    size=17,
+                                                    size=20,
                                                     weight=ft.FontWeight.BOLD,
                                                 ),
                                                 ft.Text(
                                                     "A vez será alternada após esta questão.",
                                                     color=tema["suave"],
-                                                    size=11,
+                                                    size=13,
                                                 ),
                                             ],
                                             spacing=1,
@@ -4046,7 +4062,7 @@ class JogoPrice:
                                         icon=ft.Icons.SWAP_HORIZ,
                                         color=tema["fundo_1"],
                                         bgcolor=tema["destaque"],
-                                        height=44,
+                                        height=50,
                                         on_click=self._proxima_rodada,
                                         col={"xs": 12, "md": 4},
                                     ),
