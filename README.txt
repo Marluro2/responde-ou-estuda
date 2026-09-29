@@ -288,7 +288,8 @@ Arquivos:
    dados/questoes_sac.json           banco de questões (não editar à mão)
    ferramentas/gerar_questoes_sac.py gera o banco com todas as contas feitas
                                      pelo programa: py -3.14 ferramentas\gerar_questoes_sac.py
-As imagens são as locais de assets/imagens/juros e assets/imagens/price.
+Imagens: fotos de imóveis em assets/imagens/sac (créditos em CREDITOS_IMAGENS.txt)
+e imagens já usadas em assets/imagens/juros e assets/imagens/price.
 
 RANKING
 

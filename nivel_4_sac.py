@@ -8,7 +8,7 @@ Dados:
     dados/questoes_sac.json  (gerado por ferramentas/gerar_questoes_sac.py)
 
 Imagens:
-    assets/imagens/juros/ e assets/imagens/price/
+    assets/imagens/sac/, assets/imagens/juros/ e assets/imagens/price/
 
 Foco pedagógico: Progressão Aritmética. No SAC a amortização é uma PA
 constante, e saldos, juros e prestações são PAs decrescentes
@@ -78,8 +78,9 @@ CAMINHO_MASCOTE = "mascote_financeiro.webp"
 # Para trocar uma imagem, mantenha o novo arquivo dentro de assets e altere
 # somente o caminho relativo. As mesmas imagens ilustram as questões.
 IMAGENS_TEORIA = {
-    "casa": "imagens/juros/reforma_residencial.webp",
-    "terreno": "imagens/juros/investimento_e_planejamento.webp",
+    "casa": "imagens/sac/casa_propria_chave.webp",
+    "bairro": "imagens/sac/casas_bairro.webp",
+    "terreno": "imagens/sac/terreno_loteamento.webp",
     "credito": "imagens/juros/emprestimo_e_credito.webp",
     "veiculo": "imagens/juros/financiamento_veiculo.webp",
     "automovel": "imagens/price/automovel_corolla.webp",
@@ -232,7 +233,7 @@ PAGINAS_TEORIA = [
     {
         "titulo": "PRESTAÇÕES EM PA",
         "subtitulo": "Tabela SAC: prestação = amortização + juros",
-        "imagem": "casa",
+        "imagem": "bairro",
         "definicao": (
             "Somando a amortização fixa aos juros em PA, as prestações também "
             "formam uma PA decrescente, com a mesma razão −i·A."

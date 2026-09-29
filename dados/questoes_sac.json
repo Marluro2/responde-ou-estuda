@@ -8,7 +8,7 @@
       "titulo": "Questão 1 - Casa própria",
       "produto": "Nível Super fácil: Sistema SAC",
       "nivel": "Super fácil",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/casa_propria_chave.webp",
       "enunciado": "No financiamento de uma casa pelo Sistema SAC, o que permanece **constante** em todas as prestações?",
       "alternativas": [
         "O valor da prestação.",
@@ -48,7 +48,7 @@
       "titulo": "Questão 2 - Apartamento",
       "produto": "Nível Super fácil: Sistema SAC",
       "nivel": "Super fácil",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/apartamento_edificio.webp",
       "enunciado": "Na sigla **SAC**, usada em financiamentos, o que significa cada letra?",
       "alternativas": [
         "Sistema de Amortização Constante.",
@@ -184,7 +184,7 @@
       "titulo": "Questão 6 - Terreno",
       "produto": "Nível Super fácil: Sistema SAC",
       "nivel": "Super fácil",
-      "imagem": "imagens/juros/investimento_e_planejamento.webp",
+      "imagem": "imagens/sac/terreno_loteamento.webp",
       "enunciado": "No SAC, o saldo devedor diminui todo mês **sempre do mesmo valor**. Que valor é esse?",
       "alternativas": [
         "A amortização.",
@@ -432,7 +432,7 @@
       "titulo": "Questão 14 - Apartamento",
       "produto": "Nível Super fácil: Sistema SAC",
       "nivel": "Super fácil",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/apartamento_edificio.webp",
       "enunciado": "Segundo a literatura de Matemática Financeira, em que tipo de financiamento o SAC é muito utilizado no Brasil?",
       "alternativas": [
         "No rotativo do cartão de crédito.",
@@ -460,7 +460,7 @@
       "titulo": "Questão 15 - Casa própria",
       "produto": "Nível Super fácil: Sistema SAC",
       "nivel": "Super fácil",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/casas_bairro.webp",
       "enunciado": "Depois do pagamento da última prestação de um financiamento SAC, qual é o saldo devedor?",
       "alternativas": [
         "Igual à amortização.",
@@ -488,7 +488,7 @@
       "titulo": "Questão 16 - Casa própria",
       "produto": "Nível Fácil: Sistema SAC",
       "nivel": "Fácil",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/casa_propria_chave.webp",
       "enunciado": "Uma casa de R\\$ 240.000,00 será financiada pelo SAC em 240 prestações mensais. Qual é o valor da amortização mensal?",
       "alternativas": [
         "R\\$ 240,00",
@@ -624,7 +624,7 @@
       "titulo": "Questão 20 - Casa própria",
       "produto": "Nível Fácil: Sistema SAC",
       "nivel": "Fácil",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/casas_bairro.webp",
       "enunciado": "No exemplo de Marcos (R\\$ 24.000,00, 12 meses, 1% ao mês), as primeiras prestações SAC foram R\\$ 2.240,00; R\\$ 2.220,00; R\\$ 2.200,00. Qual é a **razão** dessa PA?",
       "alternativas": [
         "R\\$ 20,00",
@@ -664,7 +664,7 @@
       "titulo": "Questão 21 - Casa própria",
       "produto": "Nível Fácil: Sistema SAC",
       "nivel": "Fácil",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/casa_propria_chave.webp",
       "enunciado": "Continuando a PA das prestações de Marcos (R\\$ 2.240,00; R\\$ 2.220,00; R\\$ 2.200,00; …), qual é a **4ª prestação**?",
       "alternativas": [
         "R\\$ 2.160,00",
@@ -732,7 +732,7 @@
       "titulo": "Questão 23 - Terreno",
       "produto": "Nível Fácil: Sistema SAC",
       "nivel": "Fácil",
-      "imagem": "imagens/juros/investimento_e_planejamento.webp",
+      "imagem": "imagens/sac/terreno_loteamento.webp",
       "enunciado": "Um terreno foi financiado pelo SAC com amortização de R\\$ 1.500,00 em 20 prestações. Qual é o saldo devedor após **8 pagamentos**?",
       "alternativas": [
         "R\\$ 18.000,00",
@@ -760,7 +760,7 @@
       "titulo": "Questão 24 - Apartamento",
       "produto": "Nível Fácil: Sistema SAC",
       "nivel": "Fácil",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/apartamento_edificio.webp",
       "enunciado": "Um apartamento tem saldo financiado de R\\$ 90.000,00 pelo SAC, a 0,8% ao mês. Qual é o juro do primeiro mês?",
       "alternativas": [
         "R\\$ 72,00",
@@ -884,7 +884,7 @@
       "titulo": "Questão 28 - Reforma",
       "produto": "Nível Fácil: Sistema SAC",
       "nivel": "Fácil",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/casa_em_construcao.webp",
       "enunciado": "Os saldos devedores de uma reforma financiada pelo SAC são R\\$ 30.000,00; R\\$ 27.500,00; R\\$ 25.000,00; … Qual é a **amortização** mensal?",
       "alternativas": [
         "R\\$ 30.000,00",
@@ -952,7 +952,7 @@
       "titulo": "Questão 30 - Casa própria",
       "produto": "Nível Fácil: Sistema SAC",
       "nivel": "Fácil",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/casas_bairro.webp",
       "enunciado": "No SAC, a última prestação vale $P_n=A\\cdot(1+i)$. Com amortização de R\\$ 1.000,00 e taxa de 1,5% ao mês, qual é a última prestação?",
       "alternativas": [
         "R\\$ 1.000,00",
@@ -980,7 +980,7 @@
       "titulo": "Questão 31 - Casa própria",
       "produto": "Nível Médio: Sistema SAC",
       "nivel": "Médio",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/casa_propria_chave.webp",
       "enunciado": "Madalena financiou sua casa de R\\$ 100.000,00 pelo SAC em 100 prestações mensais, a 1,5% ao mês. A 1ª prestação é R\\$ 2.500,00. Qual é a **15ª prestação**?",
       "alternativas": [
         "R\\$ 2.275,00",
@@ -1020,7 +1020,7 @@
       "titulo": "Questão 32 - Apartamento",
       "produto": "Nível Médio: Sistema SAC",
       "nivel": "Médio",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/apartamento_edificio.webp",
       "enunciado": "Um apartamento de R\\$ 120.000,00 foi financiado pelo SAC em 60 meses a 1% ao mês. Qual é a **25ª prestação**?",
       "alternativas": [
         "R\\$ 3.200,00",
@@ -1100,7 +1100,7 @@
       "titulo": "Questão 34 - Casa própria",
       "produto": "Nível Médio: Sistema SAC",
       "nivel": "Médio",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/casas_bairro.webp",
       "enunciado": "No exemplo de Marcos (R\\$ 24.000,00, 12 meses, 1% ao mês), os juros formam a PA 240; 220; …; 20. Qual é o **total de juros** pago?",
       "alternativas": [
         "R\\$ 1.560,00",
@@ -1208,7 +1208,7 @@
       "titulo": "Questão 37 - Apartamento",
       "produto": "Nível Médio: Sistema SAC",
       "nivel": "Médio",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/apartamento_edificio.webp",
       "enunciado": "Um apartamento de R\\$ 150.000,00 foi financiado pelo SAC em 120 meses. Qual é o **saldo devedor após 45 pagamentos**?",
       "alternativas": [
         "R\\$ 56.250,00",
@@ -1316,7 +1316,7 @@
       "titulo": "Questão 40 - Casa própria",
       "produto": "Nível Médio: Sistema SAC",
       "nivel": "Médio",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/casa_propria_chave.webp",
       "enunciado": "No exemplo de Marcos (R\\$ 24.000,00, 12 meses, 1%), a prestação pode ser vista como uma **função afim** do número $k$ da parcela, definida para $k=1, 2, \\ldots, 12$. Qual é essa função?",
       "alternativas": [
         "$P(k)=2{.}260-20k$",
@@ -1356,7 +1356,7 @@
       "titulo": "Questão 41 - Reforma",
       "produto": "Nível Médio: Sistema SAC",
       "nivel": "Médio",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/casa_em_construcao.webp",
       "enunciado": "Uma reforma de R\\$ 36.000,00 foi financiada pelo SAC em 18 meses a 1,5% ao mês. Qual é o **valor médio** das prestações?",
       "alternativas": [
         "R\\$ 2.540,00",
@@ -1436,7 +1436,7 @@
       "titulo": "Questão 43 - Terreno",
       "produto": "Nível Médio: Sistema SAC",
       "nivel": "Médio",
-      "imagem": "imagens/juros/investimento_e_planejamento.webp",
+      "imagem": "imagens/sac/terreno_loteamento.webp",
       "enunciado": "Em um financiamento SAC de um terreno, $P_1=\\text{R\\$ }3.200{,}00$, $P_2=\\text{R\\$ }3.180{,}00$ e a amortização é R\\$ 2.000,00. Qual é a **taxa mensal** de juros?",
       "alternativas": [
         "2% ao mês.",
@@ -1464,7 +1464,7 @@
       "titulo": "Questão 44 - Casa própria",
       "produto": "Nível Médio: Sistema SAC",
       "nivel": "Médio",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/casas_bairro.webp",
       "enunciado": "Uma casa de R\\$ 200.000,00 foi financiada pelo SAC em 100 meses a 0,9% ao mês. Após pagar **metade** das prestações, quanto será a 51ª prestação?",
       "alternativas": [
         "R\\$ 2.900,00",
@@ -1492,7 +1492,7 @@
       "titulo": "Questão 45 - Apartamento",
       "produto": "Nível Médio: Sistema SAC",
       "nivel": "Médio",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/apartamento_edificio.webp",
       "enunciado": "Um apartamento com saldo de R\\$ 90.000,00 foi financiado pelo SAC com amortização de R\\$ 1.500,00 e juros de 1% ao mês. Quantas prestações há e qual é a **última**?",
       "alternativas": [
         "60 prestações; a última é R\\$ 1.500,00.",
@@ -1520,7 +1520,7 @@
       "titulo": "Questão 46 - Casa própria",
       "produto": "Nível Difícil: Sistema SAC",
       "nivel": "Difícil",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/casa_propria_chave.webp",
       "enunciado": "Madalena financia R\\$ 100.000,00 pelo SAC a 1,5% ao mês. Hipoteticamente, o número de parcelas passa a ser $n=200$, $n=400$ e $n=1000$. Assinale a alternativa com as amortizações (em reais), o limite de $A_n=\\frac{SD}{n}$ quando $n\\to\\infty$ e sua interpretação.",
       "alternativas": [
         "$A_{200}=500;\\;A_{400}=250;\\;A_{1000}=100$; $\\lim_{n\\to\\infty}A_n=0$; $P_1\\to\\text{R\\$}\\,0{,}00$. A primeira prestação também desaparece.",
@@ -1548,7 +1548,7 @@
       "titulo": "Questão 47 - Apartamento",
       "produto": "Nível Difícil: Sistema SAC",
       "nivel": "Difícil",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/apartamento_edificio.webp",
       "enunciado": "Mostre que, no SAC, o total de juros é $J_{total}=\\frac{i\\cdot SD\\cdot(n+1)}{2}$ e aplique a um financiamento de R\\$ 80.000,00 em 40 meses a 1,2% ao mês.",
       "alternativas": [
         "$J_{total}=i\\cdot SD\\cdot n$; $J_{total}=\\text{R\\$}\\,38{.}400{,}00$. O juro do 1º mês repetido em todos os meses.",
@@ -1588,7 +1588,7 @@
       "titulo": "Questão 48 - Casa própria",
       "produto": "Nível Difícil: Sistema SAC",
       "nivel": "Difícil",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/casas_bairro.webp",
       "enunciado": "Marcos compara SAC e PRICE para R\\$ 24.000,00 em 12 meses a 1% ao mês. No PRICE, $PMT\\approx\\text{R\\$ }2.132{,}37$. Assinale a comparação correta do **total de juros** e da **1ª prestação**.",
       "alternativas": [
         "$J_{SAC}=\\text{R\\$}\\,1{.}560{,}00$; $J_{PRICE}\\approx\\text{R\\$}\\,1{.}560{,}00$; $P_1^{SAC}=\\text{R\\$}\\,2{.}240{,}00$. Os dois sistemas pagam os mesmos juros.",
@@ -1616,7 +1616,7 @@
       "titulo": "Questão 49 - Casa própria",
       "produto": "Nível Difícil: Sistema SAC",
       "nivel": "Difícil",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/casa_propria_chave.webp",
       "enunciado": "Para R\\$ 24.000,00 em 12 meses a 1% ao mês, as prestações SAC são $P(k)=2{.}260-20k$ e a prestação PRICE é constante, $PMT\\approx\\text{R\\$ }2.132{,}37$. A partir de qual parcela a prestação SAC fica **menor** que a do PRICE?",
       "alternativas": [
         "A partir da 7ª parcela.",
@@ -1684,7 +1684,7 @@
       "titulo": "Questão 51 - Casa própria",
       "produto": "Nível Difícil: Sistema SAC",
       "nivel": "Difícil",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/casas_bairro.webp",
       "enunciado": "Uma casa de R\\$ 150.000,00 foi financiada pelo SAC em 180 meses a 0,8% ao mês. Qual é o **total desembolsado** ao longo do contrato?",
       "alternativas": [
         "$\\text{Total}=SD\\cdot(1+i\\cdot n)$; $\\text{Total}=\\text{R\\$}\\,366{.}000{,}00$.",
@@ -1740,7 +1740,7 @@
       "titulo": "Questão 53 - Terreno",
       "produto": "Nível Difícil: Sistema SAC",
       "nivel": "Difícil",
-      "imagem": "imagens/juros/investimento_e_planejamento.webp",
+      "imagem": "imagens/sac/terreno_loteamento.webp",
       "enunciado": "O saldo devedor de um SAC de R\\$ 60.000,00 em 30 meses pode ser escrito como $SD(k)=60{.}000-2{.}000k$. Qual afirmação sobre essa função está correta?",
       "alternativas": [
         "$k\\in\\{0,1,\\ldots,30\\}$; $SD(30)=0$. Função exponencial: os pontos formam uma curva.",
@@ -1768,7 +1768,7 @@
       "titulo": "Questão 54 - Casa própria",
       "produto": "Nível Difícil: Sistema SAC",
       "nivel": "Difícil",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/casa_propria_chave.webp",
       "enunciado": "Um imóvel de R\\$ 60.000,00 tem **carência de 3 meses** em que se pagam apenas os juros de 1% ao mês; depois, o SAC é aplicado em 24 prestações. Qual é a 1ª prestação SAC e o total de juros do contrato?",
       "alternativas": [
         "$P_1=\\text{R\\$}\\,3{.}100{,}00$; $J_{car}=\\text{R\\$}\\,0{,}00$; $J_{SAC}=\\text{R\\$}\\,7{.}500{,}00$; $J_{total}=\\text{R\\$}\\,7{.}500{,}00$. A carência não gera juros.",
@@ -1796,7 +1796,7 @@
       "titulo": "Questão 55 - Casa própria",
       "produto": "Nível Difícil: Sistema SAC",
       "nivel": "Difícil",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/casas_bairro.webp",
       "enunciado": "Uma casa de R\\$ 240.000,00 foi financiada pelo SAC em 240 meses a 0,75% ao mês. Quanto a família desembolsa no **primeiro ano** (12 prestações)?",
       "alternativas": [
         "R\\$ 33.600,00",
@@ -1836,7 +1836,7 @@
       "titulo": "Questão 56 - Apartamento",
       "produto": "Nível Difícil: Sistema SAC",
       "nivel": "Difícil",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/apartamento_edificio.webp",
       "enunciado": "Em um SAC de R\\$ 120.000,00 em 150 meses a 1% ao mês, em qual parcela os **juros ficam iguais à amortização** (a prestação vale $2A$)?",
       "alternativas": [
         "Na 50ª parcela.",
@@ -1864,7 +1864,7 @@
       "titulo": "Questão 57 - Casa própria",
       "produto": "Nível Difícil: Sistema SAC",
       "nivel": "Difícil",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/casa_propria_chave.webp",
       "enunciado": "Um imóvel de R\\$ 100.000,00 pelo SAC a 1% ao mês pode ser pago em 100 ou em 200 meses. Compare a 1ª prestação e o total de juros.",
       "alternativas": [
         "$P_1^{(100)}=\\text{R\\$}\\,2{.}000{,}00$; $J^{(100)}=\\text{R\\$}\\,50{.}500{,}00$; $P_1^{(200)}=\\text{R\\$}\\,1{.}000{,}00$; $J^{(200)}=\\text{R\\$}\\,100{.}500{,}00$. Dobrar o prazo reduz a 1ª prestação pela metade.",
@@ -1932,7 +1932,7 @@
       "titulo": "Questão 59 - Reforma",
       "produto": "Nível Difícil: Sistema SAC",
       "nivel": "Difícil",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/casa_em_construcao.webp",
       "enunciado": "Uma reforma de R\\$ 60.000,00 pelo SAC tem 30 prestações a 1% ao mês. Após 10 pagamentos, a família faz uma amortização extra de R\\$ 10.000,00, mantendo $A=\\text{R\\$ }2.000{,}00$. Quantas prestações restam e quanto se economiza de juros?",
       "alternativas": [
         "$m_{antes}=20$; $m_{depois}=15$; $\\text{economia}=\\text{R\\$}\\,10{.}000{,}00$. A economia é o próprio valor antecipado.",
@@ -1960,7 +1960,7 @@
       "titulo": "Questão 60 - Casa própria",
       "produto": "Nível Difícil: Sistema SAC",
       "nivel": "Difícil",
-      "imagem": "imagens/juros/reforma_residencial.webp",
+      "imagem": "imagens/sac/casas_bairro.webp",
       "enunciado": "Em um SAC a 0,5% ao mês, a 5ª prestação é R\\$ 4.720,00 e a 20ª é R\\$ 4.420,00. Determine o saldo financiado e o número de prestações.",
       "alternativas": [
         "$SD=\\text{R\\$}\\,160{.}000{,}00$; $n=40$.",

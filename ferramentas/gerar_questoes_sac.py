@@ -22,10 +22,12 @@ CONSULTA = "29/09/2026"
 FONTE_DISSERTACAO = "Adaptado de Rodrigues (2013), dissertação PROFMAT/UTFPR"
 
 IMAGENS = {
-    "Casa própria": "imagens/juros/reforma_residencial.webp",
-    "Apartamento": "imagens/juros/reforma_residencial.webp",
-    "Reforma": "imagens/juros/reforma_residencial.webp",
-    "Terreno": "imagens/juros/investimento_e_planejamento.webp",
+    # Casa própria alterna entre duas fotos (ver q()).
+    "Casa própria": "imagens/sac/casa_propria_chave.webp",
+    "Casa própria (bairro)": "imagens/sac/casas_bairro.webp",
+    "Apartamento": "imagens/sac/apartamento_edificio.webp",
+    "Reforma": "imagens/sac/casa_em_construcao.webp",
+    "Terreno": "imagens/sac/terreno_loteamento.webp",
     "Automóvel": "imagens/price/automovel_corolla.webp",
     "Veículo": "imagens/juros/financiamento_veiculo.webp",
     "Motocicleta": "imagens/price/motocicleta_honda_cb500.webp",
@@ -166,6 +168,7 @@ def formato_valido(alternativa: str) -> bool:
 # ---------------------------------------------------------------- banco
 questoes: list[dict] = []
 contagem = {nivel: 0 for nivel in POSICOES}
+vezes_casa = [0]
 
 
 def q(nivel: str, contexto: str, enunciado: str, correta: str, distratores: list[str],
@@ -183,12 +186,17 @@ def q(nivel: str, contexto: str, enunciado: str, correta: str, distratores: list
     alternativas = list(distratores)
     alternativas.insert(posicao, correta)
     numero = len(questoes) + 1
+    imagem = IMAGENS[contexto]
+    if contexto == "Casa própria":
+        vezes_casa[0] += 1
+        if vezes_casa[0] % 2 == 0:
+            imagem = IMAGENS["Casa própria (bairro)"]
     item = {
         "id": f"SAC{numero:03d}",
         "titulo": f"Questão {numero} - {contexto}",
         "produto": f"Nível {nivel}: Sistema SAC",
         "nivel": nivel,
-        "imagem": IMAGENS[contexto],
+        "imagem": imagem,
         "enunciado": enunciado,
         "alternativas": alternativas,
         "correta": posicao,
