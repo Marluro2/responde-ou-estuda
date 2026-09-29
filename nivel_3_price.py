@@ -647,11 +647,10 @@ class JogoPrice:
             self._alterar_pagina_estudo(self.pagina_estudo - 1)
             return
         if self.tela_atual == "estudo":
-            # O ponto de estudo só é registrado ao concluir a última página.
-            # Assim, Tela Anterior pode retornar à questão sem pontuação dupla
-            # e sem deixar os botões bloqueados.
-            self._estudo_em_andamento = False
-            self._rodada_finalizada = False
+            # ESTUDAR É DEFINITIVO: o estudo mostra a resposta correta, então
+            # não se volta à questão (evita responder depois de ver a resposta).
+            self._avisar("Conclua o estudo para passar a vez.")
+            return
         if not self._historico_telas:
             await self._voltar_ao_inicio(evento)
             return
@@ -3837,17 +3836,25 @@ class JogoPrice:
                             ),
                             ft.ResponsiveRow(
                                 controls=[
-                                    ft.OutlinedButton(
-                                        content="VOLTAR",
-                                        icon=ft.Icons.ARROW_BACK,
-                                        style=ft.ButtonStyle(
-                                            color=tema["texto"],
-                                            side=_lado(tema["primaria"], 1.5),
-                                        ),
-                                        disabled=self.pagina_estudo == 0,
-                                        height=42,
-                                        on_click=self._voltar_pagina_estudo,
-                                        col={"xs": 12, "sm": 6},
+                                    # VOLTAR só entre páginas do estudo. Não há
+                                    # volta à questão: o estudo mostra a resposta
+                                    # correta (estudar é definitivo).
+                                    *(
+                                        [
+                                            ft.OutlinedButton(
+                                                content="VOLTAR",
+                                                icon=ft.Icons.ARROW_BACK,
+                                                style=ft.ButtonStyle(
+                                                    color=tema["texto"],
+                                                    side=_lado(tema["primaria"], 1.5),
+                                                ),
+                                                height=42,
+                                                on_click=self._voltar_pagina_estudo,
+                                                col={"xs": 12, "sm": 6},
+                                            )
+                                        ]
+                                        if self.pagina_estudo > 0
+                                        else []
                                     ),
                                     ft.Button(
                                         content=(
@@ -3868,7 +3875,7 @@ class JogoPrice:
                                             if ultima_pagina
                                             else self._avancar_pagina_estudo
                                         ),
-                                        col={"xs": 12, "sm": 6},
+                                        col={"xs": 12, "sm": 6 if self.pagina_estudo > 0 else 12},
                                     ),
                                 ],
                                 columns=12,

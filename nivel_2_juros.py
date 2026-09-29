@@ -529,6 +529,13 @@ class JogoJuros:
 
     async def _voltar_tela(self, evento: ft.ControlEvent) -> None:
         """Desempilha a tela interna anterior ou retorna ao menu principal."""
+        if self.tela_atual == "estudo":
+            # ESTUDAR É DEFINITIVO: volta só entre as páginas do estudo.
+            if getattr(self, "pagina_estudo", 0) > 0:
+                self._alterar_pagina_estudo(0)
+            else:
+                self._avisar("Conclua o estudo para passar a vez.")
+            return
         if not self._historico_telas:
             await self._voltar_ao_inicio(evento)
             return
@@ -2701,20 +2708,24 @@ class JogoJuros:
                 horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
             )
 
+        # VOLTAR só aparece na página 2: aqui o estudo já foi pontuado ao ser
+        # escolhido, então não se volta à questão (evita responder após estudar).
+        voltar = [
+            ft.OutlinedButton(
+                content="VOLTAR",
+                icon=ft.Icons.ARROW_BACK,
+                style=ft.ButtonStyle(
+                    color=tema["texto"],
+                    side=_lado(tema["primaria"], 1.5),
+                ),
+                height=44,
+                on_click=lambda _evento: self._alterar_pagina_estudo(0),
+                col={"xs": 12, "sm": 6},
+            )
+        ] if pagina > 0 else []
         navegacao = ft.ResponsiveRow(
             controls=[
-                ft.OutlinedButton(
-                    content="VOLTAR",
-                    icon=ft.Icons.ARROW_BACK,
-                    style=ft.ButtonStyle(
-                        color=tema["texto"],
-                        side=_lado(tema["primaria"], 1.5),
-                    ),
-                    disabled=pagina == 0,
-                    height=44,
-                    on_click=lambda _evento: self._alterar_pagina_estudo(0),
-                    col={"xs": 12, "sm": 6},
-                ),
+                *voltar,
                 ft.Button(
                     content=("AVANÇAR" if pagina == 0 else "CONCLUIR ESTUDO E PASSAR A VEZ"),
                     icon=(ft.Icons.ARROW_FORWARD if pagina == 0 else ft.Icons.SWAP_HORIZ),
@@ -2726,7 +2737,7 @@ class JogoJuros:
                         if pagina == 0
                         else self._proxima_rodada
                     ),
-                    col={"xs": 12, "sm": 6},
+                    col={"xs": 12, "sm": 12 if pagina == 0 else 6},
                 ),
             ],
             columns=12,
