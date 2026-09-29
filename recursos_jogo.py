@@ -44,7 +44,7 @@ LETRAS = "ABCDEFGHIJ"
 # Definidas no botão ACESSIBILIDADE da tela inicial e salvas no estado.
 def preferencias(estado: Any) -> dict[str, Any]:
     dados = getattr(estado, "dados", {}) or {}
-    return {"tempo": 60, "sem_animacoes": False, **dados.get("acessibilidade", {})}
+    return {"tempo": 60, "sem_animacoes": False, "efeitos": True, **dados.get("acessibilidade", {})}
 
 
 def tempo_limite(estado: Any, padrao: int = 60) -> int:
@@ -76,7 +76,8 @@ def marcar_inicio(jogo: Any) -> None:
 # ======================================================================
 # EFEITOS SONOROS
 # ======================================================================
-# Os efeitos só tocam quando o som do jogo está ligado (botão ATIVAR SOM).
+# Os efeitos têm botão próprio (EFEITOS), separado da música de fundo
+# (ATIVAR SOM): dá para ouvir os toques dos botões com a música desligada.
 # Para recriar os arquivos: py -3.14 ferramentas\gerar_efeitos.py
 EFEITOS = {
     "acerto": "sons/efeitos/acerto.wav",
@@ -99,7 +100,7 @@ class EfeitosSonoros:
             self.audios[nome] = audio
 
     def tocar(self, jogo: Any, nome: str) -> None:
-        if not getattr(jogo, "som_ativo", False) or nome not in self.audios:
+        if not efeitos_ligados(jogo) or nome not in self.audios:
             return
         self.page.run_task(self._tocar, nome)
 
@@ -110,10 +111,60 @@ class EfeitosSonoros:
             pass
 
 
+def efeitos_ligados(jogo: Any) -> bool:
+    return bool(preferencias(getattr(jogo, "estado", None)).get("efeitos", True))
+
+
+def botao_efeitos(
+    jogo: Any, cor_texto: str, cor_borda: str, cor_destaque: str, compacto: bool = False
+) -> ft.Control:
+    """Botão EFEITOS: liga/desliga os sons de toque e de acerto (não a música).
+
+    compacto=True mostra só o ícone (tela inicial, onde falta espaço).
+    """
+    dica = "Sons dos botões e do acerto/erro (a música de fundo fica no ATIVAR SOM)"
+    botao: Any = ft.IconButton(tooltip=dica) if compacto else ft.OutlinedButton(height=42, tooltip=dica)
+
+    def pintar() -> None:
+        ligados = efeitos_ligados(jogo)
+        icone = ft.Icons.TOUCH_APP if ligados else ft.Icons.DO_NOT_TOUCH
+        lado = ft.BorderSide(1.5, cor_destaque if ligados else cor_borda)
+        if compacto:
+            botao.icon = icone
+            botao.icon_color = cor_destaque if ligados else cor_texto
+            botao.style = ft.ButtonStyle(side=lado)
+            botao.tooltip = ("Efeitos LIGADOS. " if ligados else "Efeitos DESLIGADOS. ") + dica
+        else:
+            botao.content = "EFEITOS" if ligados else "SEM EFEITOS"
+            botao.icon = icone
+            botao.style = ft.ButtonStyle(color=cor_texto, side=lado)
+
+    def clicar(_evento: ft.ControlEvent) -> None:
+        jogo.estado.definir_acessibilidade(efeitos=not efeitos_ligados(jogo))
+        # Toca o toque depois de ligar, para confirmar que o som voltou.
+        efeitos(jogo).tocar(jogo, "clique")
+        pintar()
+        try:
+            botao.update()
+        except Exception:
+            pass
+
+    clicar._com_clique = True  # type: ignore[attr-defined]
+    pintar()
+    botao.on_click = clicar
+    return botao
+
+
 def efeitos(jogo: Any) -> EfeitosSonoros:
     """Cria (uma vez por módulo) e devolve o tocador de efeitos."""
     if getattr(jogo, "_efeitos", None) is None:
         jogo._efeitos = EfeitosSonoros(jogo.page)
+        # Envia os tocadores ao navegador já agora; se isso ficasse para o
+        # primeiro clique, o primeiro toque se perderia.
+        try:
+            jogo.page.update()
+        except Exception:
+            pass
     return jogo._efeitos
 
 
@@ -128,6 +179,7 @@ _FILHOS = ("content", "controls", "actions", "title", "leading", "trailing", "su
 
 def sons_nos_botoes(jogo: Any, raiz: Any) -> Any:
     """Liga o som de clique em todos os controles clicáveis de ``raiz``."""
+    efeitos(jogo)  # prepara os tocadores antes do primeiro clique
     pendentes = [raiz]
     vistos: set[int] = set()
     while pendentes:

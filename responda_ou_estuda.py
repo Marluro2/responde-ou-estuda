@@ -1087,6 +1087,10 @@ class AplicativoRespondaOuEstuda:
                 seletor_trilha,
                 botao_musica,
                 botao_som,
+                # EFEITOS: toques dos botões e sons de acerto, sem a música.
+                recursos_jogo.botao_efeitos(
+                    self, CORES["branco"], CORES["ciano_2"], CORES["amarelo"], compacto=True
+                ),
                 # ACESSIBILIDADE: tempo, animações e alto contraste.
                 ft.OutlinedButton(
                     content="ACESSIBILIDADE",

@@ -51,8 +51,10 @@ RECURSOS DE JOGO (VERSÃO DE 28/09/2026)
   (erro) e a correta é destacada por cerca de 1 segundo antes da resolução.
 • O saldo no placar "rola" até o novo valor.
 • Efeitos sonoros de acerto, erro e conquista; nos últimos 10 segundos o
-  cronômetro pulsa e faz tique. Os efeitos só tocam com o som ligado
-  (botão ATIVAR SOM). Para recriá-los: py -3.14 ferramentas\gerar_efeitos.py
+  cronômetro pulsa e faz tique. Os efeitos têm botão próprio, EFEITOS
+  (na tela inicial é o ícone de mão ao lado de ATIVAR SOM), separado da
+  música: ATIVAR SOM liga só a música de fundo. Os efeitos vêm ligados e a
+  escolha fica salva. Para recriá-los: py -3.14 ferramentas\gerar_efeitos.py
 • Todo botão faz um "clique" ao ser pressionado (em todas as telas).
 • Ao ACERTAR: fanfarra de vitória com aplausos da plateia, e o cartão da
   alternativa correta vibra (a vibração some com "Sem animações").

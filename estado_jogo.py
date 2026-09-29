@@ -47,7 +47,8 @@ TEMAS_DISPONIVEIS = (
 # PREFERÊNCIAS DE ACESSIBILIDADE (botão ACESSIBILIDADE na tela inicial):
 #   tempo: segundos por questão (60, 90 ou 120); 0 = sem limite de tempo.
 #   sem_animacoes: True desliga transições, pulsos e animações do saldo.
-ACESSIBILIDADE_PADRAO = {"tempo": 60, "sem_animacoes": False}
+#   efeitos: sons de toque dos botões e de acerto/erro (independente da música).
+ACESSIBILIDADE_PADRAO = {"tempo": 60, "sem_animacoes": False, "efeitos": True}
 TEMPOS_PERMITIDOS = (60, 90, 120, 0)
 
 
@@ -171,6 +172,7 @@ class EstadoJogo:
         if acessibilidade["tempo"] not in TEMPOS_PERMITIDOS:
             acessibilidade["tempo"] = 60
         acessibilidade["sem_animacoes"] = bool(acessibilidade["sem_animacoes"])
+        acessibilidade["efeitos"] = bool(acessibilidade["efeitos"])
         self.dados["acessibilidade"] = acessibilidade
 
     @property
