@@ -62,6 +62,24 @@ RECURSOS DE JOGO (VERSÃO DE 28/09/2026)
 • Atalhos de teclado: R responder · E estudar · A–E ou 1–5 alternativas ·
   Enter ou Espaço passar a vez.
 
+ACESSIBILIDADE
+
+O botão ACESSIBILIDADE, no topo da tela inicial, abre as opções (ficam
+salvas para as próximas partidas):
+• Tempo para cada questão: 60 s, 90 s, 120 s ou sem limite (o cronômetro
+  mostra ∞ e não marca erro por tempo).
+• Sem animações: desliga transições, pulsos do cronômetro, saldo animado e
+  crescimento dos cartões; os sons continuam no botão ATIVAR SOM.
+• Tema de alto contraste: preto, branco, amarelo e ciano (também aparece na
+  lista "Tema" como "Alto contraste").
+Sempre ativos: acerto e erro marcados com cor, ícone e palavra
+("✓ CORRETA" / "✗ SUA ESCOLHA"), LUPA, leitura em voz e atalhos de teclado.
+
+Para a pesquisa, dados\respostas.csv registra em cada jogada o tempo
+limite, se as animações estavam desligadas e o tema usado.
+O botão de importar música virou só um ícone (nota musical) ao lado de
+Música, para a barra do topo caber em uma linha.
+
 LUPA (ACESSIBILIDADE)
 
 O botão LUPA, no topo da tela inicial e de cada módulo, liga a Lupa do

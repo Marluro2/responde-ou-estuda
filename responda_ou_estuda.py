@@ -93,8 +93,8 @@ os acertos, os erros e os estudos permanecem acumulados entre os assuntos.
 #   devem aparecer quando o usuário selecionar aquele tema.
 #
 # • Alguns fundos e contornos usam cores hexadecimais diretamente, por exemplo:
-#       bgcolor="#071E4D"
-#       border=_borda("#245F96")
+#       bgcolor=_cor_fixa("#071E4D")
+#       border=_borda(_cor_fixa("#245F96"))
 #   Nesses casos, altere o código hexadecimal no próprio componente.
 #
 # • Nos textos:
@@ -443,6 +443,8 @@ CORES = {
     "laranja_2": "#FFB52E",
     "verde": "#45E59A",
     "vermelho": "#FF6E86",
+    # "sim" apenas no tema Alto contraste (ver _cor_fixa).
+    "alto_contraste": "não",
 }
 
 # TEMAS:
@@ -525,7 +527,42 @@ TEMAS_TELA_INICIAL = {
         "verde": "#8FF0BD",
         "vermelho": "#FF9BAD",
     },
+    # ACESSIBILIDADE: fundo preto, texto branco, destaques amarelo e ciano.
+    "Alto contraste": {
+        **CORES,
+        "fundo_topo": "#000000",
+        "fundo_meio": "#000000",
+        "fundo_base": "#000000",
+        "azul_cartao": "#0E0E0E",
+        "azul_cartao_2": "#1C1C1C",
+        "azul_botao": "#1C1C1C",
+        "azul_bloqueado": "#141414",
+        "ciano": "#00FFFF",
+        "ciano_2": "#00FFFF",
+        "branco": "#FFFFFF",
+        "texto_suave": "#F2F2F2",
+        "amarelo": "#FFE600",
+        "laranja": "#FFE600",
+        "laranja_2": "#FFE600",
+        "verde": "#3DFF7A",
+        "vermelho": "#FF6B6B",
+        # Marca usada por _cor_fixa() para trocar as cores fixas da tela.
+        "alto_contraste": "sim",
+    },
 }
+
+
+def _cor_fixa(hexa: str) -> str:
+    """Cores escritas direto no código: no ALTO CONTRASTE viram preto/branco.
+
+    Fundos escuros ficam quase pretos e bordas claras ficam brancas; nos demais
+    temas a cor original é mantida.
+    """
+    if CORES.get("alto_contraste") != "sim":
+        return hexa
+    r, g, b = (int(hexa[i:i + 2], 16) for i in (1, 3, 5))
+    luminancia = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
+    return "#FFFFFF" if luminancia > 0.25 else "#0E0E0E"
 
 
 def _borda(cor: str, largura: float = 1) -> ft.Border:
@@ -713,13 +750,13 @@ class AplicativoRespondaOuEstuda:
                 controls=[
                     ft.Container(
                         content=self._construir_cabecalho(),
-                        col={"xs": 12, "sm": 12, "md": 4, "lg": 4},
-                        # Em md/lg, 4/12 da barra ficam para o cabeçalho.
+                        col={"xs": 12, "sm": 12, "md": 3, "lg": 3},
+                        # Em md/lg, 3/12 da barra ficam para o cabeçalho.
                     ),
                     ft.Container(
                         content=self._construir_barra_superior(),
-                        col={"xs": 12, "sm": 12, "md": 8, "lg": 8},
-                        # Em md/lg, 8/12 ficam para tema, música, som e ranking.
+                        col={"xs": 12, "sm": 12, "md": 9, "lg": 9},
+                        # Em md/lg, 9/12 ficam para os botões (cabem em uma linha).
                     ),
                 ],
                 columns=12,
@@ -733,9 +770,9 @@ class AplicativoRespondaOuEstuda:
             padding=ft.Padding.symmetric(horizontal=14, vertical=9),
             # Aumente horizontal para afastar dos lados; vertical engrossa a barra.
             # FUNDO, BORDA, CANTOS E SOMBRA da barra superior.
-            bgcolor="#071A45",
+            bgcolor=_cor_fixa("#071A45"),
             # Troque este hexadecimal para mudar o fundo da barra superior.
-            border=_borda("#174F89"),
+            border=_borda(_cor_fixa("#174F89")),
             # Troque este hexadecimal para mudar a borda da barra superior.
             border_radius=_raio(18),
             # Aumente para arredondar mais os cantos da barra.
@@ -947,7 +984,7 @@ class AplicativoRespondaOuEstuda:
             ),
             height=42,
             padding=ft.Padding.symmetric(horizontal=12, vertical=7),
-            bgcolor="#0B3472",
+            bgcolor=_cor_fixa("#0B3472"),
             border=_borda(CORES["ciano_2"]),
             border_radius=_raio(12),
             ink=True,
@@ -1002,16 +1039,15 @@ class AplicativoRespondaOuEstuda:
         # BOTÃO IMPORTAR:
         # content é o texto; icon é o símbolo; height é a altura.
         # Em ButtonStyle, color altera texto/ícone e side altera a borda.
-        botao_musica = ft.OutlinedButton(
-            content="IMPORTAR",
+        # Só o ícone, para a barra caber em uma linha; a dica aparece no mouse.
+        botao_musica = ft.IconButton(
             icon=ft.Icons.LIBRARY_MUSIC,
-            height=42,
+            icon_color=CORES["branco"],
             style=ft.ButtonStyle(
-                color=CORES["branco"],
                 side=ft.BorderSide(width=1.5, color=CORES["ciano_2"]),
             ),
             on_click=self._selecionar_musica,
-            tooltip="Escolher uma música do computador",
+            tooltip="Importar música: escolher uma música do computador",
         )
 
         # BOTÃO RANKING:
@@ -1051,6 +1087,18 @@ class AplicativoRespondaOuEstuda:
                 seletor_trilha,
                 botao_musica,
                 botao_som,
+                # ACESSIBILIDADE: tempo, animações e alto contraste.
+                ft.OutlinedButton(
+                    content="ACESSIBILIDADE",
+                    icon=ft.Icons.ACCESSIBILITY_NEW,
+                    height=42,
+                    style=ft.ButtonStyle(
+                        color=CORES["branco"],
+                        side=ft.BorderSide(width=1.5, color=CORES["ciano_2"]),
+                    ),
+                    on_click=self._abrir_acessibilidade,
+                    tooltip="Tempo por questão, animações e alto contraste",
+                ),
                 # LUPA (acessibilidade): liga/desliga a Lupa do Windows.
                 recursos_jogo.botao_lupa(
                     CORES["branco"], CORES["ciano_2"], CORES["amarelo"], CORES["fundo_topo"]
@@ -1083,7 +1131,7 @@ class AplicativoRespondaOuEstuda:
                 end=ft.Alignment.BOTTOM_RIGHT,
                 colors=[CORES["amarelo"], CORES["laranja"]],
             ),
-            border=_borda("#FFE69A", 2),
+            border=_borda(_cor_fixa("#FFE69A"), 2),
             border_radius=_raio(14),
             shadow=_sombra("#55FF8A20", 10, 2),
         )
@@ -1143,7 +1191,7 @@ class AplicativoRespondaOuEstuda:
                             colors=[CORES["amarelo"], CORES["laranja"]],
                             # Troque estas duas cores para alterar o fundo do ícone.
                         ),
-                        border=_borda("#FFE69A", 1),
+                        border=_borda(_cor_fixa("#FFE69A"), 1),
                         border_radius=_raio(11),
                     ),
                     ft.Text(
@@ -1249,9 +1297,9 @@ class AplicativoRespondaOuEstuda:
                 ),
                 padding=ft.Padding.symmetric(horizontal=10, vertical=7),
                 # horizontal altera as laterais; vertical altera topo e base.
-                bgcolor="#0A2A61",
+                bgcolor=_cor_fixa("#0A2A61"),
                 # Troque este hexadecimal para mudar o fundo dos três cartões.
-                border=_borda("#285D94"),
+                border=_borda(_cor_fixa("#285D94")),
                 # Troque este hexadecimal para mudar a borda dos três cartões.
                 border_radius=_raio(13),
                 col={"xs": 12, "sm": 4},
@@ -1274,9 +1322,9 @@ class AplicativoRespondaOuEstuda:
                     ),
                     padding=ft.Padding.symmetric(horizontal=10, vertical=4),
                     # Altere para ampliar/reduzir a caixa do selo.
-                    bgcolor="#103B77",
+                    bgcolor=_cor_fixa("#103B77"),
                     # Troque o hexadecimal para mudar o fundo do selo.
-                    border=_borda("#2A73AA"),
+                    border=_borda(_cor_fixa("#2A73AA")),
                     border_radius=_raio(10),
                 ),
                 # TÍTULO GRANDE:
@@ -1686,9 +1734,9 @@ class AplicativoRespondaOuEstuda:
             ),
             padding=10,
             # Margem interna do painel completo dos jogadores.
-            bgcolor="#071E4D",
+            bgcolor=_cor_fixa("#071E4D"),
             # Troque este hexadecimal para mudar o fundo do painel.
-            border=_borda("#245F96"),
+            border=_borda(_cor_fixa("#245F96")),
             # Troque este hexadecimal para mudar a borda do painel.
             border_radius=_raio(16),
             shadow=_sombra("#44000000", 12, 4),
@@ -1747,7 +1795,7 @@ class AplicativoRespondaOuEstuda:
             # TOP_CENTER move a mascote para cima; BOTTOM_CENTER move para baixo.
             padding=4,
             # Diminua para a mascote ocupar mais espaço; aumente para criar margem.
-            bgcolor="#03163B",
+            bgcolor=_cor_fixa("#03163B"),
             # Troque este hexadecimal para alterar apenas o fundo da mascote.
             border=_borda(CORES["ciano"]),
             # Troque CORES["ciano"] por outra cor da paleta para mudar a borda.
@@ -1808,9 +1856,9 @@ class AplicativoRespondaOuEstuda:
             padding=ft.Padding.symmetric(horizontal=18, vertical=12),
             # horizontal move o conteúdo para dentro dos lados; vertical cria
             # distância do topo e da base.
-            bgcolor="#08285C",
+            bgcolor=_cor_fixa("#08285C"),
             # Troque este hexadecimal para alterar só o fundo da estratégia.
-            border=_borda("#245F96"),
+            border=_borda(_cor_fixa("#245F96")),
             # Troque este hexadecimal para alterar só a borda da estratégia.
             border_radius=_raio(14),
             col={"xs": 12, "sm": 6, "md": 6},
@@ -1860,7 +1908,7 @@ class AplicativoRespondaOuEstuda:
                         # para 5/5 quando as próximas etapas forem implementadas.
                         color=CORES["amarelo"],
                         # Cor da parte preenchida da barra.
-                        bgcolor="#174C75",
+                        bgcolor=_cor_fixa("#174C75"),
                         # Cor da parte ainda não preenchida.
                         height=7,
                         # Altere para deixar a barra mais fina ou mais grossa.
@@ -1876,7 +1924,7 @@ class AplicativoRespondaOuEstuda:
             # Mantenha igual à altura dos cartões de mascote e estratégia.
             padding=ft.Padding.symmetric(horizontal=15, vertical=12),
             # Aumente horizontal para afastar a barra das laterais.
-            bgcolor="#063653",
+            bgcolor=_cor_fixa("#063653"),
             # Troque este hexadecimal para alterar apenas o fundo do progresso.
             border=_borda(CORES["verde"]),
             # Troque CORES["verde"] por outra cor para mudar o contorno.
@@ -1902,9 +1950,9 @@ class AplicativoRespondaOuEstuda:
             ),
             padding=8,
             # Margem interna do painel completo de missão.
-            bgcolor="#071E4D",
+            bgcolor=_cor_fixa("#071E4D"),
             # Fundo externo que envolve mascote, estratégia e progresso.
-            border=_borda("#245F96"),
+            border=_borda(_cor_fixa("#245F96")),
             border_radius=_raio(16),
             shadow=_sombra("#44020A25", 12, 4),
         )
@@ -1979,8 +2027,8 @@ class AplicativoRespondaOuEstuda:
                 horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
             ),
             padding=11,
-            bgcolor="#071E4D",
-            border=_borda("#245F96"),
+            bgcolor=_cor_fixa("#071E4D"),
+            border=_borda(_cor_fixa("#245F96")),
             border_radius=_raio(16),
             shadow=_sombra("#66020A25", 14, 5),
         )
@@ -2182,6 +2230,104 @@ class AplicativoRespondaOuEstuda:
         # Os atalhos de teclado valem só dentro dos módulos.
         self.page.on_keyboard_event = None
         self.page.update()
+
+    # ------------------------------------------------------------------
+    # Acessibilidade
+    # ------------------------------------------------------------------
+
+    def _abrir_acessibilidade(self, _evento: ft.ControlEvent) -> None:
+        """Janela com as opções de acessibilidade (salvas no estado)."""
+        preferencias = self.estado.acessibilidade
+
+        def mudar_tempo(evento: ft.ControlEvent) -> None:
+            self.estado.definir_acessibilidade(tempo=int(evento.control.value))
+
+        def mudar_animacoes(evento: ft.ControlEvent) -> None:
+            self.estado.definir_acessibilidade(sem_animacoes=bool(evento.control.value))
+
+        def mudar_contraste(evento: ft.ControlEvent) -> None:
+            if evento.control.value:
+                if self.estado.tema != "Alto contraste":
+                    self.estado.definir_acessibilidade(tema_anterior=self.estado.tema)
+                self.estado.definir_tema("Alto contraste")
+            else:
+                anterior = preferencias.get("tema_anterior") or "Financeiro"
+                self.estado.definir_tema(anterior if anterior != "Alto contraste" else "Financeiro")
+
+        def fechar(_e: ft.ControlEvent) -> None:
+            self.page.pop_dialog()
+            self._reconstruir_inicio()
+
+        def titulo_secao(texto: str) -> ft.Control:
+            return ft.Text(texto, weight=ft.FontWeight.BOLD, size=15)
+
+        def explicacao(texto: str) -> ft.Control:
+            return ft.Text(texto, size=12, color=ft.Colors.ON_SURFACE_VARIANT)
+
+        self.page.show_dialog(
+            ft.AlertDialog(
+                modal=True,
+                title=ft.Row(
+                    controls=[
+                        ft.Icon(ft.Icons.ACCESSIBILITY_NEW),
+                        ft.Text("Acessibilidade"),
+                    ],
+                    spacing=10,
+                ),
+                content=ft.Container(
+                    width=560,
+                    content=ft.Column(
+                        tight=True,
+                        spacing=10,
+                        controls=[
+                            titulo_secao("Tempo para cada questão"),
+                            ft.RadioGroup(
+                                value=str(preferencias.get("tempo", 60)),
+                                on_change=mudar_tempo,
+                                content=ft.Row(
+                                    controls=[
+                                        ft.Radio(value="60", label="60 s"),
+                                        ft.Radio(value="90", label="90 s"),
+                                        ft.Radio(value="120", label="120 s"),
+                                        ft.Radio(value="0", label="Sem limite"),
+                                    ],
+                                    wrap=True,
+                                ),
+                            ),
+                            explicacao(
+                                "Mais tempo ajuda quem lê com a lupa, com leitor de voz "
+                                "ou tem dislexia/TDAH. A opção usada fica registrada "
+                                "nos dados da pesquisa."
+                            ),
+                            ft.Divider(),
+                            ft.Switch(
+                                label="Sem animações (transições, pulsos e saldo animado)",
+                                value=bool(preferencias.get("sem_animacoes")),
+                                on_change=mudar_animacoes,
+                            ),
+                            ft.Switch(
+                                label="Tema de alto contraste (preto, branco e amarelo)",
+                                value=self.estado.tema == "Alto contraste",
+                                on_change=mudar_contraste,
+                            ),
+                            ft.Divider(),
+                            titulo_secao("Sempre disponíveis"),
+                            explicacao(
+                                "• Acerto e erro são indicados com cor, ícone e palavra "
+                                "(✓ CORRETA / ✗ SUA ESCOLHA).\n"
+                                "• LUPA: amplia o que estiver sob o mouse.\n"
+                                "• OUVIR QUESTÃO: leitura em voz alta, com velocidade ajustável.\n"
+                                "• Atalhos: R responder · E estudar · A–E ou 1–5 alternativas "
+                                "· Enter avançar."
+                            ),
+                        ],
+                    ),
+                ),
+                actions=[
+                    ft.Button(content="SALVAR E FECHAR", icon=ft.Icons.CHECK, on_click=fechar),
+                ],
+            )
+        )
 
     # ------------------------------------------------------------------
     # Nova turma
@@ -2700,8 +2846,10 @@ class AplicativoRespondaOuEstuda:
         cartao = self.cartoes_assuntos[indice]
         sobre = str(evento.data).lower() == "true"
         ativo = bool(ASSUNTOS[indice]["ativo"])
-        cartao.scale = 1.025 if sobre else 1.0
-        cartao.offset = (0, -0.025) if sobre else (0, 0)
+        # SEM ANIMAÇÕES (Acessibilidade): o cartão só muda de cor, sem crescer.
+        movimento = sobre and not self.estado.acessibilidade.get("sem_animacoes")
+        cartao.scale = 1.025 if movimento else 1.0
+        cartao.offset = (0, -0.025) if movimento else (0, 0)
         cartao.bgcolor = (
             "#0B62D2"
             if sobre and ativo
@@ -2954,7 +3102,7 @@ class AplicativoRespondaOuEstuda:
                 weight=ft.FontWeight.BOLD,
                 text_align=ft.TextAlign.CENTER,
             ),
-            bgcolor="#102C67",
+            bgcolor=_cor_fixa("#102C67"),
             show_close_icon=True,
             close_icon_color=CORES["ciano"],
             duration=3200,

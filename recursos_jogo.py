@@ -37,6 +37,41 @@ LETRAS = "ABCDEFGHIJ"
 
 
 # ======================================================================
+# PREFERÊNCIAS DE ACESSIBILIDADE
+# ======================================================================
+# Definidas no botão ACESSIBILIDADE da tela inicial e salvas no estado.
+def preferencias(estado: Any) -> dict[str, Any]:
+    dados = getattr(estado, "dados", {}) or {}
+    return {"tempo": 60, "sem_animacoes": False, **dados.get("acessibilidade", {})}
+
+
+def tempo_limite(estado: Any, padrao: int = 60) -> int:
+    """Segundos por questão; 0 significa sem limite de tempo."""
+    try:
+        return int(preferencias(estado).get("tempo", padrao))
+    except (TypeError, ValueError):
+        return padrao
+
+
+def sem_animacoes(jogo: Any) -> bool:
+    return bool(preferencias(getattr(jogo, "estado", None)).get("sem_animacoes"))
+
+
+def texto_tempo(jogo: Any) -> str:
+    """Texto do cronômetro: "45s" ou "∞" quando não há limite de tempo."""
+    if not getattr(jogo, "tempo_por_questao", 60):
+        return "∞"
+    return f"{int(getattr(jogo, 'tempo_restante', 0)):02d}s"
+
+
+def marcar_inicio(jogo: Any) -> None:
+    """Guarda o instante em que a questão apareceu (tempo de resposta)."""
+    import time
+
+    jogo._inicio_questao = time.monotonic()
+
+
+# ======================================================================
 # EFEITOS SONOROS
 # ======================================================================
 # Os efeitos só tocam quando o som do jogo está ligado (botão ATIVAR SOM).
@@ -113,7 +148,7 @@ def texto_saldo(
         scale=1.0,
         animate_scale=ft.Animation(250, ft.AnimationCurve.EASE_OUT),
     )
-    if abs(anterior - valor) > 0.004:
+    if abs(anterior - valor) > 0.004 and not sem_animacoes(jogo):
         jogo.page.run_task(_rolar_saldo, texto, anterior, valor, formatar, cor)
     else:
         texto.value = formatar(valor)
@@ -168,6 +203,22 @@ def cores_alternativa(jogo: Any, indice: int, tema: dict[str, str]) -> tuple[str
     return None
 
 
+def rotulo_alternativa(jogo: Any, indice: int) -> str:
+    """Marca em palavras (não só por cor) a alternativa correta e a escolhida.
+
+    Acessibilidade para daltonismo: durante o destaque, a alternativa
+    certa recebe "✓ CORRETA" e a escolhida errada recebe "✗ SUA ESCOLHA".
+    """
+    destaque = getattr(jogo, "_destaque_resposta", None)
+    if not destaque:
+        return ""
+    if indice == destaque["correta"]:
+        return "✓ CORRETA · " if indice != destaque["escolhida"] else "✓ CORRETA (SUA ESCOLHA) · "
+    if indice == destaque["escolhida"]:
+        return "✗ SUA ESCOLHA · "
+    return ""
+
+
 def iniciar_destaque(jogo: Any, escolhida: int, correta: int, ir_para_resolucao: Any) -> None:
     """Mostra o destaque, toca o efeito e depois chama ir_para_resolucao()."""
     jogo._destaque_resposta = {"escolhida": escolhida, "correta": correta}
@@ -194,6 +245,8 @@ def com_transicao(jogo: Any, conteudo: ft.Control) -> ft.Control:
     )
     mudou = chave != getattr(jogo, "_ultima_chave_tela", None)
     jogo._ultima_chave_tela = chave
+    if sem_animacoes(jogo):
+        return conteudo
     envoltorio = ft.Container(
         content=conteudo,
         opacity=0.0 if mudou else 1.0,
@@ -225,7 +278,8 @@ def pulsar_cronometro(jogo: Any) -> None:
     if texto is None:
         return
     if 0 < restante <= 10:
-        texto.scale = 1.3 if restante % 2 == 0 else 1.0
+        if not sem_animacoes(jogo):
+            texto.scale = 1.3 if restante % 2 == 0 else 1.0
         efeitos(jogo).tocar(jogo, "tique")
     else:
         texto.scale = 1.0
@@ -491,6 +545,7 @@ def podio(jogo: Any, jogadores: list[dict[str, Any]], tema: dict[str, str], form
     alturas = {0: 150, 1: 110, 2: 80}
     cores = {0: "#FFD34E", 1: "#C9D6E3", 2: "#E09A5B"}
     posicoes_visuais = [1, 0, 2] if len(ordenados) >= 2 else [0]
+    parado = sem_animacoes(jogo)
     colunas: list[ft.Control] = []
     barras: list[tuple[ft.Container, int]] = []
     for posicao in posicoes_visuais:
@@ -500,7 +555,7 @@ def podio(jogo: Any, jogadores: list[dict[str, Any]], tema: dict[str, str], form
         barra = ft.Container(
             content=ft.Text(f"{posicao + 1}º", size=30, weight=ft.FontWeight.BOLD, color="#06143C"),
             width=120,
-            height=10,
+            height=alturas[posicao] if parado else 10,
             bgcolor=cores[posicao],
             alignment=ft.Alignment.TOP_CENTER,
             padding=ft.Padding.only(top=8),
@@ -531,7 +586,8 @@ def podio(jogo: Any, jogadores: list[dict[str, Any]], tema: dict[str, str], form
         except Exception:
             pass
 
-    jogo.page.run_task(subir)
+    if not parado:
+        jogo.page.run_task(subir)
     efeitos(jogo).tocar(jogo, "conquista")
 
     cartoes: list[ft.Control] = []
@@ -592,11 +648,22 @@ CAMPOS_RESPOSTA = [
     "data_hora", "sessao", "modulo", "nivel", "questao_id", "titulo",
     "jogador", "resultado", "alternativa_escolhida", "alternativa_correta",
     "tempo_resposta_s",
+    # Condições de acessibilidade em que a resposta foi dada:
+    "tempo_limite_s", "sem_animacoes", "tema",
 ]
 
 
 def _escrever_csv(caminho: Path, campos: list[str], linhas: list[dict[str, Any]], anexar: bool = False) -> None:
     caminho.parent.mkdir(parents=True, exist_ok=True)
+    if anexar and caminho.exists():
+        # Arquivo criado por uma versão anterior, com menos colunas: reescreve
+        # com o cabeçalho novo, preservando todas as linhas já registradas.
+        with caminho.open("r", encoding="utf-8-sig", newline="") as arquivo:
+            leitor = csv.DictReader(arquivo, delimiter=";")
+            if leitor.fieldnames and list(leitor.fieldnames) != campos:
+                antigas = list(leitor)
+                anexar = False
+                linhas = antigas + list(linhas)
     novo = not caminho.exists() or not anexar
     # utf-8-sig e ponto e vírgula: o Excel em português abre sem ajustes.
     with caminho.open("a" if anexar else "w", encoding="utf-8-sig" if novo else "utf-8", newline="") as arquivo:
@@ -623,8 +690,17 @@ def registrar_resposta(
         questao = jogo.questao_atual
         jogador = jogo.jogador_atual
         tempo = None
-        if tempo_total is not None and hasattr(jogo, "tempo_restante") and not ADMIN_ATIVO:
-            tempo = max(0.0, float(tempo_total) - float(jogo.tempo_restante))
+        if tempo_total is not None and not ADMIN_ATIVO:
+            inicio = getattr(jogo, "_inicio_questao", None)
+            if inicio is not None:
+                # Relógio real: vale também quando não há limite de tempo.
+                import time
+
+                tempo = max(0.0, time.monotonic() - inicio)
+            elif hasattr(jogo, "tempo_restante") and tempo_total:
+                tempo = max(0.0, float(tempo_total) - float(jogo.tempo_restante))
+        preferencias_atuais = preferencias(getattr(jogo, "estado", None))
+        limite = int(preferencias_atuais.get("tempo", 60) or 0)
         s = sessao(jogo, modulo)
         s.registrar(jogador, resultado, tempo)
         correta = int(questao.get("correta", -1))
@@ -640,6 +716,9 @@ def registrar_resposta(
             "alternativa_escolhida": LETRAS[escolhida] if escolhida is not None and escolhida < len(LETRAS) else "",
             "alternativa_correta": LETRAS[correta] if 0 <= correta < len(LETRAS) else "",
             "tempo_resposta_s": _numero(tempo) if tempo is not None else "",
+            "tempo_limite_s": str(limite) if limite else "sem limite",
+            "sem_animacoes": "sim" if preferencias_atuais.get("sem_animacoes") else "não",
+            "tema": getattr(jogo, "tema_nome", ""),
         }
         _escrever_csv(ARQUIVO_RESPOSTAS, CAMPOS_RESPOSTA, [linha], anexar=True)
         gerar_relatorios()

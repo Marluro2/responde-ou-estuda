@@ -266,6 +266,19 @@ TEMAS = {
         "texto": "#09254A",
         "suave": "#244E6C",
     },
+    "Alto contraste": {
+        # ACESSIBILIDADE: fundo preto, texto branco, destaques amarelo/ciano.
+        "fundo_1": "#000000",
+        "fundo_2": "#000000",
+        "cartao": "#0E0E0E",
+        "cartao_2": "#1C1C1C",
+        "primaria": "#00FFFF",
+        "destaque": "#FFE600",
+        "positivo": "#3DFF7A",
+        "negativo": "#FF6B6B",
+        "texto": "#FFFFFF",
+        "suave": "#F2F2F2",
+    },
 }
 
 
@@ -388,7 +401,7 @@ class JogoJuros:
         self.ultimo_resultado: dict[str, Any] | None = None
         # Página do estudo: 0 = conceito e exemplos; 1 = resolução.
         self.pagina_estudo = 0
-        self.tempo_restante = TEMPO_POR_QUESTAO
+        self.tempo_restante = self.tempo_por_questao or TEMPO_POR_QUESTAO
         self._token_cronometro = 0
         self._questao_cronometro: str | None = None
         self._cronometro_rodando = False
@@ -446,6 +459,11 @@ class JogoJuros:
     @property
     def questao_atual(self) -> dict[str, Any]:
         return self.questoes[self.indice_questao]
+
+    @property
+    def tempo_por_questao(self) -> int:
+        """Segundos por questão definidos em ACESSIBILIDADE (0 = sem limite)."""
+        return rj.tempo_limite(self.estado, TEMPO_POR_QUESTAO)
 
     def _preparar_nova_partida(self) -> None:
         """Inicia as rodadas sem zerar o saldo acumulado dos jogadores."""
@@ -1483,11 +1501,13 @@ class JogoJuros:
         """Cria um novo ciclo de 60 segundos para a questão atual."""
         self._parar_cronometro()
         self._questao_cronometro = identificador
-        self.tempo_restante = TEMPO_POR_QUESTAO
+        rj.marcar_inicio(self)  # tempo de resposta para a pesquisa
+        self.tempo_restante = self.tempo_por_questao or TEMPO_POR_QUESTAO
         self._cronometro_rodando = True
         self._rodada_finalizada = False
-        if ADMIN_ATIVO:
-            # Modo administrador: o cronômetro fica desligado.
+        if ADMIN_ATIVO or not self.tempo_por_questao:
+            # Modo administrador ou SEM LIMITE DE TEMPO (Acessibilidade):
+            # o cronômetro fica desligado.
             self._cronometro_rodando = False
             return
         token = self._token_cronometro
@@ -1531,13 +1551,13 @@ class JogoJuros:
         )
         try:
             if self.texto_cronometro is not None:
-                self.texto_cronometro.value = f"{self.tempo_restante:02d}s"
+                self.texto_cronometro.value = rj.texto_tempo(self)
                 self.texto_cronometro.color = cor
                 rj.pulsar_cronometro(self)
                 self.texto_cronometro.update()
             if self.barra_cronometro is not None:
                 self.barra_cronometro.value = (
-                    self.tempo_restante / TEMPO_POR_QUESTAO
+                    self.tempo_restante / (self.tempo_por_questao or TEMPO_POR_QUESTAO)
                 )
                 self.barra_cronometro.color = cor
                 self.barra_cronometro.semantics_value = self.tempo_restante
@@ -1566,7 +1586,7 @@ class JogoJuros:
             self,
             MODULO_PESQUISA,
             "tempo_esgotado",
-            tempo_total=TEMPO_POR_QUESTAO,
+            tempo_total=self.tempo_por_questao or TEMPO_POR_QUESTAO,
         )
         rj.efeitos(self).tocar(self, "erro")
         self.ultimo_resultado = {
@@ -1591,7 +1611,7 @@ class JogoJuros:
             size=24,
         )
         self.texto_cronometro = ft.Text(
-            f"{self.tempo_restante:02d}s",
+            rj.texto_tempo(self),
             color=cor,
             size=24,
             weight=ft.FontWeight.BOLD,
@@ -1600,7 +1620,7 @@ class JogoJuros:
             ),
         )
         self.barra_cronometro = ft.ProgressBar(
-            value=self.tempo_restante / TEMPO_POR_QUESTAO,
+            value=self.tempo_restante / (self.tempo_por_questao or TEMPO_POR_QUESTAO),
             bar_height=9,
             color=cor,
             bgcolor=tema["fundo_1"],
@@ -1627,7 +1647,11 @@ class JogoJuros:
                     ),
                     self.barra_cronometro,
                     ft.Text(
-                        "Nos últimos 10 segundos o indicador ficará vermelho.",
+                        (
+                        "Nos últimos 10 segundos o indicador ficará vermelho."
+                        if self.tempo_por_questao
+                        else "Sem limite de tempo (opção de Acessibilidade)."
+                    ),
                         color=tema["suave"],
                         size=9,
                         text_align=ft.TextAlign.CENTER,
@@ -2073,7 +2097,7 @@ class JogoJuros:
                 botoes.append(
                     ft.OutlinedButton(
                         content=markdown_matematico(
-                            f"**{letras[indice]}.** {alternativa}",
+                            f"{rj.rotulo_alternativa(self, indice)}**{letras[indice]}.** {alternativa}",
                             cor=tema["texto"],
                             # FONTE DAS ALTERNATIVAS: tamanho padronizado para
                             # leitura confortável em todos os módulos.
@@ -2238,7 +2262,7 @@ class JogoJuros:
             self,
             MODULO_PESQUISA,
             "estudo",
-            tempo_total=TEMPO_POR_QUESTAO,
+            tempo_total=self.tempo_por_questao or TEMPO_POR_QUESTAO,
         )
         self._navegar("estudo")
 
@@ -2286,7 +2310,7 @@ class JogoJuros:
             MODULO_PESQUISA,
             "acerto" if acertou else "erro",
             escolhida=indice_resposta,
-            tempo_total=TEMPO_POR_QUESTAO,
+            tempo_total=self.tempo_por_questao or TEMPO_POR_QUESTAO,
         )
         self._parar_cronometro()
         # DESTAQUE: a alternativa escolhida fica verde/vermelha por alguns

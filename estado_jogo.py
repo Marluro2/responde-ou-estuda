@@ -41,7 +41,14 @@ TEMAS_DISPONIVEIS = (
     "Esmeralda",
     "Pôr do sol",
     "Claro",
+    "Alto contraste",
 )
+
+# PREFERÊNCIAS DE ACESSIBILIDADE (botão ACESSIBILIDADE na tela inicial):
+#   tempo: segundos por questão (60, 90 ou 120); 0 = sem limite de tempo.
+#   sem_animacoes: True desliga transições, pulsos e animações do saldo.
+ACESSIBILIDADE_PADRAO = {"tempo": 60, "sem_animacoes": False}
+TEMPOS_PERMITIDOS = (60, 90, 120, 0)
 
 
 def formatar_reais(valor: float) -> str:
@@ -153,6 +160,19 @@ class EstadoJogo:
         if self.dados.get("trilha") not in self.trilhas_disponiveis():
             self.dados["trilha"] = "Aventura"
 
+        acessibilidade = self.dados.get("acessibilidade")
+        if not isinstance(acessibilidade, dict):
+            acessibilidade = {}
+        acessibilidade = {**ACESSIBILIDADE_PADRAO, **acessibilidade}
+        try:
+            acessibilidade["tempo"] = int(acessibilidade["tempo"])
+        except (TypeError, ValueError):
+            acessibilidade["tempo"] = 60
+        if acessibilidade["tempo"] not in TEMPOS_PERMITIDOS:
+            acessibilidade["tempo"] = 60
+        acessibilidade["sem_animacoes"] = bool(acessibilidade["sem_animacoes"])
+        self.dados["acessibilidade"] = acessibilidade
+
     @property
     def quantidade_jogadores(self) -> int:
         return int(self.dados["quantidade_jogadores"])
@@ -198,6 +218,16 @@ class EstadoJogo:
         if nome in TEMAS_DISPONIVEIS:
             self.dados["tema"] = nome
             self.salvar()
+
+    @property
+    def acessibilidade(self) -> dict[str, Any]:
+        return self.dados["acessibilidade"]
+
+    def definir_acessibilidade(self, **valores: Any) -> None:
+        """Ex.: definir_acessibilidade(tempo=90) ou (sem_animacoes=True)."""
+        self.dados["acessibilidade"].update(valores)
+        self._normalizar()
+        self.salvar()
 
     def trilhas_disponiveis(self) -> dict[str, str]:
         return {
