@@ -42,8 +42,8 @@ VOLUMES = {"acerto.wav": 0.42, "erro.wav": 0.40, "tique.wav": 0.30, "conquista.w
 # ACERTO: duração e volume dos aplausos que acompanham a fanfarra.
 DURACAO_APLAUSOS = 2.2
 VOLUME_APLAUSOS = 0.55
-# CLIQUE DOS BOTÕES: volume do "blip" (0 a 1).
-VOLUME_CLIQUE = 0.45
+# TOQUE DOS BOTÕES: volume do "tec" (0 a 1).
+VOLUME_CLIQUE = 0.55
 
 
 def onda(timbre: str, fase: float) -> float:
@@ -108,15 +108,19 @@ def aplausos(duracao: float, volume: float, semente: int = 7) -> list[float]:
 
 
 def clique(volume: float) -> list[float]:
-    """Clique chamativo de botão: "blip" curto que sobe de tom."""
-    duracao = 0.075
+    """Toque seco de botão (como um "tec"): dura só 30 milésimos de segundo.
+
+    Um estalo inicial de ruído + duas ressonâncias que somem muito rápido,
+    sem tom sustentado.
+    """
+    sorteio = random.Random(3)
     saida = []
-    fase = 0.0
-    for indice in range(int(TAXA * duracao)):
+    for indice in range(int(TAXA * 0.030)):
         tempo = indice / TAXA
-        fase += 2 * math.pi * (700 + 900 * tempo / duracao) / TAXA
-        envelope = min(1.0, tempo / 0.003) * math.exp(-tempo * 38)
-        saida.append((0.75 * math.sin(fase) + 0.25 * math.sin(2 * fase)) * envelope * volume)
+        estalo = sorteio.uniform(-1, 1) * math.exp(-tempo / 0.0015)
+        corpo = (0.7 * math.sin(2 * math.pi * 1900 * tempo) * math.exp(-tempo / 0.004)
+                 + 0.5 * math.sin(2 * math.pi * 750 * tempo) * math.exp(-tempo / 0.006))
+        saida.append((0.45 * estalo + corpo) * volume)
     return saida
 
 
