@@ -163,7 +163,7 @@
         "titulo": "PG dos valores presentes",
         "texto": "Os valores presentes das prestações formam uma progressão geométrica decrescente.",
         "formula": "$$a_t=\\frac{PMT}{(1+i)^t}$$",
-        "exemplo": "Os termos $\\frac{P}{1{,}02}$ e $\\frac{P}{(1{,}02)^2}$ diminuem com o tempo."
+        "exemplo": "Os termos $\\frac{PMT}{1{,}02}$ e $\\frac{PMT}{(1{,}02)^2}$ diminuem com o tempo."
       },
       "fonte": {
         "loja": "Wikimedia Commons, imagem didática do produto",
@@ -191,7 +191,7 @@
         "titulo": "Primeiro termo da PG",
         "texto": "A primeira prestação é descontada por um período até a data da compra.",
         "formula": "$$a_1=\\frac{PMT}{1+i}$$",
-        "exemplo": "Para uma prestação $P$ e taxa de 2%, o primeiro termo é $\\frac{P}{1{,}02}$."
+        "exemplo": "Para uma prestação $PMT$ e taxa de 2%, o primeiro termo é $\\frac{PMT}{1{,}02}$."
       },
       "fonte": {
         "loja": "Wikimedia Commons, imagem didática do produto",
@@ -275,7 +275,7 @@
         "titulo": "Valor presente da primeira prestação",
         "texto": "Um pagamento futuro deve ser descontado para ser comparado com o valor de hoje.",
         "formula": "$$VP=\\frac{PMT}{1+i}$$",
-        "exemplo": "Uma prestação $P$ a 1% ao mês vale hoje $\\frac{P}{1{,}01}$."
+        "exemplo": "Uma prestação $PMT$ a 1% ao mês vale hoje $\\frac{PMT}{1{,}01}$."
       },
       "fonte": {
         "loja": "Wikimedia Commons, imagem didática do produto",
@@ -513,13 +513,13 @@
       "produto": "Nível Fácil: Sistema PRICE / SAF",
       "nivel": "Fácil",
       "imagem": "imagens/price/geladeira_liebherr.webp",
-      "enunciado": "Uma geladeira será paga em três prestações iguais $P$, a $1\\%$ ao mês. Qual soma representa os valores presentes?",
+      "enunciado": "Uma geladeira será paga em três prestações iguais $PMT$, a $1\\%$ ao mês. Qual soma representa os valores presentes?",
       "alternativas": [
-        "$P+P+P$",
-        "$P(1{,}01)+P(1{,}01)^2+P(1{,}01)^3$",
-        "$\\frac{P}{1{,}01}+\\frac{P}{1{,}01}+\\frac{P}{1{,}01}$",
-        "$\\frac{P}{1{,}01}+\\frac{P}{(1{,}01)^2}$",
-        "$\\frac{P}{1{,}01}+\\frac{P}{(1{,}01)^2}+\\frac{P}{(1{,}01)^3}$"
+        "$PMT+PMT+PMT$",
+        "$PMT(1{,}01)+PMT(1{,}01)^2+PMT(1{,}01)^3$",
+        "$\\frac{PMT}{1{,}01}+\\frac{PMT}{1{,}01}+\\frac{PMT}{1{,}01}$",
+        "$\\frac{PMT}{1{,}01}+\\frac{PMT}{(1{,}01)^2}$",
+        "$\\frac{PMT}{1{,}01}+\\frac{PMT}{(1{,}01)^2}+\\frac{PMT}{(1{,}01)^3}$"
       ],
       "correta": 4,
       "explicacao": "Cada prestação é descontada pelo número de meses até seu vencimento. A soma correta tem três termos, com expoentes 1, 2 e 3.",
@@ -851,11 +851,11 @@
       "imagem": "imagens/price/notebook_system76.webp",
       "enunciado": "Um notebook de R\\$ 6.800,00 será financiado pelo PRICE em 12 prestações mensais, a $2\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
       "alternativas": [
-        "$P\\approx \\text{R\\$}\\,566{,}67$.",
-        "$P\\approx \\text{R\\$}\\,630{,}40$.",
-        "$P\\approx \\text{R\\$}\\,655{,}87$.",
-        "$P\\approx \\text{R\\$}\\,643{,}01$.",
-        "$P\\approx \\text{R\\$}\\,702{,}67$."
+        "$PMT\\approx \\text{R\\$}\\,566{,}67$.",
+        "$PMT\\approx \\text{R\\$}\\,630{,}40$.",
+        "$PMT\\approx \\text{R\\$}\\,655{,}87$.",
+        "$PMT\\approx \\text{R\\$}\\,643{,}01$.",
+        "$PMT\\approx \\text{R\\$}\\,702{,}67$."
       ],
       "correta": 3,
       "explicacao": "$$PMT=6.800\\cdot\\frac{0{,}02(1{,}02)^{12}}{(1{,}02)^{12}-1}\\approx 643{,}01.$$ A prestação fixa é R\\$ 643,01.",
@@ -879,11 +879,11 @@
       "imagem": "imagens/price/smartphone_iphone_xr.webp",
       "enunciado": "Um smartphone de R\\$ 3.600,00 será financiado pelo PRICE em 10 prestações mensais, a $2{,}4\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
       "alternativas": [
-        "$P\\approx \\text{R\\$}\\,409{,}21$.",
-        "$P\\approx \\text{R\\$}\\,360{,}00$.",
-        "$P\\approx \\text{R\\$}\\,399{,}62$.",
-        "$P\\approx \\text{R\\$}\\,419{,}03$.",
-        "$P\\approx \\text{R\\$}\\,446{,}40$."
+        "$PMT\\approx \\text{R\\$}\\,409{,}21$.",
+        "$PMT\\approx \\text{R\\$}\\,360{,}00$.",
+        "$PMT\\approx \\text{R\\$}\\,399{,}62$.",
+        "$PMT\\approx \\text{R\\$}\\,419{,}03$.",
+        "$PMT\\approx \\text{R\\$}\\,446{,}40$."
       ],
       "correta": 0,
       "explicacao": "$$PMT=3.600\\cdot\\frac{0{,}024(1{,}024)^{10}}{(1{,}024)^{10}-1}\\approx 409{,}21.$$ A prestação fixa é R\\$ 409,21.",
@@ -907,11 +907,11 @@
       "imagem": "imagens/price/automovel_corolla.webp",
       "enunciado": "Um Toyota Corolla de R\\$ 55.000,00 será financiado pelo PRICE em 36 prestações mensais, a $1{,}35\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
       "alternativas": [
-        "$P\\approx \\text{R\\$}\\,1{.}527{,}78$.",
-        "$P\\approx \\text{R\\$}\\,1{.}913{,}24$.",
-        "$P\\approx \\text{R\\$}\\,1{.}939{,}07$.",
-        "$P\\approx \\text{R\\$}\\,1{.}965{,}25$.",
-        "$P\\approx \\text{R\\$}\\,2{.}270{,}28$."
+        "$PMT\\approx \\text{R\\$}\\,1{.}527{,}78$.",
+        "$PMT\\approx \\text{R\\$}\\,1{.}913{,}24$.",
+        "$PMT\\approx \\text{R\\$}\\,1{.}939{,}07$.",
+        "$PMT\\approx \\text{R\\$}\\,1{.}965{,}25$.",
+        "$PMT\\approx \\text{R\\$}\\,2{.}270{,}28$."
       ],
       "correta": 2,
       "explicacao": "$$PMT=55.000\\cdot\\frac{0{,}0135(1{,}0135)^{36}}{(1{,}0135)^{36}-1}\\approx 1.939{,}07.$$ A prestação fixa é R\\$ 1.939,07.",
@@ -935,11 +935,11 @@
       "imagem": "imagens/price/geladeira_liebherr.webp",
       "enunciado": "Uma geladeira de R\\$ 5.600,00 será financiada pelo PRICE em 12 prestações mensais, a $1{,}8\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
       "alternativas": [
-        "$P\\approx \\text{R\\$}\\,466{,}67$.",
-        "$P\\approx \\text{R\\$}\\,513{,}80$.",
-        "$P\\approx \\text{R\\$}\\,532{,}47$.",
-        "$P\\approx \\text{R\\$}\\,567{,}47$.",
-        "$P\\approx \\text{R\\$}\\,523{,}05$."
+        "$PMT\\approx \\text{R\\$}\\,466{,}67$.",
+        "$PMT\\approx \\text{R\\$}\\,513{,}80$.",
+        "$PMT\\approx \\text{R\\$}\\,532{,}47$.",
+        "$PMT\\approx \\text{R\\$}\\,567{,}47$.",
+        "$PMT\\approx \\text{R\\$}\\,523{,}05$."
       ],
       "correta": 4,
       "explicacao": "$$PMT=5.600\\cdot\\frac{0{,}018(1{,}018)^{12}}{(1{,}018)^{12}-1}\\approx 523{,}05.$$ A prestação fixa é R\\$ 523,05.",
@@ -963,11 +963,11 @@
       "imagem": "imagens/price/lavadora_sharp.webp",
       "enunciado": "Uma lavadora de R\\$ 4.200,00 será financiada pelo PRICE em 10 prestações mensais, a $2{,}1\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
       "alternativas": [
-        "$P\\approx \\text{R\\$}\\,420{,}00$.",
-        "$P\\approx \\text{R\\$}\\,470{,}02$.",
-        "$P\\approx \\text{R\\$}\\,460{,}35$.",
-        "$P\\approx \\text{R\\$}\\,479{,}89$.",
-        "$P\\approx \\text{R\\$}\\,508{,}20$."
+        "$PMT\\approx \\text{R\\$}\\,420{,}00$.",
+        "$PMT\\approx \\text{R\\$}\\,470{,}02$.",
+        "$PMT\\approx \\text{R\\$}\\,460{,}35$.",
+        "$PMT\\approx \\text{R\\$}\\,479{,}89$.",
+        "$PMT\\approx \\text{R\\$}\\,508{,}20$."
       ],
       "correta": 1,
       "explicacao": "$$PMT=4.200\\cdot\\frac{0{,}021(1{,}021)^{10}}{(1{,}021)^{10}-1}\\approx 470{,}02.$$ A prestação fixa é R\\$ 470,02.",
@@ -991,11 +991,11 @@
       "imagem": "imagens/price/televisor_samsung.webp",
       "enunciado": "Um televisor de R\\$ 6.500,00 será financiado pelo PRICE em 15 prestações mensais, a $1{,}7\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
       "alternativas": [
-        "$P\\approx \\text{R\\$}\\,433{,}33$.",
-        "$P\\approx \\text{R\\$}\\,486{,}31$.",
-        "$P\\approx \\text{R\\$}\\,502{,}99$.",
-        "$P\\approx \\text{R\\$}\\,494{,}58$.",
-        "$P\\approx \\text{R\\$}\\,543{,}83$."
+        "$PMT\\approx \\text{R\\$}\\,433{,}33$.",
+        "$PMT\\approx \\text{R\\$}\\,486{,}31$.",
+        "$PMT\\approx \\text{R\\$}\\,502{,}99$.",
+        "$PMT\\approx \\text{R\\$}\\,494{,}58$.",
+        "$PMT\\approx \\text{R\\$}\\,543{,}83$."
       ],
       "correta": 3,
       "explicacao": "$$PMT=6.500\\cdot\\frac{0{,}017(1{,}017)^{15}}{(1{,}017)^{15}-1}\\approx 494{,}58.$$ A prestação fixa é R\\$ 494,58.",
@@ -1019,11 +1019,11 @@
       "imagem": "imagens/price/bicicleta_mountain_bike.webp",
       "enunciado": "Uma bicicleta de R\\$ 4.800,00 será financiada pelo PRICE em 12 prestações mensais, a $1{,}5\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
       "alternativas": [
-        "$P\\approx \\text{R\\$}\\,440{,}06$.",
-        "$P\\approx \\text{R\\$}\\,400{,}00$.",
-        "$P\\approx \\text{R\\$}\\,433{,}56$.",
-        "$P\\approx \\text{R\\$}\\,446{,}66$.",
-        "$P\\approx \\text{R\\$}\\,472{,}00$."
+        "$PMT\\approx \\text{R\\$}\\,440{,}06$.",
+        "$PMT\\approx \\text{R\\$}\\,400{,}00$.",
+        "$PMT\\approx \\text{R\\$}\\,433{,}56$.",
+        "$PMT\\approx \\text{R\\$}\\,446{,}66$.",
+        "$PMT\\approx \\text{R\\$}\\,472{,}00$."
       ],
       "correta": 0,
       "explicacao": "$$PMT=4.800\\cdot\\frac{0{,}015(1{,}015)^{12}}{(1{,}015)^{12}-1}\\approx 440{,}06.$$ A prestação fixa é R\\$ 440,06.",
@@ -1047,11 +1047,11 @@
       "imagem": "imagens/price/motocicleta_honda_cb500.webp",
       "enunciado": "Uma Honda CB 500 de R\\$ 26.000,00 será financiada pelo PRICE em 24 prestações mensais, a $1{,}6\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
       "alternativas": [
-        "$P\\approx \\text{R\\$}\\,1{.}083{,}33$.",
-        "$P\\approx \\text{R\\$}\\,1{.}292{,}47$.",
-        "$P\\approx \\text{R\\$}\\,1{.}313{,}15$.",
-        "$P\\approx \\text{R\\$}\\,1{.}334{,}16$.",
-        "$P\\approx \\text{R\\$}\\,1{.}499{,}33$."
+        "$PMT\\approx \\text{R\\$}\\,1{.}083{,}33$.",
+        "$PMT\\approx \\text{R\\$}\\,1{.}292{,}47$.",
+        "$PMT\\approx \\text{R\\$}\\,1{.}313{,}15$.",
+        "$PMT\\approx \\text{R\\$}\\,1{.}334{,}16$.",
+        "$PMT\\approx \\text{R\\$}\\,1{.}499{,}33$."
       ],
       "correta": 2,
       "explicacao": "$$PMT=26.000\\cdot\\frac{0{,}016(1{,}016)^{24}}{(1{,}016)^{24}-1}\\approx 1.313{,}15.$$ A prestação fixa é R\\$ 1.313,15.",
@@ -1075,11 +1075,11 @@
       "imagem": "imagens/price/console_playstation5.webp",
       "enunciado": "Um PlayStation 5 de R\\$ 4.500,00 será financiado pelo PRICE em 12 prestações mensais, a $2{,}6\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
       "alternativas": [
-        "$P\\approx \\text{R\\$}\\,375{,}00$.",
-        "$P\\approx \\text{R\\$}\\,430{,}17$.",
-        "$P\\approx \\text{R\\$}\\,452{,}83$.",
-        "$P\\approx \\text{R\\$}\\,492{,}00$.",
-        "$P\\approx \\text{R\\$}\\,441{,}35$."
+        "$PMT\\approx \\text{R\\$}\\,375{,}00$.",
+        "$PMT\\approx \\text{R\\$}\\,430{,}17$.",
+        "$PMT\\approx \\text{R\\$}\\,452{,}83$.",
+        "$PMT\\approx \\text{R\\$}\\,492{,}00$.",
+        "$PMT\\approx \\text{R\\$}\\,441{,}35$."
       ],
       "correta": 4,
       "explicacao": "$$PMT=4.500\\cdot\\frac{0{,}026(1{,}026)^{12}}{(1{,}026)^{12}-1}\\approx 441{,}35.$$ A prestação fixa é R\\$ 441,35.",
@@ -1103,11 +1103,11 @@
       "imagem": "imagens/price/camera_canon_eos5d.webp",
       "enunciado": "Uma câmera de R\\$ 9.800,00 será financiada pelo PRICE em 18 prestações mensais, a $1{,}4\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
       "alternativas": [
-        "$P\\approx \\text{R\\$}\\,544{,}44$.",
-        "$P\\approx \\text{R\\$}\\,619{,}70$.",
-        "$P\\approx \\text{R\\$}\\,611{,}15$.",
-        "$P\\approx \\text{R\\$}\\,628{,}38$.",
-        "$P\\approx \\text{R\\$}\\,681{,}64$."
+        "$PMT\\approx \\text{R\\$}\\,544{,}44$.",
+        "$PMT\\approx \\text{R\\$}\\,619{,}70$.",
+        "$PMT\\approx \\text{R\\$}\\,611{,}15$.",
+        "$PMT\\approx \\text{R\\$}\\,628{,}38$.",
+        "$PMT\\approx \\text{R\\$}\\,681{,}64$."
       ],
       "correta": 1,
       "explicacao": "$$PMT=9.800\\cdot\\frac{0{,}014(1{,}014)^{18}}{(1{,}014)^{18}-1}\\approx 619{,}70.$$ A prestação fixa é R\\$ 619,70.",
@@ -1131,11 +1131,11 @@
       "imagem": "imagens/price/ar_condicionado_panasonic.webp",
       "enunciado": "Um ar-condicionado de R\\$ 5.200,00 será financiado pelo PRICE em 12 prestações mensais, a $2\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
       "alternativas": [
-        "$P\\approx \\text{R\\$}\\,433{,}33$.",
-        "$P\\approx \\text{R\\$}\\,482{,}07$.",
-        "$P\\approx \\text{R\\$}\\,501{,}54$.",
-        "$P\\approx \\text{R\\$}\\,491{,}71$.",
-        "$P\\approx \\text{R\\$}\\,537{,}33$."
+        "$PMT\\approx \\text{R\\$}\\,433{,}33$.",
+        "$PMT\\approx \\text{R\\$}\\,482{,}07$.",
+        "$PMT\\approx \\text{R\\$}\\,501{,}54$.",
+        "$PMT\\approx \\text{R\\$}\\,491{,}71$.",
+        "$PMT\\approx \\text{R\\$}\\,537{,}33$."
       ],
       "correta": 3,
       "explicacao": "$$PMT=5.200\\cdot\\frac{0{,}02(1{,}02)^{12}}{(1{,}02)^{12}-1}\\approx 491{,}71.$$ A prestação fixa é R\\$ 491,71.",
@@ -1159,11 +1159,11 @@
       "imagem": "imagens/price/violao_yamaha_fgx04.webp",
       "enunciado": "Um violão de R\\$ 3.600,00 será financiado pelo PRICE em 10 prestações mensais, a $1{,}8\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
       "alternativas": [
-        "$P\\approx \\text{R\\$}\\,396{,}59$.",
-        "$P\\approx \\text{R\\$}\\,360{,}00$.",
-        "$P\\approx \\text{R\\$}\\,389{,}58$.",
-        "$P\\approx \\text{R\\$}\\,403{,}73$.",
-        "$P\\approx \\text{R\\$}\\,424{,}80$."
+        "$PMT\\approx \\text{R\\$}\\,396{,}59$.",
+        "$PMT\\approx \\text{R\\$}\\,360{,}00$.",
+        "$PMT\\approx \\text{R\\$}\\,389{,}58$.",
+        "$PMT\\approx \\text{R\\$}\\,403{,}73$.",
+        "$PMT\\approx \\text{R\\$}\\,424{,}80$."
       ],
       "correta": 0,
       "explicacao": "$$PMT=3.600\\cdot\\frac{0{,}018(1{,}018)^{10}}{(1{,}018)^{10}-1}\\approx 396{,}59.$$ A prestação fixa é R\\$ 396,59.",
@@ -1187,11 +1187,11 @@
       "imagem": "imagens/price/patinete_eletrico.webp",
       "enunciado": "Um patinete elétrico de R\\$ 5.800,00 será financiado pelo PRICE em 15 prestações mensais, a $2{,}2\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
       "alternativas": [
-        "$P\\approx \\text{R\\$}\\,386{,}67$.",
-        "$P\\approx \\text{R\\$}\\,448{,}31$.",
-        "$P\\approx \\text{R\\$}\\,458{,}17$.",
-        "$P\\approx \\text{R\\$}\\,468{,}25$.",
-        "$P\\approx \\text{R\\$}\\,514{,}27$."
+        "$PMT\\approx \\text{R\\$}\\,386{,}67$.",
+        "$PMT\\approx \\text{R\\$}\\,448{,}31$.",
+        "$PMT\\approx \\text{R\\$}\\,458{,}17$.",
+        "$PMT\\approx \\text{R\\$}\\,468{,}25$.",
+        "$PMT\\approx \\text{R\\$}\\,514{,}27$."
       ],
       "correta": 2,
       "explicacao": "$$PMT=5.800\\cdot\\frac{0{,}022(1{,}022)^{15}}{(1{,}022)^{15}-1}\\approx 458{,}17.$$ A prestação fixa é R\\$ 458,17.",
@@ -1215,11 +1215,11 @@
       "imagem": "imagens/price/robo_aspirador_xiaomi.webp",
       "enunciado": "Um robô aspirador de R\\$ 2.800,00 será financiado pelo PRICE em 8 prestações mensais, a $2{,}5\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
       "alternativas": [
-        "$P\\approx \\text{R\\$}\\,350{,}00$.",
-        "$P\\approx \\text{R\\$}\\,380{,}98$.",
-        "$P\\approx \\text{R\\$}\\,400{,}27$.",
-        "$P\\approx \\text{R\\$}\\,420{,}00$.",
-        "$P\\approx \\text{R\\$}\\,390{,}51$."
+        "$PMT\\approx \\text{R\\$}\\,350{,}00$.",
+        "$PMT\\approx \\text{R\\$}\\,380{,}98$.",
+        "$PMT\\approx \\text{R\\$}\\,400{,}27$.",
+        "$PMT\\approx \\text{R\\$}\\,420{,}00$.",
+        "$PMT\\approx \\text{R\\$}\\,390{,}51$."
       ],
       "correta": 4,
       "explicacao": "$$PMT=2.800\\cdot\\frac{0{,}025(1{,}025)^8}{(1{,}025)^8-1}\\approx 390{,}51.$$ A prestação fixa é R\\$ 390,51.",
@@ -1243,11 +1243,11 @@
       "imagem": "imagens/price/microondas_daewoo.webp",
       "enunciado": "Um micro-ondas de R\\$ 1.350,00 será financiado pelo PRICE em 6 prestações mensais, a $1{,}9\\%$ ao mês. A primeira vence em um mês. Use $$PMT=SD\\cdot\\frac{i\\cdot(1+i)^n}{(1+i)^n-1}$$ e assinale a prestação fixa.",
       "alternativas": [
-        "$P\\approx \\text{R\\$}\\,225{,}00$.",
-        "$P\\approx \\text{R\\$}\\,240{,}20$.",
-        "$P\\approx \\text{R\\$}\\,235{,}72$.",
-        "$P\\approx \\text{R\\$}\\,244{,}76$.",
-        "$P\\approx \\text{R\\$}\\,250{,}65$."
+        "$PMT\\approx \\text{R\\$}\\,225{,}00$.",
+        "$PMT\\approx \\text{R\\$}\\,240{,}20$.",
+        "$PMT\\approx \\text{R\\$}\\,235{,}72$.",
+        "$PMT\\approx \\text{R\\$}\\,244{,}76$.",
+        "$PMT\\approx \\text{R\\$}\\,250{,}65$."
       ],
       "correta": 1,
       "explicacao": "$$PMT=1.350\\cdot\\frac{0{,}019(1{,}019)^6}{(1{,}019)^6-1}\\approx 240{,}20.$$ A prestação fixa é R\\$ 240,20.",
@@ -1271,14 +1271,14 @@
       "imagem": "imagens/price/notebook_system76.webp",
       "enunciado": "Uma compra de R\\$ 7.200,00 referente a um notebook System76 Darter Pro será financiada pelo Sistema PRICE em 18 prestações mensais iguais. A instituição concede adiamento do início dos pagamentos: a primeira prestação vencerá no final do 4º mês após a compra. Durante todo o período sem pagamento, a dívida continua sendo atualizada à taxa composta de 1,8% ao mês. Não há tarifas adicionais. Como a série comum começaria no mês 1, existe um deslocamento adicional de $\\delta=3$ meses. Assinale a alternativa que apresenta corretamente a equivalência na data zero, o valor da prestação fixa e a interpretação do efeito da carência.",
       "alternativas": [
-        "$7{.}200{,}00=P\\left[\\frac{1-(1+0{,}018)^{-18}}{0{,}018}\\right]$, $P\\approx \\text{R\\$}\\,471{,}85$; a carência não altera a prestação.",
-        "$7{.}200{,}00=P(1+0{,}018)^{3}\\left[\\frac{1-(1+0{,}018)^{-18}}{0{,}018}\\right]$, $P\\approx \\text{R\\$}\\,447{,}26$; a carência reduz a prestação.",
-        "$7{.}200{,}00=P(1+0{,}018)^{-4}\\left[\\frac{1-(1+0{,}018)^{-18}}{0{,}018}\\right]$, $P\\approx \\text{R\\$}\\,506{,}75$; usa-se deslocamento de 4 meses.",
-        "$7{.}200{,}00=P(1+0{,}018)^{-3}\\left[\\frac{1-(1+0{,}018)^{-18}}{0{,}018}\\right]$, $P\\approx \\text{R\\$}\\,497{,}79$; a carência eleva a prestação porque a dívida capitaliza antes da amortização.",
-        "$7{.}200{,}00=P(1+3\\cdot 0{,}018)^{-1}\\left[\\frac{1-(1+0{,}018)^{-18}}{0{,}018}\\right]$, $P\\approx \\text{R\\$}\\,497{,}33$; a carência é tratada por juros simples."
+        "$7{.}200{,}00=PMT\\left[\\frac{1-(1+0{,}018)^{-18}}{0{,}018}\\right]$, $PMT\\approx \\text{R\\$}\\,471{,}85$; a carência não altera a prestação.",
+        "$7{.}200{,}00=PMT(1+0{,}018)^{3}\\left[\\frac{1-(1+0{,}018)^{-18}}{0{,}018}\\right]$, $PMT\\approx \\text{R\\$}\\,447{,}26$; a carência reduz a prestação.",
+        "$7{.}200{,}00=PMT(1+0{,}018)^{-4}\\left[\\frac{1-(1+0{,}018)^{-18}}{0{,}018}\\right]$, $PMT\\approx \\text{R\\$}\\,506{,}75$; usa-se deslocamento de 4 meses.",
+        "$7{.}200{,}00=PMT(1+0{,}018)^{-3}\\left[\\frac{1-(1+0{,}018)^{-18}}{0{,}018}\\right]$, $PMT\\approx \\text{R\\$}\\,497{,}79$; a carência eleva a prestação porque a dívida capitaliza antes da amortização.",
+        "$7{.}200{,}00=PMT(1+3\\cdot 0{,}018)^{-1}\\left[\\frac{1-(1+0{,}018)^{-18}}{0{,}018}\\right]$, $PMT\\approx \\text{R\\$}\\,497{,}33$; a carência é tratada por juros simples."
       ],
       "correta": 3,
-      "explicacao": "A equivalência na data zero é $$7{.}200{,}00=\\sum_{t=4}^{21}\\frac{P}{(1+0{,}018)^t}.$$ Fatorando o deslocamento: $$7{.}200{,}00=P(1+0{,}018)^{-3}\\left[\\frac{1-(1+0{,}018)^{-18}}{0{,}018}\\right].$$ Assim, $$P=7{.}200{,}00(1+0{,}018)^3\\frac{0{,}018}{1-(1+0{,}018)^{-18}}\\approx 497{,}79.$$ Prestação: R\\$ 497,79. A carência eleva $P$ porque os juros capitalizam a dívida antes de começar a amortização.",
+      "explicacao": "A equivalência na data zero é $$7{.}200{,}00=\\sum_{t=4}^{21}\\frac{PMT}{(1+0{,}018)^t}.$$ Fatorando o deslocamento: $$7{.}200{,}00=PMT(1+0{,}018)^{-3}\\left[\\frac{1-(1+0{,}018)^{-18}}{0{,}018}\\right].$$ Assim, $$PMT=7{.}200{,}00(1+0{,}018)^3\\frac{0{,}018}{1-(1+0{,}018)^{-18}}\\approx 497{,}79.$$ Prestação: R\\$ 497,79. A carência eleva $PMT$ porque os juros capitalizam a dívida antes de começar a amortização.",
       "estudo": {
         "titulo": "Sistema PRICE com carência",
         "texto": "A carência desloca a série no tempo. Como a dívida continua capitalizando antes do primeiro pagamento, a prestação aumenta.",
@@ -1299,14 +1299,14 @@
       "imagem": "imagens/price/smartphone_iphone_xr.webp",
       "enunciado": "Uma compra de R\\$ 4.800,00 referente a um smartphone iPhone XR Product Red será financiada pelo Sistema PRICE em 12 prestações mensais iguais. A instituição concede adiamento do início dos pagamentos: a primeira prestação vencerá no final do 3º mês após a compra. Durante todo o período sem pagamento, a dívida continua sendo atualizada à taxa composta de 2,5% ao mês. Não há tarifas adicionais. Como a série comum começaria no mês 1, existe um deslocamento adicional de $\\delta=2$ meses. Assinale a alternativa que apresenta corretamente a equivalência na data zero, o valor da prestação fixa e a interpretação do efeito da carência.",
       "alternativas": [
-        "$4{.}800{,}00=P(1+0{,}025)^{-2}\\left[\\frac{1-(1+0{,}025)^{-12}}{0{,}025}\\right]$, $P\\approx \\text{R\\$}\\,491{,}63$; a carência eleva a prestação porque a dívida capitaliza antes da amortização.",
-        "$4{.}800{,}00=P\\left[\\frac{1-(1+0{,}025)^{-12}}{0{,}025}\\right]$, $P\\approx \\text{R\\$}\\,467{,}94$; a carência não altera a prestação.",
-        "$4{.}800{,}00=P(1+0{,}025)^{2}\\left[\\frac{1-(1+0{,}025)^{-12}}{0{,}025}\\right]$, $P\\approx \\text{R\\$}\\,445{,}39$; a carência reduz a prestação.",
-        "$4{.}800{,}00=P(1+0{,}025)^{-3}\\left[\\frac{1-(1+0{,}025)^{-12}}{0{,}025}\\right]$, $P\\approx \\text{R\\$}\\,503{,}92$; usa-se deslocamento de 3 meses.",
-        "$4{.}800{,}00=P(1+2\\cdot 0{,}025)^{-1}\\left[\\frac{1-(1+0{,}025)^{-12}}{0{,}025}\\right]$, $P\\approx \\text{R\\$}\\,491{,}34$; a carência é tratada por juros simples."
+        "$4{.}800{,}00=PMT(1+0{,}025)^{-2}\\left[\\frac{1-(1+0{,}025)^{-12}}{0{,}025}\\right]$, $PMT\\approx \\text{R\\$}\\,491{,}63$; a carência eleva a prestação porque a dívida capitaliza antes da amortização.",
+        "$4{.}800{,}00=PMT\\left[\\frac{1-(1+0{,}025)^{-12}}{0{,}025}\\right]$, $PMT\\approx \\text{R\\$}\\,467{,}94$; a carência não altera a prestação.",
+        "$4{.}800{,}00=PMT(1+0{,}025)^{2}\\left[\\frac{1-(1+0{,}025)^{-12}}{0{,}025}\\right]$, $PMT\\approx \\text{R\\$}\\,445{,}39$; a carência reduz a prestação.",
+        "$4{.}800{,}00=PMT(1+0{,}025)^{-3}\\left[\\frac{1-(1+0{,}025)^{-12}}{0{,}025}\\right]$, $PMT\\approx \\text{R\\$}\\,503{,}92$; usa-se deslocamento de 3 meses.",
+        "$4{.}800{,}00=PMT(1+2\\cdot 0{,}025)^{-1}\\left[\\frac{1-(1+0{,}025)^{-12}}{0{,}025}\\right]$, $PMT\\approx \\text{R\\$}\\,491{,}34$; a carência é tratada por juros simples."
       ],
       "correta": 0,
-      "explicacao": "A equivalência na data zero é $$4{.}800{,}00=\\sum_{t=3}^{14}\\frac{P}{(1+0{,}025)^t}.$$ Fatorando o deslocamento: $$4{.}800{,}00=P(1+0{,}025)^{-2}\\left[\\frac{1-(1+0{,}025)^{-12}}{0{,}025}\\right].$$ Assim, $$P=4{.}800{,}00(1+0{,}025)^2\\frac{0{,}025}{1-(1+0{,}025)^{-12}}\\approx 491{,}63.$$ Prestação: R\\$ 491,63. A carência eleva $P$ porque os juros capitalizam a dívida antes de começar a amortização.",
+      "explicacao": "A equivalência na data zero é $$4{.}800{,}00=\\sum_{t=3}^{14}\\frac{PMT}{(1+0{,}025)^t}.$$ Fatorando o deslocamento: $$4{.}800{,}00=PMT(1+0{,}025)^{-2}\\left[\\frac{1-(1+0{,}025)^{-12}}{0{,}025}\\right].$$ Assim, $$PMT=4{.}800{,}00(1+0{,}025)^2\\frac{0{,}025}{1-(1+0{,}025)^{-12}}\\approx 491{,}63.$$ Prestação: R\\$ 491,63. A carência eleva $PMT$ porque os juros capitalizam a dívida antes de começar a amortização.",
       "estudo": {
         "titulo": "Sistema PRICE com carência",
         "texto": "A carência desloca a série no tempo. Como a dívida continua capitalizando antes do primeiro pagamento, a prestação aumenta.",
@@ -1327,14 +1327,14 @@
       "imagem": "imagens/price/automovel_corolla.webp",
       "enunciado": "Uma compra de R\\$ 62.000,00 referente a um automóvel Toyota Corolla 2018 será financiada pelo Sistema PRICE em 48 prestações mensais iguais. A instituição concede adiamento do início dos pagamentos: a primeira prestação vencerá no final do 7º mês após a compra. Durante todo o período sem pagamento, a dívida continua sendo atualizada à taxa composta de 1,4% ao mês. Não há tarifas adicionais. Como a série comum começaria no mês 1, existe um deslocamento adicional de $\\delta=6$ meses. Assinale a alternativa que apresenta corretamente a equivalência na data zero, o valor da prestação fixa e a interpretação do efeito da carência.",
       "alternativas": [
-        "$62{.}000{,}00=P\\left[\\frac{1-(1+0{,}014)^{-48}}{0{,}014}\\right]$, $P\\approx \\text{R\\$}\\,1{.}782{,}60$; a carência não altera a prestação.",
-        "$62{.}000{,}00=P(1+0{,}014)^{6}\\left[\\frac{1-(1+0{,}014)^{-48}}{0{,}014}\\right]$, $P\\approx \\text{R\\$}\\,1{.}639{,}94$; a carência reduz a prestação.",
-        "$62{.}000{,}00=P(1+0{,}014)^{-6}\\left[\\frac{1-(1+0{,}014)^{-48}}{0{,}014}\\right]$, $P\\approx \\text{R\\$}\\,1{.}937{,}68$; a carência eleva a prestação porque a dívida capitaliza antes da amortização.",
-        "$62{.}000{,}00=P(1+0{,}014)^{-7}\\left[\\frac{1-(1+0{,}014)^{-48}}{0{,}014}\\right]$, $P\\approx \\text{R\\$}\\,1{.}964{,}81$; usa-se deslocamento de 7 meses.",
-        "$62{.}000{,}00=P(1+6\\cdot 0{,}014)^{-1}\\left[\\frac{1-(1+0{,}014)^{-48}}{0{,}014}\\right]$, $P\\approx \\text{R\\$}\\,1{.}932{,}34$; a carência é tratada por juros simples."
+        "$62{.}000{,}00=PMT\\left[\\frac{1-(1+0{,}014)^{-48}}{0{,}014}\\right]$, $PMT\\approx \\text{R\\$}\\,1{.}782{,}60$; a carência não altera a prestação.",
+        "$62{.}000{,}00=PMT(1+0{,}014)^{6}\\left[\\frac{1-(1+0{,}014)^{-48}}{0{,}014}\\right]$, $PMT\\approx \\text{R\\$}\\,1{.}639{,}94$; a carência reduz a prestação.",
+        "$62{.}000{,}00=PMT(1+0{,}014)^{-6}\\left[\\frac{1-(1+0{,}014)^{-48}}{0{,}014}\\right]$, $PMT\\approx \\text{R\\$}\\,1{.}937{,}68$; a carência eleva a prestação porque a dívida capitaliza antes da amortização.",
+        "$62{.}000{,}00=PMT(1+0{,}014)^{-7}\\left[\\frac{1-(1+0{,}014)^{-48}}{0{,}014}\\right]$, $PMT\\approx \\text{R\\$}\\,1{.}964{,}81$; usa-se deslocamento de 7 meses.",
+        "$62{.}000{,}00=PMT(1+6\\cdot 0{,}014)^{-1}\\left[\\frac{1-(1+0{,}014)^{-48}}{0{,}014}\\right]$, $PMT\\approx \\text{R\\$}\\,1{.}932{,}34$; a carência é tratada por juros simples."
       ],
       "correta": 2,
-      "explicacao": "A equivalência na data zero é $$62{.}000{,}00=\\sum_{t=7}^{54}\\frac{P}{(1+0{,}014)^t}.$$ Fatorando o deslocamento: $$62{.}000{,}00=P(1+0{,}014)^{-6}\\left[\\frac{1-(1+0{,}014)^{-48}}{0{,}014}\\right].$$ Assim, $$P=62{.}000{,}00(1+0{,}014)^6\\frac{0{,}014}{1-(1+0{,}014)^{-48}}\\approx 1{.}937{,}68.$$ Prestação: R\\$ 1.937,68. A carência eleva $P$ porque os juros capitalizam a dívida antes de começar a amortização.",
+      "explicacao": "A equivalência na data zero é $$62{.}000{,}00=\\sum_{t=7}^{54}\\frac{PMT}{(1+0{,}014)^t}.$$ Fatorando o deslocamento: $$62{.}000{,}00=PMT(1+0{,}014)^{-6}\\left[\\frac{1-(1+0{,}014)^{-48}}{0{,}014}\\right].$$ Assim, $$PMT=62{.}000{,}00(1+0{,}014)^6\\frac{0{,}014}{1-(1+0{,}014)^{-48}}\\approx 1{.}937{,}68.$$ Prestação: R\\$ 1.937,68. A carência eleva $PMT$ porque os juros capitalizam a dívida antes de começar a amortização.",
       "estudo": {
         "titulo": "Sistema PRICE com carência",
         "texto": "A carência desloca a série no tempo. Como a dívida continua capitalizando antes do primeiro pagamento, a prestação aumenta.",
@@ -1355,14 +1355,14 @@
       "imagem": "imagens/price/geladeira_liebherr.webp",
       "enunciado": "Uma compra de R\\$ 7.800,00 referente a uma geladeira Liebherr Comfort será financiada pelo Sistema PRICE em 18 prestações mensais iguais. A instituição concede adiamento do início dos pagamentos: a primeira prestação vencerá no final do 5º mês após a compra. Durante todo o período sem pagamento, a dívida continua sendo atualizada à taxa composta de 2% ao mês. Não há tarifas adicionais. Como a série comum começaria no mês 1, existe um deslocamento adicional de $\\delta=4$ meses. Assinale a alternativa que apresenta corretamente a equivalência na data zero, o valor da prestação fixa e a interpretação do efeito da carência.",
       "alternativas": [
-        "$7{.}800{,}00=P\\left[\\frac{1-(1+0{,}02)^{-18}}{0{,}02}\\right]$, $P\\approx \\text{R\\$}\\,520{,}28$; a carência não altera a prestação.",
-        "$7{.}800{,}00=P(1+0{,}02)^{4}\\left[\\frac{1-(1+0{,}02)^{-18}}{0{,}02}\\right]$, $P\\approx \\text{R\\$}\\,480{,}65$; a carência reduz a prestação.",
-        "$7{.}800{,}00=P(1+0{,}02)^{-5}\\left[\\frac{1-(1+0{,}02)^{-18}}{0{,}02}\\right]$, $P\\approx \\text{R\\$}\\,574{,}43$; usa-se deslocamento de 5 meses.",
-        "$7{.}800{,}00=P(1+4\\cdot 0{,}02)^{-1}\\left[\\frac{1-(1+0{,}02)^{-18}}{0{,}02}\\right]$, $P\\approx \\text{R\\$}\\,561{,}90$; a carência é tratada por juros simples.",
-        "$7{.}800{,}00=P(1+0{,}02)^{-4}\\left[\\frac{1-(1+0{,}02)^{-18}}{0{,}02}\\right]$, $P\\approx \\text{R\\$}\\,563{,}16$; a carência eleva a prestação porque a dívida capitaliza antes da amortização."
+        "$7{.}800{,}00=PMT\\left[\\frac{1-(1+0{,}02)^{-18}}{0{,}02}\\right]$, $PMT\\approx \\text{R\\$}\\,520{,}28$; a carência não altera a prestação.",
+        "$7{.}800{,}00=PMT(1+0{,}02)^{4}\\left[\\frac{1-(1+0{,}02)^{-18}}{0{,}02}\\right]$, $PMT\\approx \\text{R\\$}\\,480{,}65$; a carência reduz a prestação.",
+        "$7{.}800{,}00=PMT(1+0{,}02)^{-5}\\left[\\frac{1-(1+0{,}02)^{-18}}{0{,}02}\\right]$, $PMT\\approx \\text{R\\$}\\,574{,}43$; usa-se deslocamento de 5 meses.",
+        "$7{.}800{,}00=PMT(1+4\\cdot 0{,}02)^{-1}\\left[\\frac{1-(1+0{,}02)^{-18}}{0{,}02}\\right]$, $PMT\\approx \\text{R\\$}\\,561{,}90$; a carência é tratada por juros simples.",
+        "$7{.}800{,}00=PMT(1+0{,}02)^{-4}\\left[\\frac{1-(1+0{,}02)^{-18}}{0{,}02}\\right]$, $PMT\\approx \\text{R\\$}\\,563{,}16$; a carência eleva a prestação porque a dívida capitaliza antes da amortização."
       ],
       "correta": 4,
-      "explicacao": "A equivalência na data zero é $$7{.}800{,}00=\\sum_{t=5}^{22}\\frac{P}{(1+0{,}02)^t}.$$ Fatorando o deslocamento: $$7{.}800{,}00=P(1+0{,}02)^{-4}\\left[\\frac{1-(1+0{,}02)^{-18}}{0{,}02}\\right].$$ Assim, $$P=7{.}800{,}00(1+0{,}02)^4\\frac{0{,}02}{1-(1+0{,}02)^{-18}}\\approx 563{,}16.$$ Prestação: R\\$ 563,16. A carência eleva $P$ porque os juros capitalizam a dívida antes de começar a amortização.",
+      "explicacao": "A equivalência na data zero é $$7{.}800{,}00=\\sum_{t=5}^{22}\\frac{PMT}{(1+0{,}02)^t}.$$ Fatorando o deslocamento: $$7{.}800{,}00=PMT(1+0{,}02)^{-4}\\left[\\frac{1-(1+0{,}02)^{-18}}{0{,}02}\\right].$$ Assim, $$PMT=7{.}800{,}00(1+0{,}02)^4\\frac{0{,}02}{1-(1+0{,}02)^{-18}}\\approx 563{,}16.$$ Prestação: R\\$ 563,16. A carência eleva $PMT$ porque os juros capitalizam a dívida antes de começar a amortização.",
       "estudo": {
         "titulo": "Sistema PRICE com carência",
         "texto": "A carência desloca a série no tempo. Como a dívida continua capitalizando antes do primeiro pagamento, a prestação aumenta.",
@@ -1383,14 +1383,14 @@
       "imagem": "imagens/price/lavadora_sharp.webp",
       "enunciado": "Uma compra de R\\$ 5.200,00 referente a uma lavadora Sharp ES-HD63P será financiada pelo Sistema PRICE em 15 prestações mensais iguais. A instituição concede adiamento do início dos pagamentos: a primeira prestação vencerá no final do 4º mês após a compra. Durante todo o período sem pagamento, a dívida continua sendo atualizada à taxa composta de 2,1% ao mês. Não há tarifas adicionais. Como a série comum começaria no mês 1, existe um deslocamento adicional de $\\delta=3$ meses. Assinale a alternativa que apresenta corretamente a equivalência na data zero, o valor da prestação fixa e a interpretação do efeito da carência.",
       "alternativas": [
-        "$5{.}200{,}00=P\\left[\\frac{1-(1+0{,}021)^{-15}}{0{,}021}\\right]$, $P\\approx \\text{R\\$}\\,407{,}73$; a carência não altera a prestação.",
-        "$5{.}200{,}00=P(1+0{,}021)^{-3}\\left[\\frac{1-(1+0{,}021)^{-15}}{0{,}021}\\right]$, $P\\approx \\text{R\\$}\\,433{,}96$; a carência eleva a prestação porque a dívida capitaliza antes da amortização.",
-        "$5{.}200{,}00=P(1+0{,}021)^{3}\\left[\\frac{1-(1+0{,}021)^{-15}}{0{,}021}\\right]$, $P\\approx \\text{R\\$}\\,383{,}08$; a carência reduz a prestação.",
-        "$5{.}200{,}00=P(1+0{,}021)^{-4}\\left[\\frac{1-(1+0{,}021)^{-15}}{0{,}021}\\right]$, $P\\approx \\text{R\\$}\\,443{,}07$; usa-se deslocamento de 4 meses.",
-        "$5{.}200{,}00=P(1+3\\cdot 0{,}021)^{-1}\\left[\\frac{1-(1+0{,}021)^{-15}}{0{,}021}\\right]$, $P\\approx \\text{R\\$}\\,433{,}41$; a carência é tratada por juros simples."
+        "$5{.}200{,}00=PMT\\left[\\frac{1-(1+0{,}021)^{-15}}{0{,}021}\\right]$, $PMT\\approx \\text{R\\$}\\,407{,}73$; a carência não altera a prestação.",
+        "$5{.}200{,}00=PMT(1+0{,}021)^{-3}\\left[\\frac{1-(1+0{,}021)^{-15}}{0{,}021}\\right]$, $PMT\\approx \\text{R\\$}\\,433{,}96$; a carência eleva a prestação porque a dívida capitaliza antes da amortização.",
+        "$5{.}200{,}00=PMT(1+0{,}021)^{3}\\left[\\frac{1-(1+0{,}021)^{-15}}{0{,}021}\\right]$, $PMT\\approx \\text{R\\$}\\,383{,}08$; a carência reduz a prestação.",
+        "$5{.}200{,}00=PMT(1+0{,}021)^{-4}\\left[\\frac{1-(1+0{,}021)^{-15}}{0{,}021}\\right]$, $PMT\\approx \\text{R\\$}\\,443{,}07$; usa-se deslocamento de 4 meses.",
+        "$5{.}200{,}00=PMT(1+3\\cdot 0{,}021)^{-1}\\left[\\frac{1-(1+0{,}021)^{-15}}{0{,}021}\\right]$, $PMT\\approx \\text{R\\$}\\,433{,}41$; a carência é tratada por juros simples."
       ],
       "correta": 1,
-      "explicacao": "A equivalência na data zero é $$5{.}200{,}00=\\sum_{t=4}^{18}\\frac{P}{(1+0{,}021)^t}.$$ Fatorando o deslocamento: $$5{.}200{,}00=P(1+0{,}021)^{-3}\\left[\\frac{1-(1+0{,}021)^{-15}}{0{,}021}\\right].$$ Assim, $$P=5{.}200{,}00(1+0{,}021)^3\\frac{0{,}021}{1-(1+0{,}021)^{-15}}\\approx 433{,}96.$$ Prestação: R\\$ 433,96. A carência eleva $P$ porque os juros capitalizam a dívida antes de começar a amortização.",
+      "explicacao": "A equivalência na data zero é $$5{.}200{,}00=\\sum_{t=4}^{18}\\frac{PMT}{(1+0{,}021)^t}.$$ Fatorando o deslocamento: $$5{.}200{,}00=PMT(1+0{,}021)^{-3}\\left[\\frac{1-(1+0{,}021)^{-15}}{0{,}021}\\right].$$ Assim, $$PMT=5{.}200{,}00(1+0{,}021)^3\\frac{0{,}021}{1-(1+0{,}021)^{-15}}\\approx 433{,}96.$$ Prestação: R\\$ 433,96. A carência eleva $PMT$ porque os juros capitalizam a dívida antes de começar a amortização.",
       "estudo": {
         "titulo": "Sistema PRICE com carência",
         "texto": "A carência desloca a série no tempo. Como a dívida continua capitalizando antes do primeiro pagamento, a prestação aumenta.",
@@ -1411,14 +1411,14 @@
       "imagem": "imagens/price/televisor_samsung.webp",
       "enunciado": "Uma compra de R\\$ 9.000,00 referente a um televisor Samsung será financiada pelo Sistema PRICE em 24 prestações mensais iguais. A instituição concede adiamento do início dos pagamentos: a primeira prestação vencerá no final do 6º mês após a compra. Durante todo o período sem pagamento, a dívida continua sendo atualizada à taxa composta de 1,6% ao mês. Não há tarifas adicionais. Como a série comum começaria no mês 1, existe um deslocamento adicional de $\\delta=5$ meses. Assinale a alternativa que apresenta corretamente a equivalência na data zero, o valor da prestação fixa e a interpretação do efeito da carência.",
       "alternativas": [
-        "$9{.}000{,}00=P\\left[\\frac{1-(1+0{,}016)^{-24}}{0{,}016}\\right]$, $P\\approx \\text{R\\$}\\,454{,}55$; a carência não altera a prestação.",
-        "$9{.}000{,}00=P(1+0{,}016)^{5}\\left[\\frac{1-(1+0{,}016)^{-24}}{0{,}016}\\right]$, $P\\approx \\text{R\\$}\\,419{,}87$; a carência reduz a prestação.",
-        "$9{.}000{,}00=P(1+0{,}016)^{-6}\\left[\\frac{1-(1+0{,}016)^{-24}}{0{,}016}\\right]$, $P\\approx \\text{R\\$}\\,499{,}97$; usa-se deslocamento de 6 meses.",
-        "$9{.}000{,}00=P(1+0{,}016)^{-5}\\left[\\frac{1-(1+0{,}016)^{-24}}{0{,}016}\\right]$, $P\\approx \\text{R\\$}\\,492{,}10$; a carência eleva a prestação porque a dívida capitaliza antes da amortização.",
-        "$9{.}000{,}00=P(1+5\\cdot 0{,}016)^{-1}\\left[\\frac{1-(1+0{,}016)^{-24}}{0{,}016}\\right]$, $P\\approx \\text{R\\$}\\,490{,}92$; a carência é tratada por juros simples."
+        "$9{.}000{,}00=PMT\\left[\\frac{1-(1+0{,}016)^{-24}}{0{,}016}\\right]$, $PMT\\approx \\text{R\\$}\\,454{,}55$; a carência não altera a prestação.",
+        "$9{.}000{,}00=PMT(1+0{,}016)^{5}\\left[\\frac{1-(1+0{,}016)^{-24}}{0{,}016}\\right]$, $PMT\\approx \\text{R\\$}\\,419{,}87$; a carência reduz a prestação.",
+        "$9{.}000{,}00=PMT(1+0{,}016)^{-6}\\left[\\frac{1-(1+0{,}016)^{-24}}{0{,}016}\\right]$, $PMT\\approx \\text{R\\$}\\,499{,}97$; usa-se deslocamento de 6 meses.",
+        "$9{.}000{,}00=PMT(1+0{,}016)^{-5}\\left[\\frac{1-(1+0{,}016)^{-24}}{0{,}016}\\right]$, $PMT\\approx \\text{R\\$}\\,492{,}10$; a carência eleva a prestação porque a dívida capitaliza antes da amortização.",
+        "$9{.}000{,}00=PMT(1+5\\cdot 0{,}016)^{-1}\\left[\\frac{1-(1+0{,}016)^{-24}}{0{,}016}\\right]$, $PMT\\approx \\text{R\\$}\\,490{,}92$; a carência é tratada por juros simples."
       ],
       "correta": 3,
-      "explicacao": "A equivalência na data zero é $$9{.}000{,}00=\\sum_{t=6}^{29}\\frac{P}{(1+0{,}016)^t}.$$ Fatorando o deslocamento: $$9{.}000{,}00=P(1+0{,}016)^{-5}\\left[\\frac{1-(1+0{,}016)^{-24}}{0{,}016}\\right].$$ Assim, $$P=9{.}000{,}00(1+0{,}016)^5\\frac{0{,}016}{1-(1+0{,}016)^{-24}}\\approx 492{,}10.$$ Prestação: R\\$ 492,10. A carência eleva $P$ porque os juros capitalizam a dívida antes de começar a amortização.",
+      "explicacao": "A equivalência na data zero é $$9{.}000{,}00=\\sum_{t=6}^{29}\\frac{PMT}{(1+0{,}016)^t}.$$ Fatorando o deslocamento: $$9{.}000{,}00=PMT(1+0{,}016)^{-5}\\left[\\frac{1-(1+0{,}016)^{-24}}{0{,}016}\\right].$$ Assim, $$PMT=9{.}000{,}00(1+0{,}016)^5\\frac{0{,}016}{1-(1+0{,}016)^{-24}}\\approx 492{,}10.$$ Prestação: R\\$ 492,10. A carência eleva $PMT$ porque os juros capitalizam a dívida antes de começar a amortização.",
       "estudo": {
         "titulo": "Sistema PRICE com carência",
         "texto": "A carência desloca a série no tempo. Como a dívida continua capitalizando antes do primeiro pagamento, a prestação aumenta.",
@@ -1439,14 +1439,14 @@
       "imagem": "imagens/price/bicicleta_mountain_bike.webp",
       "enunciado": "Uma compra de R\\$ 6.000,00 referente a uma bicicleta de montanha com suspensão integral será financiada pelo Sistema PRICE em 20 prestações mensais iguais. A instituição concede adiamento do início dos pagamentos: a primeira prestação vencerá no final do 3º mês após a compra. Durante todo o período sem pagamento, a dívida continua sendo atualizada à taxa composta de 1,5% ao mês. Não há tarifas adicionais. Como a série comum começaria no mês 1, existe um deslocamento adicional de $\\delta=2$ meses. Assinale a alternativa que apresenta corretamente a equivalência na data zero, o valor da prestação fixa e a interpretação do efeito da carência.",
       "alternativas": [
-        "$6{.}000{,}00=P(1+0{,}015)^{-2}\\left[\\frac{1-(1+0{,}015)^{-20}}{0{,}015}\\right]$, $P\\approx \\text{R\\$}\\,360{,}04$; a carência eleva a prestação porque a dívida capitaliza antes da amortização.",
-        "$6{.}000{,}00=P\\left[\\frac{1-(1+0{,}015)^{-20}}{0{,}015}\\right]$, $P\\approx \\text{R\\$}\\,349{,}47$; a carência não altera a prestação.",
-        "$6{.}000{,}00=P(1+0{,}015)^{2}\\left[\\frac{1-(1+0{,}015)^{-20}}{0{,}015}\\right]$, $P\\approx \\text{R\\$}\\,339{,}22$; a carência reduz a prestação.",
-        "$6{.}000{,}00=P(1+0{,}015)^{-3}\\left[\\frac{1-(1+0{,}015)^{-20}}{0{,}015}\\right]$, $P\\approx \\text{R\\$}\\,365{,}44$; usa-se deslocamento de 3 meses.",
-        "$6{.}000{,}00=P(1+2\\cdot 0{,}015)^{-1}\\left[\\frac{1-(1+0{,}015)^{-20}}{0{,}015}\\right]$, $P\\approx \\text{R\\$}\\,359{,}96$; a carência é tratada por juros simples."
+        "$6{.}000{,}00=PMT(1+0{,}015)^{-2}\\left[\\frac{1-(1+0{,}015)^{-20}}{0{,}015}\\right]$, $PMT\\approx \\text{R\\$}\\,360{,}04$; a carência eleva a prestação porque a dívida capitaliza antes da amortização.",
+        "$6{.}000{,}00=PMT\\left[\\frac{1-(1+0{,}015)^{-20}}{0{,}015}\\right]$, $PMT\\approx \\text{R\\$}\\,349{,}47$; a carência não altera a prestação.",
+        "$6{.}000{,}00=PMT(1+0{,}015)^{2}\\left[\\frac{1-(1+0{,}015)^{-20}}{0{,}015}\\right]$, $PMT\\approx \\text{R\\$}\\,339{,}22$; a carência reduz a prestação.",
+        "$6{.}000{,}00=PMT(1+0{,}015)^{-3}\\left[\\frac{1-(1+0{,}015)^{-20}}{0{,}015}\\right]$, $PMT\\approx \\text{R\\$}\\,365{,}44$; usa-se deslocamento de 3 meses.",
+        "$6{.}000{,}00=PMT(1+2\\cdot 0{,}015)^{-1}\\left[\\frac{1-(1+0{,}015)^{-20}}{0{,}015}\\right]$, $PMT\\approx \\text{R\\$}\\,359{,}96$; a carência é tratada por juros simples."
       ],
       "correta": 0,
-      "explicacao": "A equivalência na data zero é $$6{.}000{,}00=\\sum_{t=3}^{22}\\frac{P}{(1+0{,}015)^t}.$$ Fatorando o deslocamento: $$6{.}000{,}00=P(1+0{,}015)^{-2}\\left[\\frac{1-(1+0{,}015)^{-20}}{0{,}015}\\right].$$ Assim, $$P=6{.}000{,}00(1+0{,}015)^2\\frac{0{,}015}{1-(1+0{,}015)^{-20}}\\approx 360{,}04.$$ Prestação: R\\$ 360,04. A carência eleva $P$ porque os juros capitalizam a dívida antes de começar a amortização.",
+      "explicacao": "A equivalência na data zero é $$6{.}000{,}00=\\sum_{t=3}^{22}\\frac{PMT}{(1+0{,}015)^t}.$$ Fatorando o deslocamento: $$6{.}000{,}00=PMT(1+0{,}015)^{-2}\\left[\\frac{1-(1+0{,}015)^{-20}}{0{,}015}\\right].$$ Assim, $$PMT=6{.}000{,}00(1+0{,}015)^2\\frac{0{,}015}{1-(1+0{,}015)^{-20}}\\approx 360{,}04.$$ Prestação: R\\$ 360,04. A carência eleva $PMT$ porque os juros capitalizam a dívida antes de começar a amortização.",
       "estudo": {
         "titulo": "Sistema PRICE com carência",
         "texto": "A carência desloca a série no tempo. Como a dívida continua capitalizando antes do primeiro pagamento, a prestação aumenta.",
@@ -1467,14 +1467,14 @@
       "imagem": "imagens/price/motocicleta_honda_cb500.webp",
       "enunciado": "Uma compra de R\\$ 28.000,00 referente a uma motocicleta Honda CB 500 será financiada pelo Sistema PRICE em 36 prestações mensais iguais. A instituição concede adiamento do início dos pagamentos: a primeira prestação vencerá no final do 5º mês após a compra. Durante todo o período sem pagamento, a dívida continua sendo atualizada à taxa composta de 1,7% ao mês. Não há tarifas adicionais. Como a série comum começaria no mês 1, existe um deslocamento adicional de $\\delta=4$ meses. Assinale a alternativa que apresenta corretamente a equivalência na data zero, o valor da prestação fixa e a interpretação do efeito da carência.",
       "alternativas": [
-        "$28{.}000{,}00=P\\left[\\frac{1-(1+0{,}017)^{-36}}{0{,}017}\\right]$, $P\\approx \\text{R\\$}\\,1{.}046{,}30$; a carência não altera a prestação.",
-        "$28{.}000{,}00=P(1+0{,}017)^{4}\\left[\\frac{1-(1+0{,}017)^{-36}}{0{,}017}\\right]$, $P\\approx \\text{R\\$}\\,978{,}07$; a carência reduz a prestação.",
-        "$28{.}000{,}00=P(1+0{,}017)^{-4}\\left[\\frac{1-(1+0{,}017)^{-36}}{0{,}017}\\right]$, $P\\approx \\text{R\\$}\\,1{.}119{,}28$; a carência eleva a prestação porque a dívida capitaliza antes da amortização.",
-        "$28{.}000{,}00=P(1+0{,}017)^{-5}\\left[\\frac{1-(1+0{,}017)^{-36}}{0{,}017}\\right]$, $P\\approx \\text{R\\$}\\,1{.}138{,}31$; usa-se deslocamento de 5 meses.",
-        "$28{.}000{,}00=P(1+4\\cdot 0{,}017)^{-1}\\left[\\frac{1-(1+0{,}017)^{-36}}{0{,}017}\\right]$, $P\\approx \\text{R\\$}\\,1{.}117{,}44$; a carência é tratada por juros simples."
+        "$28{.}000{,}00=PMT\\left[\\frac{1-(1+0{,}017)^{-36}}{0{,}017}\\right]$, $PMT\\approx \\text{R\\$}\\,1{.}046{,}30$; a carência não altera a prestação.",
+        "$28{.}000{,}00=PMT(1+0{,}017)^{4}\\left[\\frac{1-(1+0{,}017)^{-36}}{0{,}017}\\right]$, $PMT\\approx \\text{R\\$}\\,978{,}07$; a carência reduz a prestação.",
+        "$28{.}000{,}00=PMT(1+0{,}017)^{-4}\\left[\\frac{1-(1+0{,}017)^{-36}}{0{,}017}\\right]$, $PMT\\approx \\text{R\\$}\\,1{.}119{,}28$; a carência eleva a prestação porque a dívida capitaliza antes da amortização.",
+        "$28{.}000{,}00=PMT(1+0{,}017)^{-5}\\left[\\frac{1-(1+0{,}017)^{-36}}{0{,}017}\\right]$, $PMT\\approx \\text{R\\$}\\,1{.}138{,}31$; usa-se deslocamento de 5 meses.",
+        "$28{.}000{,}00=PMT(1+4\\cdot 0{,}017)^{-1}\\left[\\frac{1-(1+0{,}017)^{-36}}{0{,}017}\\right]$, $PMT\\approx \\text{R\\$}\\,1{.}117{,}44$; a carência é tratada por juros simples."
       ],
       "correta": 2,
-      "explicacao": "A equivalência na data zero é $$28{.}000{,}00=\\sum_{t=5}^{40}\\frac{P}{(1+0{,}017)^t}.$$ Fatorando o deslocamento: $$28{.}000{,}00=P(1+0{,}017)^{-4}\\left[\\frac{1-(1+0{,}017)^{-36}}{0{,}017}\\right].$$ Assim, $$P=28{.}000{,}00(1+0{,}017)^4\\frac{0{,}017}{1-(1+0{,}017)^{-36}}\\approx 1{.}119{,}28.$$ Prestação: R\\$ 1.119,28. A carência eleva $P$ porque os juros capitalizam a dívida antes de começar a amortização.",
+      "explicacao": "A equivalência na data zero é $$28{.}000{,}00=\\sum_{t=5}^{40}\\frac{PMT}{(1+0{,}017)^t}.$$ Fatorando o deslocamento: $$28{.}000{,}00=PMT(1+0{,}017)^{-4}\\left[\\frac{1-(1+0{,}017)^{-36}}{0{,}017}\\right].$$ Assim, $$PMT=28{.}000{,}00(1+0{,}017)^4\\frac{0{,}017}{1-(1+0{,}017)^{-36}}\\approx 1{.}119{,}28.$$ Prestação: R\\$ 1.119,28. A carência eleva $PMT$ porque os juros capitalizam a dívida antes de começar a amortização.",
       "estudo": {
         "titulo": "Sistema PRICE com carência",
         "texto": "A carência desloca a série no tempo. Como a dívida continua capitalizando antes do primeiro pagamento, a prestação aumenta.",
@@ -1493,16 +1493,16 @@
       "produto": "Nível Difícil: Sistema PRICE / SAF",
       "nivel": "Difícil",
       "imagem": "imagens/price/console_playstation5.webp",
-      "enunciado": "Considere um financiamento de R\\$ 4.800,00 para a aquisição de um console PlayStation 5 com controle DualSense, pelo Sistema PRICE, à taxa de 3% ao mês. Para $n$ prestações, o valor mensal é $$P_n=P_v\\frac{i}{1-(1+i)^{-n}}.$$ Assinale a alternativa que apresenta corretamente os valores de $P_n$ para $n=12$, $n=60$ e $n=360$, o limite $\\lim_{n\\to\\infty}P_n$ e sua interpretação financeira.",
+      "enunciado": "Considere um financiamento de R\\$ 4.800,00 para a aquisição de um console PlayStation 5 com controle DualSense, pelo Sistema PRICE, à taxa de 3% ao mês. Para $n$ prestações, o valor mensal é $$PMT_n=SD\\frac{i}{1-(1+i)^{-n}}.$$ Assinale a alternativa que apresenta corretamente os valores de $PMT_n$ para $n=12$, $n=60$ e $n=360$, o limite $\\lim_{n\\to\\infty}PMT_n$ e sua interpretação financeira.",
       "alternativas": [
-        "$P_{12}\\approx \\text{R\\$}\\,482{,}22$; $P_{60}\\approx \\text{R\\$}\\,173{,}44$; $P_{360}\\approx \\text{R\\$}\\,144{,}00$; $\\lim_{n\\to\\infty}P_n=0$. A prestação pode ser reduzida indefinidamente até zerar.",
-        "$P_{12}\\approx \\text{R\\$}\\,400{,}00$; $P_{60}\\approx \\text{R\\$}\\,80{,}00$; $P_{360}\\approx \\text{R\\$}\\,13{,}33$; $\\lim_{n\\to\\infty}P_n=0$. O custo financeiro desaparece quando o prazo cresce.",
-        "$P_{12}\\approx \\text{R\\$}\\,482{,}22$; $P_{60}\\approx \\text{R\\$}\\,173{,}44$; $P_{360}\\approx \\text{R\\$}\\,144{,}00$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,144{,}00$. A amortização inicial tende ao valor total da prestação.",
-        "$P_{360}\\approx \\text{R\\$}\\,144{,}00$; $P_{60}\\approx \\text{R\\$}\\,173{,}44$; $P_{12}\\approx \\text{R\\$}\\,482{,}22$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,160{.}000{,}00$. O limite corresponde ao principal dividido pela taxa.",
-        "$P_{12}\\approx \\text{R\\$}\\,482{,}22$; $P_{60}\\approx \\text{R\\$}\\,173{,}44$; $P_{360}\\approx \\text{R\\$}\\,144{,}00$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,144{,}00$. A amortização inicial tende a zero, e o limite corresponde aos juros do primeiro mês."
+        "$PMT_{12}\\approx \\text{R\\$}\\,482{,}22$; $PMT_{60}\\approx \\text{R\\$}\\,173{,}44$; $PMT_{360}\\approx \\text{R\\$}\\,144{,}00$; $\\lim_{n\\to\\infty}PMT_n=0$. A prestação pode ser reduzida indefinidamente até zerar.",
+        "$PMT_{12}\\approx \\text{R\\$}\\,400{,}00$; $PMT_{60}\\approx \\text{R\\$}\\,80{,}00$; $PMT_{360}\\approx \\text{R\\$}\\,13{,}33$; $\\lim_{n\\to\\infty}PMT_n=0$. O custo financeiro desaparece quando o prazo cresce.",
+        "$PMT_{12}\\approx \\text{R\\$}\\,482{,}22$; $PMT_{60}\\approx \\text{R\\$}\\,173{,}44$; $PMT_{360}\\approx \\text{R\\$}\\,144{,}00$; $\\lim_{n\\to\\infty}PMT_n=\\text{R\\$}\\,144{,}00$. A amortização inicial tende ao valor total da prestação.",
+        "$PMT_{360}\\approx \\text{R\\$}\\,144{,}00$; $PMT_{60}\\approx \\text{R\\$}\\,173{,}44$; $PMT_{12}\\approx \\text{R\\$}\\,482{,}22$; $\\lim_{n\\to\\infty}PMT_n=\\text{R\\$}\\,160{.}000{,}00$. O limite corresponde ao principal dividido pela taxa.",
+        "$PMT_{12}\\approx \\text{R\\$}\\,482{,}22$; $PMT_{60}\\approx \\text{R\\$}\\,173{,}44$; $PMT_{360}\\approx \\text{R\\$}\\,144{,}00$; $\\lim_{n\\to\\infty}PMT_n=\\text{R\\$}\\,144{,}00$. A amortização inicial tende a zero, e o limite corresponde aos juros do primeiro mês."
       ],
       "correta": 4,
-      "explicacao": "$P_{12}\\approx \\text{R\\$}\\,482{,}22$; $P_{60}\\approx \\text{R\\$}\\,173{,}44$; $P_{360}\\approx \\text{R\\$}\\,144{,}00$. Como $(1+i)^{-n}\\to0$, $$\\lim_{n\\to\\infty}P_n=P_v\\,i=4{.}800{,}00\\cdot 0{,}03=144{,}00.$$ O piso teórico da prestação é R\\$ 144,00, exatamente o juro do primeiro mês. Quando $P_n$ se aproxima desse valor, a amortização inicial $A_1=P_n-iP_v$ tende a zero. No limite, paga-se apenas o juro periódico e o principal não diminui.",
+      "explicacao": "$PMT_{12}\\approx \\text{R\\$}\\,482{,}22$; $PMT_{60}\\approx \\text{R\\$}\\,173{,}44$; $PMT_{360}\\approx \\text{R\\$}\\,144{,}00$. Como $(1+i)^{-n}\\to0$, $$\\lim_{n\\to\\infty}PMT_n=SD\\,i=4{.}800{,}00\\cdot 0{,}03=144{,}00.$$ O piso teórico da prestação é R\\$ 144,00, exatamente o juro do primeiro mês. Quando $PMT_n$ se aproxima desse valor, a amortização inicial $A_1=PMT_n-i\\cdot SD$ tende a zero. No limite, paga-se apenas o juro periódico e o principal não diminui.",
       "estudo": {
         "titulo": "Prazo longo e limite da prestação",
         "texto": "Quando o prazo cresce muito, a parcela se aproxima do juro do primeiro período. A amortização inicial tende a zero.",
@@ -1521,16 +1521,16 @@
       "produto": "Nível Difícil: Sistema PRICE / SAF",
       "nivel": "Difícil",
       "imagem": "imagens/price/camera_canon_eos5d.webp",
-      "enunciado": "Considere um financiamento de R\\$ 12.500,00 para a aquisição de uma câmera Canon EOS 5D Mark IV, pelo Sistema PRICE, à taxa de 1,8% ao mês. Para $n$ prestações, o valor mensal é $$P_n=P_v\\frac{i}{1-(1+i)^{-n}}.$$ Assinale a alternativa que apresenta corretamente os valores de $P_n$ para $n=18$, $n=120$ e $n=600$, o limite $\\lim_{n\\to\\infty}P_n$ e sua interpretação financeira.",
+      "enunciado": "Considere um financiamento de R\\$ 12.500,00 para a aquisição de uma câmera Canon EOS 5D Mark IV, pelo Sistema PRICE, à taxa de 1,8% ao mês. Para $n$ prestações, o valor mensal é $$PMT_n=SD\\frac{i}{1-(1+i)^{-n}}.$$ Assinale a alternativa que apresenta corretamente os valores de $PMT_n$ para $n=18$, $n=120$ e $n=600$, o limite $\\lim_{n\\to\\infty}PMT_n$ e sua interpretação financeira.",
       "alternativas": [
-        "$P_{18}\\approx \\text{R\\$}\\,819{,}19$; $P_{120}\\approx \\text{R\\$}\\,254{,}98$; $P_{600}\\approx \\text{R\\$}\\,225{,}01$; $\\lim_{n\\to\\infty}P_n=0$. A prestação pode ser reduzida indefinidamente até zerar.",
-        "$P_{18}\\approx \\text{R\\$}\\,819{,}19$; $P_{120}\\approx \\text{R\\$}\\,254{,}98$; $P_{600}\\approx \\text{R\\$}\\,225{,}01$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,225{,}00$. A amortização inicial tende a zero, e o limite corresponde aos juros do primeiro mês.",
-        "$P_{18}\\approx \\text{R\\$}\\,694{,}44$; $P_{120}\\approx \\text{R\\$}\\,104{,}17$; $P_{600}\\approx \\text{R\\$}\\,20{,}83$; $\\lim_{n\\to\\infty}P_n=0$. O custo financeiro desaparece quando o prazo cresce.",
-        "$P_{18}\\approx \\text{R\\$}\\,819{,}19$; $P_{120}\\approx \\text{R\\$}\\,254{,}98$; $P_{600}\\approx \\text{R\\$}\\,225{,}01$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,225{,}00$. A amortização inicial tende ao valor total da prestação.",
-        "$P_{600}\\approx \\text{R\\$}\\,225{,}01$; $P_{120}\\approx \\text{R\\$}\\,254{,}98$; $P_{18}\\approx \\text{R\\$}\\,819{,}19$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,694{.}444{,}44$. O limite corresponde ao principal dividido pela taxa."
+        "$PMT_{18}\\approx \\text{R\\$}\\,819{,}19$; $PMT_{120}\\approx \\text{R\\$}\\,254{,}98$; $PMT_{600}\\approx \\text{R\\$}\\,225{,}01$; $\\lim_{n\\to\\infty}PMT_n=0$. A prestação pode ser reduzida indefinidamente até zerar.",
+        "$PMT_{18}\\approx \\text{R\\$}\\,819{,}19$; $PMT_{120}\\approx \\text{R\\$}\\,254{,}98$; $PMT_{600}\\approx \\text{R\\$}\\,225{,}01$; $\\lim_{n\\to\\infty}PMT_n=\\text{R\\$}\\,225{,}00$. A amortização inicial tende a zero, e o limite corresponde aos juros do primeiro mês.",
+        "$PMT_{18}\\approx \\text{R\\$}\\,694{,}44$; $PMT_{120}\\approx \\text{R\\$}\\,104{,}17$; $PMT_{600}\\approx \\text{R\\$}\\,20{,}83$; $\\lim_{n\\to\\infty}PMT_n=0$. O custo financeiro desaparece quando o prazo cresce.",
+        "$PMT_{18}\\approx \\text{R\\$}\\,819{,}19$; $PMT_{120}\\approx \\text{R\\$}\\,254{,}98$; $PMT_{600}\\approx \\text{R\\$}\\,225{,}01$; $\\lim_{n\\to\\infty}PMT_n=\\text{R\\$}\\,225{,}00$. A amortização inicial tende ao valor total da prestação.",
+        "$PMT_{600}\\approx \\text{R\\$}\\,225{,}01$; $PMT_{120}\\approx \\text{R\\$}\\,254{,}98$; $PMT_{18}\\approx \\text{R\\$}\\,819{,}19$; $\\lim_{n\\to\\infty}PMT_n=\\text{R\\$}\\,694{.}444{,}44$. O limite corresponde ao principal dividido pela taxa."
       ],
       "correta": 1,
-      "explicacao": "$P_{18}\\approx \\text{R\\$}\\,819{,}19$; $P_{120}\\approx \\text{R\\$}\\,254{,}98$; $P_{600}\\approx \\text{R\\$}\\,225{,}01$. Como $(1+i)^{-n}\\to0$, $$\\lim_{n\\to\\infty}P_n=P_v\\,i=12{.}500{,}00\\cdot 0{,}018=225{,}00.$$ O piso teórico da prestação é R\\$ 225,00, exatamente o juro do primeiro mês. Quando $P_n$ se aproxima desse valor, a amortização inicial $A_1=P_n-iP_v$ tende a zero. No limite, paga-se apenas o juro periódico e o principal não diminui.",
+      "explicacao": "$PMT_{18}\\approx \\text{R\\$}\\,819{,}19$; $PMT_{120}\\approx \\text{R\\$}\\,254{,}98$; $PMT_{600}\\approx \\text{R\\$}\\,225{,}01$. Como $(1+i)^{-n}\\to0$, $$\\lim_{n\\to\\infty}PMT_n=SD\\,i=12{.}500{,}00\\cdot 0{,}018=225{,}00.$$ O piso teórico da prestação é R\\$ 225,00, exatamente o juro do primeiro mês. Quando $PMT_n$ se aproxima desse valor, a amortização inicial $A_1=PMT_n-i\\cdot SD$ tende a zero. No limite, paga-se apenas o juro periódico e o principal não diminui.",
       "estudo": {
         "titulo": "Prazo longo e limite da prestação",
         "texto": "Quando o prazo cresce muito, a parcela se aproxima do juro do primeiro período. A amortização inicial tende a zero.",
@@ -1549,16 +1549,16 @@
       "produto": "Nível Difícil: Sistema PRICE / SAF",
       "nivel": "Difícil",
       "imagem": "imagens/price/ar_condicionado_panasonic.webp",
-      "enunciado": "Considere um financiamento de R\\$ 8.000,00 para a aquisição de um condicionador de ar Panasonic CS-C10KJ2, pelo Sistema PRICE, à taxa de 2% ao mês. Para $n$ prestações, o valor mensal é $$P_n=P_v\\frac{i}{1-(1+i)^{-n}}.$$ Assinale a alternativa que apresenta corretamente os valores de $P_n$ para $n=12$, $n=72$ e $n=480$, o limite $\\lim_{n\\to\\infty}P_n$ e sua interpretação financeira.",
+      "enunciado": "Considere um financiamento de R\\$ 8.000,00 para a aquisição de um condicionador de ar Panasonic CS-C10KJ2, pelo Sistema PRICE, à taxa de 2% ao mês. Para $n$ prestações, o valor mensal é $$PMT_n=SD\\frac{i}{1-(1+i)^{-n}}.$$ Assinale a alternativa que apresenta corretamente os valores de $PMT_n$ para $n=12$, $n=72$ e $n=480$, o limite $\\lim_{n\\to\\infty}PMT_n$ e sua interpretação financeira.",
       "alternativas": [
-        "$P_{12}\\approx \\text{R\\$}\\,756{,}48$; $P_{72}\\approx \\text{R\\$}\\,210{,}61$; $P_{480}\\approx \\text{R\\$}\\,160{,}01$; $\\lim_{n\\to\\infty}P_n=0$. A prestação pode ser reduzida indefinidamente até zerar.",
-        "$P_{12}\\approx \\text{R\\$}\\,666{,}67$; $P_{72}\\approx \\text{R\\$}\\,111{,}11$; $P_{480}\\approx \\text{R\\$}\\,16{,}67$; $\\lim_{n\\to\\infty}P_n=0$. O custo financeiro desaparece quando o prazo cresce.",
-        "$P_{12}\\approx \\text{R\\$}\\,756{,}48$; $P_{72}\\approx \\text{R\\$}\\,210{,}61$; $P_{480}\\approx \\text{R\\$}\\,160{,}01$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,160{,}00$. A amortização inicial tende ao valor total da prestação.",
-        "$P_{12}\\approx \\text{R\\$}\\,756{,}48$; $P_{72}\\approx \\text{R\\$}\\,210{,}61$; $P_{480}\\approx \\text{R\\$}\\,160{,}01$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,160{,}00$. A amortização inicial tende a zero, e o limite corresponde aos juros do primeiro mês.",
-        "$P_{480}\\approx \\text{R\\$}\\,160{,}01$; $P_{72}\\approx \\text{R\\$}\\,210{,}61$; $P_{12}\\approx \\text{R\\$}\\,756{,}48$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,400{.}000{,}00$. O limite corresponde ao principal dividido pela taxa."
+        "$PMT_{12}\\approx \\text{R\\$}\\,756{,}48$; $PMT_{72}\\approx \\text{R\\$}\\,210{,}61$; $PMT_{480}\\approx \\text{R\\$}\\,160{,}01$; $\\lim_{n\\to\\infty}PMT_n=0$. A prestação pode ser reduzida indefinidamente até zerar.",
+        "$PMT_{12}\\approx \\text{R\\$}\\,666{,}67$; $PMT_{72}\\approx \\text{R\\$}\\,111{,}11$; $PMT_{480}\\approx \\text{R\\$}\\,16{,}67$; $\\lim_{n\\to\\infty}PMT_n=0$. O custo financeiro desaparece quando o prazo cresce.",
+        "$PMT_{12}\\approx \\text{R\\$}\\,756{,}48$; $PMT_{72}\\approx \\text{R\\$}\\,210{,}61$; $PMT_{480}\\approx \\text{R\\$}\\,160{,}01$; $\\lim_{n\\to\\infty}PMT_n=\\text{R\\$}\\,160{,}00$. A amortização inicial tende ao valor total da prestação.",
+        "$PMT_{12}\\approx \\text{R\\$}\\,756{,}48$; $PMT_{72}\\approx \\text{R\\$}\\,210{,}61$; $PMT_{480}\\approx \\text{R\\$}\\,160{,}01$; $\\lim_{n\\to\\infty}PMT_n=\\text{R\\$}\\,160{,}00$. A amortização inicial tende a zero, e o limite corresponde aos juros do primeiro mês.",
+        "$PMT_{480}\\approx \\text{R\\$}\\,160{,}01$; $PMT_{72}\\approx \\text{R\\$}\\,210{,}61$; $PMT_{12}\\approx \\text{R\\$}\\,756{,}48$; $\\lim_{n\\to\\infty}PMT_n=\\text{R\\$}\\,400{.}000{,}00$. O limite corresponde ao principal dividido pela taxa."
       ],
       "correta": 3,
-      "explicacao": "$P_{12}\\approx \\text{R\\$}\\,756{,}48$; $P_{72}\\approx \\text{R\\$}\\,210{,}61$; $P_{480}\\approx \\text{R\\$}\\,160{,}01$. Como $(1+i)^{-n}\\to0$, $$\\lim_{n\\to\\infty}P_n=P_v\\,i=8{.}000{,}00\\cdot 0{,}02=160{,}00.$$ O piso teórico da prestação é R\\$ 160,00, exatamente o juro do primeiro mês. Quando $P_n$ se aproxima desse valor, a amortização inicial $A_1=P_n-iP_v$ tende a zero. No limite, paga-se apenas o juro periódico e o principal não diminui.",
+      "explicacao": "$PMT_{12}\\approx \\text{R\\$}\\,756{,}48$; $PMT_{72}\\approx \\text{R\\$}\\,210{,}61$; $PMT_{480}\\approx \\text{R\\$}\\,160{,}01$. Como $(1+i)^{-n}\\to0$, $$\\lim_{n\\to\\infty}PMT_n=SD\\,i=8{.}000{,}00\\cdot 0{,}02=160{,}00.$$ O piso teórico da prestação é R\\$ 160,00, exatamente o juro do primeiro mês. Quando $PMT_n$ se aproxima desse valor, a amortização inicial $A_1=PMT_n-i\\cdot SD$ tende a zero. No limite, paga-se apenas o juro periódico e o principal não diminui.",
       "estudo": {
         "titulo": "Prazo longo e limite da prestação",
         "texto": "Quando o prazo cresce muito, a parcela se aproxima do juro do primeiro período. A amortização inicial tende a zero.",
@@ -1577,16 +1577,16 @@
       "produto": "Nível Difícil: Sistema PRICE / SAF",
       "nivel": "Difícil",
       "imagem": "imagens/price/violao_yamaha_fgx04.webp",
-      "enunciado": "Considere um financiamento de R\\$ 4.500,00 para a aquisição de um violão Yamaha FGX04, pelo Sistema PRICE, à taxa de 1,5% ao mês. Para $n$ prestações, o valor mensal é $$P_n=P_v\\frac{i}{1-(1+i)^{-n}}.$$ Assinale a alternativa que apresenta corretamente os valores de $P_n$ para $n=10$, $n=100$ e $n=600$, o limite $\\lim_{n\\to\\infty}P_n$ e sua interpretação financeira.",
+      "enunciado": "Considere um financiamento de R\\$ 4.500,00 para a aquisição de um violão Yamaha FGX04, pelo Sistema PRICE, à taxa de 1,5% ao mês. Para $n$ prestações, o valor mensal é $$PMT_n=SD\\frac{i}{1-(1+i)^{-n}}.$$ Assinale a alternativa que apresenta corretamente os valores de $PMT_n$ para $n=10$, $n=100$ e $n=600$, o limite $\\lim_{n\\to\\infty}PMT_n$ e sua interpretação financeira.",
       "alternativas": [
-        "$P_{10}\\approx \\text{R\\$}\\,487{,}95$; $P_{100}\\approx \\text{R\\$}\\,87{,}17$; $P_{600}\\approx \\text{R\\$}\\,67{,}51$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,67{,}50$. A amortização inicial tende a zero, e o limite corresponde aos juros do primeiro mês.",
-        "$P_{10}\\approx \\text{R\\$}\\,487{,}95$; $P_{100}\\approx \\text{R\\$}\\,87{,}17$; $P_{600}\\approx \\text{R\\$}\\,67{,}51$; $\\lim_{n\\to\\infty}P_n=0$. A prestação pode ser reduzida indefinidamente até zerar.",
-        "$P_{10}\\approx \\text{R\\$}\\,450{,}00$; $P_{100}\\approx \\text{R\\$}\\,45{,}00$; $P_{600}\\approx \\text{R\\$}\\,7{,}50$; $\\lim_{n\\to\\infty}P_n=0$. O custo financeiro desaparece quando o prazo cresce.",
-        "$P_{10}\\approx \\text{R\\$}\\,487{,}95$; $P_{100}\\approx \\text{R\\$}\\,87{,}17$; $P_{600}\\approx \\text{R\\$}\\,67{,}51$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,67{,}50$. A amortização inicial tende ao valor total da prestação.",
-        "$P_{600}\\approx \\text{R\\$}\\,67{,}51$; $P_{100}\\approx \\text{R\\$}\\,87{,}17$; $P_{10}\\approx \\text{R\\$}\\,487{,}95$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,300{.}000{,}00$. O limite corresponde ao principal dividido pela taxa."
+        "$PMT_{10}\\approx \\text{R\\$}\\,487{,}95$; $PMT_{100}\\approx \\text{R\\$}\\,87{,}17$; $PMT_{600}\\approx \\text{R\\$}\\,67{,}51$; $\\lim_{n\\to\\infty}PMT_n=\\text{R\\$}\\,67{,}50$. A amortização inicial tende a zero, e o limite corresponde aos juros do primeiro mês.",
+        "$PMT_{10}\\approx \\text{R\\$}\\,487{,}95$; $PMT_{100}\\approx \\text{R\\$}\\,87{,}17$; $PMT_{600}\\approx \\text{R\\$}\\,67{,}51$; $\\lim_{n\\to\\infty}PMT_n=0$. A prestação pode ser reduzida indefinidamente até zerar.",
+        "$PMT_{10}\\approx \\text{R\\$}\\,450{,}00$; $PMT_{100}\\approx \\text{R\\$}\\,45{,}00$; $PMT_{600}\\approx \\text{R\\$}\\,7{,}50$; $\\lim_{n\\to\\infty}PMT_n=0$. O custo financeiro desaparece quando o prazo cresce.",
+        "$PMT_{10}\\approx \\text{R\\$}\\,487{,}95$; $PMT_{100}\\approx \\text{R\\$}\\,87{,}17$; $PMT_{600}\\approx \\text{R\\$}\\,67{,}51$; $\\lim_{n\\to\\infty}PMT_n=\\text{R\\$}\\,67{,}50$. A amortização inicial tende ao valor total da prestação.",
+        "$PMT_{600}\\approx \\text{R\\$}\\,67{,}51$; $PMT_{100}\\approx \\text{R\\$}\\,87{,}17$; $PMT_{10}\\approx \\text{R\\$}\\,487{,}95$; $\\lim_{n\\to\\infty}PMT_n=\\text{R\\$}\\,300{.}000{,}00$. O limite corresponde ao principal dividido pela taxa."
       ],
       "correta": 0,
-      "explicacao": "$P_{10}\\approx \\text{R\\$}\\,487{,}95$; $P_{100}\\approx \\text{R\\$}\\,87{,}17$; $P_{600}\\approx \\text{R\\$}\\,67{,}51$. Como $(1+i)^{-n}\\to0$, $$\\lim_{n\\to\\infty}P_n=P_v\\,i=4{.}500{,}00\\cdot 0{,}015=67{,}50.$$ O piso teórico da prestação é R\\$ 67,50, exatamente o juro do primeiro mês. Quando $P_n$ se aproxima desse valor, a amortização inicial $A_1=P_n-iP_v$ tende a zero. No limite, paga-se apenas o juro periódico e o principal não diminui.",
+      "explicacao": "$PMT_{10}\\approx \\text{R\\$}\\,487{,}95$; $PMT_{100}\\approx \\text{R\\$}\\,87{,}17$; $PMT_{600}\\approx \\text{R\\$}\\,67{,}51$. Como $(1+i)^{-n}\\to0$, $$\\lim_{n\\to\\infty}PMT_n=SD\\,i=4{.}500{,}00\\cdot 0{,}015=67{,}50.$$ O piso teórico da prestação é R\\$ 67,50, exatamente o juro do primeiro mês. Quando $PMT_n$ se aproxima desse valor, a amortização inicial $A_1=PMT_n-i\\cdot SD$ tende a zero. No limite, paga-se apenas o juro periódico e o principal não diminui.",
       "estudo": {
         "titulo": "Prazo longo e limite da prestação",
         "texto": "Quando o prazo cresce muito, a parcela se aproxima do juro do primeiro período. A amortização inicial tende a zero.",
@@ -1605,16 +1605,16 @@
       "produto": "Nível Difícil: Sistema PRICE / SAF",
       "nivel": "Difícil",
       "imagem": "imagens/price/patinete_eletrico.webp",
-      "enunciado": "Considere um financiamento de R\\$ 6.200,00 para a aquisição de um patinete elétrico urbano, pelo Sistema PRICE, à taxa de 2,2% ao mês. Para $n$ prestações, o valor mensal é $$P_n=P_v\\frac{i}{1-(1+i)^{-n}}.$$ Assinale a alternativa que apresenta corretamente os valores de $P_n$ para $n=15$, $n=120$ e $n=480$, o limite $\\lim_{n\\to\\infty}P_n$ e sua interpretação financeira.",
+      "enunciado": "Considere um financiamento de R\\$ 6.200,00 para a aquisição de um patinete elétrico urbano, pelo Sistema PRICE, à taxa de 2,2% ao mês. Para $n$ prestações, o valor mensal é $$PMT_n=SD\\frac{i}{1-(1+i)^{-n}}.$$ Assinale a alternativa que apresenta corretamente os valores de $PMT_n$ para $n=15$, $n=120$ e $n=480$, o limite $\\lim_{n\\to\\infty}PMT_n$ e sua interpretação financeira.",
       "alternativas": [
-        "$P_{15}\\approx \\text{R\\$}\\,489{,}77$; $P_{120}\\approx \\text{R\\$}\\,147{,}21$; $P_{480}\\approx \\text{R\\$}\\,136{,}40$; $\\lim_{n\\to\\infty}P_n=0$. A prestação pode ser reduzida indefinidamente até zerar.",
-        "$P_{15}\\approx \\text{R\\$}\\,413{,}33$; $P_{120}\\approx \\text{R\\$}\\,51{,}67$; $P_{480}\\approx \\text{R\\$}\\,12{,}92$; $\\lim_{n\\to\\infty}P_n=0$. O custo financeiro desaparece quando o prazo cresce.",
-        "$P_{15}\\approx \\text{R\\$}\\,489{,}77$; $P_{120}\\approx \\text{R\\$}\\,147{,}21$; $P_{480}\\approx \\text{R\\$}\\,136{,}40$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,136{,}40$. A amortização inicial tende a zero, e o limite corresponde aos juros do primeiro mês.",
-        "$P_{15}\\approx \\text{R\\$}\\,489{,}77$; $P_{120}\\approx \\text{R\\$}\\,147{,}21$; $P_{480}\\approx \\text{R\\$}\\,136{,}40$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,136{,}40$. A amortização inicial tende ao valor total da prestação.",
-        "$P_{480}\\approx \\text{R\\$}\\,136{,}40$; $P_{120}\\approx \\text{R\\$}\\,147{,}21$; $P_{15}\\approx \\text{R\\$}\\,489{,}77$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,281{.}818{,}18$. O limite corresponde ao principal dividido pela taxa."
+        "$PMT_{15}\\approx \\text{R\\$}\\,489{,}77$; $PMT_{120}\\approx \\text{R\\$}\\,147{,}21$; $PMT_{480}\\approx \\text{R\\$}\\,136{,}40$; $\\lim_{n\\to\\infty}PMT_n=0$. A prestação pode ser reduzida indefinidamente até zerar.",
+        "$PMT_{15}\\approx \\text{R\\$}\\,413{,}33$; $PMT_{120}\\approx \\text{R\\$}\\,51{,}67$; $PMT_{480}\\approx \\text{R\\$}\\,12{,}92$; $\\lim_{n\\to\\infty}PMT_n=0$. O custo financeiro desaparece quando o prazo cresce.",
+        "$PMT_{15}\\approx \\text{R\\$}\\,489{,}77$; $PMT_{120}\\approx \\text{R\\$}\\,147{,}21$; $PMT_{480}\\approx \\text{R\\$}\\,136{,}40$; $\\lim_{n\\to\\infty}PMT_n=\\text{R\\$}\\,136{,}40$. A amortização inicial tende a zero, e o limite corresponde aos juros do primeiro mês.",
+        "$PMT_{15}\\approx \\text{R\\$}\\,489{,}77$; $PMT_{120}\\approx \\text{R\\$}\\,147{,}21$; $PMT_{480}\\approx \\text{R\\$}\\,136{,}40$; $\\lim_{n\\to\\infty}PMT_n=\\text{R\\$}\\,136{,}40$. A amortização inicial tende ao valor total da prestação.",
+        "$PMT_{480}\\approx \\text{R\\$}\\,136{,}40$; $PMT_{120}\\approx \\text{R\\$}\\,147{,}21$; $PMT_{15}\\approx \\text{R\\$}\\,489{,}77$; $\\lim_{n\\to\\infty}PMT_n=\\text{R\\$}\\,281{.}818{,}18$. O limite corresponde ao principal dividido pela taxa."
       ],
       "correta": 2,
-      "explicacao": "$P_{15}\\approx \\text{R\\$}\\,489{,}77$; $P_{120}\\approx \\text{R\\$}\\,147{,}21$; $P_{480}\\approx \\text{R\\$}\\,136{,}40$. Como $(1+i)^{-n}\\to0$, $$\\lim_{n\\to\\infty}P_n=P_v\\,i=6{.}200{,}00\\cdot 0{,}022=136{,}40.$$ O piso teórico da prestação é R\\$ 136,40, exatamente o juro do primeiro mês. Quando $P_n$ se aproxima desse valor, a amortização inicial $A_1=P_n-iP_v$ tende a zero. No limite, paga-se apenas o juro periódico e o principal não diminui.",
+      "explicacao": "$PMT_{15}\\approx \\text{R\\$}\\,489{,}77$; $PMT_{120}\\approx \\text{R\\$}\\,147{,}21$; $PMT_{480}\\approx \\text{R\\$}\\,136{,}40$. Como $(1+i)^{-n}\\to0$, $$\\lim_{n\\to\\infty}PMT_n=SD\\,i=6{.}200{,}00\\cdot 0{,}022=136{,}40.$$ O piso teórico da prestação é R\\$ 136,40, exatamente o juro do primeiro mês. Quando $PMT_n$ se aproxima desse valor, a amortização inicial $A_1=PMT_n-i\\cdot SD$ tende a zero. No limite, paga-se apenas o juro periódico e o principal não diminui.",
       "estudo": {
         "titulo": "Prazo longo e limite da prestação",
         "texto": "Quando o prazo cresce muito, a parcela se aproxima do juro do primeiro período. A amortização inicial tende a zero.",
@@ -1633,16 +1633,16 @@
       "produto": "Nível Difícil: Sistema PRICE / SAF",
       "nivel": "Difícil",
       "imagem": "imagens/price/robo_aspirador_xiaomi.webp",
-      "enunciado": "Considere um financiamento de R\\$ 3.200,00 para a aquisição de um robô aspirador Xiaomi Mi Robot, pelo Sistema PRICE, à taxa de 2,5% ao mês. Para $n$ prestações, o valor mensal é $$P_n=P_v\\frac{i}{1-(1+i)^{-n}}.$$ Assinale a alternativa que apresenta corretamente os valores de $P_n$ para $n=8$, $n=60$ e $n=360$, o limite $\\lim_{n\\to\\infty}P_n$ e sua interpretação financeira.",
+      "enunciado": "Considere um financiamento de R\\$ 3.200,00 para a aquisição de um robô aspirador Xiaomi Mi Robot, pelo Sistema PRICE, à taxa de 2,5% ao mês. Para $n$ prestações, o valor mensal é $$PMT_n=SD\\frac{i}{1-(1+i)^{-n}}.$$ Assinale a alternativa que apresenta corretamente os valores de $PMT_n$ para $n=8$, $n=60$ e $n=360$, o limite $\\lim_{n\\to\\infty}PMT_n$ e sua interpretação financeira.",
       "alternativas": [
-        "$P_{8}\\approx \\text{R\\$}\\,446{,}30$; $P_{60}\\approx \\text{R\\$}\\,103{,}53$; $P_{360}\\approx \\text{R\\$}\\,80{,}01$; $\\lim_{n\\to\\infty}P_n=0$. A prestação pode ser reduzida indefinidamente até zerar.",
-        "$P_{8}\\approx \\text{R\\$}\\,400{,}00$; $P_{60}\\approx \\text{R\\$}\\,53{,}33$; $P_{360}\\approx \\text{R\\$}\\,8{,}89$; $\\lim_{n\\to\\infty}P_n=0$. O custo financeiro desaparece quando o prazo cresce.",
-        "$P_{8}\\approx \\text{R\\$}\\,446{,}30$; $P_{60}\\approx \\text{R\\$}\\,103{,}53$; $P_{360}\\approx \\text{R\\$}\\,80{,}01$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,80{,}00$. A amortização inicial tende ao valor total da prestação.",
-        "$P_{360}\\approx \\text{R\\$}\\,80{,}01$; $P_{60}\\approx \\text{R\\$}\\,103{,}53$; $P_{8}\\approx \\text{R\\$}\\,446{,}30$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,128{.}000{,}00$. O limite corresponde ao principal dividido pela taxa.",
-        "$P_{8}\\approx \\text{R\\$}\\,446{,}30$; $P_{60}\\approx \\text{R\\$}\\,103{,}53$; $P_{360}\\approx \\text{R\\$}\\,80{,}01$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,80{,}00$. A amortização inicial tende a zero, e o limite corresponde aos juros do primeiro mês."
+        "$PMT_{8}\\approx \\text{R\\$}\\,446{,}30$; $PMT_{60}\\approx \\text{R\\$}\\,103{,}53$; $PMT_{360}\\approx \\text{R\\$}\\,80{,}01$; $\\lim_{n\\to\\infty}PMT_n=0$. A prestação pode ser reduzida indefinidamente até zerar.",
+        "$PMT_{8}\\approx \\text{R\\$}\\,400{,}00$; $PMT_{60}\\approx \\text{R\\$}\\,53{,}33$; $PMT_{360}\\approx \\text{R\\$}\\,8{,}89$; $\\lim_{n\\to\\infty}PMT_n=0$. O custo financeiro desaparece quando o prazo cresce.",
+        "$PMT_{8}\\approx \\text{R\\$}\\,446{,}30$; $PMT_{60}\\approx \\text{R\\$}\\,103{,}53$; $PMT_{360}\\approx \\text{R\\$}\\,80{,}01$; $\\lim_{n\\to\\infty}PMT_n=\\text{R\\$}\\,80{,}00$. A amortização inicial tende ao valor total da prestação.",
+        "$PMT_{360}\\approx \\text{R\\$}\\,80{,}01$; $PMT_{60}\\approx \\text{R\\$}\\,103{,}53$; $PMT_{8}\\approx \\text{R\\$}\\,446{,}30$; $\\lim_{n\\to\\infty}PMT_n=\\text{R\\$}\\,128{.}000{,}00$. O limite corresponde ao principal dividido pela taxa.",
+        "$PMT_{8}\\approx \\text{R\\$}\\,446{,}30$; $PMT_{60}\\approx \\text{R\\$}\\,103{,}53$; $PMT_{360}\\approx \\text{R\\$}\\,80{,}01$; $\\lim_{n\\to\\infty}PMT_n=\\text{R\\$}\\,80{,}00$. A amortização inicial tende a zero, e o limite corresponde aos juros do primeiro mês."
       ],
       "correta": 4,
-      "explicacao": "$P_{8}\\approx \\text{R\\$}\\,446{,}30$; $P_{60}\\approx \\text{R\\$}\\,103{,}53$; $P_{360}\\approx \\text{R\\$}\\,80{,}01$. Como $(1+i)^{-n}\\to0$, $$\\lim_{n\\to\\infty}P_n=P_v\\,i=3{.}200{,}00\\cdot 0{,}025=80{,}00.$$ O piso teórico da prestação é R\\$ 80,00, exatamente o juro do primeiro mês. Quando $P_n$ se aproxima desse valor, a amortização inicial $A_1=P_n-iP_v$ tende a zero. No limite, paga-se apenas o juro periódico e o principal não diminui.",
+      "explicacao": "$PMT_{8}\\approx \\text{R\\$}\\,446{,}30$; $PMT_{60}\\approx \\text{R\\$}\\,103{,}53$; $PMT_{360}\\approx \\text{R\\$}\\,80{,}01$. Como $(1+i)^{-n}\\to0$, $$\\lim_{n\\to\\infty}PMT_n=SD\\,i=3{.}200{,}00\\cdot 0{,}025=80{,}00.$$ O piso teórico da prestação é R\\$ 80,00, exatamente o juro do primeiro mês. Quando $PMT_n$ se aproxima desse valor, a amortização inicial $A_1=PMT_n-i\\cdot SD$ tende a zero. No limite, paga-se apenas o juro periódico e o principal não diminui.",
       "estudo": {
         "titulo": "Prazo longo e limite da prestação",
         "texto": "Quando o prazo cresce muito, a parcela se aproxima do juro do primeiro período. A amortização inicial tende a zero.",
@@ -1661,16 +1661,16 @@
       "produto": "Nível Difícil: Sistema PRICE / SAF",
       "nivel": "Difícil",
       "imagem": "imagens/price/microondas_daewoo.webp",
-      "enunciado": "Considere um financiamento de R\\$ 1.800,00 para a aquisição de um forno de micro-ondas Daewoo KOR-1N0A, pelo Sistema PRICE, à taxa de 2,8% ao mês. Para $n$ prestações, o valor mensal é $$P_n=P_v\\frac{i}{1-(1+i)^{-n}}.$$ Assinale a alternativa que apresenta corretamente os valores de $P_n$ para $n=6$, $n=48$ e $n=360$, o limite $\\lim_{n\\to\\infty}P_n$ e sua interpretação financeira.",
+      "enunciado": "Considere um financiamento de R\\$ 1.800,00 para a aquisição de um forno de micro-ondas Daewoo KOR-1N0A, pelo Sistema PRICE, à taxa de 2,8% ao mês. Para $n$ prestações, o valor mensal é $$PMT_n=SD\\frac{i}{1-(1+i)^{-n}}.$$ Assinale a alternativa que apresenta corretamente os valores de $PMT_n$ para $n=6$, $n=48$ e $n=360$, o limite $\\lim_{n\\to\\infty}PMT_n$ e sua interpretação financeira.",
       "alternativas": [
-        "$P_{6}\\approx \\text{R\\$}\\,330{,}08$; $P_{48}\\approx \\text{R\\$}\\,68{,}63$; $P_{360}\\approx \\text{R\\$}\\,50{,}40$; $\\lim_{n\\to\\infty}P_n=0$. A prestação pode ser reduzida indefinidamente até zerar.",
-        "$P_{6}\\approx \\text{R\\$}\\,330{,}08$; $P_{48}\\approx \\text{R\\$}\\,68{,}63$; $P_{360}\\approx \\text{R\\$}\\,50{,}40$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,50{,}40$. A amortização inicial tende a zero, e o limite corresponde aos juros do primeiro mês.",
-        "$P_{6}\\approx \\text{R\\$}\\,300{,}00$; $P_{48}\\approx \\text{R\\$}\\,37{,}50$; $P_{360}\\approx \\text{R\\$}\\,5{,}00$; $\\lim_{n\\to\\infty}P_n=0$. O custo financeiro desaparece quando o prazo cresce.",
-        "$P_{6}\\approx \\text{R\\$}\\,330{,}08$; $P_{48}\\approx \\text{R\\$}\\,68{,}63$; $P_{360}\\approx \\text{R\\$}\\,50{,}40$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,50{,}40$. A amortização inicial tende ao valor total da prestação.",
-        "$P_{360}\\approx \\text{R\\$}\\,50{,}40$; $P_{48}\\approx \\text{R\\$}\\,68{,}63$; $P_{6}\\approx \\text{R\\$}\\,330{,}08$; $\\lim_{n\\to\\infty}P_n=\\text{R\\$}\\,64{.}285{,}71$. O limite corresponde ao principal dividido pela taxa."
+        "$PMT_{6}\\approx \\text{R\\$}\\,330{,}08$; $PMT_{48}\\approx \\text{R\\$}\\,68{,}63$; $PMT_{360}\\approx \\text{R\\$}\\,50{,}40$; $\\lim_{n\\to\\infty}PMT_n=0$. A prestação pode ser reduzida indefinidamente até zerar.",
+        "$PMT_{6}\\approx \\text{R\\$}\\,330{,}08$; $PMT_{48}\\approx \\text{R\\$}\\,68{,}63$; $PMT_{360}\\approx \\text{R\\$}\\,50{,}40$; $\\lim_{n\\to\\infty}PMT_n=\\text{R\\$}\\,50{,}40$. A amortização inicial tende a zero, e o limite corresponde aos juros do primeiro mês.",
+        "$PMT_{6}\\approx \\text{R\\$}\\,300{,}00$; $PMT_{48}\\approx \\text{R\\$}\\,37{,}50$; $PMT_{360}\\approx \\text{R\\$}\\,5{,}00$; $\\lim_{n\\to\\infty}PMT_n=0$. O custo financeiro desaparece quando o prazo cresce.",
+        "$PMT_{6}\\approx \\text{R\\$}\\,330{,}08$; $PMT_{48}\\approx \\text{R\\$}\\,68{,}63$; $PMT_{360}\\approx \\text{R\\$}\\,50{,}40$; $\\lim_{n\\to\\infty}PMT_n=\\text{R\\$}\\,50{,}40$. A amortização inicial tende ao valor total da prestação.",
+        "$PMT_{360}\\approx \\text{R\\$}\\,50{,}40$; $PMT_{48}\\approx \\text{R\\$}\\,68{,}63$; $PMT_{6}\\approx \\text{R\\$}\\,330{,}08$; $\\lim_{n\\to\\infty}PMT_n=\\text{R\\$}\\,64{.}285{,}71$. O limite corresponde ao principal dividido pela taxa."
       ],
       "correta": 1,
-      "explicacao": "$P_{6}\\approx \\text{R\\$}\\,330{,}08$; $P_{48}\\approx \\text{R\\$}\\,68{,}63$; $P_{360}\\approx \\text{R\\$}\\,50{,}40$. Como $(1+i)^{-n}\\to0$, $$\\lim_{n\\to\\infty}P_n=P_v\\,i=1{.}800{,}00\\cdot 0{,}028=50{,}40.$$ O piso teórico da prestação é R\\$ 50,40, exatamente o juro do primeiro mês. Quando $P_n$ se aproxima desse valor, a amortização inicial $A_1=P_n-iP_v$ tende a zero. No limite, paga-se apenas o juro periódico e o principal não diminui.",
+      "explicacao": "$PMT_{6}\\approx \\text{R\\$}\\,330{,}08$; $PMT_{48}\\approx \\text{R\\$}\\,68{,}63$; $PMT_{360}\\approx \\text{R\\$}\\,50{,}40$. Como $(1+i)^{-n}\\to0$, $$\\lim_{n\\to\\infty}PMT_n=SD\\,i=1{.}800{,}00\\cdot 0{,}028=50{,}40.$$ O piso teórico da prestação é R\\$ 50,40, exatamente o juro do primeiro mês. Quando $PMT_n$ se aproxima desse valor, a amortização inicial $A_1=PMT_n-i\\cdot SD$ tende a zero. No limite, paga-se apenas o juro periódico e o principal não diminui.",
       "estudo": {
         "titulo": "Prazo longo e limite da prestação",
         "texto": "Quando o prazo cresce muito, a parcela se aproxima do juro do primeiro período. A amortização inicial tende a zero.",

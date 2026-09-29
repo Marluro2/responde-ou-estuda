@@ -484,10 +484,10 @@
         "R\\$ 1.687,30"
       ],
       "correta": 3,
-      "explicacao": "M = 1.500 × (1,04)³ = 1.500 × 1,124864 = R\\$ 1.687,296. Arredondando: R\\$ 1.687,30.",
+      "explicacao": "M = 1.500 × (1,04)³ = 1.500 × 1,124864 = R\\$ 1.687,296. Arredondando: R\\$ 1.687,30. Atenção: no rotativo real do cartão de crédito, as taxas costumam ser muito maiores que 4% ao mês (em geral, acima de 10% ao mês). Desde 2024, a lei limita os juros e encargos do rotativo ao valor da dívida original.",
       "estudo": {
         "titulo": "Crescimento de uma dívida",
-        "texto": "Taxas mensais elevadas se acumulam rapidamente porque cada mês incide sobre o saldo atualizado.",
+        "texto": "Taxas mensais elevadas se acumulam rapidamente porque cada mês incide sobre o saldo atualizado. No cartão de crédito real, a taxa do rotativo costuma ser bem maior; evite pagar só o mínimo.",
         "formula": "$$M=C\\cdot(1+i)^t$$",
         "exemplo": "R\\$ 2.000,00 a 3% ao mês por 2 meses resultam em R\\$ 2.121,80."
       },

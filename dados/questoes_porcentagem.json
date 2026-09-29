@@ -128,8 +128,8 @@
       "explicacao": "Economia = preço anterior − preço atual. Logo, R\\$ 1.599,00 − R\\$ 879,00 = R\\$ 720,00.",
       "estudo": {
         "titulo": "Economia em reais",
-        "texto": "Antes de calcular a porcentagem, identifique quanto o preço diminuiu. Essa diferença é a economia em dinheiro.",
-        "formula": "$$E=P_0-P_p$$",
+        "texto": "Antes de calcular a porcentagem, identifique quanto o preço diminuiu. Essa diferença é a economia em dinheiro. Use $P_0$ para o preço inicial e $P_f$ para o preço final.",
+        "formula": "$$E=P_0-P_f$$",
         "exemplo": "De R\\$ 800,00 por R\\$ 600,00: economia de R\\$ 200,00."
       },
       "fonte": {
@@ -152,10 +152,10 @@
         "R\\$ 665,45"
       ],
       "correta": 2,
-      "explicacao": "10% de R\\$ 675,45 são R\\$ 67,545. Subtraindo e arredondando aos centavos: R\\$ 607,91.",
+      "explicacao": "10% de R\\$ 675,45 são R\\$ 67,545. Subtraindo: R\\$ 675,45 − R\\$ 67,545 = R\\$ 607,905. Como a terceira casa é 5, arredonda-se para cima: R\\$ 607,91.",
       "estudo": {
         "titulo": "Arredondamento monetário",
-        "texto": "Valores em reais são apresentados com duas casas decimais. Observe a terceira casa decimal para arredondar os centavos.",
+        "texto": "Valores em reais são apresentados com duas casas decimais. Observe a terceira casa decimal para arredondar os centavos. O jogo usa o arredondamento comercial: 5 na terceira casa arredonda para cima. (A norma técnica NBR 5891 trata o 5 exato de outro modo; no comércio, a prática usual é arredondar para cima.)",
         "formula": "Se a terceira casa decimal for 5 ou mais, acrescente 1 à segunda casa.",
         "exemplo": "R\\$ 12,345 é arredondado para R\\$ 12,35."
       },
@@ -237,7 +237,7 @@
       "estudo": {
         "titulo": "Comparação de preços",
         "texto": "A economia absoluta é obtida pela diferença entre o preço inicial e o preço efetivamente pago.",
-        "formula": "$$E=P_i-P_f$$",
+        "formula": "$$E=P_0-P_f$$",
         "exemplo": "R\\$ 500,00 − R\\$ 375,00 = R\\$ 125,00 de economia."
       },
       "fonte": {
@@ -291,7 +291,7 @@
       "estudo": {
         "titulo": "Descobrir a porcentagem de desconto",
         "texto": "Primeiro encontre a economia. Depois divida a economia pelo preço inicial e multiplique por 100.",
-        "formula": "$$d=\\frac{E}{P_i}\\cdot100\\%$$",
+        "formula": "$$d=\\frac{E}{P_0}\\cdot100\\%$$",
         "exemplo": "De R\\$ 200,00 por R\\$ 150,00: economia de R\\$ 50,00. $\\frac{50}{200}\\cdot100\\%=25\\%$."
       },
       "fonte": {
@@ -318,7 +318,7 @@
       "estudo": {
         "titulo": "Avaliar uma promoção",
         "texto": "A diferença de preço revela a economia direta. Para comparar promoções de preços muito diferentes, depois calcule também o percentual.",
-        "formula": "$$E=P_a-P_f$$",
+        "formula": "$$E=P_0-P_f$$",
         "exemplo": "R\\$ 2.500,00 − R\\$ 2.000,00 = R\\$ 500,00."
       },
       "fonte": {
@@ -399,7 +399,7 @@
       "estudo": {
         "titulo": "Redução de preço",
         "texto": "A redução absoluta indica quantos reais deixaram de ser pagos.",
-        "formula": "$$R=V_a-V_f$$",
+        "formula": "$$R=P_0-P_f$$",
         "exemplo": "De R\\$ 120,00 para R\\$ 95,00: redução de R\\$ 25,00."
       },
       "fonte": {
@@ -507,7 +507,7 @@
       "estudo": {
         "titulo": "Percentual de economia",
         "texto": "Divida a economia pelo preço original. O preço original é a base de comparação.",
-        "formula": "$$p=\\frac{E}{P_0}\\cdot100\\%$$",
+        "formula": "$$d=\\frac{E}{P_0}\\cdot100\\%$$",
         "exemplo": "Economizar R\\$ 30,00 em um produto de R\\$ 120,00 representa $\\frac{30}{120}\\cdot100\\%=25\\%$."
       },
       "fonte": {
@@ -530,10 +530,10 @@
         "R\\$ 71,54"
       ],
       "correta": 1,
-      "explicacao": "Com desconto de 15%, paga-se 85%: R\\$ 75,30 × 0,85 = R\\$ 64,005, aproximadamente R\\$ 64,01.",
+      "explicacao": "Com desconto de 15%, paga-se 85%: R\\$ 75,30 × 0,85 = R\\$ 64,005. Como a terceira casa é 5, arredonda-se para cima: R\\$ 64,01.",
       "estudo": {
         "titulo": "Aplicação do fator 0,85",
-        "texto": "Depois de um desconto de 15%, restam 85% do preço. Em valor decimal, 85% é 0,85.",
+        "texto": "Depois de um desconto de 15%, restam 85% do preço. Em valor decimal, 85% é 0,85. O jogo usa o arredondamento comercial: 5 na terceira casa arredonda para cima. (A norma técnica NBR 5891 trata o 5 exato de outro modo; no comércio, a prática usual é arredondar para cima.)",
         "formula": "$$P_f=P_0\\cdot0{,}85$$",
         "exemplo": "R\\$ 80,00 × 0,85 = R\\$ 68,00."
       },
