@@ -53,6 +53,10 @@ RECURSOS DE JOGO (VERSÃO DE 28/09/2026)
 • Efeitos sonoros de acerto, erro e conquista; nos últimos 10 segundos o
   cronômetro pulsa e faz tique. Os efeitos só tocam com o som ligado
   (botão ATIVAR SOM). Para recriá-los: py -3.14 ferramentas\gerar_efeitos.py
+• Todo botão faz um "clique" ao ser pressionado (em todas as telas).
+• Ao ACERTAR: fanfarra de vitória com aplausos da plateia, e o cartão da
+  alternativa correta vibra (a vibração some com "Sem animações").
+  Volumes e duração dos aplausos: início de ferramentas\gerar_efeitos.py.
 • Transição suave entre as telas.
 • Sequência de acertos: a partir de 2 acertos seguidos aparece a faixa
   "🔥 N acertos seguidos!". É só um reconhecimento visual: a pontuação

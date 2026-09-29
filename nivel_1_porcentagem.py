@@ -414,6 +414,7 @@ class JogoPorcentagem:
             ),
             minimum_padding=ft.Padding.all(6),
         )
+        rj.sons_nos_botoes(self, self.raiz.content)  # clique em todos os botões
         try:
             self.raiz.update()
         except RuntimeError:
@@ -1435,7 +1436,7 @@ class JogoPorcentagem:
                 )
             conteudo.append(
                 ft.ResponsiveRow(
-                    controls=botoes,
+                    controls=[rj.vibrar_se_acertou(self, i, b) for i, b in enumerate(botoes)],
                     columns=12,
                     spacing=10,
                     run_spacing=10,

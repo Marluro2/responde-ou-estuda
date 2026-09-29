@@ -683,7 +683,7 @@ class AplicativoRespondaOuEstuda:
         )
         self.page.services.append(self.audio)
 
-        self.tela_inicial = self._construir_tela_inicial()
+        self.tela_inicial = recursos_jogo.sons_nos_botoes(self, self._construir_tela_inicial())
         # Um único controle permanece ligado à página durante toda a execução.
         # A navegação troca apenas seu conteúdo, evitando a antiga tela azul.
         self.host = ft.Container(
@@ -2223,7 +2223,7 @@ class AplicativoRespondaOuEstuda:
         # Reconstrói a tela para aplicar tema, nomes, imagens e saldos atualizados.
         # Esta função não é um ponto de personalização visual.
         CORES.update(TEMAS_TELA_INICIAL[self.estado.tema])
-        self.tela_inicial = self._construir_tela_inicial()
+        self.tela_inicial = recursos_jogo.sons_nos_botoes(self, self._construir_tela_inicial())
         self.host.content = self.tela_inicial
         self.host.bgcolor = CORES["fundo_topo"]
         self.page.bgcolor = CORES["fundo_topo"]
@@ -2264,7 +2264,7 @@ class AplicativoRespondaOuEstuda:
         def explicacao(texto: str) -> ft.Control:
             return ft.Text(texto, size=12, color=ft.Colors.ON_SURFACE_VARIANT)
 
-        self.page.show_dialog(
+        self._mostrar_dialogo(
             ft.AlertDialog(
                 modal=True,
                 title=ft.Row(
@@ -2343,7 +2343,7 @@ class AplicativoRespondaOuEstuda:
             self.page.pop_dialog()
             self._arquivar_turma()
 
-        self.page.show_dialog(
+        self._mostrar_dialogo(
             ft.AlertDialog(
                 modal=True,
                 title=ft.Text("Começar uma nova turma?"),
@@ -2832,7 +2832,12 @@ class AplicativoRespondaOuEstuda:
             ),
             padding=ft.Padding.symmetric(horizontal=24, vertical=16),
         )
+        recursos_jogo.sons_nos_botoes(self, self.host.content)
         self.page.update()
+
+    def _mostrar_dialogo(self, dialogo: ft.AlertDialog) -> None:
+        """Abre uma janela com som de clique nos seus botões."""
+        self.page.show_dialog(recursos_jogo.sons_nos_botoes(self, dialogo))
 
     def mostrar_inicio(self, _evento: Any = None) -> None:
         # Salva os dados e volta à tela inicial sem zerar os saldos.

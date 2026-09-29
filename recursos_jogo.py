@@ -19,6 +19,7 @@ Os módulos chamam estas funções em poucos pontos; procure por
 from __future__ import annotations
 
 import asyncio
+import inspect
 import csv
 import os
 import uuid
@@ -27,6 +28,7 @@ from pathlib import Path
 from typing import Any
 
 import flet as ft
+from flet.utils.object_model import get_param_count
 from flet_audio import Audio
 
 from estado_jogo import DADOS_DIR
@@ -81,6 +83,7 @@ EFEITOS = {
     "erro": "sons/efeitos/erro.wav",
     "tique": "sons/efeitos/tique.wav",
     "conquista": "sons/efeitos/conquista.wav",
+    "clique": "sons/efeitos/clique.wav",
 }
 
 
@@ -112,6 +115,107 @@ def efeitos(jogo: Any) -> EfeitosSonoros:
     if getattr(jogo, "_efeitos", None) is None:
         jogo._efeitos = EfeitosSonoros(jogo.page)
     return jogo._efeitos
+
+
+# ======================================================================
+# SOM DE CLIQUE EM TODOS OS BOTÕES
+# ======================================================================
+# Percorre a tela montada e faz todo controle clicável (botões, cartões,
+# ícones) tocar o "clique" antes de executar sua ação. Assim nenhum botão
+# novo precisa ser alterado um a um. Respeita o botão ATIVAR SOM/MUTE.
+_FILHOS = ("content", "controls", "actions", "title", "leading", "trailing", "subtitle")
+
+
+def sons_nos_botoes(jogo: Any, raiz: Any) -> Any:
+    """Liga o som de clique em todos os controles clicáveis de ``raiz``."""
+    pendentes = [raiz]
+    vistos: set[int] = set()
+    while pendentes:
+        controle = pendentes.pop()
+        if controle is None or id(controle) in vistos:
+            continue
+        vistos.add(id(controle))
+        if isinstance(controle, (list, tuple)):
+            pendentes.extend(controle)
+            continue
+        if not isinstance(controle, ft.BaseControl):
+            continue
+        acao = getattr(controle, "on_click", None)
+        if acao is not None and not getattr(acao, "_com_clique", False):
+            controle.on_click = _acao_com_clique(jogo, acao)
+        for nome in _FILHOS:
+            filho = getattr(controle, nome, None)
+            if filho is not None and not isinstance(filho, str):
+                pendentes.append(filho)
+    return raiz
+
+
+def _acao_com_clique(jogo: Any, acao: Any) -> Any:
+    # O Flet chama a ação com ou sem o evento conforme ela o aceite;
+    # o envoltório repete esse comportamento.
+    sem_evento = get_param_count(acao) == 0
+    if inspect.isgeneratorfunction(acao) or inspect.isasyncgenfunction(acao):
+        return acao
+    if inspect.iscoroutinefunction(acao):
+        async def com_clique_async(evento: Any = None) -> Any:
+            efeitos(jogo).tocar(jogo, "clique")
+            return await (acao() if sem_evento else acao(evento))
+        com_clique_async._com_clique = True  # type: ignore[attr-defined]
+        return com_clique_async
+
+    def com_clique(evento: Any = None) -> Any:
+        efeitos(jogo).tocar(jogo, "clique")
+        return acao() if sem_evento else acao(evento)
+    com_clique._com_clique = True  # type: ignore[attr-defined]
+    return com_clique
+
+
+# ======================================================================
+# VIBRAÇÃO DA ALTERNATIVA CORRETA
+# ======================================================================
+# Ao acertar, o cartão da alternativa correta "vibra" junto com os aplausos.
+# Fica desligado com a opção "Sem animações" (Acessibilidade).
+# AJUSTE: TREMORES = quantas idas e vindas; AMPLITUDE = quanto se desloca.
+TREMORES = 7
+AMPLITUDE_TREMOR = 0.025
+
+
+def vibrar_se_acertou(jogo: Any, indice: int, cartao: ft.Control) -> ft.Control:
+    """Devolve o cartão; se for a alternativa acertada, ele vibra."""
+    destaque = getattr(jogo, "_destaque_resposta", None)
+    if (
+        not destaque
+        or indice != destaque["correta"]
+        or destaque["escolhida"] != destaque["correta"]
+        or sem_animacoes(jogo)
+    ):
+        return cartao
+    envoltorio = ft.Container(
+        content=cartao,
+        col=getattr(cartao, "col", None),
+        offset=ft.Offset(0, 0),
+        scale=1.0,
+        animate_offset=ft.Animation(45, ft.AnimationCurve.EASE_IN_OUT),
+        animate_scale=ft.Animation(160, ft.AnimationCurve.EASE_OUT),
+    )
+
+    async def vibrar() -> None:
+        try:
+            await asyncio.sleep(0.05)
+            envoltorio.scale = 1.04
+            for passo in range(TREMORES):
+                lado = AMPLITUDE_TREMOR if passo % 2 == 0 else -AMPLITUDE_TREMOR
+                envoltorio.offset = ft.Offset(lado, 0)
+                envoltorio.update()
+                await asyncio.sleep(0.05)
+            envoltorio.offset = ft.Offset(0, 0)
+            envoltorio.scale = 1.0
+            envoltorio.update()
+        except Exception:
+            pass
+
+    jogo.page.run_task(vibrar)
+    return envoltorio
 
 
 # ======================================================================

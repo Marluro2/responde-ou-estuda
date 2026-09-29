@@ -730,6 +730,7 @@ class JogoPrice:
             ),
             minimum_padding=ft.Padding.all(6),
         )
+        rj.sons_nos_botoes(self, self.raiz.content)  # clique em todos os botões
         try:
             self.raiz.update()
         except RuntimeError:
@@ -3165,7 +3166,7 @@ class JogoPrice:
                         text_align=ft.TextAlign.CENTER,
                     ),
                     ft.ResponsiveRow(
-                        controls=botoes,
+                        controls=[rj.vibrar_se_acertou(self, i, b) for i, b in enumerate(botoes)],
                         columns=12,
                         spacing=8,
                         run_spacing=8,
