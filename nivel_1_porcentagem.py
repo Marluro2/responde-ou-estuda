@@ -505,7 +505,7 @@ class JogoPorcentagem:
                     seletor_trilha,
                     botao_som,
                     # LUPA (acessibilidade): liga/desliga a Lupa do Windows.
-                    rj.botao_efeitos(self, tema["texto"], tema["primaria"], tema["destaque"]),
+                    rj.botao_efeitos(self, tema["texto"], tema["primaria"], tema["destaque"], compacto=True),
                     rj.botao_lupa(tema["texto"], tema["primaria"], tema["destaque"], tema["fundo_1"]),
                     botao_voltar,
                 ],

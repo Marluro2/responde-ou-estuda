@@ -292,7 +292,7 @@
         "titulo": "Descobrir a porcentagem de desconto",
         "texto": "Primeiro encontre a economia. Depois divida a economia pelo preço inicial e multiplique por 100.",
         "formula": "$$d=\\frac{E}{P_i}\\cdot100\\%$$",
-        "exemplo": "De R\\$ 200,00 por R\\$ 150,00: economia de R\\$ 50,00. $\\frac{50}{200}\\cdot100=25\\%$."
+        "exemplo": "De R\\$ 200,00 por R\\$ 150,00: economia de R\\$ 50,00. $\\frac{50}{200}\\cdot100\\%=25\\%$."
       },
       "fonte": {
         "loja": "PlayStation Store Brasil",
@@ -341,12 +341,12 @@
         "40%"
       ],
       "correta": 2,
-      "explicacao": "A economia é R\\$ 349,65. Então: $\\frac{349{,}65}{999}\\cdot100=35\\%$.",
+      "explicacao": "A economia é R\\$ 349,65. Então: $\\frac{349{,}65}{999}\\cdot100\\%=35\\%$.",
       "estudo": {
         "titulo": "Do valor economizado ao percentual",
         "texto": "A porcentagem compara a economia com o preço original, não com o preço promocional.",
         "formula": "$$d=\\frac{P_0-P_f}{P_0}\\cdot100\\%$$",
-        "exemplo": "De R\\$ 400,00 por R\\$ 300,00: $\\frac{100}{400}\\cdot100=25\\%$."
+        "exemplo": "De R\\$ 400,00 por R\\$ 300,00: $\\frac{100}{400}\\cdot100\\%=25\\%$."
       },
       "fonte": {
         "loja": "Nespresso Brasil",
@@ -503,12 +503,12 @@
         "30%"
       ],
       "correta": 2,
-      "explicacao": "A economia foi R\\$ 47,97. Então: $\\frac{47{,}97}{191{,}90}\\cdot100=25\\%$.",
+      "explicacao": "A economia foi R\\$ 47,97. Então: $\\frac{47{,}97}{191{,}90}\\cdot100\\%\\approx25\\%$.",
       "estudo": {
         "titulo": "Percentual de economia",
         "texto": "Divida a economia pelo preço original. O preço original é a base de comparação.",
         "formula": "$$p=\\frac{E}{P_0}\\cdot100\\%$$",
-        "exemplo": "Economizar R\\$ 30,00 em um produto de R\\$ 120,00 representa $\\frac{30}{120}\\cdot100=25\\%$."
+        "exemplo": "Economizar R\\$ 30,00 em um produto de R\\$ 120,00 representa $\\frac{30}{120}\\cdot100\\%=25\\%$."
       },
       "fonte": {
         "loja": "Petlove",

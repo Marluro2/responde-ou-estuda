@@ -96,13 +96,13 @@ NIVEIS_PRICE = {
     },
     "Fácil": {
         "rotulo": "FÁCIL",
-        "descricao": "Identificação de termos, razão e soma da progressão geométrica.",
+        "descricao": "Taxa decimal, termos e soma da PG, juros, amortização e saldo.",
         "icone": ft.Icons.SENTIMENT_SATISFIED,
         "cor": "primaria",
     },
     "Médio": {
         "rotulo": "MÉDIO",
-        "descricao": "Cálculo de prestações, juros, amortização e saldo devedor.",
+        "descricao": "Cálculo da prestação fixa com a fórmula do Sistema PRICE.",
         "icone": ft.Icons.PSYCHOLOGY,
         "cor": "destaque",
     },
@@ -237,8 +237,9 @@ PAGINAS_TEORIA = [
             ["4", "R$ 1.838,37", "R$ 36,05", "R$ 1.802,32", "R$ 0,00"],
         ],
         "aplicacao": (
-            "Pequenas diferenças de centavos na última linha podem ocorrer por "
-            "arredondamento; instituições normalmente ajustam a parcela final."
+            "Os valores foram calculados sem arredondar a cada linha; por isso, "
+            "conferindo à mão, pode aparecer diferença de 1 centavo (ex.: linha 2). "
+            "Nos contratos, as instituições costumam ajustar a última parcela."
         ),
         "narracao": (
             "Parte três de quatro. Evolução da amortização. Os juros incidem "
@@ -275,7 +276,7 @@ PAGINAS_TEORIA = [
         "aplicacao": (
             "Em compras como automóvel, console, geladeira, bicicleta, câmera, "
             "ar-condicionado ou lavadora, compare o preço à vista com o total "
-            "financiado antes de decidir."
+            "pago nas prestações antes de decidir."
         ),
         "narracao": (
             "Parte quatro de quatro. Custo total e decisão financeira. Aumentar "
@@ -854,7 +855,7 @@ class JogoPrice:
                     seletor_trilha,
                     botao_som,
                     # LUPA (acessibilidade): liga/desliga a Lupa do Windows.
-                    rj.botao_efeitos(self, tema["texto"], tema["primaria"], tema["destaque"]),
+                    rj.botao_efeitos(self, tema["texto"], tema["primaria"], tema["destaque"], compacto=True),
                     rj.botao_lupa(tema["texto"], tema["primaria"], tema["destaque"], tema["fundo_1"]),
                     botao_tela_anterior,
                     botao_inicio,

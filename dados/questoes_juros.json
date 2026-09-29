@@ -514,7 +514,7 @@
       "estudo": {
         "titulo": "Decisão baseada no montante",
         "texto": "Taxa e regime precisam ser avaliados juntos. Calcule o valor final de cada opção antes de decidir.",
-        "formula": "$$\\text{Melhor opção}=\\max(M_l)$$",
+        "formula": "$$\\text{Melhor opção}=\\max(M_A,\\,M_B)$$",
         "exemplo": "Entre R\\$ 3.300,00 e R\\$ 3.280,00, o primeiro montante é R\\$ 20,00 maior."
       },
       "fonte": {
