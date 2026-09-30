@@ -9,7 +9,7 @@
       "produto": "Nível Super fácil: Sistema PRICE / SAF",
       "nivel": "Super fácil",
       "imagem": "imagens/price/notebook_system76.webp",
-      "enunciado": "No financiamento de um notebook pelo Sistema PRICE, como são as prestações?",
+      "enunciado": "Lucas financiou um notebook pelo Sistema PRICE e recebeu o carnê com as 12 parcelas. Ao comparar os valores do carnê, o que ele observa?",
       "alternativas": [
         "Elas aumentam a cada mês.",
         "Elas diminuem a cada mês.",
@@ -37,7 +37,7 @@
       "produto": "Nível Super fácil: Sistema PRICE / SAF",
       "nivel": "Super fácil",
       "imagem": "imagens/price/smartphone_iphone_xr.webp",
-      "enunciado": "Na fórmula do Sistema PRICE, o que representa a sigla $PMT$?",
+      "enunciado": "No contrato do smartphone de Lucas, a parcela mensal de R\\$ 409,21 aparece indicada como $PMT$. No modelo matemático do Sistema PRICE, o que $PMT$ representa?",
       "alternativas": [
         "O valor da prestação.",
         "O número de prestações.",
@@ -65,7 +65,7 @@
       "produto": "Nível Super fácil: Sistema PRICE / SAF",
       "nivel": "Super fácil",
       "imagem": "imagens/price/automovel_corolla.webp",
-      "enunciado": "No Sistema PRICE, o que acontece com os juros de cada prestação ao longo do tempo?",
+      "enunciado": "Júlia financiou um carro pelo Sistema PRICE e acompanha o extrato: a parcela é sempre a mesma. O que acontece com a parte de juros de cada parcela ao longo dos meses?",
       "alternativas": [
         "Permanecem iguais.",
         "Aumentam.",
@@ -93,7 +93,7 @@
       "produto": "Nível Super fácil: Sistema PRICE / SAF",
       "nivel": "Super fácil",
       "imagem": "imagens/price/geladeira_liebherr.webp",
-      "enunciado": "No Sistema PRICE, o que acontece com a amortização ao longo das prestações?",
+      "enunciado": "No extrato do financiamento da geladeira de Ana (Sistema PRICE), o que acontece, mês a mês, com a parte da parcela que reduz a dívida (a amortização)?",
       "alternativas": [
         "Permanece igual.",
         "Diminui.",
@@ -121,7 +121,7 @@
       "produto": "Nível Super fácil: Sistema PRICE / SAF",
       "nivel": "Super fácil",
       "imagem": "imagens/price/lavadora_sharp.webp",
-      "enunciado": "Uma prestação PRICE é formada por quais duas partes?",
+      "enunciado": "Pedro paga R\\$ 500,00 por mês pela lavadora, financiada pelo Sistema PRICE. Esse valor mensal é formado por quais duas partes?",
       "alternativas": [
         "Entrada e tarifa.",
         "Juros e amortização.",
@@ -149,7 +149,7 @@
       "produto": "Nível Super fácil: Sistema PRICE / SAF",
       "nivel": "Super fácil",
       "imagem": "imagens/price/televisor_samsung.webp",
-      "enunciado": "A sequência $\\frac{PMT}{1+i},\\frac{PMT}{(1+i)^2},\\ldots$ representa os valores presentes das prestações. Que sequência é essa?",
+      "enunciado": "Para saber quanto valem hoje as parcelas de sua TV, Carla calculou $\\frac{PMT}{1+i},\\frac{PMT}{(1+i)^2},\\frac{PMT}{(1+i)^3},\\ldots$ Que tipo de sequência ela obteve?",
       "alternativas": [
         "Uma progressão aritmética crescente.",
         "Uma sequência constante.",
@@ -177,7 +177,7 @@
       "produto": "Nível Super fácil: Sistema PRICE / SAF",
       "nivel": "Super fácil",
       "imagem": "imagens/price/bicicleta_mountain_bike.webp",
-      "enunciado": "Qual é o primeiro termo da PG dos valores presentes no Sistema PRICE?",
+      "enunciado": "Carla quer trazer para a data da compra o valor da 1ª parcela da bicicleta, que vence em um mês. Qual é o primeiro termo da sequência dos valores presentes?",
       "alternativas": [
         "$a_1=\\frac{PMT}{1+i}$",
         "$a_1=PMT$",
@@ -205,7 +205,7 @@
       "produto": "Nível Super fácil: Sistema PRICE / SAF",
       "nivel": "Super fácil",
       "imagem": "imagens/price/motocicleta_honda_cb500.webp",
-      "enunciado": "Qual é a razão da PG dos valores presentes das prestações?",
+      "enunciado": "Cada parcela da moto de Carla vence um mês depois da anterior. Por qual número se multiplica um valor presente para obter o seguinte (a razão da PG)?",
       "alternativas": [
         "$q=1+i$",
         "$q=i$",
@@ -233,7 +233,7 @@
       "produto": "Nível Super fácil: Sistema PRICE / SAF",
       "nivel": "Super fácil",
       "imagem": "imagens/price/console_playstation5.webp",
-      "enunciado": "No início do financiamento, a soma dos valores presentes das prestações deve ser igual a quê?",
+      "enunciado": "Bruno financiou um console. No dia da compra, a soma dos valores presentes de todas as parcelas deve ser igual a quê?",
       "alternativas": [
         "Ao total dos juros.",
         "Ao valor da última prestação.",
@@ -261,7 +261,7 @@
       "produto": "Nível Super fácil: Sistema PRICE / SAF",
       "nivel": "Super fácil",
       "imagem": "imagens/price/camera_canon_eos5d.webp",
-      "enunciado": "Uma prestação $PMT$ vence daqui a um mês. Qual é seu valor presente?",
+      "enunciado": "A primeira parcela da câmera de Júlia, de valor $PMT$, vence daqui a um mês. Com taxa $i$ ao mês, quanto essa parcela vale hoje?",
       "alternativas": [
         "$PMT(1+i)$",
         "$\\frac{PMT}{1+i}$",
@@ -289,7 +289,7 @@
       "produto": "Nível Super fácil: Sistema PRICE / SAF",
       "nivel": "Super fácil",
       "imagem": "imagens/price/ar_condicionado_panasonic.webp",
-      "enunciado": "Qual fórmula calcula a prestação fixa do Sistema PRICE?",
+      "enunciado": "Antes de assinar o contrato, Pedro quer calcular a parcela fixa do ar-condicionado financiado pelo Sistema PRICE. Qual modelo matemático ele deve usar?",
       "alternativas": [
         "$PMT=SD\\cdot i\\cdot n$",
         "$PMT=SD(1+i)^n$",
@@ -300,10 +300,10 @@
       "correta": 3,
       "explicacao": "A prestação fixa é calculada por $$PMT=SD\\cdot\\frac{i(1+i)^n}{(1+i)^n-1}.$$",
       "estudo": {
-        "titulo": "Fórmula da prestação PRICE",
-        "texto": "A fórmula relaciona o saldo financiado, a taxa por período e o número de prestações.",
+        "titulo": "Modelo matemático da prestação PRICE",
+        "texto": "O modelo matemático relaciona o saldo financiado, a taxa por período e o número de prestações.",
         "formula": "$$PMT=SD\\cdot\\frac{i(1+i)^n}{(1+i)^n-1}$$",
-        "exemplo": "Antes de usar a fórmula, escreva a taxa na forma decimal."
+        "exemplo": "Antes de usar o modelo, escreva a taxa na forma decimal."
       },
       "fonte": {
         "loja": "Wikimedia Commons, imagem didática do produto",
@@ -317,16 +317,16 @@
       "produto": "Nível Super fácil: Sistema PRICE / SAF",
       "nivel": "Super fácil",
       "imagem": "imagens/price/violao_yamaha_fgx04.webp",
-      "enunciado": "Na fórmula PRICE, o que representa $n$?",
+      "enunciado": "Lucas vai comprar um violão em 12 parcelas mensais iguais. No modelo matemático do Sistema PRICE, qual valor ele deve usar para $n$?",
       "alternativas": [
-        "O número de prestações.",
-        "A taxa de juros.",
-        "O saldo devedor.",
-        "O valor dos juros.",
-        "A entrada."
+        "12",
+        "1",
+        "0,02",
+        "2",
+        "24"
       ],
       "correta": 0,
-      "explicacao": "$n$ indica quantas prestações periódicas existem no financiamento.",
+      "explicacao": "$n$ é o número de prestações do financiamento. Lucas pagará 12 parcelas, então $$n=12.$$",
       "estudo": {
         "titulo": "Número de prestações",
         "texto": "A variável $n$ informa a quantidade de pagamentos do contrato.",
@@ -345,7 +345,7 @@
       "produto": "Nível Super fácil: Sistema PRICE / SAF",
       "nivel": "Super fácil",
       "imagem": "imagens/price/patinete_eletrico.webp",
-      "enunciado": "Na fórmula PRICE, o que representa $i$?",
+      "enunciado": "No contrato do patinete de Ana aparece “$i=2\\%$ ao mês”. No modelo matemático do Sistema PRICE, o que o $i$ representa?",
       "alternativas": [
         "O número de prestações.",
         "O valor da entrada.",
@@ -373,7 +373,7 @@
       "produto": "Nível Super fácil: Sistema PRICE / SAF",
       "nivel": "Super fácil",
       "imagem": "imagens/price/robo_aspirador_xiaomi.webp",
-      "enunciado": "Após o pagamento correto da última prestação, qual deve ser o saldo devedor?",
+      "enunciado": "Bruno pagou em dia a última parcela do robô aspirador. Qual deve ser, agora, o saldo devedor?",
       "alternativas": [
         "Igual à primeira prestação.",
         "Igual aos juros do mês.",
@@ -401,7 +401,7 @@
       "produto": "Nível Super fácil: Sistema PRICE / SAF",
       "nivel": "Super fácil",
       "imagem": "imagens/price/microondas_daewoo.webp",
-      "enunciado": "Como são calculados os juros de um mês no Sistema PRICE?",
+      "enunciado": "Neste mês, o saldo devedor do micro-ondas de Carla é R\\$ 1.000,00 e a taxa é $1\\%$ ao mês. Como se calculam os juros desse mês?",
       "alternativas": [
         "Somando a taxa ao número de prestações.",
         "Multiplicando a taxa pelo saldo anterior.",
@@ -429,7 +429,7 @@
       "produto": "Nível Fácil: Sistema PRICE / SAF",
       "nivel": "Fácil",
       "imagem": "imagens/price/notebook_system76.webp",
-      "enunciado": "Um notebook será financiado à taxa de $2\\%$ ao mês. Qual valor decimal deve ser usado na fórmula PRICE?",
+      "enunciado": "Lucas vai financiar um notebook a $2\\%$ ao mês. Qual valor decimal ele deve usar para $i$ no modelo matemático do Sistema PRICE?",
       "alternativas": [
         "$2$",
         "$0{,}2$",
@@ -441,7 +441,7 @@
       "explicacao": "Converte-se a porcentagem dividindo por 100: $$i=\\frac{2}{100}=0{,}02.$$",
       "estudo": {
         "titulo": "Conversão da taxa",
-        "texto": "A fórmula PRICE utiliza a taxa escrita na forma decimal.",
+        "texto": "O modelo matemático do Sistema PRICE utiliza a taxa escrita na forma decimal.",
         "formula": "$$i=\\frac{p}{100}$$",
         "exemplo": "$1{,}5\\%=\\frac{1{,}5}{100}=0{,}015$."
       },
@@ -457,7 +457,7 @@
       "produto": "Nível Fácil: Sistema PRICE / SAF",
       "nivel": "Fácil",
       "imagem": "imagens/price/smartphone_iphone_xr.webp",
-      "enunciado": "Um smartphone será financiado a $1\\%$ ao mês. Qual é a razão da PG dos valores presentes?",
+      "enunciado": "Ana financiou um smartphone a $1\\%$ ao mês e quer trazer as parcelas para a data da compra. Qual é a razão $q$ entre um valor presente e o anterior?",
       "alternativas": [
         "$q=\\frac{1}{1{,}01}$",
         "$q=1{,}01$",
@@ -681,7 +681,7 @@
       "produto": "Nível Fácil: Sistema PRICE / SAF",
       "nivel": "Fácil",
       "imagem": "imagens/price/camera_canon_eos5d.webp",
-      "enunciado": "Qual expressão calcula a prestação fixa de uma câmera financiada pelo Sistema PRICE?",
+      "enunciado": "Júlia quer financiar uma câmera de R\\$ 9.800,00 em 18 parcelas a $1{,}4\\%$ ao mês e saber o valor da parcela antes de ir à loja. Qual modelo matemático ela deve usar?",
       "alternativas": [
         "$PMT=SD\\cdot i\\cdot n$",
         "$PMT=SD\\cdot\\frac{i(1+i)^n}{(1+i)^n-1}$",
@@ -693,7 +693,7 @@
       "explicacao": "A expressão correta é $$PMT=SD\\cdot\\frac{i(1+i)^n}{(1+i)^n-1}.$$",
       "estudo": {
         "titulo": "Prestação fixa",
-        "texto": "A fórmula considera simultaneamente saldo, taxa e prazo.",
+        "texto": "O modelo considera simultaneamente saldo, taxa e prazo.",
         "formula": "$$PMT=SD\\cdot\\frac{i(1+i)^n}{(1+i)^n-1}$$",
         "exemplo": "Use a taxa decimal e o número de prestações na mesma periodicidade."
       },
@@ -709,7 +709,7 @@
       "produto": "Nível Fácil: Sistema PRICE / SAF",
       "nivel": "Fácil",
       "imagem": "imagens/price/ar_condicionado_panasonic.webp",
-      "enunciado": "Um ar-condicionado será financiado a $1{,}8\\%$ ao mês. Qual é a razão da PG dos valores presentes?",
+      "enunciado": "Pedro vai financiar um ar-condicionado a $1{,}8\\%$ ao mês. Para comparar as parcelas com o preço à vista, ele as traz para a data da compra. Qual é a razão da PG desses valores?",
       "alternativas": [
         "$q=1{,}018$",
         "$q=0{,}018$",
@@ -737,16 +737,16 @@
       "produto": "Nível Fácil: Sistema PRICE / SAF",
       "nivel": "Fácil",
       "imagem": "imagens/price/violao_yamaha_fgx04.webp",
-      "enunciado": "Um violão será pago em 5 prestações. Quantos termos existem na PG dos valores presentes?",
+      "enunciado": "Lucas vai pagar o violão em 5 parcelas e trazer cada uma para a data da compra, para comparar com o preço à vista. Quantos valores presentes ele terá de somar?",
       "alternativas": [
-        "5 termos",
-        "4 termos",
-        "6 termos",
-        "1 termo",
-        "10 termos"
+        "5 valores",
+        "4 valores",
+        "6 valores",
+        "1 valor",
+        "10 valores"
       ],
       "correta": 0,
-      "explicacao": "Cada prestação gera um valor presente. Portanto, 5 prestações formam uma PG com 5 termos.",
+      "explicacao": "Cada parcela gera um valor presente. Portanto, 5 parcelas formam uma PG com 5 termos: Lucas somará 5 valores.",
       "estudo": {
         "titulo": "Quantidade de termos",
         "texto": "O número de termos da PG é igual ao número de prestações.",
@@ -765,7 +765,7 @@
       "produto": "Nível Fácil: Sistema PRICE / SAF",
       "nivel": "Fácil",
       "imagem": "imagens/price/patinete_eletrico.webp",
-      "enunciado": "A PG dos valores presentes de um patinete tem primeiro termo $a_1$, razão $q$ e 8 termos. Qual é sua soma?",
+      "enunciado": "Ana vai somar os 8 valores presentes das parcelas do patinete, que formam uma PG de primeiro termo $a_1$ e razão $q$. Qual modelo matemático dá essa soma?",
       "alternativas": [
         "$S_8=a_1(1+8q)$",
         "$S_8=8a_1q$",
@@ -777,7 +777,7 @@
       "explicacao": "A soma de uma PG finita com 8 termos é $$S_8=a_1\\cdot\\frac{1-q^8}{1-q}.$$",
       "estudo": {
         "titulo": "Soma da PG finita",
-        "texto": "Substitua o número de termos no expoente da fórmula da soma.",
+        "texto": "Substitua o número de termos no expoente do modelo da soma da PG.",
         "formula": "$$S_n=a_1\\cdot\\frac{1-q^n}{1-q}$$",
         "exemplo": "Para 4 termos, usa-se $S_4=a_1\\cdot\\frac{1-q^4}{1-q}$."
       },
@@ -793,16 +793,16 @@
       "produto": "Nível Fácil: Sistema PRICE / SAF",
       "nivel": "Fácil",
       "imagem": "imagens/price/robo_aspirador_xiaomi.webp",
-      "enunciado": "Dois financiamentos de um robô aspirador têm o mesmo saldo e prazo. Qual tende a ter a maior prestação?",
+      "enunciado": "Bruno recebeu duas propostas para o robô aspirador, com o mesmo valor financiado e o mesmo prazo: uma a $1{,}5\\%$ e outra a $2{,}5\\%$ ao mês. Qual terá a maior parcela?",
       "alternativas": [
-        "O de menor taxa.",
-        "Os dois sempre têm prestação zero.",
-        "Os dois sempre têm a mesma prestação.",
-        "Não é possível comparar as taxas.",
-        "O de maior taxa."
+        "A de 1,5% ao mês.",
+        "As duas têm parcela zero.",
+        "As duas têm a mesma parcela.",
+        "Não é possível comparar.",
+        "A de 2,5% ao mês."
       ],
       "correta": 4,
-      "explicacao": "Mantidos o saldo e o prazo, uma taxa maior aumenta o custo financeiro e, portanto, a prestação PRICE.",
+      "explicacao": "Com o mesmo saldo e o mesmo prazo, a taxa maior aumenta o custo financeiro. Por isso a proposta de $2{,}5\\%$ ao mês tem a maior parcela.",
       "estudo": {
         "titulo": "Efeito da taxa",
         "texto": "Com saldo e prazo iguais, o aumento da taxa eleva a prestação.",
@@ -821,7 +821,7 @@
       "produto": "Nível Fácil: Sistema PRICE / SAF",
       "nivel": "Fácil",
       "imagem": "imagens/price/microondas_daewoo.webp",
-      "enunciado": "Ao aumentar o prazo de um financiamento PRICE, o que geralmente acontece?",
+      "enunciado": "A loja ofereceu a Carla pagar o micro-ondas em 6 ou em 12 parcelas pelo Sistema PRICE, com a mesma taxa. Ao escolher 12 parcelas, o que geralmente acontece?",
       "alternativas": [
         "A prestação e o total de juros sempre zeram.",
         "A prestação diminui, mas o total de juros tende a aumentar.",

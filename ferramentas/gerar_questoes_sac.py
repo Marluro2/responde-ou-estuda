@@ -886,10 +886,44 @@ q(N, "Casa própria",
    "$$r=\\frac{a_q-a_p}{q-p}$$", "$a_3=50$ e $a_8=35$: $r=\\frac{35-50}{5}=-3$."),
   pa=pa_visual("PRESTAÇÕES", p, -20))
 
+# Revisão de contexto (29/09/2026): enunciados contextualizados e
+# "modelo matemático" no lugar de "fórmula". Aplicados sobre o banco gerado.
+ENUNCIADOS_REVISADOS = {
+    "SAC001": "Madalena financiou sua casa pelo SAC. Ao olhar o extrato, qual parte de cada parcela ela percebe que é sempre igual?",
+    "SAC002": "O gerente do banco ofereceu a Madalena o “SAC” para financiar o apartamento. O que significa essa sigla?",
+    "SAC003": "Pedro financiou um carro pelo SAC. Ao receber o carnê, como ele vê os valores das parcelas mês a mês?",
+    "SAC004": "Lucas financiou um notebook de R\\$ 6.000,00 pelo SAC em 10 parcelas. Qual modelo matemático dá a parte da dívida que ele devolve em cada parcela (a amortização $A$)?",
+    "SAC005": "Ana financiou uma geladeira pelo SAC. No extrato, os juros foram R\\$ 36,00; R\\$ 33,00; R\\$ 30,00; … Que tipo de sequência eles formam?",
+    "SAC006": "Ana acompanha o saldo devedor do terreno financiado pelo SAC e percebe que ele cai sempre o mesmo valor por mês. Que valor é esse?",
+    "SAC007": "As parcelas da TV de Ana, financiada pelo SAC, diminuem sempre R\\$ 15,00 por mês. Na PA formada pelas parcelas, como se chama esse valor constante?",
+    "SAC008": "As parcelas da lavadora de Carla, financiada pelo SAC, começam em R\\$ 330,00 e caem R\\$ 3,00 por mês. Qual modelo matemático permite calcular a parcela de qualquer mês $n$?",
+    "SAC009": "Pedro vai financiar um ar-condicionado pelo SAC e quer se preparar para o mês mais pesado. Qual parcela terá o maior valor?",
+    "SAC010": "Carla anotou as parcelas da bicicleta, financiada pelo SAC: R\\$ 850,00; R\\$ 840,00; R\\$ 830,00; … A PA formada é decrescente porque sua razão $r$ é:",
+    "SAC011": "Bruno anotou a amortização de cada mês do console financiado pelo SAC: R\\$ 800,00; R\\$ 800,00; R\\$ 800,00; … Qual é a razão dessa PA?",
+    "SAC012": "No 5º mês do financiamento da câmera de Júlia pelo SAC, sobre qual valor são calculados os juros?",
+    "SAC013": "Lucas percebeu que as parcelas do smartphone, financiado pelo SAC, ficam menores a cada mês. Por que isso acontece?",
+    "SAC014": "Ao pesquisar financiamentos, Madalena viu que o SAC aparece com muita frequência em um tipo de crédito no Brasil. Qual?",
+    "SAC015": "Madalena pagou a última parcela da casa financiada pelo SAC. Qual é, agora, o saldo devedor?",
+    "SAC026": "Ana financiou a geladeira em 36 parcelas pelo SAC e anotou todas numa tabela, da 1ª à última. Quantos termos tem a PA das parcelas?",
+    "SAC029": "Três amigos anotaram as primeiras parcelas de seus financiamentos. Qual das sequências pode ser a de quem escolheu o SAC?",
+    "SAC050": "Bruno, microempreendedor, tomou crédito pelo SAC e quer entender de onde vêm os juros de cada mês, $J_k=i\\cdot A\\cdot(n-k+1)$. Qual raciocínio, a partir da PA dos juros, justifica esse modelo matemático?"
+}
+ESTUDO_REVISADO = {
+    "SAC039|titulo": "Modelo da dissertação (Rodrigues, 2013)"
+}
+
 # ---------------------------------------------------------------- saída
 for nivel, total in contagem.items():
     if total != 15:
         raise SystemExit(f"{nivel}: {total} questões (esperado 15)")
+
+for _q in questoes:
+    if _q["id"] in ENUNCIADOS_REVISADOS:
+        _q["enunciado"] = ENUNCIADOS_REVISADOS[_q["id"]]
+    for _chave, _valor in ESTUDO_REVISADO.items():
+        _ident, _campo = _chave.split("|")
+        if _q["id"] == _ident:
+            _q["estudo"][_campo] = _valor
 
 dados = {
     "versao": 1,

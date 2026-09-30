@@ -54,7 +54,7 @@ except ValueError:
 
 AJUDAS = {
     "eliminar": "Eliminar 2 alternativas erradas",
-    "dica": "Dica: fórmula e estratégia",
+    "dica": "Dica: modelo matemático e estratégia",
     "tempo": "+30 segundos",
 }
 

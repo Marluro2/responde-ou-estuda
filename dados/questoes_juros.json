@@ -123,7 +123,7 @@
       "explicacao": "J = 5.000 × 0,12 × 2 = 1.200. Os juros são de R\\$ 1.200,00.",
       "estudo": {
         "titulo": "Trabalho com taxa anual",
-        "texto": "Quando a taxa está ao ano, mantenha o tempo em anos antes de aplicar a fórmula.",
+        "texto": "Quando a taxa está ao ano, mantenha o tempo em anos antes de montar o modelo matemático.",
         "formula": "$$12\\%\\text{ a.a.}=0{,}12\\text{ a.a.}$$",
         "exemplo": "R\\$ 4.000,00 a 10% ao ano por 3 anos geram R\\$ 1.200,00 de juros."
       },

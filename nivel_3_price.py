@@ -103,7 +103,7 @@ NIVEIS_PRICE = {
     },
     "Médio": {
         "rotulo": "MÉDIO",
-        "descricao": "Cálculo da prestação fixa com a fórmula do Sistema PRICE.",
+        "descricao": "Cálculo da prestação fixa com o modelo matemático do Sistema PRICE.",
         "icone": ft.Icons.PSYCHOLOGY,
         "cor": "destaque",
     },
@@ -164,7 +164,7 @@ PAGINAS_TEORIA = [
         "narracao": (
             "Parte um de quatro. Sistema Price ou Sistema de Amortização Francês. "
             "As prestações são fixas. Em cada prestação, os juros diminuem e a "
-            "amortização aumenta. A fórmula da prestação é PMT igual ao saldo "
+            "amortização aumenta. O modelo matemático da prestação é PMT igual ao saldo "
             "devedor vezes i vezes um mais i elevado a n, dividido por um mais i "
             "elevado a n menos um. No exemplo, sete mil reais financiados a dois "
             "por cento ao mês em quatro prestações produzem parcela aproximada "
@@ -188,24 +188,24 @@ PAGINAS_TEORIA = [
             r"$a_1=\frac{PMT}{1+i}$  •  $q=\frac{1}{1+i}$  •  "
             r"$S_n=a_1\cdot\frac{1-q^n}{1-q}=SD$"
         ),
-        "exemplo_titulo": "Como a fórmula nasce da soma da PG",
+        "exemplo_titulo": "Como o modelo matemático nasce da soma da PG",
         "passos": [
             r"O primeiro termo é o valor presente da primeira prestação: "
             r"$\frac{PMT}{1+i}$.",
             r"Cada termo seguinte é o anterior multiplicado por "
             r"$q=\frac{1}{1+i}$.",
-            r"Somando a PG e isolando $PMT$, obtém-se a fórmula da prestação PRICE.",
+            r"Somando a PG e isolando $PMT$, obtém-se o modelo matemático da prestação PRICE.",
         ],
         "aplicacao": (
-            "A relação com PG permite justificar a fórmula, em vez de apenas "
-            "memorizá-la, e ajuda a analisar prazos e taxas diferentes."
+            "A relação com PG permite justificar o modelo, em vez de apenas "
+            "memorizá-lo, e ajuda a analisar prazos e taxas diferentes."
         ),
         "narracao": (
             "Parte dois de quatro. Price e Progressão Geométrica. Ao trazer cada "
             "prestação para a data da compra, formamos uma P G decrescente. O "
             "primeiro termo é PMT dividido por um mais i. A razão é um dividido "
             "por um mais i. A soma dos valores presentes é igual ao saldo "
-            "financiado. Isolando PMT, obtemos a fórmula da prestação fixa."
+            "financiado. Isolando PMT, obtemos o modelo matemático da prestação fixa."
         ),
     },
     {
@@ -2145,13 +2145,13 @@ class JogoPrice:
             conceito = (
                 f"Momento de estudo. {estudo['titulo']}. "
                 f"Explicação. {estudo['texto']}. "
-                f"Fórmula. {estudo['formula']}. "
+                f"Modelo matemático. {estudo['formula']}. "
                 f"Exemplo. {estudo['exemplo']}."
             )
             estrategia = (
-                "Estratégia e fórmula. "
+                "Estratégia e modelo matemático. "
                 f"Estratégia. {estudo['texto']}. "
-                f"Fórmula. {estudo['formula']}."
+                f"Modelo matemático. {estudo['formula']}."
             )
             calculo = (
                 "Cálculo e justificativa. "
@@ -3644,7 +3644,7 @@ class JogoPrice:
             ),
             2: self._passo_resolucao(
                 2,
-                "ORGANIZE A FÓRMULA",
+                "MONTE O MODELO MATEMÁTICO",
                 estudo["formula"],
             ),
             3: self._passo_resolucao(
@@ -3665,7 +3665,7 @@ class JogoPrice:
             ),
         }
         titulo = (
-            "ESTRATÉGIA E FÓRMULA"
+            "ESTRATÉGIA E MODELO MATEMÁTICO"
             if passos == (1, 2)
             else "CÁLCULO E JUSTIFICATIVA"
             if passos == (3,)
@@ -3743,7 +3743,7 @@ class JogoPrice:
                             controls=[
                                 self._imagem_questao(170),
                                 ft.Text(
-                                    "Leia o conceito e observe a fórmula antes de avançar.",
+                                    "Leia o conceito e observe o modelo matemático antes de avançar.",
                                     color=self.tema["suave"],
                                     size=13,
                                     text_align=ft.TextAlign.CENTER,

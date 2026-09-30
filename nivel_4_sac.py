@@ -220,7 +220,7 @@ PAGINAS_TEORIA = [
             r"Sequência dos juros: 240; 220; 200; …; 20.",
         ],
         "aplicacao": (
-            "A fórmula vem do termo geral: J_k = J_1 + (k − 1)·(−iA), com "
+            "O modelo vem do termo geral: J_k = J_1 + (k − 1)·(−iA), com "
             "J_1 = i·n·A. A demonstração formal pode ser feita por indução."
         ),
         "narracao": (
@@ -276,7 +276,7 @@ PAGINAS_TEORIA = [
         "definicao": (
             "O total de juros é a soma da PA dos juros. Com a ideia de Gauss "
             "(somar o primeiro e o último termo, multiplicar por n e dividir "
-            "por 2), chega-se a uma fórmula direta."
+            "por 2), chega-se a um modelo matemático direto."
         ),
         "formula": (
             r"$$J_{total}=\frac{(J_1+J_n)\cdot n}{2}=\frac{i\cdot SD\cdot(n+1)}{2}$$"
@@ -2199,13 +2199,13 @@ class JogoSac:
             conceito = (
                 f"Momento de estudo. {estudo['titulo']}. "
                 f"Explicação. {estudo['texto']}. "
-                f"Fórmula. {estudo['formula']}. "
+                f"Modelo matemático. {estudo['formula']}. "
                 f"Exemplo. {estudo['exemplo']}."
             )
             estrategia = (
-                "Estratégia e fórmula. "
+                "Estratégia e modelo matemático. "
                 f"Estratégia. {estudo['texto']}. "
-                f"Fórmula. {estudo['formula']}."
+                f"Modelo matemático. {estudo['formula']}."
             )
             calculo = (
                 "Cálculo e justificativa. "
@@ -3755,7 +3755,7 @@ class JogoSac:
             ),
             2: self._passo_resolucao(
                 2,
-                "ORGANIZE A FÓRMULA",
+                "MONTE O MODELO MATEMÁTICO",
                 estudo["formula"],
             ),
             3: self._passo_resolucao(
@@ -3776,7 +3776,7 @@ class JogoSac:
             ),
         }
         titulo = (
-            "ESTRATÉGIA E FÓRMULA"
+            "ESTRATÉGIA E MODELO MATEMÁTICO"
             if passos == (1, 2)
             else "CÁLCULO E JUSTIFICATIVA"
             if passos == (3,)
@@ -3854,7 +3854,7 @@ class JogoSac:
                             controls=[
                                 self._imagem_questao(170),
                                 ft.Text(
-                                    "Leia o conceito e observe a fórmula antes de avançar.",
+                                    "Leia o conceito e observe o modelo matemático antes de avançar.",
                                     color=self.tema["suave"],
                                     size=13,
                                     text_align=ft.TextAlign.CENTER,

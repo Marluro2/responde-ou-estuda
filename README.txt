@@ -324,6 +324,17 @@ movimento (aplicação, rendimento, resgate, ajuda, juros, bônus) fica em
 dados/economia.csv. Regras e valores: início de economia.py.
 Teste rápido: py -3.14 ferramentas	estar_economia.py
 
+REVISÃO DE CONTEXTO E "MODELO MATEMÁTICO" (29/09/2026)
+
+41 questões do PRICE e do SAC (níveis iniciais) foram reescritas com
+contexto: personagem, situação real e dado concreto. O aluno interpreta a
+situação em vez de apenas reconhecer uma fórmula. Em todo o jogo, "fórmula"
+passou a "modelo matemático" (questões, estudo, teoria, narração e ajudas).
+Conceito cobrado, dificuldade e resposta correta foram mantidos; mudaram só
+as alternativas de PRI012 (valores numéricos para n), PRI027 e PRI029.
+IDs mantidos (o jogo ainda não tinha sido aplicado com alunos).
+Detalhes: revisao/levantamento_contexto_e_modelo.html e revisao/aplicar_contexto.py.
+
 RANKING
 
 O botão RANKING mostra a classificação dentro do programa. A planilha:

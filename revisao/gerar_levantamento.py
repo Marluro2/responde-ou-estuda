@@ -22,13 +22,13 @@ DESTINO = Path(__file__).resolve().parent / "levantamento_contexto_e_modelo.html
 PROPOSTAS: dict[str, tuple[str, str, str]] = {
     # ------------------------------------------------ PRICE — Super fácil
     "PRI001": ("decorativo", "Lucas financiou um notebook pelo Sistema PRICE e recebeu o carnê com as 12 parcelas. Ao comparar os valores do carnê, o que ele observa?", "Alternativas mantidas."),
-    "PRI002": ("sem", "No contrato do notebook de Lucas, a parcela mensal de R$ 643,01 aparece indicada como PMT. No modelo matemático do Sistema PRICE, o que PMT representa?", "Alternativas mantidas."),
+    "PRI002": ("sem", "No contrato do smartphone de Lucas, a parcela mensal de R$ 409,21 aparece indicada como PMT. No modelo matemático do Sistema PRICE, o que PMT representa?", "Alternativas mantidas."),
     "PRI003": ("sem", "Júlia financiou um carro pelo Sistema PRICE e acompanha o extrato: a parcela é sempre a mesma. O que acontece com a parte de juros de cada parcela ao longo dos meses?", "Alternativas mantidas."),
     "PRI004": ("sem", "No extrato do financiamento da geladeira de Ana (Sistema PRICE), o que acontece, mês a mês, com a parte da parcela que reduz a dívida (a amortização)?", "Alternativas mantidas."),
     "PRI005": ("sem", "Pedro paga R$ 500,00 por mês pela lavadora, financiada pelo Sistema PRICE. Esse valor mensal é formado por quais duas partes?", "Alternativas mantidas."),
     "PRI006": ("sem", "Para saber quanto valem hoje as parcelas de sua TV, Carla calculou PMT/(1+i), PMT/(1+i)², PMT/(1+i)³, … Que tipo de sequência ela obteve?", "Alternativas mantidas."),
     "PRI007": ("sem", "Carla quer trazer para a data da compra o valor da 1ª parcela da bicicleta, que vence em um mês. Qual é o primeiro termo da sequência dos valores presentes?", "Alternativas mantidas."),
-    "PRI008": ("sem", "Cada parcela da bicicleta de Carla vence um mês depois da anterior. Por qual número se multiplica um valor presente para obter o seguinte (a razão da PG)?", "Alternativas mantidas."),
+    "PRI008": ("sem", "Cada parcela da moto de Carla vence um mês depois da anterior. Por qual número se multiplica um valor presente para obter o seguinte (a razão da PG)?", "Alternativas mantidas."),
     "PRI009": ("sem", "Bruno financiou um console. No dia da compra, a soma dos valores presentes de todas as parcelas deve ser igual a quê?", "Alternativas mantidas."),
     "PRI010": ("sem", "A primeira parcela da câmera de Júlia, de valor PMT, vence daqui a um mês. Com taxa i ao mês, quanto essa parcela vale hoje?", "Alternativas mantidas."),
     "PRI011": ("sem", "Antes de assinar o contrato, Pedro quer calcular a parcela fixa do ar-condicionado financiado pelo Sistema PRICE. Qual modelo matemático ele deve usar?", "Alternativas mantidas."),
@@ -47,13 +47,13 @@ PROPOSTAS: dict[str, tuple[str, str, str]] = {
     "PRI030": ("decorativo", "A loja ofereceu a Carla pagar o micro-ondas em 6 ou em 12 parcelas pelo Sistema PRICE, com a mesma taxa. Ao escolher 12 parcelas, o que geralmente acontece?", "Alternativas mantidas."),
     # ------------------------------------------------ SAC — Super fácil
     "SAC001": ("decorativo", "Madalena financiou sua casa pelo SAC. Ao olhar o extrato, qual parte de cada parcela ela percebe que é sempre igual?", "Alternativas mantidas."),
-    "SAC002": ("sem", "O gerente do banco ofereceu a Madalena o “SAC” para financiar a casa. O que significa essa sigla?", "Alternativas mantidas."),
-    "SAC003": ("sem", "Marcos financiou um carro pelo SAC. Ao receber o carnê, como ele vê os valores das parcelas mês a mês?", "Alternativas mantidas."),
-    "SAC004": ("sem", "Marcos financiou R$ 24.000,00 pelo SAC em 12 parcelas. Qual modelo matemático dá a parte da dívida que ele devolve em cada parcela (a amortização)?", "Alternativas mantidas."),
-    "SAC005": ("sem", "No extrato do SAC de Marcos, os juros foram R$ 240, R$ 220, R$ 200, … Que tipo de sequência eles formam?", "Alternativas mantidas."),
+    "SAC002": ("sem", "O gerente do banco ofereceu a Madalena o “SAC” para financiar o apartamento. O que significa essa sigla?", "Alternativas mantidas."),
+    "SAC003": ("sem", "Pedro financiou um carro pelo SAC. Ao receber o carnê, como ele vê os valores das parcelas mês a mês?", "Alternativas mantidas."),
+    "SAC004": ("sem", "Lucas financiou um notebook de R$ 6.000,00 pelo SAC em 10 parcelas. Qual modelo matemático dá a parte da dívida que ele devolve em cada parcela (a amortização A)?", "Alternativas mantidas."),
+    "SAC005": ("sem", "Ana financiou uma geladeira pelo SAC. No extrato, os juros foram R$ 36,00; R$ 33,00; R$ 30,00; … Que tipo de sequência eles formam?", "Alternativas mantidas."),
     "SAC006": ("sem", "Ana acompanha o saldo devedor do terreno financiado pelo SAC e percebe que ele cai sempre o mesmo valor por mês. Que valor é esse?", "Alternativas mantidas."),
-    "SAC007": ("sem", "As parcelas de Ana diminuem sempre R$ 15,00 por mês. Na PA formada pelas parcelas, como se chama esse valor constante?", "Alternativas mantidas."),
-    "SAC008": ("sem", "As parcelas do SAC de Marcos começam em R$ 2.240,00 e caem R$ 20,00 por mês. Qual modelo matemático permite calcular a parcela de qualquer mês n?", "Alternativas mantidas."),
+    "SAC007": ("sem", "As parcelas da TV de Ana, financiada pelo SAC, diminuem sempre R$ 15,00 por mês. Na PA formada pelas parcelas, como se chama esse valor constante?", "Alternativas mantidas."),
+    "SAC008": ("sem", "As parcelas da lavadora de Carla, financiada pelo SAC, começam em R$ 330,00 e caem R$ 3,00 por mês. Qual modelo matemático permite calcular a parcela de qualquer mês n?", "Alternativas mantidas."),
     "SAC009": ("sem", "Pedro vai financiar um ar-condicionado pelo SAC e quer se preparar para o mês mais pesado. Qual parcela terá o maior valor?", "Alternativas mantidas."),
     "SAC010": ("sem", "Carla anotou as parcelas da bicicleta: R$ 850, R$ 840, R$ 830, … A PA formada é decrescente porque sua razão é:", "Alternativas mantidas."),
     "SAC011": ("sem", "Bruno anotou a amortização de cada mês do console financiado pelo SAC: R$ 800, R$ 800, R$ 800, … Qual é a razão dessa PA?", "Alternativas mantidas."),
@@ -182,7 +182,7 @@ td p {{ margin:4px 0; }} .id {{ font-weight:700; white-space:nowrap; }} .nivel {
 @media (max-width:700px) {{ th, td {{ padding:8px; font-size:.92rem; }} }}
 </style></head><body><main>
 <h1>Levantamento: contexto das questões e a palavra “fórmula”</h1>
-<p class="sub">Responda ou Estuda — proposta para aprovação. Nada foi alterado no jogo ainda.</p>
+<p class="sub">Responda ou Estuda — APLICADO em 29/09/2026 (IDs mantidos: o jogo ainda não tinha sido aplicado com alunos).</p>
 
 <div class="resumo">
   <div><b>{total}</b>questões a reescrever</div>
@@ -195,7 +195,7 @@ td p {{ margin:4px 0; }} .id {{ font-weight:700; white-space:nowrap; }} .nivel {
 
 <p class="nota"><b>Porcentagem e Juros:</b> as 40 questões já partem de uma situação real (produto, empréstimo ou aplicação) e não precisam de reescrita; em Juros só um texto de estudo usa “fórmula”.
 <br><b>Critério das reescritas:</b> situação real com personagem → dado concreto → interpretação ou decisão. O conceito cobrado, a dificuldade e a resposta correta ficam os mesmos (exceto onde indicado). Personagens: Marcos e Madalena (dissertação), Lucas, Ana, Júlia, Pedro, Carla e Bruno.
-<br><b>Pesquisa:</b> sugiro dar novo ID às questões reescritas (ex.: PRI002 → PRI002b) para os relatórios não misturarem versões.</p>
+<br><b>Imagens:</b> cada história cita o mesmo produto da imagem da questão.</p>
 
 <h2>1. Questões: original × proposta</h2>
 <div class="tabela"><table><thead><tr><th>ID</th><th>Original</th><th>Proposta</th></tr></thead>

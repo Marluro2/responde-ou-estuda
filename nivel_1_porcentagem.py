@@ -1023,11 +1023,11 @@ class JogoPorcentagem:
             return (
                 f"Momento de estudo. {estudo['titulo']}. "
                 f"Explicação. {estudo['texto']}. "
-                f"Fórmula. {estudo['formula']}. "
+                f"Modelo matemático. {estudo['formula']}. "
                 f"Exemplo de aplicação. {estudo['exemplo']}. "
                 "Resolução passo a passo. "
                 f"Primeiro, escolha a estratégia. {estudo['texto']}. "
-                f"Segundo, organize a fórmula. {estudo['formula']}. "
+                f"Segundo, monte o modelo matemático. {estudo['formula']}. "
                 f"Terceiro, substitua os valores e calcule. "
                 f"{questao['explicacao']}. "
                 f"Resultado. A alternativa correta é {resposta_correta}."
@@ -1796,7 +1796,7 @@ class JogoPorcentagem:
                     ),
                     self._passo_resolucao(
                         3,
-                        "ORGANIZE A FÓRMULA",
+                        "MONTE O MODELO MATEMÁTICO",
                         estudo["formula"],
                     ),
                     self._passo_resolucao(
@@ -1871,7 +1871,7 @@ class JogoPorcentagem:
                     ),
                     self._passo_resolucao(
                         3,
-                        "ORGANIZE A FÓRMULA",
+                        "MONTE O MODELO MATEMÁTICO",
                         estudo["formula"],
                     ),
                     self._passo_resolucao(

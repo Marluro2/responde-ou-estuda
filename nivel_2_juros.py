@@ -115,7 +115,7 @@ PAGINAS_TEORIA = [
         "narracao": (
             "Parte um de três. Juros simples. Nos juros simples, a taxa incide "
             "sempre sobre o capital inicial e o acréscimo é igual em todos os "
-            "períodos. A fórmula é J igual a C vezes i vezes t. O montante é M "
+            "períodos. O modelo matemático é J igual a C vezes i vezes t. O montante é M "
             "igual a C mais J. Exemplo: capital de dois mil e trezentos reais, "
             "taxa de um vírgula oito por cento ao mês e prazo de sete meses. Os "
             "juros são duzentos e oitenta e nove reais e oitenta centavos, e o "
@@ -149,7 +149,7 @@ PAGINAS_TEORIA = [
         ),
         "narracao": (
             "Parte dois de três. Juros compostos. O rendimento de cada período "
-            "é incorporado ao saldo e também produz juros. A fórmula é M igual a "
+            "é incorporado ao saldo e também produz juros. O modelo matemático é M igual a "
             "C vezes, abre parênteses, um mais i, fecha parênteses, elevado a t. "
             "Exemplo: capital de mil setecentos e cinquenta reais, taxa de um "
             "vírgula três por cento ao mês e prazo de nove meses. O montante é "
@@ -159,7 +159,7 @@ PAGINAS_TEORIA = [
     },
     {
         "titulo": "COMPARAÇÃO E APLICAÇÕES",
-        "subtitulo": "Identifique o regime antes de escolher a fórmula",
+        "subtitulo": "Identifique o regime antes de escolher o modelo matemático",
         "imagem": "financiamento",
         "definicao": (
             "Juros simples crescem de forma linear e usam sempre o capital inicial. "
@@ -1019,7 +1019,7 @@ class JogoJuros:
                                         ft.Text(
                                             (
                                                 "A revisão apresenta conceitos, "
-                                                "fórmulas e aplicações em empréstimos, "
+                                                "modelos matemáticos e aplicações em empréstimos, "
                                                 "financiamentos e investimentos."
                                             ),
                                             color=tema["suave"],
@@ -1687,7 +1687,7 @@ class JogoJuros:
             return (
                 "Módulo de juros simples e juros compostos. "
                 "Você deseja rever o assunto ou ir direto para as questões? "
-                "Na revisão serão apresentados conceitos, fórmulas e exemplos "
+                "Na revisão serão apresentados conceitos, modelos matemáticos e exemplos "
                 "de empréstimos, financiamentos e investimentos."
             )
         if self.tela_atual == "teoria":
@@ -1708,11 +1708,11 @@ class JogoJuros:
             return (
                 f"Momento de estudo. {estudo['titulo']}. "
                 f"Explicação. {estudo['texto']}. "
-                f"Fórmula. {estudo['formula']}. "
+                f"Modelo matemático. {estudo['formula']}. "
                 f"Exemplo de aplicação. {estudo['exemplo']}. "
                 "Resolução passo a passo. "
                 f"Primeiro, escolha a estratégia. {estudo['texto']}. "
-                f"Segundo, organize a fórmula. {estudo['formula']}. "
+                f"Segundo, monte o modelo matemático. {estudo['formula']}. "
                 f"Terceiro, substitua os valores e calcule. "
                 f"{questao['explicacao']}. "
                 f"Resultado. A alternativa correta é {resposta_correta}."
@@ -2486,7 +2486,7 @@ class JogoJuros:
                     ),
                     self._passo_resolucao(
                         3,
-                        "ORGANIZE A FÓRMULA",
+                        "MONTE O MODELO MATEMÁTICO",
                         estudo["formula"],
                     ),
                     self._passo_resolucao(
@@ -2563,7 +2563,7 @@ class JogoJuros:
                     ),
                     self._passo_resolucao(
                         3,
-                        "ORGANIZE A FÓRMULA",
+                        "MONTE O MODELO MATEMÁTICO",
                         estudo["formula"],
                     ),
                     self._passo_resolucao(

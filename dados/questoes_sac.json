@@ -9,7 +9,7 @@
       "produto": "Nível Super fácil: Sistema SAC",
       "nivel": "Super fácil",
       "imagem": "imagens/sac/casa_propria_chave.webp",
-      "enunciado": "No financiamento de uma casa pelo Sistema SAC, o que permanece **constante** em todas as prestações?",
+      "enunciado": "Madalena financiou sua casa pelo SAC. Ao olhar o extrato, qual parte de cada parcela ela percebe que é sempre igual?",
       "alternativas": [
         "O valor da prestação.",
         "Os juros do mês.",
@@ -49,7 +49,7 @@
       "produto": "Nível Super fácil: Sistema SAC",
       "nivel": "Super fácil",
       "imagem": "imagens/sac/apartamento_edificio.webp",
-      "enunciado": "Na sigla **SAC**, usada em financiamentos, o que significa cada letra?",
+      "enunciado": "O gerente do banco ofereceu a Madalena o “SAC” para financiar o apartamento. O que significa essa sigla?",
       "alternativas": [
         "Sistema de Amortização Constante.",
         "Sistema de Aplicação Composta.",
@@ -77,7 +77,7 @@
       "produto": "Nível Super fácil: Sistema SAC",
       "nivel": "Super fácil",
       "imagem": "imagens/price/automovel_corolla.webp",
-      "enunciado": "Como se comportam as prestações de um financiamento pelo Sistema SAC?",
+      "enunciado": "Pedro financiou um carro pelo SAC. Ao receber o carnê, como ele vê os valores das parcelas mês a mês?",
       "alternativas": [
         "São todas iguais.",
         "Aumentam sempre do mesmo valor: PA crescente.",
@@ -117,7 +117,7 @@
       "produto": "Nível Super fácil: Sistema SAC",
       "nivel": "Super fácil",
       "imagem": "imagens/price/notebook_system76.webp",
-      "enunciado": "No SAC, como se calcula o valor da amortização $A$ de uma dívida $SD$ paga em $n$ prestações?",
+      "enunciado": "Lucas financiou um notebook de R\\$ 6.000,00 pelo SAC em 10 parcelas. Qual modelo matemático dá a parte da dívida que ele devolve em cada parcela (a amortização $A$)?",
       "alternativas": [
         "$A=SD\\cdot i$",
         "$A=SD\\cdot n$",
@@ -145,7 +145,7 @@
       "produto": "Nível Super fácil: Sistema SAC",
       "nivel": "Super fácil",
       "imagem": "imagens/price/geladeira_liebherr.webp",
-      "enunciado": "No SAC, os juros pagos em cada mês formam que tipo de sequência?",
+      "enunciado": "Ana financiou uma geladeira pelo SAC. No extrato, os juros foram R\\$ 36,00; R\\$ 33,00; R\\$ 30,00; … Que tipo de sequência eles formam?",
       "alternativas": [
         "Uma PG crescente.",
         "Uma PA decrescente.",
@@ -185,7 +185,7 @@
       "produto": "Nível Super fácil: Sistema SAC",
       "nivel": "Super fácil",
       "imagem": "imagens/sac/terreno_loteamento.webp",
-      "enunciado": "No SAC, o saldo devedor diminui todo mês **sempre do mesmo valor**. Que valor é esse?",
+      "enunciado": "Ana acompanha o saldo devedor do terreno financiado pelo SAC e percebe que ele cai sempre o mesmo valor por mês. Que valor é esse?",
       "alternativas": [
         "A amortização.",
         "A prestação do mês.",
@@ -225,7 +225,7 @@
       "produto": "Nível Super fácil: Sistema SAC",
       "nivel": "Super fácil",
       "imagem": "imagens/price/televisor_samsung.webp",
-      "enunciado": "Em uma progressão aritmética (PA), como se chama a diferença constante entre um termo e o anterior?",
+      "enunciado": "As parcelas da TV de Ana, financiada pelo SAC, diminuem sempre R\\$ 15,00 por mês. Na PA formada pelas parcelas, como se chama esse valor constante?",
       "alternativas": [
         "Quociente.",
         "Termo geral.",
@@ -253,7 +253,7 @@
       "produto": "Nível Super fácil: Sistema SAC",
       "nivel": "Super fácil",
       "imagem": "imagens/price/lavadora_sharp.webp",
-      "enunciado": "Qual é a fórmula do **termo geral** de uma progressão aritmética?",
+      "enunciado": "As parcelas da lavadora de Carla, financiada pelo SAC, começam em R\\$ 330,00 e caem R\\$ 3,00 por mês. Qual modelo matemático permite calcular a parcela de qualquer mês $n$?",
       "alternativas": [
         "$a_n=a_1\\cdot q^{n-1}$",
         "$a_n=a_1+(n-1)\\cdot r$",
@@ -281,7 +281,7 @@
       "produto": "Nível Super fácil: Sistema SAC",
       "nivel": "Super fácil",
       "imagem": "imagens/price/ar_condicionado_panasonic.webp",
-      "enunciado": "No Sistema SAC, qual prestação tem o **maior** valor?",
+      "enunciado": "Pedro vai financiar um ar-condicionado pelo SAC e quer se preparar para o mês mais pesado. Qual parcela terá o maior valor?",
       "alternativas": [
         "A última.",
         "A do meio do contrato.",
@@ -309,7 +309,7 @@
       "produto": "Nível Super fácil: Sistema SAC",
       "nivel": "Super fácil",
       "imagem": "imagens/price/bicicleta_mountain_bike.webp",
-      "enunciado": "Uma progressão aritmética é **decrescente** quando sua razão $r$ é:",
+      "enunciado": "Carla anotou as parcelas da bicicleta, financiada pelo SAC: R\\$ 850,00; R\\$ 840,00; R\\$ 830,00; … A PA formada é decrescente porque sua razão $r$ é:",
       "alternativas": [
         "Positiva (maior que zero).",
         "Igual a zero.",
@@ -337,7 +337,7 @@
       "produto": "Nível Super fácil: Sistema SAC",
       "nivel": "Super fácil",
       "imagem": "imagens/price/console_playstation5.webp",
-      "enunciado": "No SAC, a sequência das amortizações $(A, A, A, \\ldots, A)$ é uma PA. Qual é a sua razão?",
+      "enunciado": "Bruno anotou a amortização de cada mês do console financiado pelo SAC: R\\$ 800,00; R\\$ 800,00; R\\$ 800,00; … Qual é a razão dessa PA?",
       "alternativas": [
         "$r=A$",
         "$r=0$",
@@ -377,7 +377,7 @@
       "produto": "Nível Super fácil: Sistema SAC",
       "nivel": "Super fácil",
       "imagem": "imagens/price/camera_canon_eos5d.webp",
-      "enunciado": "No SAC, os juros de cada mês são calculados sobre qual valor?",
+      "enunciado": "No 5º mês do financiamento da câmera de Júlia pelo SAC, sobre qual valor são calculados os juros?",
       "alternativas": [
         "Sobre o valor da prestação.",
         "Sobre a amortização.",
@@ -405,7 +405,7 @@
       "produto": "Nível Super fácil: Sistema SAC",
       "nivel": "Super fácil",
       "imagem": "imagens/price/smartphone_iphone_xr.webp",
-      "enunciado": "Por que as prestações do SAC diminuem com o tempo?",
+      "enunciado": "Lucas percebeu que as parcelas do smartphone, financiado pelo SAC, ficam menores a cada mês. Por que isso acontece?",
       "alternativas": [
         "Porque a amortização é fixa e os juros diminuem.",
         "Porque a taxa de juros cai a cada mês.",
@@ -433,7 +433,7 @@
       "produto": "Nível Super fácil: Sistema SAC",
       "nivel": "Super fácil",
       "imagem": "imagens/sac/apartamento_edificio.webp",
-      "enunciado": "Segundo a literatura de Matemática Financeira, em que tipo de financiamento o SAC é muito utilizado no Brasil?",
+      "enunciado": "Ao pesquisar financiamentos, Madalena viu que o SAC aparece com muita frequência em um tipo de crédito no Brasil. Qual?",
       "alternativas": [
         "No rotativo do cartão de crédito.",
         "No cheque especial.",
@@ -461,7 +461,7 @@
       "produto": "Nível Super fácil: Sistema SAC",
       "nivel": "Super fácil",
       "imagem": "imagens/sac/casas_bairro.webp",
-      "enunciado": "Depois do pagamento da última prestação de um financiamento SAC, qual é o saldo devedor?",
+      "enunciado": "Madalena pagou a última parcela da casa financiada pelo SAC. Qual é, agora, o saldo devedor?",
       "alternativas": [
         "Igual à amortização.",
         "Igual à última prestação.",
@@ -829,7 +829,7 @@
       "produto": "Nível Fácil: Sistema SAC",
       "nivel": "Fácil",
       "imagem": "imagens/price/geladeira_liebherr.webp",
-      "enunciado": "Uma geladeira foi financiada pelo SAC em 36 prestações mensais. A sequência das prestações, da 1ª à última, é uma PA com quantos termos?",
+      "enunciado": "Ana financiou a geladeira em 36 parcelas pelo SAC e anotou todas numa tabela, da 1ª à última. Quantos termos tem a PA das parcelas?",
       "alternativas": [
         "35 termos.",
         "37 termos.",
@@ -925,7 +925,7 @@
       "produto": "Nível Fácil: Sistema SAC",
       "nivel": "Fácil",
       "imagem": "imagens/price/lavadora_sharp.webp",
-      "enunciado": "Qual das sequências abaixo pode representar as prestações de um financiamento pelo **SAC**?",
+      "enunciado": "Três amigos anotaram as primeiras parcelas de seus financiamentos. Qual das sequências pode ser a de quem escolheu o SAC?",
       "alternativas": [
         "1.500; 1.500; 1.500; 1.500",
         "1.500; 1.520; 1.540; 1.560",
@@ -1288,7 +1288,7 @@
       "correta": 2,
       "explicacao": "$$A=1{.}000\\qquad P_7=1{.}000\\cdot[1+0{,}02\\cdot(18-7+1)]=1{.}000\\cdot1{,}24=1{.}240.$$",
       "estudo": {
-        "titulo": "Fórmula da dissertação",
+        "titulo": "Modelo da dissertação (Rodrigues, 2013)",
         "texto": "A prestação $k$ é a amortização mais os juros sobre $(n-k+1)$ amortizações.",
         "formula": "$$P_k=A\\cdot[1+i\\cdot(n-k+1)]$$",
         "exemplo": "$A=2.000$, $i=1\\%$, $n=12$, $k=1$: $P_1=2.000\\cdot1{,}12=2.240$."
@@ -1657,7 +1657,7 @@
       "produto": "Nível Difícil: Sistema SAC",
       "nivel": "Difícil",
       "imagem": "imagens/juros/emprestimo_e_credito.webp",
-      "enunciado": "Qual encadeamento demonstra corretamente a fórmula $J_k=i\\cdot A\\cdot(n-k+1)$ a partir do termo geral da PA dos juros?",
+      "enunciado": "Bruno, microempreendedor, tomou crédito pelo SAC e quer entender de onde vêm os juros de cada mês, $J_k=i\\cdot A\\cdot(n-k+1)$. Qual raciocínio, a partir da PA dos juros, justifica esse modelo matemático?",
       "alternativas": [
         "$J_k=J_1(1-i)^{k-1}$; $J_k=iA(n-k+1)$. Os juros formariam uma PG.",
         "$J_k=J_1+k(-iA)$; $J_k=iA(n-k)$. A razão foi somada k vezes.",
