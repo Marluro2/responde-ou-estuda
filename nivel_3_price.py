@@ -1952,6 +1952,10 @@ class JogoPrice:
                 or self._rodada_finalizada
             ):
                 return
+            if getattr(self, "_cofrinho_aberto", False):
+                # MODO ECONOMIA: o tempo da questão pausa enquanto o jogador
+                # investe no cofrinho durante a sua vez.
+                continue
             self.tempo_restante -= 1
             self._atualizar_cronometro_visual()
 
@@ -3274,6 +3278,7 @@ class JogoPrice:
 
     def _tela_jogada(self) -> ft.Control:
         tema = self.tema
+        investir = et.botao_investir(self, tema)
         return ft.Column(
             controls=[
                 self._placar(compacto=True),
@@ -3300,7 +3305,7 @@ class JogoPrice:
                                         # ALTURA DO BOTÃO RESPONDER: altere
                                         # 46 para aumentar ou diminuir.
                                         on_click=self._escolher_responder,
-                                        col={"xs": 12, "sm": 6},
+                                        col={"xs": 12, "sm": 4 if investir else 6},
                                     ),
                                     ft.Button(
                                         content="ESTUDAR",
@@ -3311,8 +3316,9 @@ class JogoPrice:
                                         # ALTURA DO BOTÃO ESTUDAR: altere
                                         # 46 para aumentar ou diminuir.
                                         on_click=self._escolher_estudar,
-                                        col={"xs": 12, "sm": 6},
+                                        col={"xs": 12, "sm": 4 if investir else 6},
                                     ),
+                                        *investir,
                                 ],
                                 columns=12,
                                 spacing=10,

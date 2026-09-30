@@ -309,6 +309,10 @@ LIGADO = cada jogador passa a ter:
 • BÔNUS de R$ 200,00 após 10 minutos de jogo E 5 questões respondidas ou
   estudadas (uma vez por sessão e jogador).
 • 1 JOGADOR: a quantidade de jogadores agora vai de 1 a 4 (modo individual).
+• INVESTIR (COFRINHO): botão verde ao lado de RESPONDER e ESTUDAR, na vez do
+  jogador; o cronômetro da questão pausa enquanto o cofrinho está aberto.
+• RANKING: mostra o saldo das questões e o PATRIMÔNIO (carteira + cofrinho);
+  a planilha ranking.xlsx tem a coluna Patrimônio (R$).
 
 Para a pesquisa: respostas.csv tem as colunas modo_economia e ajudas; cada
 movimento (aplicação, rendimento, resgate, ajuda, juros, bônus) fica em

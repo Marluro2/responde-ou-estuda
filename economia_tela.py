@@ -292,6 +292,7 @@ def abrir_cofrinho(jogo: Any, jogador: dict[str, Any], tema: dict[str, str]) -> 
 
     _JANELAS_ABERTAS.append(redesenhar)
     jogo._janela_cofrinho = redesenhar
+    jogo._cofrinho_aberto = True  # pausa o cronômetro da questão
     montar()
     page.show_dialog(
         ft.AlertDialog(
@@ -308,6 +309,7 @@ def _fechar(jogo: Any) -> None:
     redesenhar = getattr(jogo, "_janela_cofrinho", None)
     if redesenhar in _JANELAS_ABERTAS:
         _JANELAS_ABERTAS.remove(redesenhar)
+    jogo._cofrinho_aberto = False
     jogo.page.pop_dialog()
     atualizar_textos()
     ao_fechar = getattr(jogo, "_ao_fechar_cofrinho", None)
@@ -555,3 +557,22 @@ def verificar_bonus(estado: Any, meses_na_sessao: int) -> list[str]:
 def falta_para_bonus(jogador: dict[str, Any]) -> int:
     """Questões que ainda faltam para o bônus nesta sessão (0 = já cumpriu)."""
     return max(0, eco.BONUS_QUESTOES - _QUESTOES_NA_SESSAO.get(str(jogador.get("id", "")), 0))
+
+
+def botao_investir(jogo: Any, tema: dict[str, str], *, altura: float = 46) -> list[ft.Control]:
+    """Botão INVESTIR (cofrinho do jogador da vez) ao lado de RESPONDER/ESTUDAR."""
+    if not eco.ativo(jogo.estado):
+        return []
+    jogador = jogo.jogador_atual
+    return [
+        ft.Button(
+            content="INVESTIR (COFRINHO)",
+            icon=ft.Icons.SAVINGS,
+            color=tema["fundo_1"],
+            bgcolor=tema["positivo"],
+            height=altura,
+            tooltip="Aplicar ou resgatar no cofrinho sem sair da partida (1% por minuto de jogo)",
+            on_click=lambda _e: abrir_cofrinho(jogo, jogador, tema),
+            col={"xs": 12, "sm": 4},
+        )
+    ]

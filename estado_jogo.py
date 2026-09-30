@@ -8,6 +8,8 @@ Este módulo usa somente a biblioteca padrão do Python. O arquivo
 from __future__ import annotations
 
 import json
+
+import economia
 import os
 import uuid
 import zipfile
@@ -176,7 +178,6 @@ class EstadoJogo:
         self.dados["acessibilidade"] = acessibilidade
 
         # MODO ECONOMIA (cofrinho, ajudas, juros e bônus): ver economia.py.
-        import economia
         economia.normalizar(self.dados)
 
     @property
@@ -345,6 +346,9 @@ class EstadoJogo:
             ("Posição", "texto"),
             ("Jogador", "texto"),
             ("Saldo acumulado (R$)", "numero"),
+            # PATRIMÔNIO = carteira + cofrinho (Modo economia). Sem o modo,
+            # é igual ao saldo acumulado.
+            ("Patrimônio (R$)", "numero"),
             ("Acertos", "numero"),
             ("Erros", "numero"),
             ("Estudos", "numero"),
@@ -358,6 +362,7 @@ class EstadoJogo:
                     posicao,
                     jogador["nome"],
                     float(jogador["saldo"]),
+                    economia.patrimonio(jogador),
                     int(jogador["acertos"]),
                     int(jogador["erros"]),
                     int(jogador["estudos"]),
@@ -391,7 +396,7 @@ class EstadoJogo:
         for numero_linha, valores in enumerate(linhas, start=2):
             conteudo = []
             for numero_coluna, valor in enumerate(valores, start=1):
-                estilo = 2 if numero_coluna == 3 else 0
+                estilo = 2 if numero_coluna in (3, 4) else 0
                 conteudo.append(
                     celula(
                         f"{letra_coluna(numero_coluna)}{numero_linha}",
@@ -409,11 +414,12 @@ class EstadoJogo:
     <col min="1" max="1" width="11" customWidth="1"/>
     <col min="2" max="2" width="28" customWidth="1"/>
     <col min="3" max="3" width="24" customWidth="1"/>
-    <col min="4" max="7" width="13" customWidth="1"/>
-    <col min="8" max="8" width="28" customWidth="1"/>
+    <col min="4" max="4" width="20" customWidth="1"/>
+    <col min="5" max="8" width="13" customWidth="1"/>
+    <col min="9" max="9" width="28" customWidth="1"/>
   </cols>
   <sheetData>{"".join(linhas_xml)}</sheetData>
-  <autoFilter ref="A1:H{fim_filtro}"/>
+  <autoFilter ref="A1:I{fim_filtro}"/>
 </worksheet>"""
 
         estilos = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>

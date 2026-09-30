@@ -2725,6 +2725,7 @@ class AplicativoRespondaOuEstuda:
         linhas: list[ft.Control] = []
         for posicao, jogador in enumerate(classificacao, start=1):
             saldo = float(jogador["saldo"])
+            patrimonio = economia_tela.eco.patrimonio(jogador)
             imagem = str(jogador.get("imagem", ""))
             avatar: ft.Control
             if imagem:
@@ -2769,16 +2770,42 @@ class AplicativoRespondaOuEstuda:
                                 weight=ft.FontWeight.BOLD,
                                 col={"xs": 7, "sm": 3},
                             ),
-                            ft.Text(
-                                formatar_reais(saldo),
-                                color=(
-                                    CORES["verde"]
-                                    if saldo >= 0
-                                    else CORES["vermelho"]
-                                ),
-                                size=18,
-                                weight=ft.FontWeight.BOLD,
-                                col={"xs": 6, "sm": 3},
+                            ft.Column(
+                                controls=[
+                                    ft.Text("SALDO DAS QUESTÕES", color=CORES["texto_suave"], size=9,
+                                            weight=ft.FontWeight.BOLD),
+                                    ft.Text(
+                                        formatar_reais(saldo),
+                                        color=(
+                                            CORES["verde"]
+                                            if saldo >= 0
+                                            else CORES["vermelho"]
+                                        ),
+                                        size=18,
+                                        weight=ft.FontWeight.BOLD,
+                                    ),
+                                ],
+                                spacing=0,
+                                col={"xs": 6, "sm": 2},
+                            ),
+                            # PATRIMÔNIO = carteira + cofrinho (Modo economia).
+                            ft.Column(
+                                controls=[
+                                    ft.Text("PATRIMÔNIO", color=CORES["texto_suave"], size=9,
+                                            weight=ft.FontWeight.BOLD),
+                                    ft.Text(
+                                        formatar_reais(patrimonio),
+                                        color=(
+                                            CORES["amarelo"]
+                                            if patrimonio >= 0
+                                            else CORES["vermelho"]
+                                        ),
+                                        size=18,
+                                        weight=ft.FontWeight.BOLD,
+                                    ),
+                                ],
+                                spacing=0,
+                                col={"xs": 6, "sm": 2},
                             ),
                             ft.Text(
                                 (
@@ -2788,7 +2815,7 @@ class AplicativoRespondaOuEstuda:
                                 ),
                                 color=CORES["texto_suave"],
                                 size=13,
-                                col={"xs": 6, "sm": 4},
+                                col={"xs": 12, "sm": 3},
                             ),
                         ],
                         columns=12,
