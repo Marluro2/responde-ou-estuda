@@ -175,6 +175,10 @@ class EstadoJogo:
         acessibilidade["efeitos"] = bool(acessibilidade["efeitos"])
         self.dados["acessibilidade"] = acessibilidade
 
+        # MODO ECONOMIA (cofrinho, ajudas, juros e bônus): ver economia.py.
+        import economia
+        economia.normalizar(self.dados)
+
     @property
     def quantidade_jogadores(self) -> int:
         return int(self.dados["quantidade_jogadores"])
@@ -229,6 +233,15 @@ class EstadoJogo:
         """Ex.: definir_acessibilidade(tempo=90) ou (sem_animacoes=True)."""
         self.dados["acessibilidade"].update(valores)
         self._normalizar()
+        self.salvar()
+
+    @property
+    def economia_ativa(self) -> bool:
+        return bool(self.dados["economia"]["ativo"])
+
+    def definir_economia(self, ativa: bool) -> None:
+        """Liga/desliga o Modo economia (desligado = jogo da pesquisa)."""
+        self.dados["economia"]["ativo"] = bool(ativa)
         self.salvar()
 
     def trilhas_disponiveis(self) -> dict[str, str]:

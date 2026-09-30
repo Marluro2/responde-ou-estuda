@@ -307,6 +307,7 @@ from estado_jogo import (
     formatar_reais,
 )
 from modo_admin import ADMIN_ATIVO, criar_estado_admin
+import economia_tela
 import recursos_jogo
 
 # COMO USAR AS ANOTAÇÕES DE PERSONALIZAÇÃO:
@@ -701,6 +702,8 @@ class AplicativoRespondaOuEstuda:
         self.modulo_sac: Any = None
         self.tela_sac: ft.Control | None = None
         self.page.add(self.host)
+        # MODO ECONOMIA: 1 minuto de jogo aberto = 1 "mês" (cofrinho e juros).
+        economia_tela.iniciar_relogio(self.page, lambda: self.estado, self._ao_passar_mes)
         self.mostrar_inicio()
 
     def _configurar_pagina(self) -> None:
@@ -1468,6 +1471,32 @@ class AplicativoRespondaOuEstuda:
             ],
         )
 
+    @staticmethod
+    def _tema_economia() -> dict[str, str]:
+        """Cores da tela inicial no formato das telas do Modo economia."""
+        return {
+            "texto": CORES["branco"],
+            "primaria": CORES["ciano"],
+            "destaque": CORES["amarelo"],
+            "positivo": CORES["verde"],
+            "negativo": CORES["vermelho"],
+            "cartao": CORES["azul_cartao"],
+            "cartao_2": CORES["azul_cartao_2"],
+            "fundo_1": CORES["fundo_topo"],
+            "suave": CORES["texto_suave"],
+        }
+
+    def _ao_passar_mes(self, avisos: list[str]) -> None:
+        """Chamado a cada "mês" do Modo economia (avisos de juros e bônus)."""
+        for aviso in avisos:
+            if "teto" in aviso or "bônus" in aviso.lower():
+                self._mostrar_aviso(aviso.upper())
+
+    def _alternar_economia(self, evento: ft.ControlEvent) -> None:
+        """Liga/desliga o Modo economia (cofrinho, ajudas, juros e bônus)."""
+        self.estado.definir_economia(bool(evento.control.value))
+        self._reconstruir_inicio()
+
     def _construir_painel_jogadores(self) -> ft.Control:
         """Cadastro e saldo ficam visíveis na própria tela inicial."""
 
@@ -1623,7 +1652,9 @@ class AplicativoRespondaOuEstuda:
                                     ft.Row(
                                         controls=[
                                             ft.Text(
-                                                "PONTUAÇÃO TOTAL",
+                                                "SALDO DAS QUESTÕES"
+                                                if self.estado.economia_ativa
+                                                else "PONTUAÇÃO TOTAL",
                                                 color=CORES["texto_suave"],
                                                 size=9,
                                                 weight=ft.FontWeight.BOLD,
@@ -1719,12 +1750,34 @@ class AplicativoRespondaOuEstuda:
                             seletor_quantidade,
                             # Para colocar o seletor antes do título, mova esta
                             # linha para antes de ft.Column(...).
+                            # MODO ECONOMIA: cofrinho, ajudas, juros e bônus.
+                            # Desligado = jogo usado nas coletas da pesquisa.
+                            ft.Switch(
+                                label="MODO ECONOMIA",
+                                value=self.estado.economia_ativa,
+                                active_color=CORES["amarelo"],
+                                label_text_style=ft.TextStyle(
+                                    color=CORES["branco"], size=13, weight=ft.FontWeight.BOLD
+                                ),
+                                tooltip=(
+                                    "Liga o cofrinho (1% por minuto de jogo), as ajudas "
+                                    "(R$ 20,00), os juros sobre saldo negativo e o bônus "
+                                    "de participação. Desligado, o jogo é o da pesquisa."
+                                ),
+                                on_change=self._alternar_economia,
+                            ),
                         ],
                         alignment=ft.MainAxisAlignment.START,
                         # START leva os dois blocos à esquerda; END leva à direita.
                         vertical_alignment=ft.CrossAxisAlignment.CENTER,
                         wrap=True,
                         run_spacing=10,
+                    ),
+                    *(
+                        economia_tela.aplicar_no_placar(
+                            self, cartoes, self.estado.jogadores_ativos(), self._tema_economia()
+                        )
+                        or []
                     ),
                     ft.ResponsiveRow(
                         controls=cartoes,

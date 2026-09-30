@@ -33,6 +33,7 @@ from flet_audio import Audio, ReleaseMode
 from estado_jogo import EstadoJogo
 from formatacao_matematica import markdown_matematico, texto_para_narracao
 from modo_admin import ADMIN_ATIVO, barra_admin
+import economia_tela as et
 import recursos_jogo as rj
 
 try:
@@ -1809,7 +1810,7 @@ class JogoSac:
                                     weight=ft.FontWeight.BOLD,
                                 ),
                                 ft.Text(
-                                    "PONTUAÇÃO TOTAL",
+                                    "SALDO DAS QUESTÕES" if self.estado.economia_ativa else "PONTUAÇÃO TOTAL",
                                     color=tema["suave"],
                                     size=8,
                                     weight=ft.FontWeight.BOLD,
@@ -1846,7 +1847,7 @@ class JogoSac:
                             spacing=6,
                         ),
                         ft.Text(
-                            "PONTUAÇÃO TOTAL",
+                            "SALDO DAS QUESTÕES" if self.estado.economia_ativa else "PONTUAÇÃO TOTAL",
                             color=tema["suave"],
                             size=9,
                             weight=ft.FontWeight.BOLD,
@@ -1876,6 +1877,8 @@ class JogoSac:
                     col={"xs": 6, "sm": 3},
                 )
             )
+        # MODO ECONOMIA: carteira e cofrinho ao lado do saldo.
+        et.aplicar_no_placar(self, cartoes, self.jogadores, tema)
         return ft.ResponsiveRow(
             controls=cartoes,
             columns=12,

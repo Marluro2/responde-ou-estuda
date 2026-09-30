@@ -19,3 +19,5 @@ assets/perfis/*
 !assets/perfis/LEIA-ME.txt
 assets/sons_personalizados/*
 !assets/sons_personalizados/LEIA-ME.txt
+# Modo economia: movimentos dos alunos (cofrinho, ajudas, juros, bônus)
+dados/economia*.csv
