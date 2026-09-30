@@ -209,6 +209,18 @@ def abrir_cofrinho(jogo: Any, jogador: dict[str, Any], tema: dict[str, str]) -> 
                 ],
                 spacing=8,
             ),
+            *(
+                [ft.Container(
+                    content=ft.Text(
+                        f"Carteira negativa: cobra-se {eco.TAXA_DIVIDA * 100:.0f}% ao mês de juros "
+                        "(cheque especial), com teto de 100% da dívida. Juros já pagos: "
+                        + reais(float(jogador.get("juros_pagos", 0.0))) + ".",
+                        size=14, color=tema["negativo"], weight=ft.FontWeight.BOLD,
+                    ),
+                    padding=10, border=ft.Border.all(1, tema["negativo"]), border_radius=ft.BorderRadius.all(10),
+                )]
+                if eco.carteira(jogador) < 0 else []
+            ),
             ft.Text(
                 "Rende 1% a cada minuto de jogo aberto (1 minuto = 1 mês), em juros compostos: "
                 "M = C · 1,01ᵗ. Os valores mês a mês formam uma PG de razão 1,01.",
@@ -356,3 +368,160 @@ def iniciar_relogio(page: ft.Page, obter_estado: Callable[[], Any], ao_passar_me
         _PAGINAS_COM_RELOGIO.discard(id(page))
 
     page.run_task(laco)
+
+
+# ----------------------------------------------------------- ajudas (R$ 20,00)
+# Usadas só na tela das alternativas; cada uma uma vez por questão.
+def ajudas_da_questao(jogo: Any) -> set[str]:
+    usadas = getattr(jogo, "_ajudas_usadas", None)
+    if usadas is None:
+        usadas = jogo._ajudas_usadas = {}
+    try:
+        chave = f"{jogo.indice_questao}:{jogo.questao_atual.get('id', '')}"
+    except Exception:
+        return set()
+    return usadas.setdefault(chave, set())
+
+
+def eliminadas(jogo: Any) -> set[int]:
+    """Índices das alternativas eliminadas na questão atual."""
+    atual = getattr(jogo, "_ajuda_eliminadas", None)
+    if not atual:
+        return set()
+    try:
+        chave = f"{jogo.indice_questao}:{jogo.questao_atual.get('id', '')}"
+    except Exception:
+        return set()
+    return set(atual.get(chave, set()))
+
+
+def marcar_eliminadas(jogo: Any, botoes: list[ft.Control]) -> None:
+    """Deixa apagadas (e sem clique) as alternativas eliminadas pela ajuda."""
+    for indice in eliminadas(jogo):
+        if 0 <= indice < len(botoes):
+            botao = botoes[indice]
+            botao.disabled = True
+            botao.opacity = 0.22
+            botao.tooltip = "Alternativa eliminada pela ajuda"
+
+
+def marcadas(jogo: Any, botoes: list[ft.Control]) -> list[ft.Control]:
+    marcar_eliminadas(jogo, botoes)
+    return botoes
+
+
+def barra_ajudas(jogo: Any, tema: dict[str, str]) -> list[ft.Control]:
+    """Botões de ajuda (vazio se o Modo economia estiver desligado)."""
+    if not eco.ativo(jogo.estado) or getattr(jogo, "tela_atual", "") != "pergunta":
+        return []
+    if getattr(jogo, "_destaque_resposta", None) or getattr(jogo, "_rodada_finalizada", False):
+        return []
+    usadas = ajudas_da_questao(jogo)
+    jogador = jogo.jogador_atual
+    sem_saldo = eco.carteira(jogador) < eco.PRECO_AJUDA
+    sem_limite = not getattr(jogo, "tempo_por_questao", 60)
+
+    def botao(tipo: str, rotulo: str, icone: str, extra_bloqueio: bool = False) -> ft.Control:
+        bloqueado = tipo in usadas or sem_saldo or extra_bloqueio
+        return ft.OutlinedButton(
+            content=f"{rotulo} · R$ 20",
+            icon=icone,
+            height=40,
+            disabled=bloqueado,
+            style=ft.ButtonStyle(color=tema["texto"], side=ft.BorderSide(1.2, tema["destaque"])),
+            tooltip=(
+                "Ajuda já usada nesta questão" if tipo in usadas
+                else "Saldo insuficiente na carteira" if sem_saldo
+                else "Sem limite de tempo: esta ajuda não é necessária" if extra_bloqueio
+                else f"{eco.AJUDAS[tipo]} (R$ 20,00 da carteira)"
+            ),
+            on_click=lambda _e, t=tipo: usar_ajuda(jogo, t, tema),
+        )
+
+    return [
+        ft.Row(
+            [
+                ft.Icon(ft.Icons.SUPPORT, color=tema["destaque"], size=20),
+                botao("eliminar", "ELIMINAR 2", ft.Icons.FILTER_2),
+                botao("dica", "DICA", ft.Icons.LIGHTBULB),
+                botao("tempo", "+30 s", ft.Icons.MORE_TIME, extra_bloqueio=sem_limite),
+            ],
+            spacing=8,
+            wrap=True,
+            alignment=ft.MainAxisAlignment.CENTER,
+        )
+    ]
+
+
+def usar_ajuda(jogo: Any, tipo: str, tema: dict[str, str]) -> None:
+    usadas = ajudas_da_questao(jogo)
+    if tipo in usadas:
+        return
+    questao = jogo.questao_atual
+    ok, texto = eco.comprar_ajuda(jogo.estado, jogo.jogador_atual, tipo, str(questao.get("id", "")))
+    if not ok:
+        _aviso(jogo, texto)
+        return
+    usadas.add(tipo)
+    if tipo == "eliminar":
+        import random
+
+        correta = int(questao.get("correta", -1))
+        erradas = [i for i in range(len(questao.get("alternativas", []))) if i != correta]
+        escolhidas = set(random.sample(erradas, min(2, len(erradas))))
+        chave = f"{jogo.indice_questao}:{questao.get('id', '')}"
+        if getattr(jogo, "_ajuda_eliminadas", None) is None:
+            jogo._ajuda_eliminadas = {}
+        jogo._ajuda_eliminadas[chave] = escolhidas
+    elif tipo == "tempo":
+        jogo.tempo_restante = int(getattr(jogo, "tempo_restante", 0)) + 30
+    elif tipo == "dica":
+        _mostrar_dica(jogo, tema)
+    atualizar_textos()
+    jogo._renderizar()
+
+
+def _mostrar_dica(jogo: Any, tema: dict[str, str]) -> None:
+    from formatacao_matematica import markdown_matematico
+
+    estudo = jogo.questao_atual.get("estudo", {})
+    jogo.page.show_dialog(
+        ft.AlertDialog(
+            title=ft.Row([ft.Icon(ft.Icons.LIGHTBULB, color=tema["destaque"]),
+                          ft.Text(f"Dica: {estudo.get('titulo', '')}")], spacing=10),
+            content=ft.Column(
+                [
+                    markdown_matematico(str(estudo.get("texto", "")), cor=tema["texto"], tamanho=17),
+                    ft.Container(
+                        content=markdown_matematico(str(estudo.get("formula", "")), cor=tema["fundo_1"],
+                                                    tamanho=19, alinhamento=ft.MainAxisAlignment.CENTER),
+                        padding=12, bgcolor=tema["destaque"], border_radius=ft.BorderRadius.all(12),
+                    ),
+                ],
+                tight=True, spacing=12, width=620,
+            ),
+            actions=[ft.TextButton(content="VOLTAR À QUESTÃO", on_click=lambda _e: jogo.page.pop_dialog())],
+        )
+    )
+
+
+def _aviso(jogo: Any, texto: str) -> None:
+    avisar = getattr(jogo, "_avisar", None) or getattr(jogo, "_mostrar_aviso", None)
+    if callable(avisar):
+        avisar(texto)
+
+
+def texto_ajudas_para_pesquisa(jogo: Any) -> str:
+    """Ex.: 'eliminar+dica' (vazio se nenhuma ajuda foi usada)."""
+    return "+".join(sorted(ajudas_da_questao(jogo)))
+
+
+# ----------------------------------------------------------- bônus de participação
+# Contagem de questões respondidas/estudadas nesta execução do programa.
+_QUESTOES_NA_SESSAO: dict[str, int] = {}
+_BONUS_CONCEDIDO: set[str] = set()
+
+
+def contar_questao(jogador: dict[str, Any]) -> None:
+    chave = str(jogador.get("id", ""))
+    _QUESTOES_NA_SESSAO[chave] = _QUESTOES_NA_SESSAO.get(chave, 0) + 1

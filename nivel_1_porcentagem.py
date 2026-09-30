@@ -898,7 +898,7 @@ class JogoPorcentagem:
                 self.texto_cronometro.update()
             if self.barra_cronometro is not None:
                 self.barra_cronometro.value = (
-                    self.tempo_restante / (self.tempo_por_questao or TEMPO_POR_QUESTAO)
+                    min(1.0, self.tempo_restante / (self.tempo_por_questao or TEMPO_POR_QUESTAO))
                 )
                 self.barra_cronometro.color = cor
                 self.barra_cronometro.semantics_value = self.tempo_restante
@@ -962,7 +962,7 @@ class JogoPorcentagem:
             ),
         )
         self.barra_cronometro = ft.ProgressBar(
-            value=self.tempo_restante / (self.tempo_por_questao or TEMPO_POR_QUESTAO),
+            value=min(1.0, self.tempo_restante / (self.tempo_por_questao or TEMPO_POR_QUESTAO)),
             bar_height=9,
             color=cor,
             bgcolor=tema["fundo_1"],
@@ -1328,6 +1328,8 @@ class JogoPorcentagem:
                         size=12,
                         text_align=ft.TextAlign.CENTER,
                     ),
+                    # MODO ECONOMIA: ajudas (só na tela das alternativas).
+                    *et.barra_ajudas(self, tema),
                 ],
                 # ESPAÇO VERTICAL DO PAINEL: diminua para aproximar mascote,
                 # timer, áudio e texto; aumente para afastá-los.
@@ -1441,7 +1443,7 @@ class JogoPorcentagem:
                 )
             conteudo.append(
                 ft.ResponsiveRow(
-                    controls=[rj.vibrar_se_acertou(self, i, b) for i, b in enumerate(botoes)],
+                    controls=[rj.vibrar_se_acertou(self, i, b) for i, b in enumerate(et.marcadas(self, botoes))],
                     columns=12,
                     spacing=10,
                     run_spacing=10,

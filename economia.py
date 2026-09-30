@@ -243,8 +243,9 @@ def passar_mes(estado: Any) -> list[str]:
                 _registrar(estado, jogador, "juros_divida", -juros)
                 avisos.append(f"{jogador['nome']}: juros de R$ {juros:.2f}".replace(".", ",")
                               + " sobre a dívida.")
-            elif limite <= 0:
-                avisos.append(f"{jogador['nome']}: juros da dívida chegaram ao teto de 100%.")
+                if float(jogador["juros_ciclo"]) >= principal * TETO_JUROS_DIVIDA - 0.005:
+                    # Avisa uma única vez, no mês em que o teto é atingido.
+                    avisos.append(f"{jogador['nome']}: juros da dívida chegaram ao teto de 100%.")
         else:
             jogador["juros_ciclo"] = 0.0
     estado.salvar()

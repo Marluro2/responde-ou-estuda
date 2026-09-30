@@ -31,6 +31,8 @@ import flet as ft
 from flet.utils.object_model import get_param_count
 from flet_audio import Audio
 
+import economia_tela as et
+
 from estado_jogo import DADOS_DIR
 
 
@@ -569,7 +571,7 @@ def _tecla(jogo: Any, evento: ft.KeyboardEvent) -> None:
                 indice = LETRAS.index(tecla)
             elif tecla.isdigit() and 1 <= int(tecla) <= total:
                 indice = int(tecla) - 1
-            if indice is not None:
+            if indice is not None and indice not in et.eliminadas(jogo):
                 jogo._responder(indice, None)
         elif tela == "feedback" and tecla in {"ENTER", " ", "SPACE"}:
             jogo._proxima_rodada(None)
@@ -806,6 +808,8 @@ CAMPOS_RESPOSTA = [
     "tempo_resposta_s",
     # Condições de acessibilidade em que a resposta foi dada:
     "tempo_limite_s", "sem_animacoes", "tema",
+    # Modo economia: se estava ligado e quais ajudas foram compradas.
+    "modo_economia", "ajudas",
 ]
 
 
@@ -875,7 +879,10 @@ def registrar_resposta(
             "tempo_limite_s": str(limite) if limite else "sem limite",
             "sem_animacoes": "sim" if preferencias_atuais.get("sem_animacoes") else "não",
             "tema": getattr(jogo, "tema_nome", ""),
+            "modo_economia": "sim" if getattr(getattr(jogo, "estado", None), "economia_ativa", False) else "não",
+            "ajudas": et.texto_ajudas_para_pesquisa(jogo),
         }
+        et.contar_questao(jogador)
         _escrever_csv(ARQUIVO_RESPOSTAS, CAMPOS_RESPOSTA, [linha], anexar=True)
         gerar_relatorios()
     except Exception as erro:

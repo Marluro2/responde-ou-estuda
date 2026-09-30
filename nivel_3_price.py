@@ -1977,7 +1977,7 @@ class JogoPrice:
                 self.texto_cronometro.update()
             if self.barra_cronometro is not None:
                 self.barra_cronometro.value = (
-                    self.tempo_restante / (self.tempo_por_questao or TEMPO_POR_QUESTAO)
+                    min(1.0, self.tempo_restante / (self.tempo_por_questao or TEMPO_POR_QUESTAO))
                 )
                 self.barra_cronometro.color = cor
                 self.barra_cronometro.semantics_value = self.tempo_restante
@@ -2040,7 +2040,7 @@ class JogoPrice:
             ),
         )
         self.barra_cronometro = ft.ProgressBar(
-            value=self.tempo_restante / (self.tempo_por_questao or TEMPO_POR_QUESTAO),
+            value=min(1.0, self.tempo_restante / (self.tempo_por_questao or TEMPO_POR_QUESTAO)),
             bar_height=9,
             color=cor,
             bgcolor=tema["fundo_1"],
@@ -2522,17 +2522,20 @@ class JogoPrice:
         a rolagem da página continuam garantindo acesso integral ao conteúdo.
         """
         if mostrar_alternativas:
+            ajudas = et.barra_ajudas(self, self.tema)
             recursos = ft.Container(
                 content=ft.ResponsiveRow(
                     controls=[
                         ft.Container(
                             content=self._controle_cronometro(compacto=True),
-                            col={"xs": 12, "md": 6},
+                            col={"xs": 12, "md": 4 if ajudas else 6},
                         ),
                         ft.Container(
                             content=self._controles_narracao(compacto=True),
-                            col={"xs": 12, "md": 6},
+                            col={"xs": 12, "md": 3 if ajudas else 6},
                         ),
+                        # MODO ECONOMIA: ajudas compradas com a carteira.
+                        *[ft.Container(content=a, col={"xs": 12, "md": 5}) for a in ajudas],
                     ],
                     columns=12,
                     spacing=10,
@@ -3174,7 +3177,7 @@ class JogoPrice:
                         text_align=ft.TextAlign.CENTER,
                     ),
                     ft.ResponsiveRow(
-                        controls=[rj.vibrar_se_acertou(self, i, b) for i, b in enumerate(botoes)],
+                        controls=[rj.vibrar_se_acertou(self, i, b) for i, b in enumerate(et.marcadas(self, botoes))],
                         columns=12,
                         spacing=8,
                         run_spacing=8,
