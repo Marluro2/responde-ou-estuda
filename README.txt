@@ -291,6 +291,30 @@ Arquivos:
 Imagens: fotos de imóveis em assets/imagens/sac (créditos em CREDITOS_IMAGENS.txt)
 e imagens já usadas em assets/imagens/juros e assets/imagens/price.
 
+MODO ECONOMIA (COFRINHO, AJUDAS, JUROS E BÔNUS)
+
+Interruptor MODO ECONOMIA na tela inicial, ao lado da quantidade de jogadores.
+DESLIGADO (padrão) = jogo usado nas coletas da pesquisa, sem nenhuma mudança.
+LIGADO = cada jogador passa a ter:
+
+• SALDO DAS QUESTÕES: só +R$ 100 / −R$ 200 / +R$ 50 (igual à pesquisa).
+• CARTEIRA: saldo das questões + bônus − ajudas − juros ± cofrinho.
+• COFRINHO (ícone de porquinho): rende 1% a cada minuto de jogo ABERTO
+  (1 minuto = 1 mês), em juros compostos. Resgate liberado 5 minutos após a
+  última aplicação. Com o jogo fechado, nada rende nem é cobrado.
+• AJUDAS (R$ 20,00 cada, uma vez por questão, na tela das alternativas):
+  eliminar 2 alternativas erradas, dica (fórmula, sem a resposta) e +30 s.
+• JUROS DA DÍVIDA: carteira negativa paga 8% ao mês (cheque especial), com
+  teto: os juros de uma dívida não passam de 100% dela.
+• BÔNUS de R$ 200,00 após 10 minutos de jogo E 5 questões respondidas ou
+  estudadas (uma vez por sessão e jogador).
+• 1 JOGADOR: a quantidade de jogadores agora vai de 1 a 4 (modo individual).
+
+Para a pesquisa: respostas.csv tem as colunas modo_economia e ajudas; cada
+movimento (aplicação, rendimento, resgate, ajuda, juros, bônus) fica em
+dados/economia.csv. Regras e valores: início de economia.py.
+Teste rápido: py -3.14 ferramentas	estar_economia.py
+
 RANKING
 
 O botão RANKING mostra a classificação dentro do programa. A planilha:

@@ -257,6 +257,13 @@ def abrir_cofrinho(jogo: Any, jogador: dict[str, Any], tema: dict[str, str]) -> 
                 ],
                 spacing=10,
             ),
+            ft.Text(
+                (f"Bônus de participação ({reais(eco.BONUS_VALOR)}): "
+                 + ("já recebido nesta sessão." if str(jogador.get("id", "")) in _BONUS_CONCEDIDO
+                    else f"após {eco.BONUS_MINUTOS} min de jogo e {eco.BONUS_QUESTOES} questões; "
+                    f"faltam {falta_para_bonus(jogador)} questão(ões).")),
+                size=13, color=tema["suave"],
+            ),
             mensagem,
         ]
 
@@ -344,6 +351,7 @@ def iniciar_relogio(page: ft.Page, obter_estado: Callable[[], Any], ao_passar_me
 
     async def laco() -> None:
         acumulado = 0.0
+        meses_na_sessao = 0
         anterior = time.monotonic()
         while not situacao["fechado"]:
             await asyncio.sleep(1)
@@ -360,6 +368,8 @@ def iniciar_relogio(page: ft.Page, obter_estado: Callable[[], Any], ao_passar_me
                 acumulado -= eco.SEGUNDOS_POR_MES
                 try:
                     avisos = eco.passar_mes(estado)
+                    meses_na_sessao += 1
+                    avisos += verificar_bonus(estado, meses_na_sessao)
                     atualizar_textos()
                     if ao_passar_mes:
                         ao_passar_mes(avisos)
@@ -525,3 +535,23 @@ _BONUS_CONCEDIDO: set[str] = set()
 def contar_questao(jogador: dict[str, Any]) -> None:
     chave = str(jogador.get("id", ""))
     _QUESTOES_NA_SESSAO[chave] = _QUESTOES_NA_SESSAO.get(chave, 0) + 1
+
+
+def verificar_bonus(estado: Any, meses_na_sessao: int) -> list[str]:
+    """Concede o bônus a quem tem 10 min de jogo E 5 questões nesta sessão."""
+    avisos: list[str] = []
+    if meses_na_sessao < eco.BONUS_MINUTOS:
+        return avisos
+    for jogador in estado.jogadores_ativos():
+        chave = str(jogador.get("id", ""))
+        if chave in _BONUS_CONCEDIDO or _QUESTOES_NA_SESSAO.get(chave, 0) < eco.BONUS_QUESTOES:
+            continue
+        _BONUS_CONCEDIDO.add(chave)
+        eco.conceder_bonus(estado, jogador)
+        avisos.append(f"Bônus de participação: + {reais(eco.BONUS_VALOR)} para {jogador.get('nome', '')}!")
+    return avisos
+
+
+def falta_para_bonus(jogador: dict[str, Any]) -> int:
+    """Questões que ainda faltam para o bônus nesta sessão (0 = já cumpriu)."""
+    return max(0, eco.BONUS_QUESTOES - _QUESTOES_NA_SESSAO.get(str(jogador.get("id", "")), 0))

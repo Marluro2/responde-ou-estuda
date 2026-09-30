@@ -124,7 +124,7 @@ class EstadoJogo:
             quantidade = int(quantidade)
         except (TypeError, ValueError):
             quantidade = 2
-        self.dados["quantidade_jogadores"] = min(4, max(2, quantidade))
+        self.dados["quantidade_jogadores"] = min(4, max(1, quantidade))
 
         jogadores = self.dados.get("jogadores")
         if not isinstance(jogadores, list):
@@ -207,7 +207,7 @@ class EstadoJogo:
         return True, ""
 
     def definir_quantidade(self, quantidade: int) -> None:
-        self.dados["quantidade_jogadores"] = min(4, max(2, int(quantidade)))
+        self.dados["quantidade_jogadores"] = min(4, max(1, int(quantidade)))
         self.salvar()
 
     def definir_nome(self, indice: int, nome: str) -> None:

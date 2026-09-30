@@ -1507,8 +1507,12 @@ class AplicativoRespondaOuEstuda:
         seletor_quantidade = ft.Dropdown(
             value=str(self.estado.quantidade_jogadores),
             options=[
-                ft.DropdownOption(key=str(numero), text=f"{numero} jogadores")
-                for numero in range(2, 5)
+                # 1 = modo individual (útil com o Modo economia ligado).
+                ft.DropdownOption(
+                    key=str(numero),
+                    text="1 jogador" if numero == 1 else f"{numero} jogadores",
+                )
+                for numero in range(1, 5)
             ],
             label="Quantidade de jogadores",
             leading_icon=ft.Icons.GROUPS,

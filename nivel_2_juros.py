@@ -779,8 +779,8 @@ class JogoJuros:
         seletor_quantidade = ft.Dropdown(
             value=str(self.quantidade_jogadores),
             options=[
-                ft.DropdownOption(key=str(numero), text=f"{numero} jogadores")
-                for numero in range(2, 5)
+                ft.DropdownOption(key=str(numero), text="1 jogador" if numero == 1 else f"{numero} jogadores")
+                for numero in range(1, 5)
             ],
             label="Quantidade de jogadores",
             leading_icon=ft.Icons.GROUPS,
