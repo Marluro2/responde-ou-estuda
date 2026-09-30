@@ -87,6 +87,7 @@ EFEITOS = {
     "tique": "sons/efeitos/tique.wav",
     "conquista": "sons/efeitos/conquista.wav",
     "clique": "sons/efeitos/clique.wav",
+    "moeda": "sons/efeitos/moeda.wav",
 }
 
 

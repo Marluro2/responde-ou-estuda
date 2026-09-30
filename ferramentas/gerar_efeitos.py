@@ -31,13 +31,15 @@ EFEITOS = {
     "erro.wav": [(233.0, 0.16, "grave"), (174.6, 0.34, "grave")],
     # Clique curto de relógio (últimos 10 segundos).
     "tique.wav": [(1800.0, 0.035, "clique")],
+    # Moeda caindo no cofrinho (rendimento do Modo economia).
+    "moeda.wav": [(1975.5, 0.06, "brilhante"), (2637.0, 0.22, "brilhante")],
     # Pequena fanfarra para o pódio.
     "conquista.wav": [("G4", 0.12, "brilhante"), ("C5", 0.12, "brilhante"),
                       ("E5", 0.12, "brilhante"), ("G5", 0.12, "brilhante"),
                       ("E5", 0.10, "brilhante"), ("G5", 0.42, "brilhante")],
 }
 
-VOLUMES = {"acerto.wav": 0.42, "erro.wav": 0.40, "tique.wav": 0.30, "conquista.wav": 0.40}
+VOLUMES = {"acerto.wav": 0.42, "erro.wav": 0.40, "tique.wav": 0.30, "conquista.wav": 0.40, "moeda.wav": 0.30}
 
 # ACERTO: duração e volume dos aplausos que acompanham a fanfarra.
 DURACAO_APLAUSOS = 2.2

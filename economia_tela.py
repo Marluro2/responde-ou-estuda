@@ -31,12 +31,18 @@ _VIVOS: list[tuple[ft.Text, dict[str, Any], str, dict[str, str]]] = []
 
 
 def _valor(jogador: dict[str, Any], tipo: str) -> float:
-    return eco.carteira(jogador) if tipo == "carteira" else float(jogador.get("cofrinho", 0.0))
+    if tipo == "carteira":
+        return eco.carteira(jogador)
+    if tipo == "rendimento":
+        return _valor_rendimento(jogador)
+    return float(jogador.get("cofrinho", 0.0))
 
 
 def _cor(valor: float, tema: dict[str, str], tipo: str) -> str:
     if tipo == "cofrinho":
         return tema["destaque"]
+    if tipo == "rendimento":
+        return tema["positivo"]
     return tema["positivo"] if valor >= 0 else tema["negativo"]
 
 
@@ -373,6 +379,7 @@ def iniciar_relogio(page: ft.Page, obter_estado: Callable[[], Any], ao_passar_me
                     meses_na_sessao += 1
                     avisos += verificar_bonus(estado, meses_na_sessao)
                     atualizar_textos()
+                    animar_rendimentos()
                     if ao_passar_mes:
                         ao_passar_mes(avisos)
                 except Exception as erro:
@@ -574,5 +581,260 @@ def botao_investir(jogo: Any, tema: dict[str, str], *, altura: float = 46) -> li
             tooltip="Aplicar ou resgatar no cofrinho sem sair da partida (1% por minuto de jogo)",
             on_click=lambda _e: abrir_cofrinho(jogo, jogador, tema),
             col={"xs": 12, "sm": 4},
+        )
+    ]
+
+
+# ======================================================================
+# DESTAQUE DO COFRINHO (incentivo ao investimento)
+# ======================================================================
+# 1) Cartão MEU COFRINHO na tela da vez; 2) "+ R$ x" subindo e som de moeda a
+# cada mês; 4) lembrete após acertos; 8) questões × cofrinho no resultado.
+
+# Cartões visíveis: (jogo, jogador, texto do "+ R$", tema).
+_CARTOES: list[tuple[Any, dict[str, Any], ft.Text, dict[str, str]]] = []
+
+
+def _valor_rendimento(jogador: dict[str, Any]) -> float:
+    return round(float(jogador.get("cofrinho", 0.0)) - float(jogador.get("cofrinho_aplicado", 0.0)), 2)
+
+
+def cartao_cofrinho(jogo: Any, tema: dict[str, str]) -> list[ft.Control]:
+    """Cartão grande do cofrinho do jogador da vez (vazio sem o Modo economia)."""
+    if not eco.ativo(jogo.estado):
+        return []
+    jogador = jogo.jogador_atual
+    rendimento = ft.Text(reais(_valor_rendimento(jogador)), color=tema["positivo"], size=15, weight=ft.FontWeight.BOLD)
+    _VIVOS.append((rendimento, jogador, "rendimento", tema))
+    flutuante = ft.Text(
+        "", color=tema["positivo"], size=18, weight=ft.FontWeight.BOLD,
+        opacity=0.0, offset=ft.Offset(0, 0.4),
+        animate_opacity=ft.Animation(450, ft.AnimationCurve.EASE_OUT),
+        animate_offset=ft.Animation(900, ft.AnimationCurve.EASE_OUT),
+    )
+    _CARTOES.append((jogo, jogador, flutuante, tema))
+    del _CARTOES[:-8]
+    return [
+        ft.Container(
+            content=ft.Column(
+                [
+                    ft.Row(
+                        [
+                            ft.Icon(ft.Icons.SAVINGS, color=tema["destaque"], size=38),
+                            ft.Column(
+                                [
+                                    ft.Text("MEU COFRINHO", color=tema["destaque"], size=15, weight=ft.FontWeight.BOLD),
+                                    ft.Text("rende 1% a cada minuto", color=tema["suave"], size=11),
+                                ],
+                                spacing=0, expand=True,
+                            ),
+                            flutuante,
+                        ],
+                        spacing=8, vertical_alignment=ft.CrossAxisAlignment.CENTER,
+                    ),
+                    ft.Row(
+                        [
+                            _texto_vivo(jogador, "cofrinho", tema, 26),
+                            ft.Column(
+                                [ft.Text("JÁ RENDEU", color=tema["suave"], size=9, weight=ft.FontWeight.BOLD), rendimento],
+                                spacing=0, horizontal_alignment=ft.CrossAxisAlignment.END,
+                            ),
+                        ],
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        vertical_alignment=ft.CrossAxisAlignment.CENTER,
+                    ),
+                    ft.Button(
+                        content="APLICAR NO COFRINHO", icon=ft.Icons.ADD_CARD,
+                        bgcolor=tema["positivo"], color=tema["fundo_1"], height=40,
+                        on_click=lambda _e: abrir_cofrinho(jogo, jogador, tema),
+                    ),
+                ],
+                spacing=6, horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
+            ),
+            padding=10,
+            bgcolor=tema["cartao_2"],
+            border=ft.Border.all(2, tema["destaque"]),
+            border_radius=ft.BorderRadius.all(16),
+        )
+    ]
+
+
+def animar_rendimentos() -> None:
+    """Chamado a cada mês: '+ R$ x' sobe e some no cartão, com som de moeda."""
+    import recursos_jogo as rj
+
+    vistos: set[int] = set()
+    vivos = []
+    for jogo, jogador, flutuante, tema in _CARTOES:
+        try:
+            if flutuante.page is None:
+                continue
+        except Exception:
+            continue
+        vivos.append((jogo, jogador, flutuante, tema))
+        ganho = float(jogador.get("ultimo_rendimento", 0.0))
+        if ganho <= 0:
+            continue
+        flutuante.value = "+ " + reais(ganho)
+        if id(jogo) not in vistos:
+            vistos.add(id(jogo))
+            try:
+                rj.efeitos(jogo).tocar(jogo, "moeda")
+            except Exception:
+                pass
+
+        async def subir(texto: ft.Text = flutuante, jogo_atual: Any = jogo) -> None:
+            try:
+                if rj.sem_animacoes(jogo_atual):
+                    texto.opacity, texto.offset = 1.0, ft.Offset(0, 0)
+                    texto.update()
+                    await asyncio.sleep(2.0)
+                    texto.opacity = 0.0
+                    texto.update()
+                    return
+                texto.opacity, texto.offset = 0.0, ft.Offset(0, 0.4)
+                texto.update()
+                await asyncio.sleep(0.05)
+                texto.opacity, texto.offset = 1.0, ft.Offset(0, -0.5)
+                texto.update()
+                await asyncio.sleep(1.6)
+                texto.opacity = 0.0
+                texto.update()
+            except Exception:
+                pass
+
+        try:
+            jogo.page.run_task(subir)
+        except Exception:
+            pass
+    _CARTOES[:] = vivos
+
+
+# ----------------------------------------------------------- lembrete após acerto
+_ACERTOS_SESSAO: dict[str, int] = {}
+_DECISAO_LEMBRETE: dict[str, bool] = {}
+LEMBRETE_A_CADA = 3   # mostra no 1º, 4º, 7º... acerto de cada jogador
+
+
+def lembrete_investir(jogo: Any, tema: dict[str, str]) -> list[ft.Control]:
+    """Após um acerto, convida a guardar parte no cofrinho (no máx. 1 a cada 3)."""
+    if not eco.ativo(jogo.estado):
+        return []
+    resultado = getattr(jogo, "ultimo_resultado", None) or {}
+    if not resultado.get("acertou"):
+        return []
+    jogador = jogo.jogador_atual
+    chave = f"{id(jogo)}:{getattr(jogo, 'indice_questao', 0)}:{jogador.get('id', '')}"
+    if chave not in _DECISAO_LEMBRETE:
+        ident = str(jogador.get("id", ""))
+        _ACERTOS_SESSAO[ident] = _ACERTOS_SESSAO.get(ident, 0) + 1
+        _DECISAO_LEMBRETE[chave] = (_ACERTOS_SESSAO[ident] - 1) % LEMBRETE_A_CADA == 0
+    if not _DECISAO_LEMBRETE[chave] or eco.carteira(jogador) < 50:
+        return []
+
+    mensagem = ft.Text("", size=14, weight=ft.FontWeight.BOLD)
+    em10 = 100 * (1 + eco.TAXA_COFRINHO) ** 10
+    # Tudo numa linha só, para não empurrar o botão PASSAR A VEZ.
+    linha = ft.Row(spacing=6, alignment=ft.MainAxisAlignment.END)
+    caixa = ft.Container(
+        content=ft.Row(
+            [
+                ft.Icon(ft.Icons.SAVINGS, color=tema["destaque"], size=28),
+                ft.Column(
+                    [
+                        ft.Text(
+                            f"Guardar no cofrinho? Em 10 min, R$ 100 viram {reais(em10)}.",
+                            color=tema["texto"], size=15, weight=ft.FontWeight.BOLD,
+                        ),
+                        mensagem,
+                    ],
+                    spacing=0, expand=True, tight=True,
+                ),
+                linha,
+            ],
+            spacing=10, vertical_alignment=ft.CrossAxisAlignment.CENTER,
+        ),
+        padding=ft.Padding.symmetric(horizontal=12, vertical=6),
+        bgcolor=tema["cartao_2"],
+        border=ft.Border.all(2, tema["positivo"]),
+        border_radius=ft.BorderRadius.all(14),
+    )
+
+    def guardar(valor: float) -> None:
+        ok, texto = eco.aplicar(jogo.estado, jogador, valor)
+        mensagem.value = f"{reais(valor)} guardados no cofrinho! Rendendo 1% por minuto." if ok else texto
+        mensagem.color = tema["positivo"] if ok else tema["negativo"]
+        if ok:
+            linha.controls = []
+        try:
+            caixa.update()
+        except Exception:
+            pass
+        atualizar_textos()
+
+    def fechar(_e: Any) -> None:
+        caixa.visible = False
+        try:
+            caixa.update()
+        except Exception:
+            pass
+
+    opcoes = [v for v in (50, 100) if eco.carteira(jogador) >= v]
+    linha.controls = [
+        *[
+            ft.Button(content=f"R$ {v}", icon=ft.Icons.SAVINGS, bgcolor=tema["positivo"],
+                      color=tema["fundo_1"], height=38, on_click=lambda _e, v=v: guardar(v))
+            for v in opcoes
+        ],
+        ft.OutlinedButton(content="AGORA NÃO", height=38, on_click=fechar),
+    ]
+    return [caixa]
+
+
+# ----------------------------------------------------------- resultado da partida
+def painel_resultado(jogo: Any, tema: dict[str, str]) -> list[ft.Control]:
+    """Questões × cofrinho × patrimônio de cada jogador (tela final)."""
+    if not eco.ativo(jogo.estado):
+        return []
+    linhas: list[ft.Control] = [
+        ft.Row(
+            [
+                ft.Icon(ft.Icons.ACCOUNT_BALANCE_WALLET, color=tema["destaque"], size=22),
+                ft.Text("QUESTÕES × COFRINHO", color=tema["destaque"], size=15, weight=ft.FontWeight.BOLD),
+            ],
+            spacing=8,
+        )
+    ]
+    for jogador in jogo.estado.jogadores_ativos():
+        saldo = float(jogador.get("saldo", 0.0))
+        rendeu = float(jogador.get("rendimento_total", 0.0))
+        patrimonio = eco.patrimonio(jogador)
+
+        def celula(rotulo: str, valor: float, cor: str) -> ft.Control:
+            return ft.Column(
+                [ft.Text(rotulo, color=tema["suave"], size=10, weight=ft.FontWeight.BOLD),
+                 ft.Text(reais(valor), color=cor, size=16, weight=ft.FontWeight.BOLD)],
+                spacing=0, expand=True,
+            )
+
+        linhas.append(
+            ft.Row(
+                [
+                    ft.Text(str(jogador.get("nome", "")), color=tema["texto"], size=15,
+                            weight=ft.FontWeight.BOLD, width=110),
+                    celula("QUESTÕES", saldo, tema["positivo"] if saldo >= 0 else tema["negativo"]),
+                    celula("COFRINHO RENDEU", rendeu, tema["positivo"]),
+                    celula("PATRIMÔNIO", patrimonio, tema["destaque"] if patrimonio >= 0 else tema["negativo"]),
+                ],
+                spacing=8, vertical_alignment=ft.CrossAxisAlignment.CENTER,
+            )
+        )
+    return [
+        ft.Container(
+            content=ft.Column(linhas, spacing=6),
+            padding=10,
+            bgcolor=tema["cartao_2"],
+            border=ft.Border.all(1.5, tema["destaque"]),
+            border_radius=ft.BorderRadius.all(14),
         )
     ]

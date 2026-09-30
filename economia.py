@@ -66,6 +66,8 @@ _CAMPOS_JOGADOR = {
     "cofrinho_historico": [],      # valores do cofrinho mês a mês (extrato)
     "juros_ciclo": 0.0,            # juros cobrados na dívida atual
     "juros_pagos": 0.0,            # total de juros pagos (dívida)
+    "ultimo_rendimento": 0.0,      # rendimento do último "mês" (animação)
+    "rendimento_total": 0.0,       # tudo o que o cofrinho já rendeu
     "ajudas_compradas": 0,
     "bonus_recebidos": 0,
 }
@@ -224,10 +226,13 @@ def passar_mes(estado: Any) -> list[str]:
     avisos: list[str] = []
     estado.dados["economia"]["meses"] = meses(estado) + 1
     for jogador in estado.jogadores_ativos():
+        jogador["ultimo_rendimento"] = 0.0
         # Cofrinho: juros compostos de 1% sobre o valor acumulado.
         if float(jogador["cofrinho"]) > 0:
             rendimento = _r2(jogador["cofrinho"] * TAXA_COFRINHO)
             jogador["cofrinho"] = _r2(jogador["cofrinho"] + rendimento)
+            jogador["ultimo_rendimento"] = rendimento
+            jogador["rendimento_total"] = _r2(jogador["rendimento_total"] + rendimento)
             jogador["cofrinho_historico"] = (jogador["cofrinho_historico"] + [jogador["cofrinho"]])[-24:]
             _registrar(estado, jogador, "rendimento", rendimento)
         # Dívida: juros do cheque especial, com teto de 100% da dívida.

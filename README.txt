@@ -311,6 +311,11 @@ LIGADO = cada jogador passa a ter:
 • 1 JOGADOR: a quantidade de jogadores agora vai de 1 a 4 (modo individual).
 • INVESTIR (COFRINHO): botão verde ao lado de RESPONDER e ESTUDAR, na vez do
   jogador; o cronômetro da questão pausa enquanto o cofrinho está aberto.
+• MEU COFRINHO: na vez do jogador, um cartão no lugar do mascote mostra o
+  cofrinho, quanto já rendeu e o botão APLICAR; a cada minuto aparece
+  "+ R$ x" subindo, com som de moeda.
+• Após um acerto (1 a cada 3 acertos), convite para guardar R$ 50 ou R$ 100.
+• No resultado da partida: QUESTÕES × COFRINHO × PATRIMÔNIO de cada jogador.
 • RANKING: mostra o saldo das questões e o PATRIMÔNIO (carteira + cofrinho);
   a planilha ranking.xlsx tem a coluna Patrimônio (R$).
 

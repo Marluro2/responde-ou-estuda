@@ -1314,15 +1314,24 @@ class JogoPorcentagem:
         return ft.Container(
             content=ft.Column(
                 controls=[
-                    self._imagem_mascote(80),
-                    # ALTURA DO MASCOTE NESTA TELA: altere 105 para aumentar
-                    # ou diminuir a imagem. Valores maiores ocupam mais altura.
-                    ft.Text(
-                        "MASCOTE FINANCEIRO",
-                        color=tema["primaria"],
-                        size=13,
-                        weight=ft.FontWeight.BOLD,
-                        text_align=ft.TextAlign.CENTER,
+                    # MODO ECONOMIA: na vez do jogador, o cartão MEU COFRINHO ocupa
+                    # o lugar do mascote (incentivo ao investimento).
+                    *(
+                        cofrinho
+                        if self.tela_atual == "jogada"
+                        and (cofrinho := et.cartao_cofrinho(self, tema))
+                        else [
+                        self._imagem_mascote(80),
+                        # ALTURA DO MASCOTE NESTA TELA: altere 105 para aumentar
+                        # ou diminuir a imagem. Valores maiores ocupam mais altura.
+                        ft.Text(
+                            "MASCOTE FINANCEIRO",
+                            color=tema["primaria"],
+                            size=13,
+                            weight=ft.FontWeight.BOLD,
+                            text_align=ft.TextAlign.CENTER,
+                        ),
+                        ]
                     ),
                     self._controle_cronometro(),
                     self._controles_narracao(),
@@ -2201,6 +2210,8 @@ class JogoPorcentagem:
                                 size=13,
                                 text_align=ft.TextAlign.CENTER,
                             ),
+                            # MODO ECONOMIA: convite a guardar parte no cofrinho.
+                            *et.lembrete_investir(self, tema),
                             ft.Button(
                                 content="PASSAR A VEZ",
                                 icon=ft.Icons.SWAP_HORIZ,
@@ -2395,7 +2406,14 @@ class JogoPorcentagem:
                 controls=[
                     ft.Container(content=coluna_resumo, col={"xs": 12, "lg": 6}),
                     ft.Container(
-                        content=rj.podio(self, self.jogadores, tema, formatar_reais),
+                        content=ft.Column(
+                            controls=[
+                                rj.podio(self, self.jogadores, tema, formatar_reais),
+                                # MODO ECONOMIA: questões × cofrinho × patrimônio.
+                                *et.painel_resultado(self, tema),
+                            ],
+                            spacing=10,
+                        ),
                         col={"xs": 12, "lg": 6},
                     ),
                 ],
