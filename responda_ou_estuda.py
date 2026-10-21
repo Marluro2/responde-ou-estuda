@@ -421,6 +421,19 @@ ARQUIVO_QUIZ = "nivel_1_porcentagem.py"
 ARQUIVO_QUIZ_JUROS = "nivel_2_juros.py"
 ARQUIVO_QUIZ_PRICE = "nivel_3_price.py"
 ARQUIVO_QUIZ_SAC = "nivel_4_sac.py"
+
+
+def _arquivo_da_etapa(nome: str) -> Path:
+    """Caminho do módulo de uma etapa (.py no computador, .pyc no site).
+
+    O "flet build web" publica o código já compilado (.pyc); o carregador do
+    importlib aceita os dois formatos.
+    """
+    fonte = BASE_DIR / nome
+    compilado = fonte.with_suffix(".pyc")
+    if not fonte.exists() and compilado.exists():
+        return compilado
+    return fonte
 ARQUIVO_IMAGEM_MISSAO = "mascote_financeiro.webp"
 ARQUIVO_SOM_INICIAL = PASTA_ASSETS / "sons" / "01_aventura.wav"
 
@@ -2992,7 +3005,7 @@ class AplicativoRespondaOuEstuda:
         # INTEGRAÇÃO COM O QUIZ:
         # Carrega nivel_1_porcentagem.py e chama criar_tela_porcentagem().
         # Não altere esta rotina para mudanças meramente visuais da abertura.
-        caminho = BASE_DIR / ARQUIVO_QUIZ
+        caminho = _arquivo_da_etapa(ARQUIVO_QUIZ)
         if not caminho.exists():
             self._mostrar_aviso(
                 f"COLOQUE {ARQUIVO_QUIZ} NA MESMA PASTA DESTE ARQUIVO"
@@ -3060,7 +3073,7 @@ class AplicativoRespondaOuEstuda:
 
     async def _abrir_juros(self) -> None:
         """Carrega a Etapa 2 e reutiliza o estado global dos jogadores."""
-        caminho = BASE_DIR / ARQUIVO_QUIZ_JUROS
+        caminho = _arquivo_da_etapa(ARQUIVO_QUIZ_JUROS)
         if not caminho.exists():
             self._mostrar_aviso(
                 f"COLOQUE {ARQUIVO_QUIZ_JUROS} NA MESMA PASTA DESTE ARQUIVO"
@@ -3126,7 +3139,7 @@ class AplicativoRespondaOuEstuda:
 
     async def _abrir_price(self) -> None:
         """Carrega a Etapa 3 e mantém o mesmo estado global dos jogadores."""
-        caminho = BASE_DIR / ARQUIVO_QUIZ_PRICE
+        caminho = _arquivo_da_etapa(ARQUIVO_QUIZ_PRICE)
         if not caminho.exists():
             self._mostrar_aviso(
                 f"COLOQUE {ARQUIVO_QUIZ_PRICE} NA MESMA PASTA DESTE ARQUIVO"
@@ -3192,7 +3205,7 @@ class AplicativoRespondaOuEstuda:
 
     async def _abrir_sac(self) -> None:
         """Carrega a Etapa 4 (SAC) e mantém o mesmo estado global dos jogadores."""
-        caminho = BASE_DIR / ARQUIVO_QUIZ_SAC
+        caminho = _arquivo_da_etapa(ARQUIVO_QUIZ_SAC)
         if not caminho.exists():
             self._mostrar_aviso(
                 f"COLOQUE {ARQUIVO_QUIZ_SAC} NA MESMA PASTA DESTE ARQUIVO"
