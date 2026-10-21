@@ -162,11 +162,15 @@ def main() -> int:
     with tempfile.TemporaryDirectory(prefix="responda_teste_") as pasta:
         temporaria = Path(pasta)
         caminho_estado = temporaria / "estado_jogo.json"
-        caminho_estado.write_bytes(
-            (BASE_DIR / "dados" / "estado_jogo.json").read_bytes()
-        )
+        origem = BASE_DIR / "dados" / "estado_jogo.json"
+        if origem.exists():
+            caminho_estado.write_bytes(origem.read_bytes())
         modulo_estado.ARQUIVO_RANKING = temporaria / "ranking.xlsx"
         estado = EstadoJogo(caminho_estado)
+        if not estado.nomes_validos()[0]:
+            # Sem dados reais (ex.: no GitHub): jogadores de exemplo.
+            estado.definir_nome(0, "Jogador A")
+            estado.definir_nome(1, "Jogador B")
         if not estado.nomes_validos()[0]:
             raise AssertionError(
                 "O estado de teste precisa ter jogadores válidos."

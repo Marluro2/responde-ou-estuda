@@ -21,3 +21,6 @@ assets/sons_personalizados/*
 !assets/sons_personalizados/LEIA-ME.txt
 # Modo economia: movimentos dos alunos (cofrinho, ajudas, juros, bônus)
 dados/economia*.csv
+
+# Apresentações e documentos pessoais do professor (não publicar)
+apresentacao/

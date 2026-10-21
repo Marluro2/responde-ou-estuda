@@ -335,6 +335,20 @@ as alternativas de PRI012 (valores numéricos para n), PRI027 e PRI029.
 IDs mantidos (o jogo ainda não tinha sido aplicado com alunos).
 Detalhes: revisao/levantamento_contexto_e_modelo.html e revisao/aplicar_contexto.py.
 
+VERSÃO ONLINE (SITE NO GITHUB PAGES)
+
+O jogo também pode ser publicado como site, como o Mente Financeira:
+• main.py: ponto de entrada do site (no computador, repassa para o jogo normal).
+• pyproject.toml: configuração do "flet build web" (o que NÃO vai para o site).
+• .github/workflows/publicar-site.yml: a cada envio para o GitHub (branch main),
+  verifica as questões e as telas, constrói o site e publica.
+
+No site, o Python roda dentro do navegador do aluno:
+• os dados (saldos, respostas) ficam só naquele navegador e somem ao recarregar
+  a página; NADA é enviado ao professor nem ao GitHub;
+• a narração em voz e a LUPA ficam indisponíveis (usam recursos do Windows);
+• para a coleta de dados da pesquisa, use a versão do computador.
+
 RANKING
 
 O botão RANKING mostra a classificação dentro do programa. A planilha:
