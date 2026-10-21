@@ -313,17 +313,21 @@ class EstadoJogo:
             reverse=True,
         )
 
+    # SITE: o main.py liga esta função ao armazenamento do navegador do aluno
+    # (recebe o JSON do estado). No computador fica None.
+    ao_salvar: Any = None
+
     def salvar(self) -> None:
         self.caminho.parent.mkdir(parents=True, exist_ok=True)
         temporario = self.caminho.with_suffix(".json.tmp")
-        with temporario.open("w", encoding="utf-8") as arquivo:
-            json.dump(
-                self.dados,
-                arquivo,
-                ensure_ascii=False,
-                indent=2,
-            )
+        texto = json.dumps(self.dados, ensure_ascii=False, indent=2)
+        temporario.write_text(texto, encoding="utf-8")
         os.replace(temporario, self.caminho)
+        if EstadoJogo.ao_salvar is not None and self.caminho == ARQUIVO_ESTADO:
+            try:
+                EstadoJogo.ao_salvar(texto)
+            except Exception as erro:
+                print(f"Não foi possível guardar no navegador: {erro}")
         if not self.gerar_ranking:
             return
         try:

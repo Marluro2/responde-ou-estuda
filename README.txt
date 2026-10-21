@@ -344,8 +344,10 @@ O jogo também pode ser publicado como site, como o Mente Financeira:
   verifica as questões e as telas, constrói o site e publica.
 
 No site, o Python roda dentro do navegador do aluno:
-• os dados (saldos, respostas) ficam só naquele navegador e somem ao recarregar
-  a página; NADA é enviado ao professor nem ao GitHub;
+• jogadores, saldos, cofrinho e preferências ficam guardados SÓ no navegador
+  daquele aluno (voltam ao reabrir a página; somem se ele limpar os dados do
+  navegador); NADA é enviado ao professor nem ao GitHub;
+• as respostas detalhadas da pesquisa (respostas.csv) não são guardadas no site;
 • a narração em voz e a LUPA ficam indisponíveis (usam recursos do Windows);
 • para a coleta de dados da pesquisa, use a versão do computador.
 
