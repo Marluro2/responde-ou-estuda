@@ -1,4 +1,4 @@
-"""Arquivo principal do jogo Responda ou Estuda em Flet 0.86.3.
+"""Arquivo principal do jogo Responde ou Estuda em Flet 0.86.3.
 
 DEPENDÊNCIAS:
     py -3.14 -m pip install "flet[all]==0.86.3" flet-audio==0.86.3
@@ -42,12 +42,12 @@ os acertos, os erros e os estudos permanecem acumulados entre os assuntos.
 # ---------------------------------------------------------------------------
 # • O título exibido na barra da janela é definido em:
 #       def _configurar_pagina()
-#       self.page.title = "Responda ou Estuda - Educação Financeira"
+#       self.page.title = "Responde ou Estuda - Educação Financeira"
 #   Troque somente o texto entre aspas para mudar o título da janela.
 #
 # • O título grande visível na tela é montado em:
 #       def _construir_painel_marca()
-#   Procure os textos "RESPONDA" e "OU ESTUDA".
+#   Procure os textos "RESPONDE" e "OU ESTUDA".
 #   Em cada ft.Text:
 #       size=43                  -> tamanho da letra;
 #       color=...                -> cor da letra;
@@ -336,7 +336,7 @@ TEXTOS_TELA = {
     ),
     # Para trocar o título do projeto, altere somente o texto entre aspas acima.
     # Mantenha a chave "titulo_projeto", os parênteses, as aspas e a vírgula.
-    "titulo": "RESPONDA OU ESTUDA",
+    "titulo": "RESPONDE OU ESTUDA",
     "subtitulo": "EDUCAÇÃO FINANCEIRA NA EDUCAÇÃO BÁSICA",
     "slogan": (
         "Desafios, estratégia, escolhas e conhecimento para jogar e aprender"
@@ -708,7 +708,7 @@ class AplicativoRespondaOuEstuda:
 
     def _configurar_pagina(self) -> None:
         # TÍTULO DA JANELA: altere somente o texto entre aspas.
-        self.page.title = "Responda ou Estuda - Educação Financeira"
+        self.page.title = "Responde ou Estuda - Educação Financeira"
         # O texto acima aparece na barra superior da janela do programa.
         if ADMIN_ATIVO:
             self.page.title += " (MODO ADMINISTRADOR)"
@@ -1338,16 +1338,16 @@ class AplicativoRespondaOuEstuda:
                     border_radius=_raio(10),
                 ),
                 # TÍTULO GRANDE:
-                # spacing=11 separa "RESPONDA" de "OU ESTUDA";
+                # spacing=11 separa "RESPONDE" de "OU ESTUDA";
                 # wrap=True permite quebrar a linha em janelas menores.
                 ft.Row(
                     controls=[
                         ft.Text(
-                            "RESPONDA",
+                            "RESPONDE",
                             color=CORES["amarelo"],
-                            # TAMANHO DA PALAVRA "RESPONDA".
+                            # TAMANHO DA PALAVRA "RESPONDE".
                             size=43,
-                            # Altere este número para aumentar/diminuir RESPONDA.
+                            # Altere este número para aumentar/diminuir RESPONDE.
                             weight=ft.FontWeight.BOLD,
                             style=ft.TextStyle(
                                 shadow=[
@@ -1372,7 +1372,7 @@ class AplicativoRespondaOuEstuda:
                         ),
                     ],
                     spacing=11,
-                    # Aumente para separar mais RESPONDA de OU ESTUDA.
+                    # Aumente para separar mais RESPONDE de OU ESTUDA.
                     wrap=True,
                     # False impede quebra de linha, mas pode causar corte em
                     # janelas estreitas; por isso, recomenda-se manter True.
@@ -1825,7 +1825,7 @@ class AplicativoRespondaOuEstuda:
             # pode cortar as bordas da foto.
             border_radius=_raio(12),
             # Aumente 12 para arredondar mais os cantos da imagem.
-            semantics_label="Mascote do jogo Responda ou Estuda",
+            semantics_label="Mascote do jogo Responde ou Estuda",
             error_content=ft.Column(
                 controls=[
                     ft.Icon(

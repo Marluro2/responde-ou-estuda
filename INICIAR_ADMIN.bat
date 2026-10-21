@@ -1,6 +1,6 @@
 @echo off
 setlocal
-title Responda ou Estuda - Modo Administrador
+title Responde ou Estuda - Modo Administrador
 cd /d "%~dp0"
 
 rem MODO ADMINISTRADOR: navegacao livre entre as questoes, gabarito visivel,

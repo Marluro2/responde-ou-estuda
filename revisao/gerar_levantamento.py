@@ -182,7 +182,7 @@ td p {{ margin:4px 0; }} .id {{ font-weight:700; white-space:nowrap; }} .nivel {
 @media (max-width:700px) {{ th, td {{ padding:8px; font-size:.92rem; }} }}
 </style></head><body><main>
 <h1>Levantamento: contexto das questões e a palavra “fórmula”</h1>
-<p class="sub">Responda ou Estuda — APLICADO em 29/09/2026 (IDs mantidos: o jogo ainda não tinha sido aplicado com alunos).</p>
+<p class="sub">Responde ou Estuda — APLICADO em 29/09/2026 (IDs mantidos: o jogo ainda não tinha sido aplicado com alunos).</p>
 
 <div class="resumo">
   <div><b>{total}</b>questões a reescrever</div>

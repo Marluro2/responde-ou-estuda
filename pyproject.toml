@@ -1,7 +1,7 @@
 [project]
-name = "responda-ou-estuda"
+name = "responde-ou-estuda"
 version = "1.0.0"
-description = "Responda ou Estuda: jogo de Educação Financeira (Porcentagem, Juros, Sistema PRICE e SAC). Produto educacional de doutorado."
+description = "Responde ou Estuda: jogo de Educação Financeira (Porcentagem, Juros, Sistema PRICE e SAC). Produto educacional de doutorado."
 requires-python = ">=3.14,<3.15"
 # Dependências usadas pelo site (flet build web). No computador, o
 # INSTALAR.bat usa o requirements.txt.
@@ -12,7 +12,7 @@ dependencies = [
 
 # ---------------------------------------------------------------- flet build
 [tool.flet]
-product = "Responda ou Estuda"
+product = "Responde ou Estuda"
 org = "br.edu.ifsp"
 
 [tool.flet.app]

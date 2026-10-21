@@ -1,6 +1,6 @@
 @echo off
 setlocal
-title Responda ou Estuda - Diagnostico
+title Responde ou Estuda - Diagnostico
 cd /d "%~dp0"
 
 echo Iniciando o aplicativo com registros visiveis...

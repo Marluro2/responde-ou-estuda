@@ -478,15 +478,15 @@ class EstadoJogo:
         )
         propriedades = f"""<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <dc:title>Ranking - Responda ou Estuda</dc:title>
-  <dc:creator>Responda ou Estuda</dc:creator>
+  <dc:title>Ranking - Responde ou Estuda</dc:title>
+  <dc:creator>Responde ou Estuda</dc:creator>
   <dcterms:created xsi:type="dcterms:W3CDTF">{instante}</dcterms:created>
   <dcterms:modified xsi:type="dcterms:W3CDTF">{instante}</dcterms:modified>
 </cp:coreProperties>"""
 
         aplicativo = """<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties" xmlns:vt="http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes">
-  <Application>Responda ou Estuda</Application>
+  <Application>Responde ou Estuda</Application>
 </Properties>"""
 
         with zipfile.ZipFile(

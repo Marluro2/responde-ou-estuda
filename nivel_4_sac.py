@@ -1,4 +1,4 @@
-"""Jogo do Sistema SAC (Amortização Constante) "Responda ou Estuda" em Flet 0.86.3.
+"""Jogo do Sistema SAC (Amortização Constante) "Responde ou Estuda" em Flet 0.86.3.
 
 Uso no arquivo principal:
     from nivel_4_sac import criar_tela_sac
@@ -883,7 +883,7 @@ class JogoSac:
         titulo = ft.Column(
             controls=[
                 ft.Text(
-                    "RESPONDA OU ESTUDA",
+                    "RESPONDE OU ESTUDA",
                     color=tema["destaque"],
                     size=24,
                     weight=ft.FontWeight.BOLD,
@@ -4662,7 +4662,7 @@ def criar_tela_sac(
 
 def main(page: ft.Page) -> None:
     """Permite testar este módulo sem abrir o menu principal."""
-    page.title = "Responda ou Estuda - Sistema SAC"
+    page.title = "Responde ou Estuda - Sistema SAC"
     page.theme_mode = ft.ThemeMode.DARK
     page.padding = 0
     page.window.width = 1280

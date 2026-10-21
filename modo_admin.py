@@ -1,4 +1,4 @@
-"""Modo administrador do "Responda ou Estuda".
+"""Modo administrador do "Responde ou Estuda".
 
 Serve para o professor conferir questões, imagens, alternativas, gabarito,
 telas de estudo e resoluções sem precisar jogar cada rodada.

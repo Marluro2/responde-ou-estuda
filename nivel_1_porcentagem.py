@@ -1,4 +1,4 @@
-"""Jogo de porcentagem "Responda ou Estuda" em Flet 0.86.3.
+"""Jogo de porcentagem "Responde ou Estuda" em Flet 0.86.3.
 
 Integração:
     from nivel_1_porcentagem import criar_tela_porcentagem
@@ -483,7 +483,7 @@ class JogoPorcentagem:
         titulo = ft.Column(
             controls=[
                 ft.Text(
-                    "RESPONDA OU ESTUDA",
+                    "RESPONDE OU ESTUDA",
                     color=tema["destaque"],
                     size=24,
                     weight=ft.FontWeight.BOLD,
@@ -2630,7 +2630,7 @@ def criar_tela_porcentagem(
 
 def main(page: ft.Page) -> None:
     """Permite testar este módulo sem abrir o menu principal."""
-    page.title = "Responda ou Estuda - Porcentagem"
+    page.title = "Responde ou Estuda - Porcentagem"
     page.theme_mode = ft.ThemeMode.DARK
     page.padding = 0
     page.window.width = 1280

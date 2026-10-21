@@ -1,4 +1,4 @@
-"""Iniciador do Responda ou Estuda em janela exclusiva no Windows.
+"""Iniciador do Responde ou Estuda em janela exclusiva no Windows.
 
 O aplicativo continua usando o servidor local do Flet, mas a interface e aberta
 em modo aplicativo pelo Microsoft Edge ou Google Chrome. Dessa forma, a janela
@@ -83,7 +83,7 @@ def _obter_execucao_exclusiva() -> bool:
     _HANDLE_MUTEX = int(handle)
     if ctypes.get_last_error() == 183:  # ERROR_ALREADY_EXISTS
         _mostrar_mensagem(
-            "Responda ou Estuda",
+            "Responde ou Estuda",
             "O aplicativo ja esta aberto. Verifique a barra de tarefas.",
         )
         return False
@@ -256,7 +256,7 @@ def executar(diagnostico: bool = False) -> int:
 
     if os.name != "nt":
         _mostrar_mensagem(
-            "Responda ou Estuda",
+            "Responde ou Estuda",
             "Esta edicao foi preparada para Windows 10 ou Windows 11.",
             erro=True,
         )
@@ -265,7 +265,7 @@ def executar(diagnostico: bool = False) -> int:
         return 0
     if not ARQUIVO_PRINCIPAL.is_file():
         _mostrar_mensagem(
-            "Responda ou Estuda",
+            "Responde ou Estuda",
             "O arquivo responda_ou_estuda.py nao foi encontrado. Extraia novamente "
             "todo o conteudo do ZIP em uma unica pasta.",
             erro=True,
@@ -301,7 +301,7 @@ def executar(diagnostico: bool = False) -> int:
         )
         if diagnostico and detalhes:
             texto += f"\n\nUltimos registros:\n{detalhes}"
-        _mostrar_mensagem("Responda ou Estuda", texto, erro=True)
+        _mostrar_mensagem("Responde ou Estuda", texto, erro=True)
         return 1
     finally:
         _encerrar_processo(servidor)

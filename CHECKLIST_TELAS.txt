@@ -1,4 +1,4 @@
-CHECKLIST DE TELAS - RESPONDA OU ESTUDA
+CHECKLIST DE TELAS - RESPONDE OU ESTUDA
 Última verificação: 28/09/2026, janela 1536 x 785 (tela 1920 x 1080 com zoom de 125%)
 
 Como conferir rapidamente: abra INICIAR_ADMIN.bat e use a barra amarela para

@@ -1,6 +1,6 @@
 @echo off
 setlocal
-title Responda ou Estuda
+title Responde ou Estuda
 cd /d "%~dp0"
 
 where pyw >nul 2>&1

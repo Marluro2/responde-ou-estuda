@@ -1,4 +1,4 @@
-"""Ponto de entrada da VERSÃO ONLINE (site) do Responda ou Estuda.
+"""Ponto de entrada da VERSÃO ONLINE (site) do Responde ou Estuda.
 
 ``flet build web`` procura este arquivo. No site, o Python roda dentro do
 navegador do aluno (sys.platform == "emscripten"); no computador, este arquivo

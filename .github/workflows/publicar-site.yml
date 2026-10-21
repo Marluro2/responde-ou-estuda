@@ -1,4 +1,4 @@
-# Publica o Responda ou Estuda como site no GitHub Pages.
+# Publica o Responde ou Estuda como site no GitHub Pages.
 #
 # A cada envio para a branch "main": roda as verificações do jogo, constrói o
 # site estático com "flet build web" (o Python roda dentro do navegador) e
