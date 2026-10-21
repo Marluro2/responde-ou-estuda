@@ -348,8 +348,24 @@ No site, o Python roda dentro do navegador do aluno:
   daquele aluno (voltam ao reabrir a página; somem se ele limpar os dados do
   navegador); NADA é enviado ao professor nem ao GitHub;
 • as respostas detalhadas da pesquisa (respostas.csv) não são guardadas no site;
-• a narração em voz e a LUPA ficam indisponíveis (usam recursos do Windows);
+• a narração em voz, a LUPA e o botão de importar música ficam ocultos (usam
+  recursos do computador); a foto do jogador aparece só durante aquela visita;
 • para a coleta de dados da pesquisa, use a versão do computador.
+
+CELULAR
+
+Em telas com menos de 600 pixels de largura (celular em pé), o jogo troca
+sozinho para o layout de celular; ao girar o aparelho ou alargar a janela, volta
+ao layout de computador, que continua igual ao de sempre (1536 x 786).
+• Tela inicial em uma coluna: título e regras, JOGADORES, MAPA DO JOGO e, por
+  último, mascote, estratégia e progresso.
+• Nos módulos: o cabeçalho não mostra Tema/Trilha (troque-os na tela inicial),
+  o cronômetro fica acima da questão e a imagem fica menor.
+• Fórmulas largas da teoria (ex.: "A = SD/n   Pₖ = A + Jₖ") aparecem uma
+  embaixo da outra, alinhadas pelo sinal de igual.
+O limite de 600 pixels fica em recursos_jogo.py (LARGURA_CELULAR); o tamanho e
+as quebras das fórmulas, em formatacao_matematica.py (ESCALA_LATEX_CELULAR e
+CARACTERES_SEM_QUEBRA).
 
 RANKING
 
