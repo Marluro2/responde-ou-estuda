@@ -22,6 +22,7 @@ import asyncio
 import inspect
 import csv
 import os
+import sys
 import uuid
 from datetime import datetime
 from pathlib import Path
@@ -32,12 +33,56 @@ from flet.utils.object_model import get_param_count
 from flet_audio import Audio
 
 import economia_tela as et
+import formatacao_matematica
 
 from estado_jogo import DADOS_DIR
 
 
 ADMIN_ATIVO = os.environ.get("RESPONDA_ADMIN", "").strip() == "1"
 LETRAS = "ABCDEFGHIJ"
+PASTA_ASSETS = Path(__file__).resolve().parent / "assets"
+NO_NAVEGADOR = sys.platform == "emscripten"
+# CELULAR: abaixo desta largura (em pixels) os módulos usam o layout de
+# celular (cronômetro acima da questão, sem mascote nem seletores de tema e
+# trilha no cabeçalho). É o mesmo limite da tela inicial.
+LARGURA_CELULAR = 600
+
+
+def tela_de_celular(page: Any) -> bool:
+    """True quando a página é mais estreita que LARGURA_CELULAR.
+
+    Também avisa formatacao_matematica, para as fórmulas da tela que está
+    sendo montada caberem no celular (toda tela consulta esta função antes
+    de montar os textos, a começar pelo cabeçalho).
+    """
+    largura = getattr(page, "width", None)
+    celular = bool(largura) and float(largura) < LARGURA_CELULAR
+    formatacao_matematica.definir_tela_estreita(celular)
+    return celular
+
+
+def narracao_disponivel() -> bool:
+    """A narração usa a voz do sistema (Windows/macOS/Linux), que o site não tem."""
+    return not NO_NAVEGADOR
+
+
+# ======================================================================
+# FOTO DO JOGADOR
+# ======================================================================
+def foto_jogador(caminho_relativo: str) -> str | bytes:
+    """Fonte da foto do jogador para ft.Image (caminho dentro de assets).
+
+    NO SITE a foto escolhida é gravada só na memória da página, e não no
+    endereço do jogo; por isso ela vai para a tela como bytes. Se a página
+    foi recarregada, o arquivo já não existe: devolve "" e a tela mostra o
+    ícone padrão.
+    """
+    if NO_NAVEGADOR and caminho_relativo:
+        try:
+            return (PASTA_ASSETS / caminho_relativo).read_bytes()
+        except OSError:
+            return ""
+    return caminho_relativo
 
 
 # ======================================================================

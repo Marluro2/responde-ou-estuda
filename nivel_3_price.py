@@ -854,8 +854,9 @@ class JogoPrice:
         controles = ft.Container(
             content=ft.Row(
                 controls=[
-                    seletor_tema,
-                    seletor_trilha,
+                    # CELULAR: tema e trilha ficam só na tela inicial; assim o
+                    # cabeçalho do módulo ocupa bem menos altura.
+                    *([] if rj.tela_de_celular(self.page) else [seletor_tema, seletor_trilha]),
                     botao_som,
                     # LUPA (acessibilidade): liga/desliga a Lupa do Windows.
                     rj.botao_efeitos(self, tema["texto"], tema["primaria"], tema["destaque"], compacto=True),
@@ -1109,7 +1110,7 @@ class JogoPrice:
                                         "Dinheiro usado para representar "
                                         "empréstimos e investimentos"
                                     ),
-                                    300,
+                                    170 if rj.tela_de_celular(self.page) else 300,
                                 ),
                                 col={"xs": 12, "md": 5},
                             ),
@@ -1229,6 +1230,13 @@ class JogoPrice:
         tema = self.tema
         cabecalhos = ["MÊS", "PRESTAÇÃO", "JUROS", "AMORTIZAÇÃO", "SALDO"]
         larguras = [54, 122, 104, 126, 122]
+        tamanho_texto = 10
+        if rj.tela_de_celular(self.page):
+            # CELULAR: as colunas encolhem para a tabela inteira caber na tela.
+            disponivel = float(self.page.width) - 84
+            fator = min(1.0, disponivel / (sum(larguras) + 2 * len(larguras)))
+            larguras = [largura * fator for largura in larguras]
+            tamanho_texto = 8
 
         def linha_tabela(
             valores: list[str],
@@ -1245,7 +1253,7 @@ class JogoPrice:
                                 if cabecalho
                                 else tema["texto"]
                             ),
-                            size=10,
+                            size=tamanho_texto,
                             weight=ft.FontWeight.BOLD,
                             text_align=ft.TextAlign.CENTER,
                         ),
@@ -1600,7 +1608,8 @@ class JogoPrice:
                         shape=ft.RoundedRectangleBorder(radius=18),
                         padding=ft.Padding.all(12),
                     ),
-                    height=132,
+                    # No celular a altura acompanha o texto (que quebra mais linhas).
+                    height=None if rj.tela_de_celular(self.page) else 132,
                     on_click=(
                         lambda evento, nivel_escolhido=nivel:
                         self._selecionar_nivel(nivel_escolhido, evento)
@@ -1724,7 +1733,7 @@ class JogoPrice:
             ativo = indice == self.indice_jogador and self.tela_atual != "resultado"
             saldo = float(jogador["saldo"])
             cor_saldo = tema["positivo"] if saldo >= 0 else tema["negativo"]
-            imagem = str(jogador.get("imagem", ""))
+            imagem = rj.foto_jogador(str(jogador.get("imagem", "")))
             avatar: ft.Control
             if imagem:
                 avatar = ft.Image(
@@ -1746,7 +1755,9 @@ class JogoPrice:
                     color=tema["destaque"] if ativo else tema["suave"],
                 )
             conteudo_cartao: ft.Control
-            if compacto:
+            # CELULAR: o placar compacto (tudo numa linha) apertaria o texto;
+            # no celular usa-se o placar normal, com o saldo embaixo do nome.
+            if compacto and not rj.tela_de_celular(self.page):
                 conteudo_cartao = ft.Row(
                     controls=[
                         avatar,
@@ -2392,6 +2403,9 @@ class JogoPrice:
 
     def _controles_narracao(self, *, compacto: bool = False) -> ft.Control:
         """Agrupa o botão de voz e o seletor visual de velocidade."""
+        if not rj.narracao_disponivel():
+            # NO SITE não há a voz do sistema: os controles de narração somem.
+            return ft.Container(visible=False)
         tema = self.tema
         seletor_velocidade = ft.Dropdown(
             value=str(self.speech_rate),
@@ -2485,6 +2499,18 @@ class JogoPrice:
         existentes sem ocupar a altura necessária às cinco respostas.
         """
         tema = self.tema
+        if rj.tela_de_celular(self.page):
+            # CELULAR: só o essencial, acima da questão (cronômetro e, no
+            # Modo economia, cofrinho e ajudas); sem mascote nem narração.
+            cofrinho = et.cartao_cofrinho(self, tema) if self.tela_atual == "jogada" else []
+            return ft.Container(
+                content=ft.Column(
+                    controls=[*(cofrinho or []), self._controle_cronometro(compacto=True), *et.barra_ajudas(self, tema)],
+                    spacing=6,
+                    horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
+                ),
+                col={"xs": 12},
+            )
         return ft.Container(
             content=ft.Column(
                 controls=[
@@ -2513,6 +2539,7 @@ class JogoPrice:
                         else [
                             ft.Text(
                                 "A narração é opcional e pode ser interrompida a qualquer momento.",
+                                visible=rj.narracao_disponivel(),
                                 color=tema["suave"],
                                 size=12,
                                 text_align=ft.TextAlign.CENTER,
@@ -2595,6 +2622,13 @@ class JogoPrice:
                 horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
             )
 
+        if rj.tela_de_celular(self.page):
+            # CELULAR: cronômetro primeiro, à vista durante a leitura.
+            return ft.Column(
+                controls=[self._painel_interacao(compacto=True), self._cartao_questao(False)],
+                spacing=10,
+                horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
+            )
         return ft.ResponsiveRow(
             controls=[
                 ft.Container(
@@ -3232,7 +3266,7 @@ class JogoPrice:
         questao = self.questao_atual
         produto = str(questao["titulo"]).split(" - ", 1)[-1]
         imagem = ft.Container(
-            content=self._imagem_questao(330),
+            content=self._imagem_questao(190 if rj.tela_de_celular(self.page) else 330),
             col={"xs": 12, "md": 5},
         )
         texto = ft.Container(
@@ -3362,7 +3396,7 @@ class JogoPrice:
                     margin=ft.Margin.symmetric(
                         # AJUSTE DA LARGURA: aumente "horizontal" para deixar
                         # o container mais estreito; diminua para alargá-lo.
-                        horizontal=36,
+                        horizontal=0 if rj.tela_de_celular(self.page) else 36,
                         vertical=0,
                     ),
                     offset=ft.Offset(0, -0.035),

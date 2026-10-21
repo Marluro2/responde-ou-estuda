@@ -505,8 +505,9 @@ class JogoPorcentagem:
         controles = ft.Container(
             content=ft.Row(
                 controls=[
-                    seletor_tema,
-                    seletor_trilha,
+                    # CELULAR: tema e trilha ficam só na tela inicial; assim o
+                    # cabeçalho do módulo ocupa bem menos altura.
+                    *([] if rj.tela_de_celular(self.page) else [seletor_tema, seletor_trilha]),
                     botao_som,
                     # LUPA (acessibilidade): liga/desliga a Lupa do Windows.
                     rj.botao_efeitos(self, tema["texto"], tema["primaria"], tema["destaque"], compacto=True),
@@ -709,7 +710,7 @@ class JogoPorcentagem:
             ativo = indice == self.indice_jogador and self.tela_atual != "resultado"
             saldo = float(jogador["saldo"])
             cor_saldo = tema["positivo"] if saldo >= 0 else tema["negativo"]
-            imagem = str(jogador.get("imagem", ""))
+            imagem = rj.foto_jogador(str(jogador.get("imagem", "")))
             avatar: ft.Control
             if imagem:
                 avatar = ft.Image(
@@ -1242,6 +1243,9 @@ class JogoPorcentagem:
 
     def _controles_narracao(self) -> ft.Control:
         """Agrupa o botão de voz e o seletor visual de velocidade."""
+        if not rj.narracao_disponivel():
+            # NO SITE não há a voz do sistema: os controles de narração somem.
+            return ft.Container(visible=False)
         tema = self.tema
         seletor_velocidade = ft.Dropdown(
             value=str(self.velocidade_narracao),
@@ -1314,6 +1318,18 @@ class JogoPorcentagem:
     def _painel_interacao(self) -> ft.Control:
         """Preenche a lateral com mascote, timer e acessibilidade."""
         tema = self.tema
+        if rj.tela_de_celular(self.page):
+            # CELULAR: só o essencial, acima da questão (cronômetro e, no
+            # Modo economia, cofrinho e ajudas); sem mascote nem narração.
+            cofrinho = et.cartao_cofrinho(self, tema) if self.tela_atual == "jogada" else []
+            return ft.Container(
+                content=ft.Column(
+                    controls=[*(cofrinho or []), self._controle_cronometro(), *et.barra_ajudas(self, tema)],
+                    spacing=6,
+                    horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
+                ),
+                col={"xs": 12},
+            )
         return ft.Container(
             content=ft.Column(
                 controls=[
@@ -1340,6 +1356,7 @@ class JogoPorcentagem:
                     self._controles_narracao(),
                     ft.Text(
                         "A narração é opcional e pode ser interrompida a qualquer momento.",
+                        visible=rj.narracao_disponivel(),
                         color=tema["suave"],
                         size=12,
                         text_align=ft.TextAlign.CENTER,
@@ -1362,6 +1379,13 @@ class JogoPorcentagem:
 
     def _area_questao(self, mostrar_alternativas: bool) -> ft.Control:
         """Organiza a questão e o novo painel lateral na mesma faixa."""
+        if rj.tela_de_celular(self.page):
+            # CELULAR: cronômetro primeiro, à vista durante a leitura.
+            return ft.Column(
+                controls=[self._painel_interacao(), self._cartao_questao(mostrar_alternativas)],
+                spacing=10,
+                horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
+            )
         return ft.ResponsiveRow(
             controls=[
                 ft.Container(
@@ -1392,7 +1416,10 @@ class JogoPorcentagem:
                     size=60,
                 ),
             ),
-            height=320 if mostrar_alternativas else 240,
+            # No celular a imagem fica mais baixa para a questão aparecer logo.
+            height=(
+                170 if rj.tela_de_celular(self.page) else 320 if mostrar_alternativas else 240
+            ),
             # ALTURA DO CARTÃO DA IMAGEM: altere 240 para aumentar ou
             # diminuir a altura da questão. Um valor menor sobe os botões
             # "Responder" e "Estudar" na tela.
@@ -1421,7 +1448,9 @@ class JogoPorcentagem:
             markdown_matematico(
                 questao["enunciado"],
                 cor=tema["texto"],
-                tamanho=26 if mostrar_alternativas else 23,
+                tamanho=(
+                    21 if rj.tela_de_celular(self.page) else 26 if mostrar_alternativas else 23
+                ),
                 peso=ft.FontWeight.W_600,
             ),
         ]
@@ -1568,7 +1597,7 @@ class JogoPorcentagem:
                     margin=ft.Margin.symmetric(
                         # AJUSTE DA LARGURA: aumente "horizontal" para deixar
                         # o container mais estreito; diminua para alargá-lo.
-                        horizontal=36,
+                        horizontal=0 if rj.tela_de_celular(self.page) else 36,
                         vertical=0,
                     ),
                     offset=ft.Offset(0, -0.035),

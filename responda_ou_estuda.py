@@ -420,6 +420,9 @@ PASTA_ASSETS = BASE_DIR / "assets"
 # NO SITE (flet build web), imagens e sons são servidos pelo endereço do
 # jogo e não ficam no disco do Python: não dá para conferir se existem.
 NO_NAVEGADOR = sys.platform == "emscripten"
+# CELULAR: abaixo de recursos_jogo.LARGURA_CELULAR (600 px) a tela inicial
+# troca para o layout de celular (uma coluna, textos que quebram linha,
+# jogadores antes do mapa). Acima dela, o layout de computador não muda.
 ARQUIVO_QUIZ = "nivel_1_porcentagem.py"
 ARQUIVO_QUIZ_JUROS = "nivel_2_juros.py"
 ARQUIVO_QUIZ_PRICE = "nivel_3_price.py"
@@ -687,6 +690,8 @@ class AplicativoRespondaOuEstuda:
         self.som_ativo = False
         self.cartoes_assuntos: list[ft.Container] = []
         self.campos_nomes: list[ft.TextField] = []
+        # True enquanto a tela inicial estiver montada no layout de celular.
+        self.layout_celular = False
 
         self._configurar_pagina()
         self.seletor_arquivo = ft.FilePicker()
@@ -757,12 +762,34 @@ class AplicativoRespondaOuEstuda:
 
         # Evento executado quando o usuário fecha a janela.
         self.page.on_close = self._ao_fechar
+        # Girar o celular ou estreitar a janela pode trocar o layout.
+        self.page.on_resize = self._ao_redimensionar
+
+    def _tela_de_celular(self) -> bool:
+        """True quando a página é mais estreita que o limite de celular."""
+        return recursos_jogo.tela_de_celular(self.page)
+
+    def _ao_redimensionar(self, _evento: Any = None) -> None:
+        # Só remonta a tela inicial quando cruza o limite celular/computador.
+        # (Abrir o teclado do celular muda só a altura e não remonta nada.)
+        host = getattr(self, "host", None)
+        if (
+            host is not None
+            and self._tela_de_celular() != self.layout_celular
+            and host.content is self.tela_inicial
+        ):
+            self._reconstruir_inicio()
 
     # ------------------------------------------------------------------
     # Construção da interface
     # ------------------------------------------------------------------
 
     def _construir_tela_inicial(self) -> ft.Control:
+        # CELULAR: decide uma vez por montagem; os _construir_* seguintes
+        # consultam self.layout_celular.
+        self.layout_celular = self._tela_de_celular()
+        celular = self.layout_celular
+
         # BARRA SUPERIOR:
         # A grade tem 12 colunas. O cabeçalho usa 4 e os controles usam 8 em
         # telas médias/grandes. Para dar mais espaço ao título, aumente 4 e
@@ -789,7 +816,7 @@ class AplicativoRespondaOuEstuda:
                 vertical_alignment=ft.CrossAxisAlignment.CENTER,
             ),
             # MARGENS INTERNAS da barra: horizontal = lados; vertical = cima/baixo.
-            padding=ft.Padding.symmetric(horizontal=14, vertical=9),
+            padding=ft.Padding.symmetric(horizontal=10 if celular else 14, vertical=9),
             # Aumente horizontal para afastar dos lados; vertical engrossa a barra.
             # FUNDO, BORDA, CANTOS E SOMBRA da barra superior.
             bgcolor=_cor_fixa("#071A45"),
@@ -802,67 +829,89 @@ class AplicativoRespondaOuEstuda:
             # 14 controla o desfoque e 4 o deslocamento vertical da sombra.
         )
 
-        # COLUNA DIREITA DA ÁREA PRINCIPAL:
-        # A ordem desta lista é a ordem mostrada na tela: missão primeiro e
-        # título depois, conforme o modelo visual solicitado.
-        painel_direito = ft.Column(
-            controls=[
-                self._construir_painel_missao(),
-                # Para colocar o título acima da missão, mova esta linha para
-                # antes de self._construir_painel_missao().
-                self._construir_painel_marca(),
-                # Para retirar o título desta coluna, remova somente a linha
-                # acima. Isso não desativa nenhuma função do jogo.
-            ],
-            spacing=10,
-            # Aumente este número para separar mais missão e título; diminua
-            # para aproximar os dois painéis.
-            horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
-            col={"xs": 12, "sm": 12, "md": 8, "lg": 9},
-            # Em telas grandes, lg=9 significa 75% da largura. Se usar lg=8
-            # aqui, altere o menu lateral para lg=4 para manter o total 12.
-        )
+        # PAINÉIS: cada um é montado uma única vez (as funções guardam
+        # referências aos campos e cartões) e depois posicionado conforme a tela.
+        painel_missao = self._construir_painel_missao()
+        painel_marca = self._construir_painel_marca()
+        seletor_assuntos = self._construir_seletor_assuntos()
+        painel_jogadores = self._construir_painel_jogadores()
+        rodape = self._construir_rodape()
 
-        # ÁREA PRINCIPAL:
-        # O menu fica à esquerda e a coluna missão/título à direita.
-        area_principal = ft.ResponsiveRow(
-            controls=[
-                ft.Container(
-                    content=self._construir_seletor_assuntos(),
-                    col={"xs": 12, "sm": 12, "md": 4, "lg": 3},
-                    # Para deixar o menu mais largo, troque lg=3 por lg=4 e
-                    # altere lg=9 do painel_direito para lg=8.
-                ),
-                painel_direito,
-            ],
-            columns=12,
-            # A grade responsiva sempre soma 12 colunas.
-            spacing=12,
-            # Altere para aumentar/diminuir o espaço horizontal entre o menu
-            # lateral e os dois painéis da direita.
-            run_spacing=10,
-            # Altere para controlar a distância quando a tela estreita quebrar
-            # os painéis em linhas diferentes.
-            vertical_alignment=ft.CrossAxisAlignment.START,
-        )
+        if celular:
+            # ORDEM NO CELULAR (uma coluna): título e regras, depois os
+            # jogadores (o aluno digita o nome antes de escolher a etapa), o
+            # mapa e, por último, mascote/estratégia/progresso.
+            controles = [
+                barra_aplicativo,
+                self._construir_titulo_projeto(),
+                painel_marca,
+                painel_jogadores,
+                seletor_assuntos,
+                painel_missao,
+                rodape,
+                ft.Container(height=12),
+            ]
+        else:
+            # COLUNA DIREITA DA ÁREA PRINCIPAL:
+            # A ordem desta lista é a ordem mostrada na tela: missão primeiro e
+            # título depois, conforme o modelo visual solicitado.
+            painel_direito = ft.Column(
+                controls=[
+                    painel_missao,
+                    # Para colocar o título acima da missão, mova esta linha para
+                    # antes de painel_missao.
+                    painel_marca,
+                    # Para retirar o título desta coluna, remova somente a linha
+                    # acima. Isso não desativa nenhuma função do jogo.
+                ],
+                spacing=10,
+                # Aumente este número para separar mais missão e título; diminua
+                # para aproximar os dois painéis.
+                horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
+                col={"xs": 12, "sm": 12, "md": 8, "lg": 9},
+                # Em telas grandes, lg=9 significa 75% da largura. Se usar lg=8
+                # aqui, altere o menu lateral para lg=4 para manter o total 12.
+            )
 
-        # PAINEL INFERIOR:
-        # O cadastro dos jogadores fica fora da coluna direita para ocupar toda
-        # a largura abaixo do menu, missão e título.
-        painel_inferior = ft.Column(
-            controls=[
-                self._construir_painel_jogadores(),
-                # Para ocultar apenas o rodapé visual, remova a próxima linha.
-                # O salvamento automático e o ranking continuarão funcionando.
-                self._construir_rodape(),
-            ],
-            spacing=7,
-            # Aumente para separar mais o painel de jogadores do rodapé.
-            horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
-        )
+            # ÁREA PRINCIPAL:
+            # O menu fica à esquerda e a coluna missão/título à direita.
+            area_principal = ft.ResponsiveRow(
+                controls=[
+                    ft.Container(
+                        content=seletor_assuntos,
+                        col={"xs": 12, "sm": 12, "md": 4, "lg": 3},
+                        # Para deixar o menu mais largo, troque lg=3 por lg=4 e
+                        # altere lg=9 do painel_direito para lg=8.
+                    ),
+                    painel_direito,
+                ],
+                columns=12,
+                # A grade responsiva sempre soma 12 colunas.
+                spacing=12,
+                # Altere para aumentar/diminuir o espaço horizontal entre o menu
+                # lateral e os dois painéis da direita.
+                run_spacing=10,
+                # Altere para controlar a distância quando a tela estreita quebrar
+                # os painéis em linhas diferentes.
+                vertical_alignment=ft.CrossAxisAlignment.START,
+            )
 
-        conteudo = ft.Column(
-            controls=[
+            # PAINEL INFERIOR:
+            # O cadastro dos jogadores fica fora da coluna direita para ocupar toda
+            # a largura abaixo do menu, missão e título.
+            painel_inferior = ft.Column(
+                controls=[
+                    painel_jogadores,
+                    # Para ocultar apenas o rodapé visual, remova a próxima linha.
+                    # O salvamento automático e o ranking continuarão funcionando.
+                    rodape,
+                ],
+                spacing=7,
+                # Aumente para separar mais o painel de jogadores do rodapé.
+                horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
+            )
+
+            controles = [
                 barra_aplicativo,
                 self._construir_titulo_projeto(),
                 # Esta linha exibe a faixa com o título acadêmico do projeto.
@@ -873,7 +922,10 @@ class AplicativoRespondaOuEstuda:
                 # MARGEM FINAL: permite ver a parte de baixo dos cartões dos
                 # jogadores e do rodapé ao rolar até o fim da tela inicial.
                 ft.Container(height=12),
-            ],
+            ]
+
+        conteudo = ft.Column(
+            controls=controles,
             # A ordem acima controla: configurações, título do projeto, área do
             # jogo e jogadores. Mova apenas linhas visuais, não os eventos.
             spacing=7,
@@ -891,10 +943,11 @@ class AplicativoRespondaOuEstuda:
         camada_conteudo = ft.Container(
             content=ft.SafeArea(
                 content=conteudo,
-                minimum_padding=ft.Padding.symmetric(horizontal=8, vertical=6),
+                minimum_padding=ft.Padding.symmetric(horizontal=4 if celular else 8, vertical=6),
                 # Ajusta o afastamento mínimo de áreas seguras da tela.
             ),
-            padding=ft.Padding.symmetric(horizontal=16, vertical=9),
+            # No celular, margens menores deixam mais largura para o conteúdo.
+            padding=ft.Padding.symmetric(horizontal=4 if celular else 16, vertical=9),
             # Esta é a margem geral: horizontal move tudo para dentro dos lados;
             # vertical afasta todo o layout do topo e da base.
             left=0,
@@ -1099,39 +1152,73 @@ class AplicativoRespondaOuEstuda:
             tooltip="Arquivar os dados desta turma e começar do zero",
         )
 
+        # BOTÕES DA BARRA, na ordem em que aparecem.
+        botoes = [
+            # NO SITE a música importada não chegaria ao tocador (os sons
+            # vêm do endereço do jogo), por isso o botão só aparece no PC.
+            *([] if NO_NAVEGADOR else [botao_musica]),
+            botao_som,
+            # EFEITOS: toques dos botões e sons de acerto, sem a música.
+            recursos_jogo.botao_efeitos(
+                self, CORES["branco"], CORES["ciano_2"], CORES["amarelo"], compacto=True
+            ),
+            # ACESSIBILIDADE: tempo, animações e alto contraste.
+            ft.OutlinedButton(
+                content="ACESSIBILIDADE",
+                icon=ft.Icons.ACCESSIBILITY_NEW,
+                height=42,
+                style=ft.ButtonStyle(
+                    color=CORES["branco"],
+                    side=ft.BorderSide(width=1.5, color=CORES["ciano_2"]),
+                ),
+                on_click=self._abrir_acessibilidade,
+                tooltip="Tempo por questão, animações e alto contraste",
+            ),
+            # LUPA (acessibilidade): liga/desliga a Lupa do Windows.
+            recursos_jogo.botao_lupa(
+                CORES["branco"], CORES["ciano_2"], CORES["amarelo"], CORES["fundo_topo"]
+            ),
+            botao_nova_turma,
+            botao_ranking,
+        ]
+
+        if self.layout_celular:
+            # CELULAR: tema e música dividem a primeira linha, ocupando toda a
+            # largura (expanded_insets=0 faz o seletor preencher o espaço) e
+            # sem o ícone à esquerda, para o nome caber inteiro. Os botões
+            # ficam centralizados nas linhas de baixo.
+            for seletor in (seletor_tema, seletor_trilha):
+                seletor.width = None
+                seletor.leading_icon = None
+                seletor.expanded_insets = ft.Padding.all(0)
+            return ft.Column(
+                controls=[
+                    ft.Row(
+                        controls=[
+                            ft.Container(content=seletor_tema, expand=True),
+                            ft.Container(content=seletor_trilha, expand=True),
+                        ],
+                        spacing=8,
+                    ),
+                    ft.Row(
+                        controls=botoes,
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        vertical_alignment=ft.CrossAxisAlignment.CENTER,
+                        wrap=True,
+                        run_spacing=7,
+                        spacing=8,
+                    ),
+                ],
+                spacing=8,
+                horizontal_alignment=ft.CrossAxisAlignment.STRETCH,
+            )
+
         # POSIÇÃO DOS CONTROLES SUPERIORES:
         # END alinha tudo à direita. CENTER centralizaria e START levaria à
         # esquerda. wrap=True quebra a linha quando faltar espaço.
         # spacing separa itens na linha; run_spacing separa linhas quebradas.
         return ft.Row(
-            controls=[
-                seletor_tema,
-                seletor_trilha,
-                botao_musica,
-                botao_som,
-                # EFEITOS: toques dos botões e sons de acerto, sem a música.
-                recursos_jogo.botao_efeitos(
-                    self, CORES["branco"], CORES["ciano_2"], CORES["amarelo"], compacto=True
-                ),
-                # ACESSIBILIDADE: tempo, animações e alto contraste.
-                ft.OutlinedButton(
-                    content="ACESSIBILIDADE",
-                    icon=ft.Icons.ACCESSIBILITY_NEW,
-                    height=42,
-                    style=ft.ButtonStyle(
-                        color=CORES["branco"],
-                        side=ft.BorderSide(width=1.5, color=CORES["ciano_2"]),
-                    ),
-                    on_click=self._abrir_acessibilidade,
-                    tooltip="Tempo por questão, animações e alto contraste",
-                ),
-                # LUPA (acessibilidade): liga/desliga a Lupa do Windows.
-                recursos_jogo.botao_lupa(
-                    CORES["branco"], CORES["ciano_2"], CORES["amarelo"], CORES["fundo_topo"]
-                ),
-                botao_nova_turma,
-                botao_ranking,
-            ],
+            controls=[seletor_tema, seletor_trilha, *botoes],
             alignment=ft.MainAxisAlignment.END,
             vertical_alignment=ft.CrossAxisAlignment.CENTER,
             wrap=True,
@@ -1196,7 +1283,7 @@ class AplicativoRespondaOuEstuda:
     def _construir_titulo_projeto(self) -> ft.Control:
         """Cria a faixa superior reservada ao título acadêmico do projeto."""
 
-        return ft.Container(
+        faixa = ft.Container(
             content=ft.Row(
                 controls=[
                     ft.Container(
@@ -1268,9 +1355,21 @@ class AplicativoRespondaOuEstuda:
             # Aumente para deixar os cantos mais arredondados.
             shadow=_sombra("#4400BDEB", 10, 2),
         )
+        if self.layout_celular:
+            # CELULAR: letra menor, até 3 linhas e altura automática, para o
+            # título aparecer inteiro; o espaço à direita do título é retirado.
+            linha = faixa.content
+            linha.controls.pop()
+            titulo = linha.controls[1]
+            titulo.size = 18
+            titulo.max_lines = 3
+            faixa.height = None
+            faixa.padding = ft.Padding.symmetric(horizontal=10, vertical=9)
+        return faixa
 
     def _construir_painel_marca(self) -> ft.Control:
         """Apresenta a identidade e as regras essenciais sem repetir chamadas."""
+        celular = self.layout_celular
 
         # CARTÃO DE REGRA:
         # Esta função interna é reutilizada nos três cartões: acerto, erro e
@@ -1282,6 +1381,37 @@ class AplicativoRespondaOuEstuda:
             valor: str,
             cor: str,
         ) -> ft.Control:
+            if celular:
+                # CELULAR: as três regras lado a lado, cada uma em pé
+                # (ícone, nome e valor um abaixo do outro).
+                return ft.Container(
+                    content=ft.Column(
+                        controls=[
+                            ft.Container(
+                                content=ft.Icon(icone, color=CORES["fundo_topo"], size=16),
+                                width=30,
+                                height=30,
+                                alignment=ft.Alignment.CENTER,
+                                bgcolor=cor,
+                                border_radius=_raio(10),
+                            ),
+                            ft.Text(
+                                rotulo,
+                                color=CORES["texto_suave"],
+                                size=10,
+                                weight=ft.FontWeight.BOLD,
+                            ),
+                            ft.Text(valor, color=cor, size=15, weight=ft.FontWeight.BOLD),
+                        ],
+                        spacing=2,
+                        horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                    ),
+                    padding=ft.Padding.symmetric(horizontal=4, vertical=8),
+                    bgcolor=_cor_fixa("#0A2A61"),
+                    border=_borda(_cor_fixa("#285D94")),
+                    border_radius=_raio(13),
+                    col={"xs": 4},
+                )
             return ft.Container(
                 content=ft.Row(
                     controls=[
@@ -1361,8 +1491,8 @@ class AplicativoRespondaOuEstuda:
                         ft.Text(
                             "RESPONDE",
                             color=CORES["amarelo"],
-                            # TAMANHO DA PALAVRA "RESPONDE".
-                            size=43,
+                            # TAMANHO DA PALAVRA "RESPONDE" (no celular, 36).
+                            size=36 if celular else 43,
                             # Altere este número para aumentar/diminuir RESPONDE.
                             weight=ft.FontWeight.BOLD,
                             style=ft.TextStyle(
@@ -1375,8 +1505,8 @@ class AplicativoRespondaOuEstuda:
                         ft.Text(
                             "OU ESTUDA",
                             color=CORES["ciano"],
-                            # TAMANHO DA EXPRESSÃO "OU ESTUDA".
-                            size=43,
+                            # TAMANHO DA EXPRESSÃO "OU ESTUDA" (no celular, 36).
+                            size=36 if celular else 43,
                             # Altere este número para aumentar/diminuir OU ESTUDA.
                             weight=ft.FontWeight.BOLD,
                             style=ft.TextStyle(
@@ -1462,9 +1592,11 @@ class AplicativoRespondaOuEstuda:
                 run_spacing=9,
                 vertical_alignment=ft.CrossAxisAlignment.CENTER,
             ),
-            height=164,
+            # No celular a altura é automática: título, frase e regras
+            # ficam um abaixo do outro e precisam de mais espaço.
+            height=None if celular else 164,
             # Aumente se ampliar muito o título; diminua para compactar o painel.
-            padding=ft.Padding.symmetric(horizontal=22, vertical=15),
+            padding=ft.Padding.symmetric(horizontal=14 if celular else 22, vertical=15),
             # horizontal altera as laterais; vertical altera topo e base.
             gradient=ft.LinearGradient(
                 begin=ft.Alignment.TOP_LEFT,
@@ -1576,12 +1708,13 @@ class AplicativoRespondaOuEstuda:
             self.campos_nomes.append(campo)
 
             imagem_relativa = str(jogador.get("imagem", ""))
-            if imagem_relativa:
+            foto = recursos_jogo.foto_jogador(imagem_relativa)
+            if foto:
                 # FOTO DO JOGADOR:
                 # width/height definem o tamanho. COVER preenche o círculo,
                 # podendo cortar as bordas da fotografia.
                 avatar_conteudo: ft.Control = ft.Image(
-                    src=imagem_relativa,
+                    src=foto,
                     width=48,
                     # Altere junto com height para aumentar/diminuir a foto.
                     height=48,
@@ -2013,13 +2146,26 @@ class AplicativoRespondaOuEstuda:
             # Para alargar o progresso, aumente 3 e reduza a estratégia.
         )
 
+        cartoes = [cartao_imagem, cartao_missao, cartao_progresso]
+        if self.layout_celular:
+            # CELULAR: mascote e progresso lado a lado (5 + 7 colunas) e a
+            # estratégia embaixo, com a altura do próprio texto.
+            imagem.width, imagem.height = 112, 104
+            cartao_imagem.height = cartao_progresso.height = 118
+            cartao_imagem.col = {"xs": 5}
+            cartao_progresso.col = {"xs": 7}
+            cartao_missao.height = None
+            cartao_missao.col = {"xs": 12}
+            cartao_missao.padding = ft.Padding.symmetric(horizontal=14, vertical=12)
+            cartoes = [cartao_imagem, cartao_progresso, cartao_missao]
+
         # ORGANIZAÇÃO DOS TRÊS CARTÕES:
         # Em telas sm/md: 3 + 6 + 3 = 12 colunas.
         # Para aumentar a missão, aumente seu col e reduza imagem/progresso.
         # spacing e run_spacing controlam as distâncias entre os cartões.
         return ft.Container(
             content=ft.ResponsiveRow(
-                controls=[cartao_imagem, cartao_missao, cartao_progresso],
+                controls=cartoes,
                 # Para mudar a ordem, reorganize somente estes três nomes.
                 columns=12,
                 spacing=8,
@@ -2122,6 +2268,8 @@ class AplicativoRespondaOuEstuda:
         # Todas são escolhidas automaticamente conforme assunto["ativo"].
         # Altere as referências abaixo para personalizar cada estado.
         ativo = bool(assunto["ativo"])
+        # No celular os textos da etapa crescem um pouco (leitura no toque).
+        celular = self.layout_celular
         cor_fundo = CORES["azul_botao"] if ativo else CORES["azul_bloqueado"]
         cor_contorno = CORES["ciano"] if ativo else "#3B76A9"
         cor_texto = CORES["amarelo"] if ativo else "#A4CDE2"
@@ -2176,7 +2324,7 @@ class AplicativoRespondaOuEstuda:
                                     ft.Text(
                                         nome_exibicao,
                                         color=cor_texto,
-                                        size=13,
+                                        size=15 if celular else 13,
                                         weight=ft.FontWeight.BOLD,
                                         expand=True,
                                     ),
@@ -2200,7 +2348,7 @@ class AplicativoRespondaOuEstuda:
                                 ft.Text(
                                     descricao,
                                     color=CORES["branco"],
-                                    size=9,
+                                    size=11 if celular else 9,
                                     weight=ft.FontWeight.W_600,
                                     max_lines=1,
                                     overflow=ft.TextOverflow.ELLIPSIS,
@@ -2212,7 +2360,7 @@ class AplicativoRespondaOuEstuda:
                                 ft.Text(
                                     "JOGAR",
                                     color=CORES["verde"],
-                                    size=9,
+                                    size=11 if celular else 9,
                                     weight=ft.FontWeight.BOLD,
                                 )
                                 if ativo
@@ -2226,7 +2374,9 @@ class AplicativoRespondaOuEstuda:
                 spacing=8,
                 vertical_alignment=ft.CrossAxisAlignment.CENTER,
             ),
-            height=56 if ativo else 46,
+            # No celular a etapa fica mais alta: "JOGAR" cabe inteiro e o
+            # cartão é mais fácil de tocar com o dedo.
+            height=(68 if ativo else 52) if self.layout_celular else (56 if ativo else 46),
             # Altura das etapas reduzida para a tela inicial caber sem rolar.
             padding=ft.Padding.symmetric(horizontal=8, vertical=4),
             bgcolor=cor_fundo,
@@ -2742,7 +2892,7 @@ class AplicativoRespondaOuEstuda:
         for posicao, jogador in enumerate(classificacao, start=1):
             saldo = float(jogador["saldo"])
             patrimonio = economia_tela.eco.patrimonio(jogador)
-            imagem = str(jogador.get("imagem", ""))
+            imagem = recursos_jogo.foto_jogador(str(jogador.get("imagem", "")))
             avatar: ft.Control
             if imagem:
                 # FOTO NO RANKING: width/height=52 e raio=26 formam um círculo.
