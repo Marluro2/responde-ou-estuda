@@ -42,6 +42,9 @@ except ImportError:  # Android, iOS, macOS e Linux usam o áudio do Flet.
 
 BASE_DIR = Path(__file__).resolve().parent
 ASSETS_DIR = BASE_DIR / "assets"
+# NO SITE (flet build web), imagens e sons são servidos pelo endereço do
+# jogo e não ficam no disco do Python: não dá para conferir se existem.
+NO_NAVEGADOR = sys.platform == "emscripten"
 ARQUIVO_QUESTOES = BASE_DIR / "dados" / "questoes_juros.json"
 
 PREMIO_ACERTO = 100.0
@@ -364,7 +367,7 @@ def carregar_questoes(caminho: Path = ARQUIVO_QUESTOES) -> list[dict[str, Any]]:
                 f"Questão {identificador}: imagens remotas não são permitidas."
             )
         imagem = ASSETS_DIR / imagem_informada
-        if not imagem.exists():
+        if not NO_NAVEGADOR and not imagem.exists():
             raise FileNotFoundError(
                 f"Questão {identificador}: imagem não encontrada: {imagem}"
             )
@@ -3163,7 +3166,7 @@ class JogoJuros:
 
     async def _iniciar_audio_atual(self) -> None:
         relativo, caminho = self._trilha_atual()
-        if not caminho.exists():
+        if not NO_NAVEGADOR and not caminho.exists():
             raise FileNotFoundError(f"Arquivo de áudio não encontrado: {caminho}")
         if winsound is not None and caminho.suffix.lower() == ".wav":
             winsound.PlaySound(

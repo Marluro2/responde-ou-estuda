@@ -417,6 +417,9 @@ FLET_VERSAO_ALVO = "0.86.3"
 # Para renomear um arquivo abaixo, renomeie também o arquivo real na pasta.
 BASE_DIR = Path(__file__).resolve().parent
 PASTA_ASSETS = BASE_DIR / "assets"
+# NO SITE (flet build web), imagens e sons são servidos pelo endereço do
+# jogo e não ficam no disco do Python: não dá para conferir se existem.
+NO_NAVEGADOR = sys.platform == "emscripten"
 ARQUIVO_QUIZ = "nivel_1_porcentagem.py"
 ARQUIVO_QUIZ_JUROS = "nivel_2_juros.py"
 ARQUIVO_QUIZ_PRICE = "nivel_3_price.py"
@@ -3301,7 +3304,7 @@ class AplicativoRespondaOuEstuda:
         # WAV usa o reprodutor nativo do Windows. Outros formatos e sistemas
         # usam o serviço de áudio do Flet.
         relativo, caminho = self._trilha_atual()
-        if not caminho.exists():
+        if not NO_NAVEGADOR and not caminho.exists():
             raise FileNotFoundError(f"Arquivo de áudio não encontrado: {caminho}")
         if winsound is not None and caminho.suffix.lower() == ".wav":
             winsound.PlaySound(
