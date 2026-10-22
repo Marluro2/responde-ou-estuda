@@ -557,7 +557,9 @@ def _teclas_windows_esc() -> None:
 def botao_lupa(cor_texto: str, cor_borda: str, cor_destaque: str, cor_fundo_ativo: str) -> ft.Control:
     """Botão LUPA para os cabeçalhos (tela inicial e módulos)."""
     if not lupa_disponivel():
-        return ft.Container()
+        # visible=False: um Container vazio ocuparia uma linha inteira numa
+        # fileira com quebra (no site isso jogava botões para a linha de baixo).
+        return ft.Container(visible=False)
     ativa = lupa_ativa()
     botao = ft.OutlinedButton(height=42, tooltip=(
         "Lupa do Windows: amplia o que estiver sob o mouse. "

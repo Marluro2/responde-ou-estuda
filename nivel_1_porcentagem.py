@@ -529,7 +529,8 @@ class JogoPorcentagem:
                 vertical_alignment=ft.CrossAxisAlignment.CENTER,
             ),
             padding=ft.Padding.symmetric(
-                horizontal=20,
+                # No celular, margem menor para os botões caberem numa linha.
+                horizontal=10 if rj.tela_de_celular(self.page) else 20,
                 # ALTURA DO CABEÇALHO: aumente ou diminua este valor para
                 # deixar a faixa superior mais alta ou mais compacta.
                 vertical=8,
