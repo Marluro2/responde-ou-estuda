@@ -352,6 +352,13 @@ No site, o Python roda dentro do navegador do aluno:
   recursos do computador); a foto do jogador aparece só durante aquela visita;
 • para a coleta de dados da pesquisa, use a versão do computador.
 
+No computador (janela do navegador com 900 pixels ou mais), o site monta o
+jogo no tamanho da janela do programa (1536 x 786) e o amplia ou reduz por
+inteiro para preencher o navegador: fica igual à versão do computador, sem
+rolar, mesmo com barra de endereço, abas ou zoom. Por isso o zoom do navegador
+(Ctrl + / Ctrl −) não muda o tamanho das letras no site. Os valores ficam em
+responda_ou_estuda.py (LARGURA_PROJETO, ALTURA_PROJETO, LARGURA_MINIMA_ESCALA).
+
 CELULAR
 
 Em telas com menos de 600 pixels de largura (celular em pé), o jogo troca

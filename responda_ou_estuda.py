@@ -289,6 +289,7 @@ import importlib.metadata
 import importlib.util
 import io
 import math
+import os
 import re
 import shutil
 import struct
@@ -423,6 +424,17 @@ NO_NAVEGADOR = sys.platform == "emscripten"
 # CELULAR: abaixo de recursos_jogo.LARGURA_CELULAR (600 px) a tela inicial
 # troca para o layout de celular (uma coluna, textos que quebram linha,
 # jogadores antes do mapa). Acima dela, o layout de computador não muda.
+# SITE NO COMPUTADOR: o navegador tem barra de endereço, abas e zoom, e sobra
+# menos espaço que na janela do programa. Por isso, no site, o jogo é montado
+# no tamanho da janela do programa (LARGURA_PROJETO x ALTURA_PROJETO) e
+# ampliado ou reduzido por inteiro para preencher o navegador: fica igual à
+# versão do computador, sem rolar. Vale a partir de LARGURA_MINIMA_ESCALA;
+# abaixo disso (tablet em pé, celular) segue o layout responsivo.
+# Para testar no PC: defina RESPONDA_ESCALA_SITE=1 antes de abrir o jogo.
+ESCALA_SITE = NO_NAVEGADOR or os.environ.get("RESPONDA_ESCALA_SITE", "").strip() == "1"
+LARGURA_PROJETO = 1536
+ALTURA_PROJETO = 786
+LARGURA_MINIMA_ESCALA = 900
 ARQUIVO_QUIZ = "nivel_1_porcentagem.py"
 ARQUIVO_QUIZ_JUROS = "nivel_2_juros.py"
 ARQUIVO_QUIZ_PRICE = "nivel_3_price.py"
@@ -722,7 +734,13 @@ class AplicativoRespondaOuEstuda:
         self.tela_price: ft.Control | None = None
         self.modulo_sac: Any = None
         self.tela_sac: ft.Control | None = None
-        self.page.add(self.host)
+        # SITE: a moldura permite montar o jogo no tamanho da janela do
+        # programa e ampliá-lo/reduzi-lo por inteiro (ver ESCALA_SITE).
+        self.moldura: ft.Stack | None = None
+        if ESCALA_SITE:
+            self.moldura = ft.Stack(controls=[self.host], expand=True)
+            self._ajustar_escala_site()
+        self.page.add(self.moldura or self.host)
         # MODO ECONOMIA: 1 minuto de jogo aberto = 1 "mês" (cofrinho e juros).
         economia_tela.iniciar_relogio(self.page, lambda: self.estado, self._ao_passar_mes)
         self.mostrar_inicio()
@@ -770,6 +788,10 @@ class AplicativoRespondaOuEstuda:
         return recursos_jogo.tela_de_celular(self.page)
 
     def _ao_redimensionar(self, _evento: Any = None) -> None:
+        # SITE: recalcula a escala para o jogo continuar preenchendo a janela.
+        if getattr(self, "moldura", None) is not None:
+            self._ajustar_escala_site()
+            self.page.update()
         # Só remonta a tela inicial quando cruza o limite celular/computador.
         # (Abrir o teclado do celular muda só a altura e não remonta nada.)
         host = getattr(self, "host", None)
@@ -779,6 +801,30 @@ class AplicativoRespondaOuEstuda:
             and host.content is self.tela_inicial
         ):
             self._reconstruir_inicio()
+
+    def _ajustar_escala_site(self) -> None:
+        """SITE no computador: mesmo layout da janela do programa, em escala.
+
+        O jogo é montado com pelo menos LARGURA_PROJETO x ALTURA_PROJETO e
+        ampliado/reduzido por inteiro até preencher a janela do navegador.
+        Em telas estreitas (celular, tablet em pé) não há escala.
+        """
+        largura = float(self.page.width or 0)
+        altura = float(self.page.height or 0)
+        host = self.host
+        host.expand = False
+        if largura >= LARGURA_MINIMA_ESCALA and altura > 0:
+            escala = min(largura / LARGURA_PROJETO, altura / ALTURA_PROJETO)
+            # Uma das medidas fica igual à do programa e a outra sobra um
+            # pouco, para o jogo ocupar a janela inteira sem faixas vazias.
+            host.left, host.top, host.right, host.bottom = 0, 0, None, None
+            host.width = largura / escala
+            host.height = altura / escala
+            host.scale = ft.Scale(scale=escala, alignment=ft.Alignment.TOP_LEFT)
+        else:
+            host.left, host.top, host.right, host.bottom = 0, 0, 0, 0
+            host.width = host.height = None
+            host.scale = None
 
     # ------------------------------------------------------------------
     # Construção da interface
